@@ -1,0 +1,46 @@
+<!--pages/about_shop/about_shop.wxml-->
+<view class='content' style='height:{{winHeight}}px'>
+  <view class='about_shop_bg'>
+    <image src='http://image.haocha.top/i1/poster/base/collage_advertisement.png' mode="widthFix"></image>
+  </view>
+  <view class='recommened_out'>
+    <view class='recommened'>
+      <view class='font26 text1'>
+        好茶小店是由广州好茶网络科技有限公司提供。好茶小店小程序，是为实体门店提供门店获客引流工具。提供茶行业新零售的解决方案。并且给消费者减少经商中间差价的环节，实现互利互惠的购物体验。
+      </view>
+      <view class='font26 text2'>
+        广州好茶网络科技有限公司是一家致力于茶行业供应链服务的互联网公司，好茶创始团队由在茶行业从业20年的资深业内人员及来自京东、阿里、美团等知名互联网公司的人员组成。好茶整合茶产业源头、原料供应商、茶叶生产商、终端采购商等优质资源，为茶行业提供基于移动互联网的供应链专业服务;为消费者带来更优质、更实惠的茶业产品。
+      </view>
+  </view>
+
+
+  <view class='info_out'>
+    <view class='info'>
+
+      <view class='info_detail'>
+        <view class='icon_img'>
+          <image src='../../../common/image/index_img/about_shop_call.png'></image>
+        </view>
+        <view class='detail font30'>客服电话：<button class='phonebtn maincolor font30 maincolor' bindtap='callphone'>400-1668933</button>
+           </view>
+      </view>
+
+      <!-- <view class='info_detail'>
+        <view class='icon_img1'>
+          <image src='../../common/image/index_img/telephone.png'></image>
+        </view>
+        <view class='detail font30'>招商热线： <text class='font30 maincolor'>400-1234567</text></view>
+      </view> -->
+
+      <view class='info_detail'>
+        <view class='icon_img2'>
+          <image src='../../../common/image/index_img/about_shop_wx.png'></image>
+        </view>
+        <view class='detail font30'>微信公众号：<text class='font30'>好茶说</text></view>
+      </view>
+
+    </view>
+  </view>
+  
+  </view>
+</view>

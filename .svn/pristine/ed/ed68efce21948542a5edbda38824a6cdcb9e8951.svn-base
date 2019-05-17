@@ -1,0 +1,31 @@
+<!-- <view class='user_portrait'>
+  <view class='user_n_h'>
+    <view class='header_img'>
+      <image src='https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTKe4DjQWeXKdeQAOdVTjicqsjm4ZQlicJePMibxUZAY0YicNvGKQWZcfPmOKg9fO3vYBkXSOUrLGSJAXw/132'></image>
+    </view>
+    <view class='user_name'>名字</view>
+  </view>
+
+  <view class='count_down fr'>
+    <view class='times shallow_color'>
+      剩余:
+      <text class='count_down_time'>02：00</text>
+    </view>
+    <view class='join_to'>
+      去拼团
+    </view>
+  </view>
+</view> -->
+<block wx:if="{{boss.length>0}}" wx:for="{{boss}}" wx:key="this">
+<view class='flex' catchtap='go' data-collageId="{{item.collageId}}" data-productId="{{item.productId}}" data-time="{{item.lastTime}}">
+  <image src='{{item.userSub.logo}}'></image>
+  <view class='name'>{{item.userSub.nickName}}</view>
+  <view class='time'>剩余:{{item.lastTime}}</view>
+  <view class='btn'>去拼团</view>
+</view>
+
+</block>
+<view class='wrap'  wx:if="{{boss.length==0}}">
+   <image src='../../common/image/index_img/noMore.png' class='noMore'></image>
+   <text>暂无记录</text>
+ </view>

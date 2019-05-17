@@ -1,0 +1,43 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/ruzhu/ruzhu",
+    "pages/own_buy/own_buy",
+    "pages/mind/mind",
+    "pages/pinhaocha/pinhaocha",
+    "pages/search_index/search_index",
+    "pages/logs/logs"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "#999",
+    "selectedColor": "#0E6D45",
+    "borderStyle": "#fff",
+    "backgroundColor": "'#FFF'",
+    "list": [
+      {
+        "selectedIconPath": "common/image/index_img/index_selected.png",
+        "iconPath": "common/image/index_img/index_selecte.png",
+        "pagePath": "pages/index/index",
+        "text": "小店"
+      },
+      {
+        "selectedIconPath": "common/image/index_img/haocha_selectd.png",
+        "iconPath": "common/image/index_img/haocha_select.png",
+        "pagePath": "pages/pinhaocha/pinhaocha",
+        "text": "拼好茶"
+      },
+      {
+        "selectedIconPath": "common/image/index_img/mind_selectd.png",
+        "iconPath": "common/image/index_img/mind_select.png",
+        "pagePath": "pages/mind/mind",
+        "text": "我的"
+      }
+    ]
+  }
+}

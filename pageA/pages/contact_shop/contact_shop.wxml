@@ -1,0 +1,26 @@
+<!--pages/contact_shop/contact_shop.wxml-->
+<view class='content'>
+  <view class='contact_shop_bg'>
+    <image src='../../../common/image/index_img/banner.png'></image>
+  </view>
+  <view class='phone_wx'>
+    <view class='call_me'>
+
+    <button class='phonebtn' bindtap='callphone'>   
+      <view class='phone_img'>
+        <image src='../../../common/image/index_img/call_me.png'></image>
+      </view>
+      <text class='name font36'>{{shop_detail.contactName}}</text>
+      <text class='phone_num font30' selectable='true'>{{shop_detail.contactPhone}}</text>
+    </button>
+    </view>
+
+    <!-- <view class='wechat'>
+      <view class='phone_img_1'>
+        <image src='../../common/image/index_img/wechat.png'></image>
+      </view>
+      <text class='name font36'>微信号</text>
+      <text class='phone_num font30' selectable='true'>{{shop_detail.weiXinAccount}}</text>
+    </view> -->
+  </view>
+</view>

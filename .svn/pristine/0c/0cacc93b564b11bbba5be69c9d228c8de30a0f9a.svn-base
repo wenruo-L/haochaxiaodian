@@ -1,0 +1,142 @@
+// pages/search_index/search_index.js
+import config from "../../utils/config.js"
+let app = getApp()
+console.log(app.globalData)
+Page({
+  /**
+   * 页面的初始数据
+   */
+  data: {
+    _latitude: "",//用户经纬度
+    _longitude: "",
+    token:"",
+    shop_img:""
+  },
+  // 组件跳转tabbar不可传参，需把所传参数缓存
+  to_own_shop:function(res){
+    console.log(res)
+    wx.setStorageSync('shop_id', res.currentTarget.dataset.id)
+    
+    wx.switchTab({
+      url: '../index/index'
+    })
+  },
+  to_ruzhu:function(e){
+    wx.navigateTo({
+      url:'../ruzhu/ruzhu'
+    })
+  },
+
+  //获取用户经纬度保存本地并提交
+  getuser_location:function(){
+    let _this = this
+    let app = getApp()
+    wx.getLocation({
+      type: 'wgs84',
+      success: function (res) {
+        console.log(res.latitude)
+
+        var latitude1 = res.latitude
+        var longitude2 = res.longitude
+        console.log('能否拿到经纬度' + latitude1)
+        console.log('能否拿到经纬度' + longitude2)
+        _this.setData({
+          _latitude: res.latitude,
+          _longitude: res.longitude
+        })
+        var _token = wx.getStorageSync('token')
+        _this.setData({
+          token: _token
+        })
+
+        
+        
+        wx.request({
+          url: config.get_near_shop,
+          method: 'GET',
+          data: {
+        // 经纬度参数
+            longitude: _this.data._longitude,
+            latitude: _this.data._latitude
+          },
+          header: {
+            'content-type': 'application/json',// GEt的请求方式为默认 
+            Authorization: _this.data.token
+          },
+          success: function(e){
+            console.log("附近小店的数据",e)
+            _this.setData({
+              near_shop_list: e.data.data.pages.content
+            })
+            e.data.data.pages.content.forEach(()=>{
+
+            })
+            console.log(_this.data.near_shop_list)
+          },
+          fail: function (e) {
+            console.log("获取失败")
+          }
+        })
+        
+      
+
+      }
+    })
+  },
+
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function (options) {
+    this.getuser_location()
+  },
+
+  /**
+   * 生命周期函数--监听页面初次渲染完成
+   */
+  onReady: function () {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow: function () {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面隐藏
+   */
+  onHide: function () {
+  
+  },
+
+  /**
+   * 生命周期函数--监听页面卸载
+   */
+  onUnload: function () {
+  
+  },
+
+  /**
+   * 页面相关事件处理函数--监听用户下拉动作
+   */
+  onPullDownRefresh: function () {
+  
+  },
+
+  /**
+   * 页面上拉触底事件的处理函数
+   */
+  onReachBottom: function () {
+  
+  },
+
+  /**
+   * 用户点击右上角分享
+   */
+  onShareAppMessage: function () {
+  
+  }
+})

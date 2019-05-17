@@ -1,0 +1,74 @@
+<!--pages/search_index/search_index.wxml-->
+<view class='content'>
+  <view class='index_top_mind'>
+       <view class='index_top_bg'>
+          <image src='../../common/image/index_img/bg.png'></image>
+      </view> 
+  </view>
+  <!--附近的小店  -->
+  <view class='empty_div'></view>
+  <view class='nearby_shop'>
+    <view class='search_index_title'>
+      <view class='title_icon'>
+         <image src='../../common/image/index_img/right51.png'></image>
+      </view>
+      <view class='search_index_title_text'>附近的小店</view>
+      <view class='title_icon'>
+         <image src='../../common/image/index_img/left52.png'></image>
+      </view>
+    </view>
+  </view>
+  <!--附近的小店  -->
+  <!--用户店铺搜索-->
+    <view class='client_own_shop'>
+      <view class='client_own_shop_img'>
+          <image src='../../common/image/index_img/shop_img.png'></image>
+      </view>
+      <view class='client_own_shop_name'>
+        <view class='client_own_shop_name_t'>斗记茶业</view>
+        <view class='client_own_shop_name_yewu'>主营：柑普茶、普洱茶</view>
+      </view>
+      <view class='client_own_shop_distance fr clearfix'>	
+        <image src='../../common/image/index_img/xiaoyuhao.png'></image><text>1000</text>km
+      </view>
+    </view>
+    <view class='client_own_shop'>
+      <view class='client_own_shop_img'>
+          <image src='../../common/image/index_img/shop_img.png'></image>
+      </view>
+      <view class='client_own_shop_name'>
+        <view class='client_own_shop_name_t'>斗记茶业</view>
+        <view class='client_own_shop_name_yewu'>主营：柑普茶、普洱茶</view>
+      </view>
+      <view class='client_own_shop_distance fr clearfix'>	
+        <image src='../../common/image/index_img/xiaoyuhao.png'></image><text>1000</text>km
+      </view>
+    </view>
+    <view class='client_own_shop'>
+      <view class='client_own_shop_img'>
+          <image src='../../common/image/index_img/shop_img.png'></image>
+      </view>
+      <view class='client_own_shop_name'>
+        <view class='client_own_shop_name_t'>斗记茶业</view>
+        <view class='client_own_shop_name_yewu'>主营：柑普茶、普洱茶</view>
+      </view>
+      <view class='client_own_shop_distance fr clearfix'>	
+        <image src='../../common/image/index_img/xiaoyuhao.png'></image><text>1000</text>km
+      </view>
+    </view>
+    <!--用户店铺搜索-->
+    <!--实体店入驻  -->
+      <view class='empty_div'></view>
+          <view class='ruzhu'>
+            <view class='ruzhu_erweima'>
+                <image src='../../common/image/index_img/erweima1.jpg'></image>
+            </view>
+            <view class='ruzhu_text'>
+              点击保存图片，分享好友
+            </view>
+            <view class='shitidian_text' bindtap='to_ruzhu'>
+              我有实体店，我要入驻
+            </view>
+          </view>
+       <!--实体店入驻  -->
+</view>

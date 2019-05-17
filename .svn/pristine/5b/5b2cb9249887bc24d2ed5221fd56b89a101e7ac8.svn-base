@@ -1,0 +1,97 @@
+<!--pages/myLike/myLike.wxml-->
+<scroll-view scroll-x="true" class="tab-h" scroll-left="{{scrollLeft}}">
+  <view class='flex'>
+    <view class="tab-item {{currentTab==index?'active':''}}" wx:for="{{h_text}}" data-current="{{index}}" catchtap="swichNav" wx:key="this">
+      <text>{{item.text}}</text>
+
+    </view>
+
+  </view>
+</scroll-view>
+
+<view class='content' >
+<!-- <view wx:if="{{goodsList.length==0}}" class='tis'>暂时没有您的数据</view> -->
+  <block wx:for="{{goodsList}}" wx:key="this" wx:if="{{currentTab==0}}">
+  
+  <view class='time flex' >
+    <image src='../../common/image/index_img/shop-time.png'></image>
+    <view>{{item.updateTime}}</view>
+  </view>
+  <view class='goods flex' catchtap='go' data-collagePrice="{{item.productSub.productSkuSub.collagePrice}}" data-goodsId="{{item.productId}}">
+    <view class='goodsImg'>
+      <image src='{{item.productSub.productImageSub.path}}'></image>
+    </view>
+    <view class='goodsdel'>
+      <view class='goodsText'>
+        {{item.productSub.title}}
+      </view>
+      <view class='goodsText'>
+        价格：
+        <text>{{item.productSub.productSkuSub.price}}元/{{item.productSub.unit}}</text>
+      </view>
+      <view class='goodsShop flex'>
+        <view class='shopLogo flex'>
+          <image src='../../common/image/index_img/shop_icon.png'></image>
+          <view class='shopName'>{{item.productSub.shopSub.name}}</view>
+        </view>
+        <view class='collageBtn' data-id="{{item.productId}}">去拼单</view>
+      </view>
+    </view>
+  </view>
+  </block>
+  <!-- <view style='padding-top:100px'>{{shopList.length}}</view> -->
+  <!-- <view wx:if="{{shopList.length==0}}" class='tis'>暂时没有您的数据</view> -->
+<block wx:if="{{currentTab==1}}" wx:for="{{shopList}}" wx:key="this">
+
+
+ <view class='shopList'>
+  <view class='time flex'>
+    <image src='../../common/image/index_img/shop-time.png'></image>
+    <view>{{item.updateTime}}</view>
+  </view>
+  <view class='shopMes flex' data-shopId="{{item.shopId}}" catchtap='goShop'>
+    <image src='{{item.shopSub.shopLogo}}' class='shopMesLogo' wx:if="{{item.shopSub.shopLogo}}"></image>
+    <image src='http://image.haocha.top/i1/default/shop/haocha_logo_small.png' class='shopMesLogo' wx:else></image>
+
+    <view class="shopText">
+       <view class=' flex mid'>
+          <image src='../../common/image/index_img/shop_icon.png'  class='shop_icon'></image>
+          <view class='shopMesName'>{{item.shopSub.name}}</view>
+        </view>
+        <view class='categoryName'>主营：
+          <block wx:for="{{item.shopSub.shopCategorySubList}}" wx:key="*this" wx:for-item="categoryName">
+            <text>{{categoryName.categoryName}}</text>、
+          </block>
+        </view>
+    </view>
+    <image src='../../common/image/index_img/inter_icon.png' class='inter_icon'></image>
+  </view>
+</view> 
+</block>
+
+</view>
+
+
+ <!--  -->
+<!--   -->
+
+ <!-- <swiper class="tab-content" current="{{currentTab}}" duration="300" bindchange="switchTab"
+     style="height:{{winHeight}}rpx">
+        <swiper-item wx:for="{{[0,1]}}">
+            <scroll-view scroll-y="true" class="scoll-h" >
+                <block wx:for="{{[1,2]}}" wx:key="*this">
+                    <view class="item-ans">
+                        <view class="avatar">
+                            <image class="img" src="http://ookzqad11.bkt.clouddn.com/avatar.png"></image>
+                        </view>
+                        <view class="expertInfo">
+                            <view class="name">欢颜</view>
+                            <view class="tag">知名情感博主</view>
+                            <view class="answerHistory">134个回答，2234人听过 </view>
+                        </view>
+                      
+                    </view>
+                </block>
+            </scroll-view>
+        </swiper-item>
+    </swiper>  -->

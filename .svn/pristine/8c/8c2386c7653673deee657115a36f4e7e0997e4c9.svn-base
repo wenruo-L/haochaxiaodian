@@ -1,0 +1,79 @@
+{
+	"description": "项目配置文件。",
+	"setting": {
+		"urlCheck": true,
+		"es6": true,
+		"postcss": true,
+		"minified": true,
+		"newFeature": true
+	},
+	"compileType": "miniprogram",
+	"libVersion": "2.0.9",
+	"appid": "wxa94a549ad18ef0ac",
+	"projectname": "haochaDemo",
+	"isGameTourist": false,
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"currentL": -1,
+			"list": []
+		},
+		"miniprogram": {
+			"current": 5,
+			"list": [
+				{
+					"id": 0,
+					"name": "qrcode",
+					"pathName": "pages/index/index",
+					"query": "scene=0=123"
+				},
+				{
+					"id": 1,
+					"name": "demo",
+					"pathName": "pageA/pages/bindingPhone/bindingPhone",
+					"query": "",
+					"scene": "1001"
+				},
+				{
+					"id": 2,
+					"name": "demo",
+					"pathName": "pageA/pages/rankings/rankings",
+					"query": "",
+					"scene": "1001"
+				},
+				{
+					"id": 3,
+					"name": "demo2",
+					"pathName": "pages/confirm_order/confirm_order",
+					"query": "buynum=1&productid=1123910875267203072&skuid=1123911289890930688&price=20&buynum=1&realpay=20&collage=0",
+					"scene": "1001"
+				},
+				{
+					"id": 4,
+					"name": "share",
+					"pathName": "pages/share_pages/share_pages",
+					"query": "shangpin=1133067130560839680&shangpu=1123581244852928512&productSkuId=1133067130682474496&payPrice=8&collageId=1138767738852868096",
+					"scene": "1001"
+				},
+				{
+					"id": 5,
+					"name": "redbagDel",
+					"pathName": "pages/add_new_address/add_new_address",
+					"query": "",
+					"scene": "1001"
+				}
+			]
+		}
+	}
+}

@@ -1,0 +1,271 @@
+<!--pages/own_buy/own_buy.wxml-->
+<view class='content'>
+  <!--商品图-->
+  <view class='index_top_mind'>
+   <view class='back_to_index' bindtap='toindex'  hidden="{{share__enter}}" >
+      返回首页
+    </view>
+    <swiper class='index_top_bg' indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+      <block wx:for="{{imgUrls}}" wx:key="index">
+        <swiper-item class='index_top_bg'>
+          <image src="{{imgUrls[index].path}}" class="slide-image" width="100%" height="350"/>
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+  <!--商品图-->
+  <!--商品细节-->
+    <view class='good_detail_out'> 
+      <view class='good_detail'>
+
+
+        <view class='good_title clearfix'>
+          <view class='title title_font'>
+            {{own_buy_top_data.title}}
+          </view>
+          <!-- 收藏 -->
+           <!-- <view class='nolike' hidden='{{notlike}}' bindtap='collect'>
+            <view class='like_img'>
+              <image src='../../common/image/index_img/not_like.png'></image>
+            </view>
+            <view class='like_text'>
+              收藏
+            </view>
+          </view>   -->
+
+           <!-- <view class='like' hidden='{{like}}' bindtap='cancel_collect'>
+            <view class='like_img'>
+              <image class="{{index_middle_list[index].isLike==0?'':'rubberBand'}}" src='../../common/image/index_img/likes.png'></image>
+            </view>
+            <view class='like_text'>
+              已收藏
+            </view>
+          </view>  -->
+        </view>
+
+        <view class='good_price clearfix'>
+          <view class='cost fl'>
+            价格： <text class='maincolor'>￥{{price}}/{{own_buy_top_data.unit}}</text>
+          </view>
+          <view class="freight fr mezzo_color" wx:if="{{inProvinceFreight == 0}}">
+            运费： 包邮
+          </view>
+          <view class="freight fr mezzo_color" wx:else>
+            运费： <text>{{inProvinceFreight/100}}</text>元
+          </view>
+        </view>
+
+        <view class='good_introduce'  wx:if="{{own_buy_top_data.shareContent}}">
+            <view class='zuoyinhao_wrap'>
+              <image src='../../common/image/index_img/zuoyinhao.png'></image>
+            </view>
+            <view class='good_introduce_text' >
+            {{own_buy_top_data.shareContent}}
+            </view>          
+        </view>
+        <view wx:else></view>
+
+        <view class='share'>
+          <view class='share_s ml'>
+            <view class='share_img'>
+              <image src='../../common/image/index_img/share.png'></image>
+            </view>
+            <view class='share_s_text maincolor'>分享拿佣金</view>
+          </view>
+          
+          <view class='share_s'>
+            <view class='share_img'>
+              <image src='../../common/image/index_img/ziti.png'></image>
+            </view>
+            <view class='share_s_text maincolor'>支持到店自提</view>
+          </view>
+
+          <view class='share_s'>
+            <view class='share_img'>
+              <image src='../../common/image/index_img/superior.png'></image>
+            </view>
+            <view class='share_s_text maincolor'>优质品质好茶</view>
+          </view>
+         
+          
+        </view>
+
+
+      </view>
+    </view>
+     <!-- <view>{{options}}</view> 
+     <view>{{testNum}}</view>  -->
+   
+    
+    
+  <!--商品细节-->
+  <!--商品参数-->
+  <view class='good_parameter_out'>
+    <view class='good_parameter'>
+
+
+      <view class='good_parameter_title'>
+        <view class='line'></view>
+        <view class='good_parameter_title_text'>商品参数</view>
+      </view>
+      
+      <view class='good_form'>
+
+        <view class='w_wrap b_b' wx:if="{{own_buy_top_data.productionLicense}}">
+          <view class='left_wrap'>
+              生产许可证
+          </view>
+          <view class='right_wrap'>
+            {{own_buy_top_data.productionLicense}}
+          </view>
+        </view>
+
+        <view class='g_wrap b_b' wx:if="{{own_buy_top_data.originCountry}}">
+          <view class='left_wrap'>
+              原产
+          </view>
+          <view class='right_wrap'>
+           {{own_buy_top_data.originCountry}}
+          </view>
+        </view>
+         
+        <view class='w_wrap b_b' wx:if="{{own_buy_top_data.brand}}">
+          <view class='left_wrap'>
+              品牌
+          </view>
+          <view class='right_wrap'>
+            {{own_buy_top_data.brand}}
+          </view>
+        </view>
+
+        <view class='g_wrap b_b' wx:if="{{own_buy_top_data.quality}}">
+          <view class='left_wrap'>
+              净含量
+          </view>
+          <view class='right_wrap'>
+            {{own_buy_top_data.quality}}
+          </view>
+        </view>
+
+        <view class='w_wrap b_b' wx:if="{{own_buy_top_data.specification}}">
+          <view class='left_wrap'>
+              规格
+          </view>
+          <view class='right_wrap'>
+            {{own_buy_top_data.specification}}
+          </view>
+        </view>
+
+        <!-- <view class='g_wrap' wx:if="{{years}}">
+          <view class='left_wrap'>
+              生产日期
+          </view>
+          <view class='right_wrap'>
+            {{years}}年
+          </view>
+        </view> -->
+
+      </view>
+
+    </view>
+  </view>
+  <!--商品参数-->
+  <!--商品详情  -->
+    <view class='good_particulars_out'>
+      <view class='good_particulars'>
+
+        <view class='good_parameter_title'>
+          <view class='line'></view>
+          <view class='good_parameter_title_text'>商品详情</view>
+        </view>
+
+      </view>
+  
+          <image class='picture_recommend' wx:for="{{good_detail}}" wx:key="index" src='{{good_detail[index].path}}' mode='widthFix'></image>
+  
+    </view>
+
+  <!--商品详情  -->
+
+  <view class='pay'>
+      <view class='take_commission_out'  bindtap='open_share' data-commission='{{commission}}' data-goodname='{{own_buy_top_data.title}}' data-shangpinid='{{own_buy_top_data.id}}' data-shangpintu='{{goodimg}}'>
+        <view class='take_commission'>
+          <view class='icon_wrap'>
+            <image src='../../common/image/index_img/yongjin_icon.png'></image>
+          </view>
+          <text wx:if="{{commission == 0}}">分享拿佣</text>
+          <!-- <text wx:if="{{commission != 0}}">分享</text> -->
+           <text wx:if="{{commission != 0}}">{{commission/100}}元拿佣</text> 
+        </view>
+      </view>
+
+      <view class='payment mainbgcolor'  bindtap='to_buy_alone' data-goodid='{{own_buy_top_data.id}}'>
+        我要下单
+      </view>
+  </view>
+  <view>
+    <modal class="text_window" hidden="{{showModal}}" title='首次访问“好茶小店”请授权' cancel-text=' ' confirm-text=''>
+      
+      <button class="text_window_btn" open-type="getUserInfo" bindgetuserinfo="getUserInfo">确定</button>
+    </modal>
+  </view>
+  <view class='empty'></view>
+
+  <view class='share_commission_out' style='height:{{winHeight}}px' hidden='{{share_commission}}'>
+    <view class='share_commission'  bindtap='close_share_commission'   style='height:{{winHeight-80}}px'>
+        </view>
+    <!-- 分享海报  -->
+        <view class='share_good_poster' hidden='{{good_poster_hidden}}'>
+          <view class='share_good_poster_title font24'>
+            分享到微信群或者朋友圈，让更多人知道您的推荐
+          </view>
+          <view class='good_poster'>
+            <image src='{{good_poster}}'></image>
+          </view>
+          
+          <button class='keep_poster_btn' bindtap='clickKeepimage'>保存图片，发朋友圈</button>
+        </view>
+        <!-- ============================= -->
+      <view class='share_commission_in'>
+         <view class='share_commission_title'>
+           <view class='yongjin_icon' wx:if="{{commission != 0}}">
+              <image src='../../common/image/index_img/yongjin_icon.png'></image>
+          </view>
+          <view wx:if="{{commission != 0}}" class='share_commission_text font36'>
+            赚佣金  
+            <text class='font36 redcolor'>{{commission/100}}元</text>
+          </view> 
+
+        </view> 
+        <view class='share_t font24'>只要你的好友通过你的链接购买此商品。就赚钱了！</view>
+        <view class='share_way'>
+          <view class='friends'>
+         
+            <button class='friends_btn font24'  open-type='share' id='2' data-sign='{{ index_middle_list[index].productSkuSub.collagePrice  }}'>
+              
+                <view class='share_with_friend_img'>
+                <image src='../../common/image/index_img/share_with_friend.png'></image>
+              </view> 
+              微信好友
+            </button>
+          </view>
+             <view class='pengyouquan' bindtap='showShareWithFriends'>
+           <view class='pengyouquan_btn'>
+            
+              <view class='share_with_friend_img'>
+                <image src='../../common/image/index_img/pengyouquan.png'></image>
+              </view>
+              <view class='share_with_friend_text font24' open-type='share'>微信朋友圈</view>
+           
+           </view>
+            
+           
+          </view>    
+        </view>
+      </view>
+    </view>
+
+
+
+
+</view>

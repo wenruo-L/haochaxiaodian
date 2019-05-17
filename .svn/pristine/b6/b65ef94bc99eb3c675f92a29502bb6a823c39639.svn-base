@@ -1,0 +1,57 @@
+<!--pageA/pages/share_pages/share_pages.wxml-->
+<view class='content'>
+<view class='box'>
+    <view class='hearder_img'>
+      <image src='{{all_detail.order.userSub.logo}}'></image>
+    </view>
+    <view class='good_detail_out'>
+    <image class='triangle' src='../../common/image/index_img/triangle.png'></image>
+      <view class='good_detail'>
+        <view class='good_detail_in'>
+          <view class='good_title'>
+            <text class='font24'>{{beShareNickname}}，我发起了拼团，快来一起参团~</text>
+            <view class='pen_icon'>
+              
+            </view>
+          </view>
+          <view class='good_sum clearfix' bindtap='to_group_booking'>
+            <view class='goodimg fl'>
+              <image src='{{all_detail.product.productImageSub.path}}'></image>
+            </view>
+            <view class='good_name_wrap'>
+              <view class='good_name font26'>
+                {{all_detail.product.title}}
+              </view>
+              <view class='price font26'>
+                拼团价: <text class='maincolor'>￥{{all_detail.product.productSkuSub.collagePrice/100}}/{{all_detail.product.unit}}</text>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class='waitForPayTimer'>
+      <text class='bgb'>{{hours}}</text>
+      <text class='mao'>：</text>
+      <text class='bgb'>{{mins}}</text>
+      <text class='mao'>：</text>
+      <text class='bgb'>{{secs}}</text>
+      <view class='timerTips'>
+        剩余支付时间
+      </view>
+    </view>
+    <view class='payNow' bindtap='to_confirm_order_pintuan'>
+      立即支付
+    </view>
+    <view class='payNowTips'>
+      <text class='payNowText'></text> <text>付款前请务必与好友确认，避免受骗哦</text>
+    </view>
+      <view class='payNowTips'><text class='payNowText'></text> <text>如果发起退款，钱将原路退还您</text> </view>
+  </view>
+</view>
+  <view>
+    <modal class="text_window" style="display:{{isLogin==true?'none':'block'}}" title='首次访问“好茶小店”请先授权' cancel-text=' ' confirm-text=''>
+      <!-- wx:if="{{isLogin!=true}}" -->
+      <button class="text_window_btn" open-type="getUserInfo" bindgetuserinfo="getUserInfo">同意授权</button>
+    </modal>
+  </view>

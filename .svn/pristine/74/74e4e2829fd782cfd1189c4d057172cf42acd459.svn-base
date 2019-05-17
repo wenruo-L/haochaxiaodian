@@ -1,0 +1,93 @@
+{
+  "pages": [
+   
+    "pages/index/index",
+    "pages/mind/mind",
+    "pages/welcome/welcome",
+    "pages/pinhaocha/pinhaocha",
+
+    "pages/fast_order/fast_order",
+    "pages/choose_address/choose_address",
+    "pages/activity/activity",
+    "pages/text_order_detail/text_order_detail",
+    "pages/share_pages/share_pages",
+    "pages/pay_success/pay_success",
+    "pages/AD/AD",
+    "pages/all_order/all_order",
+    "pages/books_record/books_record",
+    "pages/add_new_address/add_new_address",
+    "pages/fans_record/fans_record",
+    "pages/show_good/show_good",
+    "pages/own_buy/own_buy",
+    "pages/search_index/search_index",
+    "pages/address/address",
+    "pages/pay_fail/pay_fail",
+    "pages/confirm_order/confirm_order",
+    "pages/buy_alone/buy_alone",
+    "pages/buy_group/buy_group",
+    "pages/group_booking/group_booking",
+    "pages/tixian_accomplish/tixian_accomplish",
+    "pages/tixian/tixian",
+    "pages/ruzhu/ruzhu",
+    "pages/confirm_order_pintuan/confirm_order_pintuan",
+    "pages/buy_group_join/buy_group_join",
+    "pages/address_manage/address_manage",
+    "pages/contact_shop/contact_shop",
+    "pages/order_detail_chakanwuliu/order_detail_chakanwuliu",
+    "pages/collageUserList/collageUserList"
+  ],
+  "subPackages": [
+    {
+      "root": "pageA",
+      "pages": [
+        "pages/myLike/myLike",
+        "pages/get_luckMoney/get_luckMoney",
+        "pages/about_shop/about_shop",
+        "pages/strategy/strategy",
+        "pages/getLuckyMoneySuccess/getLuckyMoneySuccess",
+        "pages/record/record",
+        "pages/luckMoneyDel/luckMoneyDel",
+        "pages/rankings/rankings",
+        "pages/bindingPhone/bindingPhone"
+      ]
+    }
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "好茶",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "#999",
+    "selectedColor": "#0E6D45",
+    "borderStyle": "#fff",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "selectedIconPath": "common/image/index_img/index_selected.png",
+        "iconPath": "common/image/index_img/index_selecte.png",
+        "pagePath": "pages/index/index",
+        "text": "小店"
+      },
+      {
+        "selectedIconPath": "common/image/index_img/fast_order_selected.png",
+        "iconPath": "common/image/index_img/fast_order_select.png",
+        "pagePath": "pages/fast_order/fast_order",
+        "text": "下单"
+      },
+      {
+        "selectedIconPath": "common/image/index_img/haocha_selectd.png",
+        "iconPath": "common/image/index_img/haocha_select.png",
+        "pagePath": "pages/pinhaocha/pinhaocha",
+        "text": "拼好茶"
+      },
+      {
+        "selectedIconPath": "common/image/index_img/mind_selectd.png",
+        "iconPath": "common/image/index_img/mind_select.png",
+        "pagePath": "pages/mind/mind",
+        "text": "我的"
+      }
+    ]
+  }
+}

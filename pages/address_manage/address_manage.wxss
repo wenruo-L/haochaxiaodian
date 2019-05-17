@@ -1,0 +1,126 @@
+/* pages/address_manage/address_manage.wxss */
+/* pages/choose_address/choose_address.wxss */
+.tips{
+  width: 100%;
+  height: auto;
+  text-align: center;
+  margin-top:300rpx; 
+}
+.tips_img{
+  width: 380rpx;
+  height: 360rpx;
+  margin: 0 auto;
+}
+.tips_img>image{
+  width: 100%;
+  height: 100%;
+}
+.tips>text{
+  color: #666;
+}
+.empty{
+  width: 100%;
+  height: 88rpx;
+}
+.address_detail_out{
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  margin-top: 20rpx;
+  border-bottom: 1px solid #e6e6e6;
+  border-top: 1px solid #e6e6e6;
+}
+.address_detail{
+  width: 96%;
+  margin: 0 auto; 
+  height: 100%;
+}
+.shouhuo{
+  width: 100%;
+  height: 100%;
+  padding: 30rpx 0;
+}
+.shouhuoren{
+  line-height: 48rpx;
+}
+.address{
+  line-height: 48rpx; 
+   overflow: hidden;
+  /*1.超出内容要隐藏，创建边界*/
+  text-overflow: ellipsis;
+  /*2.文字遇到边界时，显示省略号*/
+  display: -webkit-box;
+  /*3.设置该容器为弹性盒子*/
+  -webkit-line-clamp: 2;
+  /*4.表示你的文字可以支持的最大行数*/
+  -webkit-box-orient: vertical;
+}
+.choose_out{
+  width: 100%;
+  height: 100%;
+  border-top: 1px solid #e6e6e6;
+}
+.choose{
+  width: 96%;
+  margin: 0 auto;
+  height: auto;
+  
+}
+.default{
+  width: 100%;
+  height: 100%;
+}
+.default_in{
+  vertical-align: middle;
+  padding: 30rpx 0;
+   display: inline-block;
+}
+.default_in>text{
+  vertical-align: bottom;
+}
+.selected_img{
+  width: 30rpx;
+  height: 30rpx;
+  display: inline-block;
+  vertical-align: bottom;
+  margin-right: 25rpx;
+}
+.selected_img>image{
+  width: 100%;
+  height: 100%;
+}
+.btn{
+  vertical-align: middle;
+  padding: 26rpx 0;
+  display: inline-block;
+}
+.compile_btn{
+  width: 84rpx;
+  height: 40rpx;
+  border: 1px solid #e6e6e6;
+  border-radius:7rpx; 
+  display: inline-block;
+  text-align: center;
+  line-height: 40rpx;
+}
+.delete_btn{
+  width: 84rpx;
+  height: 40rpx;
+  border: 1px solid #e6e6e6;
+  border-radius:7rpx; 
+  display: inline-block;
+  text-align: center;
+  line-height: 40rpx;
+  margin-left: 30rpx;
+}
+.add_address{
+  width: 100%;
+  height: 88rpx;
+  text-align: center;
+  line-height: 88rpx;
+  color: #fff;
+  background: #0E6D45;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+}

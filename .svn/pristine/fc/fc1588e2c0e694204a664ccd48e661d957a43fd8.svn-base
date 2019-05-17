@@ -1,0 +1,62 @@
+<!--pages/buy_group/buy_group.wxml-->
+<view class='content'  wx:for="{{danmai_good_skuname}}" wx:key="index">
+
+
+  <view class='orders_out'>
+    <view class='order'>
+
+      <view class='order_detail'>
+
+        <view class='order_info'>
+            <view class='good_img'>
+                <image src='{{danmai_good_detail.path}}'></image>
+            </view>
+            <view class='good_detail'>
+                <view class='good_detail_text1'>
+                  <view class='pintuan_sign font26'>拼团</view>
+                  <view class='font26  good_detail_text1_in '>{{danmai_good_name.title}}</view>
+                </view>
+                <view class='font24 mezzo_color good_detail_text2 yichu'>{{danmai_good_skuname[index].skuName}}</view>
+                <view class='font30 good_detail_text3'>价格：<text class='maincolor'>{{danmai_num}}元/{{danmai_good_name.unit}}</text></view>
+            </view>
+        </view>
+
+      </view>
+
+    </view>
+  </view>
+
+
+        <view class='amount_out clearfix'>
+          <view class='amount'>
+            <view class='font30 fl goodname yichu'>
+             {{danmai_good_skuname[index].skuName}}
+            </view>
+            
+
+              <view class='stepper fr'>
+                <view class='{{minusStatus}} minus' type='number'  bindtap='jian'>-</view>
+                <view class='stepper_num'><input bindinput='get_num' bindblur='get_num_limit' type="number" value='{{input_value}}' maxlength='4'></input></view>
+                
+                <view class='plus' bindtap='jia'>+</view>
+              </view>
+            <!--https://blog.csdn.net/u010545480/article/details/79021457  -->
+          </view>
+        </view>
+
+
+        <view class='total_out clearfix'>
+          <view class='total'>
+            <view class='fr font30 sum'>
+              共{{input_value}}件： <text class='maincolor'>¥ {{zongji/100}}元</text>
+            </view>
+          </view>
+        </view>
+      <view class='empty'></view>
+      <!--提交  -->
+      <!-- data-collage='{{danmai_good_details.collage}}'  -->
+         <view class='sub one_shopname_font' bindtap='to_confirm_order' data-skuid='{{danmai_good_skuname[index].id}}' data-price='{{danmai_good_skuname[index].collagePrice}}' data-productid='{{danmai_good_skuname[index].productId}}' data-buynum='{{input_value}}' data-realPay='{{zongji}}' data-collage='{{danmai_good_details.collage}}'>
+            提交
+        </view> 
+</view>
+

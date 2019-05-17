@@ -1,0 +1,143 @@
+/* pages/buy_alone/buy_alone.wxss */
+.orders_out{
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  margin-top: 20rpx;
+  border-top:1px solid #e6e6e6; 
+  border-bottom:1px solid #e6e6e6; 
+}
+.order{
+  width: 96%;
+  margin: 0 auto;
+}
+.order_detail{
+  width: 100%;
+  height: 100%;
+}
+.order_info{
+   width: 100%;
+  height: 170rpx;
+  padding: 40rpx 0;
+}
+.good_img{
+  width: 170rpx;
+  height: 170rpx;
+  display: inline-block;
+  vertical-align: middle;
+}
+.good_img>image{
+  width: 100%;
+  height: 100%;
+}
+.good_detail{
+  width: 70%;
+  height: 100%;
+  display: inline-block;
+  margin-left: 20rpx;
+  position: relative;
+  vertical-align: middle;
+}
+.good_detail_text1{
+  position: absolute;
+  top: 14rpx;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.good_detail_text2{
+  position: absolute;
+  top: 60rpx;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.good_detail_text3{
+  position: absolute;
+  bottom: 13rpx;
+  left: 0;
+  font-weight: 600;
+}
+.amount_out{
+  width: 100%;
+  height: 100%;
+  border-bottom:1px solid #e6e6e6; 
+  background: #fff;
+}
+.amount{
+  width: 96%;
+  margin:0 auto;
+}
+.goodname{
+  padding: 26rpx 0;
+  width: 60%;
+}
+.stepper{
+  padding: 21rpx 0;
+}
+.stepper_num>input{
+  width: 100%;
+  height: 100%;
+  text-align: center;  
+}
+ .stepper_num{
+  width: 134rpx;
+  height: 45rpx;
+  border-bottom: 1px solid#e6e6e6;
+  border-top: 1px solid#e6e6e6;
+  display: inline-block;
+  vertical-align: bottom; 
+ line-height: 45rpx;
+} 
+.minus{
+  width: 45rpx;
+  height: 45rpx;
+  display: inline-block;
+  border: 1px solid#e6e6e6;
+  text-align: center;
+  line-height: 45rpx;
+   vertical-align: bottom; 
+
+}
+.plus{
+  width: 45rpx;
+  height: 45rpx;
+  display: inline-block;
+  border: 1px solid#e6e6e6;
+  text-align: center;
+  line-height: 45rpx;
+   vertical-align: bottom; 
+
+}
+.total_out{
+  width: 100%;
+  height: 100%;
+  border-bottom:1px solid #e6e6e6; 
+  background: #fff;
+}
+.total{
+  width: 96%;
+  margin:0 auto;
+}
+.sum{
+  padding: 30rpx 0;
+}
+.sub{
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 88rpx;
+  text-align: center;
+  color: #fff;
+  background:#0E6D45;
+  line-height: 88rpx;
+}
+.empty{
+   width: 100%;
+  height: 88rpx;
+}

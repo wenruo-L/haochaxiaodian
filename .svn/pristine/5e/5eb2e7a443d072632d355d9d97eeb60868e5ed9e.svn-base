@@ -1,0 +1,232 @@
+// pages/buy_group/buy_group.js
+import config from "../../utils/config.js"
+const app = getApp()
+Page({
+
+  /**
+   * 页面的初始数据
+   */
+  data: {
+    goodid: "",
+    token: "",
+    pintuan: "1",
+    input_value: 1,
+    danmai_num: null,//单品价格转换成元单位
+    danmai_fen: null,//单品价格分单位
+    zongji: null,//总计价格分单位
+    zongji1: null//总计价格元单位
+  },
+  bindKeyInput: function (e) {
+    var that = this;
+   
+    that.setData({
+      input_value: e.detail.value
+    })
+  },
+  // 限制input的值为0
+  get_num_limit: function (res) {
+    var that = this;
+    console.log("限制input值为0的函数", res)
+    if (res.detail.value == 0 && res.detail.value <= 1) {
+      wx.showToast({
+        title: '最少选择一件商品哦~',
+        icon: 'none'
+      })
+      that.setData({
+        input_value: 1
+      })
+      that.gettotal()
+    }
+  },
+  //获取input的值
+  get_num: function (res) {
+    var that = this;
+    console.log("input的点击事件", res)
+    that.setData({
+      input_value: res.detail.value
+    })
+    that.gettotal()
+  },
+  jia: function () {
+    // 点击加一的按钮
+    var that = this;
+    var num = that.data.input_value;
+    if (num == 1 || num > 1) {
+      num = num + 1;
+    }
+    that.setData({
+      input_value: num
+    })
+    that.gettotal();
+  },
+  jian: function () {
+    // 点击减一的按钮
+    var that = this;
+    var num = that.data.input_value;
+    if (num > 1) {
+      num = num - 1;
+    }
+    that.setData({
+      input_value: num
+    })
+    that.gettotal();
+  },
+  // 计算总价
+  gettotal: function () {
+    var that = this
+    var danjia = that.data.danmai_fen;
+    var shuliang = that.data.input_value;
+    var zongjijine = that.data.zongji;
+    zongjijine = Number(danjia) * Number(shuliang)
+    that.setData({
+      zongji: zongjijine
+    })
+    var zongji_yuan = []
+    var zanshi_zongji1 = that.data.zongji1
+    zongji_yuan.push(zanshi_zongji1 / 100)
+    that.setData({
+      zongji1: zongji_yuan
+    })
+    console.log(that.data.zongji)
+    console.log(that.data.zongji1)
+    console.log(that.data.danmai_num)
+  },
+ 
+  to_confirm_order: function (e) {
+    console.log(e)
+    wx.navigateTo({
+      url: '../confirm_order_pintuan/confirm_order_pintuan?buynum=' + e.currentTarget.dataset.buynum + "&productid=" + e.currentTarget.dataset.productid + "&skuid=" + e.currentTarget.dataset.skuid + "&price=" + e.currentTarget.dataset.price + "&buynum=" + e.currentTarget.dataset.buynum + "&realpay=" + e.currentTarget.dataset.realpay + "&collage=" + e.currentTarget.dataset.collage
+    })
+  },
+  // 获取拼团下单返回的数据
+  get_order_data: function (e) {
+    var that = this;
+    var _token = wx.getStorageSync("jwtToken")
+    that.setData({
+      token: _token
+    })
+    wx.showLoading({
+      title: '加载中',
+    })
+    wx.request({
+      url: config.good_info,
+      method: 'GET',
+      data: {
+        productId: that.data.goodid,
+        collage: that.data.pintuan
+      },
+      header: {
+        'content-type': 'application/json',// GEt的请求方式为默认 
+        Authorization: that.data.token
+      },
+      success: function (res) {
+        wx.hideLoading()
+        console.log("拼团下单的数据", res)
+        console.log(res.data.data.product)
+        console.log("拼团商品图片所在的数据", res.data.data.product.productImageSub)
+        console.log("title", res.data.data.product)
+        console.log("拼团商品下面的归类名字  skuname", res.data.data.product.productSkuSubList)
+        var pintuan_num = res.data.data.product.productSkuSubList
+        var danmai_fen1 = []
+        console.log(danmai_fen1)
+        var zanshi_danmai_num = []//单品价格转换成元单位
+        pintuan_num.forEach((el, index) => {
+          zanshi_danmai_num.push(el.collagePrice / 100)
+        })
+        pintuan_num.forEach((el, index) => {
+          danmai_fen1.push(el.collagePrice)
+        })
+
+        that.setData({
+          danmai_good_details: res.data.data, //页面全数据
+          danmai_good_detail: res.data.data.product.productImageSub,//商品图片所在的数据
+          danmai_good_name: res.data.data.product,//title
+          danmai_good_skuname: res.data.data.product.productSkuSubList,//商品下面的归类名字  skuname
+          danmai_num: zanshi_danmai_num, //单买价格的转化
+          danmai_fen: danmai_fen1,//单买价格  分单位
+
+        })
+      }
+    })
+  },
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function (options) {
+    this.setData({
+      goodid: options.goodid
+    })
+  },
+
+  /**
+   * 生命周期函数--监听页面初次渲染完成
+   */
+  onReady: function () {
+    
+  },
+
+  /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow: function () {
+
+    this.setData({
+      isLogin: wx.getStorageSync('isLoginsChange')
+    })
+    var that = this
+    if (wx.getStorageSync('jwtToken') == '') {
+      console.log("kong")
+      this.setData({
+        isLogin: ''
+      })
+
+
+    } else {
+      setTimeout(function () {
+        that.gettotal();
+      }, 500)
+      that.get_order_data()
+      console.log("you")
+    }
+
+
+    
+
+    
+  },
+
+  /**
+   * 生命周期函数--监听页面隐藏
+   */
+  onHide: function () {
+  
+  },
+
+  /**
+   * 生命周期函数--监听页面卸载
+   */
+  onUnload: function () {
+  
+  },
+
+  /**
+   * 页面相关事件处理函数--监听用户下拉动作
+   */
+  onPullDownRefresh: function () {
+  
+  },
+
+  /**
+   * 页面上拉触底事件的处理函数
+   */
+  onReachBottom: function () {
+  
+  },
+
+  /**
+   * 用户点击右上角分享
+   */
+  onShareAppMessage: function () {
+  
+  }
+})

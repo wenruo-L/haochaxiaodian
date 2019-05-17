@@ -1,0 +1,28 @@
+<!--pageA/pages/activity/activity.wxml-->
+<view class='top'>
+  <image src='http://image.haocha.top/i1/activity/midautumn/background-1.png' mode="widthFix"></image>
+    <view class='title'>
+      <image src='http://image.haocha.top/i1/activity/midautumn/group-tea.png' mode="widthFix" ></image>
+    </view>
+<!-- group-tea  teaset -->
+</view>
+
+<view class='item'>
+    <image src='http://image.haocha.top/i1/activity/midautumn/products/product-1.png' mode="widthFix"  data-id='1138863830747578368' catchtap='goDel'></image>
+     <image src='http://image.haocha.top/i1/activity/midautumn/products/product-1.png' mode="widthFix"></image>
+      <image src='http://image.haocha.top/i1/activity/midautumn/products/product-1.png' mode="widthFix"></image>
+     <view class='mid'>
+       <!-- <image src='http://image.haocha.top/i1/activity/midautumn/group-teaset.png' mode="widthFix"></image> -->
+       <image src='http://image.haocha.top/i1/activity/midautumn/products/product-2.png'></image>
+       <image src='http://image.haocha.top/i1/activity/midautumn/products/product-2.png'></image>
+     </view>
+
+</view>
+
+
+<button class='btn' open-type='share'>立即分享给好友</button>
+
+ <modal class="text_window" style="display:{{isLogin==true?'none':'block'}}" title='首次访问“好茶小店”请先授权' cancel-text=' ' confirm-text='' catchtouchmove="true">
+      
+      <button class="text_window_btn" open-type="getUserInfo" bindgetuserinfo="getUserInfo">同意授权</button>
+    </modal>

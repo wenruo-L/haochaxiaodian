@@ -1,0 +1,83 @@
+//index.js
+//获取应用实例
+import config from "../../utils/config.js"
+let app = getApp();
+Page({
+  data: {
+    shop_id_obj:"",
+    token:"",
+  },
+  to_ruzhu:function(e){
+    wx.navigateTo({
+      url:'../ruzhu/ruzhu'
+    })
+  },
+  to_own_buy: function (e) {
+    wx.navigateTo({
+      url: '../own_buy/own_buy'
+    })
+  },
+  to_group_booking: function (e) {
+    wx.navigateTo({
+      url: '../group_booking/group_booking'
+    })
+  },
+  //获取附近小店保存下的id
+  get_shop_id:function(){
+    var that = this
+    var shop_id = wx.getStorageSync('shop_id')
+    console.log(shop_id)
+    that.setData({
+      shop_id_obj: shop_id
+    })
+    var _token = wx.getStorageSync('token')
+    that.setData({
+      token: _token
+    })
+    wx.request({
+      url: config.shop,
+      method: 'GET',
+      data: {
+        id: that.data.shop_id_obj
+      },
+      header: {
+        'content-type': 'application/json',// GEt的请求方式为默认 
+        Authorization: that.data.token
+      },
+      success:function(res){
+        console.log("后台返回的首页数据",res)
+        console.log(res.data.data.shop)
+        that.setData({
+          index_top_list: res.data.data.shop
+        })
+      }
+    })
+  },
+
+  /*获取当前页url*/
+  getCurrentPageUrl:function (){
+    var pages = getCurrentPages()    //获取加载的页面
+    var currentPage = pages[pages.length - 1]    //获取当前页面的对象
+    var url = currentPage.route    //当前页面url
+    console.log(url)
+    return url
+  },
+  onLoad: function () {
+  this.get_shop_id()
+  this.getCurrentPageUrl()
+  console.log(this.data)
+  // if (!app.globalData.back_stage_token){
+  //     app.userInfoReadyCallback=res=>{
+  //       console.log(res.data.data.jwtToken)
+        
+  //     }
+  //   }
+  }, 
+  // userInfoReadyCallback: function (res) {
+  //   var that = this;
+  //   console.log('userInfoReadyCallback: ', res);
+  //   console.log('获取用户信息成功');
+  //   this.setData({
+  //   })
+  // },
+})

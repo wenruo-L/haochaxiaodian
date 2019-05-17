@@ -1,0 +1,256 @@
+//app.js
+import config from "utils/config.js"
+import utils from "utils/util.js"
+import test from "utils/test.js"
+App({
+  updateTime:'',
+  thirdSession:null,
+  
+  // userId:null,
+  // jwtToken:null,
+  code:1,//领取红包默认是1领取失败。0才是领取成功
+  shop_id: "",
+  isLoginChange: "",
+  saveShopId: true,
+  reflashOrderPages:0,//订单详情返回订单列表刷新页面
+  reflashOrderState:0,
+  updateTime:'',
+  // userNickName:null,
+  // avatarUrl:null,
+
+  onLaunch: function() {
+    var that = this
+    wx.showLoading({
+      title: '加载中....',
+      mask:true
+    })
+    wx.login({
+      success: res => {
+        var _code = res.code
+        if (res.code) {
+          // console.log("code:::" + _code)
+          //发起网络请求  
+          wx.request({
+            url: config.get3rdsession,
+            method: 'GET',
+            data: {
+              code: _code
+            },
+            header: {
+              'content-type': 'application/json' // GEt的请求方式为默认 
+
+            },
+            success: function(e) {
+              // console.log(e)
+
+              if (e.data.code == 0) {
+               
+                wx.hideLoading()
+                that.thirdSession = e.data.data.thirdSession
+                wx.setStorageSync('thirdSession', e.data.data.thirdSession)
+                that.updateTime = e.data.data.updateTime
+                wx.setStorage({
+                  key: 'thirdSessionTest',
+                  data: e.data.data.thirdSession,
+                })
+               
+               
+              } else {
+                wx.showToast({
+                  title: e.data.mes,
+                })  
+                
+              }
+            }
+          })
+        }
+      }
+    })
+
+
+    // 冷启动----小程序首次打开或销毁后再次被打开
+    // 热启动----小程序打开后，在一段时间内（目前：5分钟）再次被打开，此时会将后台的小程序切换到前台。
+    // 小程序冷启动时，会检查小程序是否有最新版本。如果有则将异步下载最新版本，但是仍将运行当前版本等到下一次冷启动时再运行最新版本。
+
+    
+    // if (wx.canIUse('getUpdateManager')) {
+    //   const updateManager = wx.getUpdateManager()
+    //   updateManager.onCheckForUpdate(function (res) {
+    //     // 请求完新版本信息的回调
+    //     if (res.hasUpdate) {
+    //       updateManager.onUpdateReady(function () {
+    //         wx.showModal({
+    //           title: '更新提示',
+    //           content: '新版本已经准备好，是否重启应用？',
+    //           success: function (res) {
+    //             if (res.confirm) {
+    //               // 新的版本已经下载好，调用 applyUpdate 应用新版本并重启
+    //               updateManager.applyUpdate()
+    //             }
+    //           }
+    //         })
+    //       })
+    //       updateManager.onUpdateFailed(function () {
+    //         // 新的版本下载失败
+    //         wx.showModal({
+    //           title: '提示',
+    //           content: '检测到好茶小程序更新了版本，因您的网络问题更新失败，新版本已经上线啦~，请您删除当前小程序，重新搜索打开哟~',
+    //         })
+    //       })
+    //     }
+    //   })
+    // } else {
+    //   // 如果希望用户在最新版本的客户端上体验您的小程序，可以这样子提示
+    //   wx.showModal({
+    //     title: '提示',
+    //     content: '好茶小程序更新版本，当前微信版本过低，无法使用该功能，请升级到最新微信版本后重试,或者删除好茶小程序后重新添加'
+    //   })
+    // }
+   
+  },
+
+  onShow: function() {
+
+  },
+
+
+
+
+  isLogin: function() {
+    var that = this
+
+    if (this.userId == null && this.jwtToken == null) {
+      //var value = wx.getStorageSync('key')
+
+      wx.showModal({
+        title: '提示',
+        content: '你还未登录，登录后可获得完整体验 ',
+        confirmText: '一键登录',
+        success(res) {
+          // console.log(res)
+
+          //点击一键登录，去授权页面
+          if (res.confirm) {
+
+          } else {
+
+
+          }
+        }
+      })
+
+    }
+
+  },
+  getUserInfo: function(e) {
+    console.log(e)
+    // var thirdSession=
+    // app.avatarUrl = e.detail.userInfo.avatarUrl;
+    wx.setStorageSync('avatarUrl', e.detail.userInfo.avatarUrl)
+    wx.getStorage({
+      key: 'thirdSession',
+      success: function(res) {
+        console.log(res.data)
+        wx.request({
+          url: config.get_token_id,
+          method: 'POST',
+          data: {
+            sessionId: res.data,
+            encryptedData: e.detail.encryptedData,
+            iv: e.detail.iv
+          },
+          header: {
+            'content-type': 'application/x-www-form-urlencoded'
+
+          },
+          success: function(data) {
+            console.log(data)
+            if (data.data.code == 0) {
+
+
+              try {
+                wx.setStorage({
+                  key: "jwtToken",
+                  data: data.data.data.jwtToken
+                })
+                // wx.setStorageSync('jwtToken', data.data.data.jwtToken)
+                // wx.setStorageSync('userId', data.data.data.userId)
+                // console.log(data.data.data.userId)
+                // wx.setStorageSync('userNickName', data.data.data.userNickName)
+              } catch (e) {}
+            } else {
+              console.log("登录失败....")
+              // app.isLogin()
+            }
+
+          }
+        })
+
+      }
+    })
+
+
+  },
+  promise: function(obj) {
+    return new Promise(function(resolve, reject) {
+      wx.request({
+        url: obj.url,
+        data: obj.datas,
+        method: obj.method,
+        header: {
+          'content-type': obj.contentType,
+          Authorization: obj.token
+        },
+        success: (res) => {
+
+          resolve(res);
+         
+        },
+        fail: () => {
+
+          reject("请求错误......")
+        }
+      })
+    })
+
+  },
+
+  
+
+
+
+
+
+  globalData: {
+    servsers: "http://sys.haocha.top",
+    servsers2: "https://v.juhe.cn",
+    //  https://v.juhe.cn/toutiao/index?type=guone&key=20f90a8cc49c35af597c877b3e55970d
+    indexTitle1: "好茶小店",
+    indexTitle2: "拼团",
+    indexTitle3: "我的",
+    title_Address: "地址管理",
+    title_Address2: "选择地址",
+    userInfo: null,
+    back_stage_token: null,
+    back_stage_userid: null,
+    back_stage_session: null,
+  },
+
+  add: function (m) {
+    return m < 10 ? '0' + m : m
+    
+  },
+  
+  //时间戳转化成时间格式
+  timeFormat:function(timestamp) {
+    //timestamp是整数，否则要parseInt转换,不会出现少个0的情况
+    var time = new Date(timestamp);
+    var year = time.getFullYear();
+    var month = time.getMonth() + 1;
+    var date = time.getDate();
+    var hours = time.getHours();
+    var minutes = time.getMinutes();
+    var seconds = time.getSeconds();
+    return year + '-' + this.add(month) + '-' + this.add(date) + ' ' + this.add(hours) + ':' + this.add(minutes) + ':' + this.add(seconds);
+  }
+})

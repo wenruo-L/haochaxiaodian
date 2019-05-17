@@ -1,0 +1,21 @@
+<!--pages/address/address.wxml-->
+<view>
+  <!--商品列表 begin  like-list clearfix  class="weui-grid"-->
+  <view wx:for="{{dateList}}" wx:key="id" wx:for-item="item" class='item'>
+
+    <view>
+      <text>{{item.name}}</text>
+      <text style='margin-left: 20rpx;'>{{item.phone}}</text>
+    </view>
+
+    <text style='margin-top: 10rpx;' >{{item.province}}{{item.city}}{{item.street}}</text>
+     <!-- 横线 -->
+     <view class='line-vertical'/>
+     <!--按钮  -->
+      <view >
+         <radio  class='radio' checked="true" value='设为默认' bindtap='bindCheckDefalut' /> 
+        <text class='t_button' bindtap='bindEdit'>编辑</text>
+        <text class='t_button' bindtap='bindDelete'>删除</text>
+      </view>
+  </view>
+</view>

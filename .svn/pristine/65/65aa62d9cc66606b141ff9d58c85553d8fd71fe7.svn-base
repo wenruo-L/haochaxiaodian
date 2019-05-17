@@ -1,0 +1,26 @@
+<!--pages/books_record/books_record.wxml-->
+<view class='content'>
+  <view class='record_out'>
+    <view class='record'>
+      <view class='record_title font30'>
+        <text class='font30'>分享</text>
+        新会小青柑普洱茶熟茶-500g
+      </view>
+      <!-- <view class='record_title font30'>
+        <text class='font30'>提现</text>
+        提现单号：12345455668784
+      </view> -->
+      <view class='timer'>
+        下单时间：2018-05-01 19:30
+        <text class='font36 maincolor fr'>+ ¥7.5</text>
+        <!-- <text class='font36 take_money fr'>- ¥236</text> -->
+      </view>
+      <view class='timer mt'>
+        结算时间：2018-05-02 19:30
+      </view>
+      <!-- <view class='timer mt'>
+        提现时间：2018-05-01 19:30
+      </view> -->
+    </view>
+  </view>
+</view>

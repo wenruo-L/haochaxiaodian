@@ -1,0 +1,21 @@
+<!--pages/pay_success/pay_success.wxml-->
+<view class='content'>
+  <view class='pay_success_out'>
+    <view class='pay_success'>
+      <view class='icon_wrap'>
+        <image src='../../common/image/index_img/pay_success.png'></image>
+      </view>
+      <view class='pay_success_text'>订单支付成功!</view>
+
+
+      <view class='turn_back_to_index' bindtap='to_index'>返回首页</view>
+
+  
+          <view class='check_order'  bindtap='to_all_order'>查看订单</view>
+  
+
+
+
+    </view>
+  </view>
+</view>

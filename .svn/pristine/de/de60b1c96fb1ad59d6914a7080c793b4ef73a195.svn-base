@@ -1,0 +1,188 @@
+image{
+  display: block
+}
+.flex{
+  display: flex;
+}
+.tab-h {
+  height: 80rpx;
+  width: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
+  background: #f7f7f7;
+  font-size: 16px;
+  white-space: nowrap;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 99;
+}
+
+.tab-item {
+ color: #333;
+  flex: 1;
+  text-align: center;
+  font-size: 30rpx;
+   
+}
+.tab-item text{
+  line-height: 76rpx;
+  display: inline-block
+}
+ .active text{
+ 
+  color: #0DB966;
+  
+  border-bottom: 2px solid #0DB966
+}
+.content{
+  padding-top: 80rpx
+}
+.time{
+  line-height: 60rpx;
+  color: #666;
+  font-size: 28rpx;
+  padding:0 20rpx;
+}
+.time image{
+  width: 55rpx;
+  height: 55rpx
+}
+.goods{
+  padding:0 20rpx 20rpx 20rpx;
+  border-bottom: 1px solid #ddd
+}
+.goodsImg{
+  width: 230rpx;
+  height: 230rpx;
+
+}
+
+.goodsImg image{
+  width: 100%;
+  height: 100%
+}
+.goodsdel{
+  flex: 1;
+  padding-top:10rpx
+}
+.goodsText{
+  line-height: 60rpx;
+  text-indent:20rpx;
+}
+.goodsText text{
+  color: #259B24
+}
+.shopLogo{
+  flex: 1
+}
+.shopLogo image{
+  width: 60rpx;
+  height: 60rpx;
+}
+.shopName{
+  line-height: 60rpx;
+ 
+}
+.collageBtn{
+  width: 150rpx;
+  line-height: 60rpx;
+  height: 60rpx;
+  border-radius: 30rpx;
+  background: #259B24;
+  text-align: center;
+  color: #fff;
+  font-size: 26rpx;
+
+}
+/* inter_icon */
+.shopMes {
+ padding: 20rpx
+}
+.shopMes .shopMesLogo{
+   width:120rpx;
+  height: 120rpx;
+
+}
+.shopText{
+  flex: 1;
+  padding-left: 20rpx
+}
+.shop_icon{
+   width:60rpx;
+  height:60rpx;
+}
+.shopMesName{
+  line-height: 70rpx;
+  height: 70rpx;
+  font-size: 30rpx;
+  font-weight: bold;
+}
+.inter_icon{
+  width: 20rpx;
+  height: 40rpx;
+  margin-top: 40rpx
+}
+ .item-ans {
+  width: 100%;
+  display: flex;
+  flex-grow: row no-wrap;
+  justify-content: space-between;
+  padding: 30rpx;
+  box-sizing: border-box;
+  height: 180rpx;
+  align-items: center;
+  border-bottom: 1px solid #f2f2f2;
+}
+
+.avatar {
+  width: 100rpx;
+  height: 100rpx;
+  position: relative;
+  padding-right: 30rpx;
+}
+
+.avatar .img {
+  width: 100%;
+  height: 100%;
+}
+
+.avatar .doyen {
+  width: 40rpx;
+  height: 40rpx;
+  position: absolute;
+  bottom: -2px;
+  right: 20rpx;
+}
+
+.expertInfo {
+  font-size: 12px;
+  flex-grow: 2;
+  color: #b0b0b0;
+  line-height: 1.5em;
+}
+
+.expertInfo .name {
+  font-size: 16px;
+  color: #000;
+  margin-bottom: 6px;
+}
+
+.askBtn {
+  width: 120rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  text-align: center;
+  font-size: 14px;
+  border-radius: 60rpx;
+  border: 1px solid #4675f9;
+  color: #4675f9;
+}
+
+.tab-content {
+  margin-top: 80rpx;
+}
+
+.scoll-h {
+  height: 100%;
+} 

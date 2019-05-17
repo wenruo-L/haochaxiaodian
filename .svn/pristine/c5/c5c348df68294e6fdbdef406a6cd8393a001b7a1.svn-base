@@ -1,0 +1,55 @@
+<!--pageA/pages/rankings/rankings.wxml-->
+
+<view class='item'>
+  <view class='index'>
+    99+
+  
+  </view>
+
+  <image src='https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTJwm4XicHlKD0OOic87KRkUcLxZrhrSNYfgDjeKzWKFOIZF8ficWQPdUnZzEHq0HUcPJlzo4h4p1Ib5A/132' class='logo'></image>
+  <view class='name'>
+  分范德萨发放黄瓜丝苹果还
+  </view>
+  <view class='last'>
+    <view class='num'>123.00元</view>
+     <view class='text'>获得红包(元)</view>
+  </view>
+
+  
+</view>
+
+<view class='item'>
+  <view class='index'>
+   <image src='image/top_1.png'></image>
+  
+  </view>
+
+  <image src='https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTJwm4XicHlKD0OOic87KRkUcLxZrhrSNYfgDjeKzWKFOIZF8ficWQPdUnZzEHq0HUcPJlzo4h4p1Ib5A/132' class='logo'></image>
+  <view class='name'>
+  分范德萨发放黄瓜丝苹果还
+  </view>
+  <view class='last'>
+    <view class='num'>123.00元</view>
+     <view class='text'>获得红包(元)</view>
+  </view>
+
+  
+</view>
+
+<view class='item'>
+  <view class='index'>
+   15
+  
+  </view>
+
+  <image src='https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTJwm4XicHlKD0OOic87KRkUcLxZrhrSNYfgDjeKzWKFOIZF8ficWQPdUnZzEHq0HUcPJlzo4h4p1Ib5A/132' class='logo'></image>
+  <view class='name'>
+  分范德萨发放黄瓜丝苹果还
+  </view>
+  <view class='last'>
+    <view class='num'>123.00元</view>
+     <view class='text'>获得红包(元)</view>
+  </view>
+
+  
+</view>

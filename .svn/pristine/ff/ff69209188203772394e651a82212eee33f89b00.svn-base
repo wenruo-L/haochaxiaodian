@@ -1,0 +1,578 @@
+const config = require("../../utils/config.js")
+var app = getApp();
+Page({
+  data: {
+    h_text: [
+      {
+        text: "喜欢商品"
+      },
+      {
+        text: "喜欢小店"
+      }
+    ],
+  
+    winHeight: "", //窗口高度
+    currentTab: 0, //预设当前项的值
+    scrollLeft: 0, //tab标题的滚动条位置
+    goodsList:[],
+    shopList:[],
+    nowPage:0,
+    totalPages:0,
+    change:null,
+    url:null,
+    isShowGoods:false,
+    isShowShop: false,
+    startX: 0, //开始横向坐标
+    startY: 0  //开始纵向坐标
+  },
+
+  swichNav: function(e) {
+    var cur = e.currentTarget.dataset.current;
+
+    this.setData({
+      currentTab: cur,
+      nowPage: 0,
+      totalPages: 0,
+      goodsList: [],
+      shopList: [],
+      startX: 0, //开始坐标
+      startY: 0
+    })
+  
+
+    if (this.data.change == 1){
+        
+        if (e.currentTarget.dataset.current == 0){
+          this.setData({
+            url: config.default.user_like_good
+          })
+          this.goods(this)
+        }else{
+          this.setData({
+            url: config.default.user_like_shop
+          })
+          this.shop(this)
+        }
+    } else{
+
+      if (e.currentTarget.dataset.current == 0) {
+        this.setData({
+          url: config.default.browse_the_goods
+        })
+        this.goods(this)
+      } else {
+        this.setData({
+          url: config.default.browse_the_shop
+        })
+        this.shop(this)
+      }
+      
+    }
+   
+   
+  },
+
+  onLoad: function(data) {
+    var that = this;
+  
+    wx.getSystemInfo({
+      success: function(res) {
+        var clientHeight = res.windowHeight,
+          clientWidth = res.windowWidth,
+          rpxR = 750 / clientWidth;
+        var calc = clientHeight * rpxR - 180;
+
+        that.setData({
+          winHeight: calc
+        });
+      }
+    });
+   
+    that.setData({
+      change: data.change,
+      goodsList: [],
+      shopList: [],
+    })
+    if (data.change==2){
+      var obj=[
+        {
+          text: "浏览商品"
+        },
+        {
+          text: "浏览小店"
+        }
+      ]
+      that.setData({
+        h_text: obj
+      })
+      wx.setNavigationBarTitle({ title: '我的足迹' }) 
+    }
+   
+    var url = null
+    if (that.data.change == 1) {//我喜欢的商品
+      url = config.default.user_like_good
+    } else {//我浏览的商品
+      url = config.default.browse_the_goods
+    }
+    that.setData({
+      url: url
+    })
+    this.goods(this)
+  },
+  
+  onShow: function() {
+    // goodsList: [],
+    //   shopList:[],
+    // if (wx.getStorageSync('jwtToken') != '' ){
+     
+    //   this.goods(this)
+     
+    // }else{
+
+    // }
+    
+  },
+  //喜欢商品
+  goods:function(that){
+    wx.showLoading({
+      title: '加载中.....',
+      mask:true
+    })
+    
+    var that=this
+
+   
+    app.promise({
+      url:that.data.url,
+      datas: {
+        
+        page: that.data.nowPage
+       
+      },
+      method: 'GET',
+      contentType: "application/json",
+      token: wx.getStorageSync('jwtToken')
+    }).
+      then((data) => {
+        console.log(data)
+        if (data.data.code == 0) {
+          wx.hideLoading()
+          
+          for (var i = 0; i < data.data.data.pages.content.length;i++){
+           var time = that.timestampToTime(data.data.data.pages.content[i].updateTime)
+            // var time = that.formatDate(parseInt(data.data.data.pages.content[i].updateTime))
+            // console.log(time)
+           data.data.data.pages.content[i].updateTime=time
+            var num = data.data.data.pages.content[i].productSub.productSkuSub.price / 100
+            data.data.data.pages.content[i].productSub.productSkuSub.price=num.toFixed(2)
+            
+          }
+          
+          that.setData({
+            goodsList: that.data.goodsList.concat(data.data.data.pages.content),
+            totalPages: data.data.data.pages.totalPages
+          })
+          
+          if (that.data.goodsList.length == 0) {
+            that.setData({
+              isShowGoods: true
+            })
+          }
+        }
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+  },
+  //喜欢小店
+  shop:function(that){
+   
+    wx.showLoading({
+      title: '加载中.....',
+      mask: true
+    })
+  
+    app.promise({
+      url: that.data.url,
+      datas: {
+        page: that.data.nowPage
+       
+      },
+      method: 'GET',
+      contentType: "application/json",
+      token: wx.getStorageSync('jwtToken')
+    }).
+      then((data) => {
+       console.log(data)
+        if (data.data.code == 0) {
+          wx.hideLoading()
+          
+          for (var i = 0; i < data.data.data.pages.content.length; i++) {
+            // var time = that.timestampToTime(data.data.data.pages.content[i].updateTime)
+            var time = that.timestampToTime(data.data.data.pages.content[i].updateTime)
+            //var time = that.formatDate(parseInt(data.data.data.pages.content[i].updateTime))
+
+            data.data.data.pages.content[i].updateTime = time
+          }
+          
+          that.setData({
+            shopList: that.data.shopList.concat(data.data.data.pages.content),
+            totalPages: data.data.data.pages.totalPages
+          })
+          // console.log(that.data.shopList)
+          if (that.data.shopList.length==0){
+            that.setData({
+              isShowShop:true
+            })
+          }
+        }
+
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+  },
+  go:function(e){
+    app.saveShopId = false
+    if (e.currentTarget.dataset.collageprice==0){//等于0去单买
+      wx.navigateTo({
+        url: '../own_buy/own_buy?id=' + e.currentTarget.dataset.goodsid,
+      })
+    }else{
+      
+      wx.navigateTo({
+        url: '../group_booking/group_booking?id=' + e.currentTarget.dataset.goodsid
+      })
+    }
+  },
+  goShop:function(e){
+    wx.reLaunch({
+    
+      url: '../index/index?shiopId=' + e.currentTarget.dataset.shopid
+    })
+   
+  },
+
+  onReachBottom:function(){
+    if (this.data.nowPage<this.data.totalPages-1){
+      this.data.nowPage++
+      
+      if (this.data.currentTab==0){
+        this.goods(this)        
+      } else if (this.data.currentTab==1){
+        this.shop(this)
+      }
+      // console.log(this.data.goodsList)
+    }else{
+       
+        wx.showToast({
+          title: '到底了.....',
+        })
+    }
+  },
+  /**
+    * 页面相关事件处理函数--监听用户下拉动作
+    */
+  onPullDownRefresh: function () {
+    this.setData({
+      nowPage: 0,
+      totalPages: 0,
+      goodsList: [],
+      shopList: [],
+    })
+  //  if(this.data.change==1){
+
+  //  }
+    if (this.data.currentTab == 0) {
+      this.goods(this)
+    } else if (this.data.currentTab == 1) {
+      this.shop(this)
+    }
+    // this.setData({
+
+    // })
+      // if (this.data.currentTab == 0) {
+      //   this.goods(this)
+      // } else if (this.data.currentTab == 1) {
+      //   this.shop(this)
+      // }
+      // console.log(this.data.goodsList)
+    
+  },
+  add0:function (m){
+    return m< 10 ? '0' + m : m
+  },
+	formatDate:function (needTime) {
+    //needTime是整数，否则要parseInt转换
+    var time = new Date(needTime);
+    var y = time.getFullYear();
+    var m = time.getMonth() + 1;
+    var d = time.getDate();
+    var h = time.getHours();
+    var mm = time.getMinutes();
+    var s = time.getSeconds();
+    return y + '-' + this.add0(m) + '-' + this.add0(d) + ' ' + this.add0(h) + ':' + this.add0(mm) + ':' + this.add0(s);
+
+    // timestampToTime
+  },
+  timestampToTime: function (timestamp){
+    var date = new Date(parseInt(timestamp)); //时间戳为10位需*1000，时间戳为13位的话不需乘1000
+    var Y = date.getFullYear() + '-';
+    var M = (date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1) + '-';
+    var D = date.getDate() + ' ';
+  
+    return Y + M + D;
+  },
+  // ================================
+
+  //手指触摸动作开始 记录起点X坐标
+
+  touchstart: function (e) {
+
+    //开始触摸时 重置所有删除
+    var list=null;
+    
+    if (this.data.currentTab==0){//我喜欢的进来
+      
+      
+        list = this.data.goodsList
+      
+    }else{
+      //我的足迹进来
+      list = this.data.shopList
+    }
+    
+    list.forEach(function (v, i) {
+
+      if (v.isTouchMove)//只操作为true的
+
+        v.isTouchMove = false;
+
+    })
+
+    this.setData({
+
+      startX: e.changedTouches[0].clientX,
+
+      startY: e.changedTouches[0].clientY,
+
+      
+
+    })
+    if (this.data.currentTab == 0){
+      this.setData({
+        goodsList: list
+      })
+    }else{
+      this.setData({
+        shopList: list
+      })
+    }
+  },
+
+  //滑动事件处理
+
+  touchmove: function (e) {
+    var list = null;
+
+    if (this.data.currentTab == 0) {//我喜欢的进来
+
+
+      list = this.data.goodsList
+
+    } else {
+      //我的足迹进来
+      list = this.data.shopList
+    }
+    var that = this
+      
+      var index = e.currentTarget.dataset.index//当前索引
+
+      var startX = that.data.startX//开始X坐标
+
+      var startY = that.data.startY//开始Y坐标
+
+      var touchMoveX = e.changedTouches[0].clientX//滑动变化坐标
+
+      var touchMoveY = e.changedTouches[0].clientY//滑动变化坐标
+
+      //获取滑动角度
+
+      var angle = that.angle({ X: startX, Y: startY }, { X: touchMoveX, Y: touchMoveY });
+
+      list.forEach(function (v, i) {
+
+      v.isTouchMove = false
+
+      //滑动超过30度角 return
+
+      if (Math.abs(angle) > 50) return;
+
+      if (i == index) {
+
+        if (touchMoveX > startX) //右滑
+
+          v.isTouchMove = false
+
+        else //左滑
+
+          v.isTouchMove = true
+
+      }
+
+    })
+
+    //更新数据
+
+    // that.setData({
+
+    //   goodsList: that.data.goodsList
+
+    // })
+      if (this.data.currentTab == 0) {
+        this.setData({
+          goodsList: list
+        })
+      } else {
+        this.setData({
+          shopList: list
+        })
+      }
+
+  },
+
+  /**
+  
+  * 计算滑动角度
+  
+  * @param {Object} start 起点坐标
+  
+  * @param {Object} end 终点坐标
+  
+  */
+
+  angle: function (start, end) {
+
+    var _X = end.X - start.X
+
+     var  _Y = end.Y - start.Y
+
+    //返回角度 /Math.atan()返回数字的反正切值
+
+    return 360 * Math.atan(_Y / _X) / (2 * Math.PI);
+
+  },
+
+  //删除事件
+
+  del: function (e) {
+    // console.log(e.currentTarget.dataset.index)
+    // console.log(e.currentTarget.dataset.productid)
+    // console.log(e.currentTarget.dataset.shopid)
+    wx.showModal({
+      title: '提示',
+      content: '是否删除？',
+    })
+   
+    var that=this
+
+    var list = null
+    var url = null
+
+    var data = {}
+    
+    wx.showModal({
+      title: '提示',
+      content: '是否删除？',
+      success: function (res) {
+        if (res.confirm) {
+          if (that.data.change == 1) {
+            if (that.data.currentTab == 0) {
+              //删除喜欢商品
+              url = config.default.collect_good
+              list = that.data.goodsList
+              data = {
+                shopId: e.currentTarget.dataset.shopid,
+                productId: e.currentTarget.dataset.productid,
+                operate: 1
+              }
+            } else {
+              //删除喜欢小店
+              url = config.default.collect_shop
+              list = that.data.shopList
+              data = {
+                shopId: e.currentTarget.dataset.shopid,
+                operate: 1
+              }
+            }
+
+          } else {
+            if (that.data.currentTab == 0) {
+              //删除浏览商品
+              url = config.default.cancel_the_goods
+              list = that.data.goodsList
+              data = {
+                shopId: e.currentTarget.dataset.shopid,
+                productId: e.currentTarget.dataset.productid,
+
+              }
+            } else {
+              //删除浏览店铺
+              url = config.default.cancel_the_shop
+              data = {
+                shopId: e.currentTarget.dataset.shopid
+
+              }
+              list = that.data.shopList
+            }
+            // list = this.data.shopList
+          }
+
+
+          wx.showLoading({
+            title: '删除中...',
+          })
+          app.promise({
+            url: url,
+            datas: data,
+            method: 'POST',
+            contentType: "application/x-www-form-urlencoded",
+            token: wx.getStorageSync('jwtToken')
+          }).
+            then((res) => {
+              // console.log(res)
+              // res.data.code == 0
+              if (res.data.code == 0) {
+
+                if (that.data.currentTab == 0) {
+                  list.splice(e.currentTarget.dataset.index, 1)
+
+                  that.setData({
+                    goodsList: list
+                  })
+                } else {
+                  list.splice(e.currentTarget.dataset.index, 1)
+
+                  that.setData({
+                    shopList: list
+                  })
+                }
+                that.setData({
+                  startX: 0, //开始坐标
+                  startY: 0
+                })
+              }
+              wx.hideLoading()
+            })
+            .catch((res) => {
+              console.log(res)
+            })
+        } else if (res.cancel) {
+         
+        }
+      }
+    })
+   
+  }
+
+})

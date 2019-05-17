@@ -1,0 +1,103 @@
+const formatTime = date => {
+  const year = date.getFullYear()
+  const month = date.getMonth() + 1
+  const day = date.getDate()
+  const hour = date.getHours()
+  const minute = date.getMinutes()
+  const second = date.getSeconds()
+
+  return [year, month, day].map(formatNumber).join('/') + ' ' + [hour, minute, second].map(formatNumber).join(':')
+}
+
+const formatNumber = n => {
+  n = n.toString()
+  return n[1] ? n : '0' + n
+}
+
+module.exports = {
+  formatTime: formatTime,
+  get_uid: get_uid
+}
+import _config from "config.js"
+var app = getApp()
+
+//获取用户id并储存到本地
+function get_uid() {
+  var domain_with_host = 'https://lp.apit.haocha.top/'
+  // 登录
+  wx.login({
+    success: res => {
+      // 发送 res.code 到后台换取 openId, sessionKey, unionId
+      console.log(res)
+      console.log(res.code)
+      var _code = res.code
+      if (res.code) {
+        console.log(_code)
+        //发起网络请求  
+        wx.request({
+          url: domain_with_host + 'weixin/applet/get3rdsession',
+          method: 'GET',
+          data: {
+            code: _code
+          },
+          header: {
+            'content-type': 'application/json' // GEt的请求方式为默认 
+            // 'Authorization': 'jwttoken'
+          },
+          success: function (e) {
+            console.log(e.data.openid) //获取openid  
+            console.log(e)
+            var _thirdSession = e.data.data.thirdSession
+            wx.getUserInfo({
+              success: function (res) {
+                console.log(111)  
+                console.log('能否拿到encryptedData   ' + res.encryptedData)
+                console.log('能否拿到iv ' + res.iv)
+                var _encryptedData = res.encryptedData
+                var _iv = res.iv
+                console.log('能否拿到_thirdSession    ' + _thirdSession)
+                wx.request({
+                  url: domain_with_host + 'weixin/applet/userinfo',
+                  method: 'POST',
+                  data: {
+                    sessionId: _thirdSession,
+                    encryptedData: _encryptedData,
+                    iv: _iv
+                  },
+                  header: {
+                    'Content-Type': 'application/x-www-form-urlencoded' // POST的请求方式不一样 
+                    // 'Authorization': 'jwttoken'
+                  },
+                  success: function (res) {
+                    console.log('能否拿到jwtToken  '+res.data.data.jwtToken)
+                    console.log('能否拿到userId    ' +res.data.data.userId)
+                    var _jwtToken = res.data.data.jwtToken
+                    var _userId = res.data.data.userId
+                    var obj = {}
+                    obj = {
+                      "token": _jwtToken,
+                      "id": _userId
+                    }
+                    wx.setStorage({
+                      key: "login_Uid",
+                      data: obj
+                    })
+                  }
+                })
+              }
+            })
+          }
+        })
+      } else {
+        console.log('获取用户登录态失败！' + res.errMsg)
+      }
+    }
+  })
+}
+
+wx.getStorage({
+  key: 'login_Uid',
+  success: function (res) {
+    console.log(res.data)
+  }
+})

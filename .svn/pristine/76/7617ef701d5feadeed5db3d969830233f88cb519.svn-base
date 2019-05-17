@@ -1,0 +1,232 @@
+<!--pages/mind/mind.wxml-->
+<view class='content'>
+
+ <view class='userinfo_out'>
+  <view class='mind_bg'>
+    <image src='../../common/image/index_img/mind_bg.png'></image>
+  </view>
+
+
+  <view class="userinfo"> 
+    <!-- <button  class='login_btn'   wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 点击登陆 </button> -->
+  
+
+    <view class='userinfo_avatar_img'>
+      <image bindtap="bindViewTap" src="{{headerimg}}" background-size="cover"></image>
+    </view>
+
+    <view class='userinfo_name_id'>   
+      <view class="userinfo-nickname">{{name}}</view>
+      <!-- <view class='userinfo_id'>
+        id: <text>{{userid}}</text>
+      </view> -->
+    </view>
+<!-- 分享拿佣金  -->
+      <!-- <view class='share_icon' bindtap='to_tixian'>
+        <image src='../../common/image/index_img/tixian_icon.png'></image>
+      </view> -->
+ 
+  </view>
+
+ </view>
+
+<!-- <view class="swiper-tab">  
+    <view class="swiper-tab-list " bindtap="swichNav">
+    <view class="swiper-tab-list-in {{currentTab==0 ? 'on' : ''}}" data-current="0" >  个人主页</view>
+     
+    </view>  
+    <view class="swiper-tab-list"  bindtap="swichNav">
+     <view class="swiper-tab-list-in {{currentTab==1 ? 'on' : ''}}" data-current="1">
+        我的收益
+    </view> 
+    </view>   
+</view>   -->
+
+
+<swiper current="{{currentTab}}" class="swiper-box" duration="300" style="height:{{winHeight-150}}px" bindchange="bindChange">  
+    <swiper-item>  
+
+      <view class='personal_center_out'>
+        <view class='personal_center' bindtap='to_all_order'>
+          <view class='my_booking'>
+            <text class='font30'>我的订单</text>
+            <view class='enter_icon'>
+              <image src='../../common/image/index_img/enter_icon.png'></image>
+            </view>
+          </view>
+        </view>    
+      </view>  
+
+
+
+      <view class='pay_out'>
+        <view class='pay'> 
+
+        <navigator class='navigator_s' url='../all_order/all_order?index=0'>
+          <view class='pay_center1 font24'>
+            <view class='pay_icon'>
+              <image src='../../common/image/mine_img/pay.png'></image>
+            </view>
+            待付款
+          </view>
+        </navigator>
+
+        <navigator class='navigator_s' url='../all_order/all_order?index=1'>
+          <view class='pay_center font24'>
+            <view class='pay_icon'>
+              <image src='../../common/image/mine_img/share.png'></image>
+            </view>
+            待分享
+          </view>
+        </navigator>
+
+        <navigator class='navigator_s' url='../all_order/all_order?index=4'>
+          <view class='pay_center2 font24'>
+            <view class='pay_icon'>
+              <image src='../../common/image/mine_img/receive.png'></image>
+            </view>
+            待收货
+          </view>
+         </navigator>  
+        </view>    
+      </view>
+
+      
+      <view class='footprint_out ma_top20' catchtap='goLike'>
+
+         <!-- <view class='footprint boder_r boder_b font24'>
+          <view class='footprint_icon'>
+            <image src='../../common/image/mine_img/good.png'></image>
+          </view>
+          我喜欢的
+        </view>
+
+        <view class='footprint boder_r boder_b font24'>
+          <view class='footprint_icon'>
+            <image src='../../common/image/mine_img/footprint.png'></image>
+          </view>
+          我的足迹
+        </view>  -->
+
+        <view class='footprint boder_r  boder_b font24' bindtap='to_contact_shop'>
+          <view class='footprint_icon'>
+            <image src='../../common/image/mine_img/contact.png'></image>
+          </view>
+          联系门店
+        </view>
+
+        <view class='footprint boder_r boder_b font24' bindtap='to_about_shop'>
+          <view class='footprint_icon'>
+            <image src='../../common/image/mine_img/about.png'></image>
+          </view>
+          关于小店
+        </view>
+
+        <view class='footprint boder_r boder_b font24' bindtap='to_address_manage'>
+          <view class='footprint_icon'>
+            <image src='../../common/image/mine_img/address.png'></image>
+          </view>
+          收货地址
+        </view>
+        
+      </view>
+
+      <!-- <view class='footprint_out boder_b'>
+        
+        <view class='footprint boder_r font24' bindtap='to_contact_shop'>
+          <view class='footprint_icon'>
+            <image src='../../common/image/mine_img/contact.png'></image>
+          </view>
+          联系门店
+        </view>
+
+        <view class='footprint boder_r font24' bindtap='to_about_shop'>
+          <view class='footprint_icon'>
+            <image src='../../common/image/mine_img/about.png'></image>
+          </view>
+          关于小店
+        </view>
+
+      </view> -->
+    </swiper-item> 
+
+
+
+
+    <!-- 我的收益 -->  
+    <swiper-item>
+
+
+      <view class='earnings_out'>
+        <view class='earnings'>
+            <view class='earnings_gold maincolor'>
+                65551.00
+                <view class='earnings_gold_text mezzo_color font24'>累加销售(元)</view>
+            </view>
+        </view>
+      </view>
+
+      <view class='earnings_detail_out boder_b'>
+   
+            <view class='earnings_num'>
+                65551.00
+                <view class='earnings_num_text mezzo_color font24'>累加收益(元)</view>
+            </view>
+            <view class='earnings_num boder_lr'>
+                65551.00
+                <view class='earnings_num_text mezzo_color font24'>交易笔数(元)</view>
+            </view>
+            <view class='earnings_num'>
+                65551.00
+                <view class='earnings_num_text mezzo_color font24'>可提现(元)</view>
+            </view>
+      
+      </view>
+
+            <view class='footprint_out ma_top20'>
+
+        <view class='footprint boder_r font24'>
+          <view class='footprint_icon'>
+            <image src='../../common/image/index_img/share_shop.png'></image>
+          </view>
+          分享小店
+        </view>
+
+        <view class='footprint boder_r font24' bindtap='to_tixian'>
+          <view class='footprint_icon'>
+            <image src='../../common/image/index_img/take_money.png'></image>
+          </view>
+          提现
+        </view>
+
+        <view class='footprint font24'>
+          <view class='footprint_icon'>
+            <image src='../../common/image/index_img/record.png'></image>
+          </view>
+          流水记录
+        </view>
+        
+      </view>
+
+      <view class='footprint_out boder_b'>
+        
+        <view class='footprint boder_r font24'>
+          <view class='footprint_icon'>
+            <image src='../../common/image/index_img/strategy.png'></image>
+          </view>
+          新手攻略
+        </view>
+
+        <view class='footprint1 boder_r font24'>
+          <view class='footprint_icon'>
+            <!-- <image src='../../common/image/mine_img/about.png'></image> -->
+          </view>
+           <!-- 关于小店  -->
+        </view>
+
+      </view>
+
+    </swiper-item>  
+</swiper>   
+
+</view>

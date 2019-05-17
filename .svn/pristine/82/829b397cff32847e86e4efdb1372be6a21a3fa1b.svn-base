@@ -1,0 +1,248 @@
+/* pages/text/text.wxss */
+page{
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+.navbar{
+  flex: none;
+  display: flex;
+  background: #fff;
+}
+.navbar .item{
+  position: relative;
+  flex: auto;
+  text-align: center;
+  line-height: 80rpx;
+}
+.navbar .item.active{
+   color: #0E6D45;  
+    border-bottom: 5rpx solid #0E6D45;
+}
+.navbar .item.active:after{
+  content: "";
+  display: block;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 4rpx;
+  background: #0E6D45;
+}
+ .swiper-tab{  
+  width: 100%;
+  height: 78rpx;
+  overflow-y: hidden;
+  overflow-x: scroll;
+  white-space: nowrap;	
+  background: #fff;
+  border-top: 1px solid#e6e6e6;
+  border-bottom: 1px solid#e6e6e6;
+    }  
+
+.swiper-tab::-webkit-scrollbar{
+  display:none;
+}
+.swiper-tab-list{
+  
+    text-align: center;
+    display: inline-block;  
+    width: 16%;  
+    color: #777777;  
+}  
+.swiper-tab-list-in{
+  padding: 20rpx 0;
+  width: 76%;
+  margin: 0 auto;  
+  text-align: center;
+}
+.on{ 
+  color: #0E6D45;  
+  border-bottom: 5rpx solid #0E6D45;
+}  
+.order_detail{
+  width:100%;
+  margin: 0 auto;
+}
+.shop_name_out{
+  width: 100%;
+  height: auto;
+  background: #fff;
+  margin-top: 20rpx;
+  border-top: 1px solid#e6e6e6;
+  border-bottom: 1px solid#e6e6e6;
+}
+.shop_name{
+  width: 94%;
+  margin: 0 auto;
+}
+.shop_icon{
+  width: 50rpx;
+  height: 50rpx;
+  display: inline-block;
+  vertical-align: middle;
+}
+.shop_icon>image{
+  width: 100%;
+  height: 100%;
+}
+.shop_name_text{
+  display: inline-block;
+  vertical-align: middle;
+}
+.shop_wrap{
+  display: inline-block;
+  vertical-align: middle;
+}
+.shop_name_wrap{
+  display: inline-block;
+   position: absolute;
+   right: 0;
+   top: 28rpx;
+}
+.shop_name{
+  padding: 20rpx 0;
+  position: relative;
+}
+.orders_detail{
+  width: 100%;
+  height: 100%;
+}
+.order_info{
+   width: 94%;
+   margin: 0 auto;
+  height: 170rpx;
+  padding: 30rpx 0;
+}
+.good_img{
+  width: 170rpx;
+  height: 170rpx;
+  display: inline-block;
+  vertical-align: middle;
+}
+.good_img>image{
+  width: 100%;
+  height: 100%;
+}
+.good_detail{
+  width: 73%;
+  height: 100%;
+  display: inline-block;
+  margin-left: 20rpx;
+  position: relative;
+  vertical-align: middle;
+}
+.good_detail_text1{
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  position: absolute;
+  top: 14rpx;
+  left: 0;
+}
+.good_detail_text2{
+    width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  position: absolute;
+  top: 60rpx;
+  left: 0;
+}
+.good_detail_text3{
+  width: 100%;
+  position: absolute;
+  bottom: 13rpx;
+  left: 0;
+  font-weight: 600;
+}
+.amount_out{
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  border-top:1px solid #e6e6e6; 
+}
+.amount{
+  width: 94%;
+  margin:0 auto;
+}
+.goodname{
+  padding: 26rpx 0;
+}
+.stepper_s{
+  padding:26rpx 0;
+}
+.stepper_s>text{
+  font-weight: 600rpx;
+}
+.cancel_pay_out{
+  width: 100%;
+  height: auto;
+  background: #fff;
+  border-top:1px solid #e6e6e6; 
+  border-bottom:1px solid #e6e6e6; 
+}
+.cancel_pay{
+  width: 94%;
+  margin: 0 auto;
+  height: auto;
+  padding: 24rpx 0 35rpx 0;
+}
+.cancel{
+  display: inline-block;
+  width: 135rpx;
+   height: 44rpx;
+   text-align: center;
+   line-height: 44rpx;
+   border-radius: 7rpx;
+   border: 1px solid#e6e6e6;
+    color: #333;
+    margin-right: 20rpx;
+    vertical-align: top;
+}
+.pay{
+   display: inline-block;
+   width: 135rpx;
+   height: 48rpx;
+   text-align: center;
+   line-height: 48rpx;
+   background: #0E6D45;
+   border-radius: 7rpx;
+  color: #fff;
+  vertical-align: top;
+}
+.pay_invite{
+  display: inline-block;
+   width: 187rpx;
+   height: 48rpx;
+   text-align: center;
+   line-height: 48rpx;
+   background: #0E6D45;
+   border-radius: 7rpx;
+  color: #fff;
+  vertical-align: top;
+}
+.pintuan_icon{
+  display: inline-block;
+  vertical-align: middle;
+  width: 72rpx;
+  height: 36rpx;
+  text-align: center;
+  line-height: 36rpx;
+  color: #FFF;
+  background: #ffa800;
+  border-radius:7rpx;
+  margin-left: 30rpx; 
+}
+.picker{
+  display: inline-block;
+  vertical-align: middle;
+}
+.order_detail_wrap{
+ height: 100%;
+ width: 100%;
+}
+.wrapsss{
+  width: 100%;
+}

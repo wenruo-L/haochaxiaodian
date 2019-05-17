@@ -1,0 +1,56 @@
+/* pageA/pages/activity/activity.wxss */
+image{
+  display: block
+}
+.top{
+position: relative
+}
+.top image{
+  width: 100%;
+  
+}
+.title{
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  padding: 20rpx 0;
+}
+.title image{
+  width: 100%;
+
+}
+.item{
+  background: url('https://image.haocha.top/i1/activity/midautumn/background-2.png') no-repeat;
+  background-size:100%  ;
+  padding: 20rpx 0;
+  
+}
+.item image{
+  width: 100%;
+  margin-bottom: 20rpx
+}
+.mid{
+  display: flex;
+  justify-content: space-around;
+}
+.mid image{
+  width: 320rpx;
+  height: 480rpx;
+}
+
+
+.btn {
+  background: #158e57;
+  width: 80%;
+  border-radius: 50rpx;
+  display: block;
+  line-height: 100rpx;
+  height: 100rpx;
+  color: #fff;
+  font-size: 34rpx;
+  margin: 20rpx auto;
+  text-align: center;
+  font-weight: 500;
+}
+

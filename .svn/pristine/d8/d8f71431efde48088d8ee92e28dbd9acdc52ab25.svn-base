@@ -1,0 +1,18 @@
+<!--pages/fans_record/fans_record.wxml-->
+<view class='content'>
+  <view class='fans_wrap'>
+
+    <view class='just_box'>
+      <view class='fans_out' wx:for="{{all_detail}}" wx:key="index" wx:for-index="num">
+        <view class='fans'>
+          <view class='fans_header'>
+            <image src='{{all_detail[num].userSub.logo}}'></image>
+          </view>
+          <view class='fans_name'>{{all_detail[num].userSub.nickName}}</view>
+          <view class='time fr'>{{all_detail[num].watchTime}}</view>
+        </view>
+      </view>
+    </view>
+
+  </view>
+</view>

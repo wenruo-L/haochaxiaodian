@@ -1,0 +1,26 @@
+<!--pageA/pages/bindingPhone/bindingPhone.wxml-->
+<view class='content'>
+  <view class='bindingPhone'>
+    <view class='tips'>
+      <view class='attention'>
+        <image src='../../../common/image/index_img/attention.png'></image>
+      </view>
+      <text class='font30'>为了确保您的账号资金安全，请先绑定认证</text>
+    </view>
+    <view class='from bb'>
+      <view class='icon_img'>
+        <image src='../../../common/image/index_img/phone_icon.png'></image>
+      </view>
+      <input placeholder='请输入手机号码' type='number' bindinput='thePhone' placeholder-style='color=#999999' maxlength='11'></input>
+      <button disabled="{{disabled}}" bindtap="getCode" class='code'>{{time}}</button >
+    </view>
+    <view class='from'>
+      <view class='icon_img'>
+        <image src='../../../common/image/index_img/code.png'></image>
+      </view>
+      <input bindinput='theCode' type='number' placeholder='填写验证码' placeholder-style='color=#999999' maxlength='4'></input>
+      <view class='empty'></view>
+    </view>
+  </view>
+</view>
+<button class='binding' bindtap='sendCode'>绑定</button>

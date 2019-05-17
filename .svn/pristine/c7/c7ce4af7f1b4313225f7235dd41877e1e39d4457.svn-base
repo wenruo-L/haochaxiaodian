@@ -1,0 +1,99 @@
+/* pages/about_shop/about_shop.wxss */
+.phonebtn{
+  width: 400rpx;
+  height: 50rpx;
+  border: 0;
+  display: inline-block;
+  text-align: left;
+  vertical-align: middle;
+  line-height: 50rpx;
+  padding-left: 0;
+   padding-right: 0;
+  background: #fff;
+}
+.phonebtn::after{
+  border: 0;
+}
+.content{
+  background: #fff;
+}
+.about_shop_bg{
+  width: 100%;
+}
+.about_shop_bg>image{
+  width: 100%;
+  height: 100%;
+}
+.recommened_out{
+  width: 100%;
+  height: auto;
+  background: #fff;
+  border-top:1px solid #e6e6e6;
+}
+.recommened{
+  width: 92%;
+  height: auto;
+  margin: 0 auto;
+  padding-top: 36rpx;
+}
+.text1{
+  line-height: 48rpx;
+  justify-content: center;
+}
+.text2{
+  line-height: 48rpx;
+  margin-top: 36rpx;
+  justify-content: center;
+}
+.info_out{
+  width: 100%;
+  height: auto;
+}
+.info{
+  width: 92%;
+  height: auto;
+  margin: 0 auto;
+  padding: 10rpx 0 70rpx 0;
+}
+.info_detail{
+  width: 100%;
+  margin-top: 30rpx;
+}
+.icon_img{
+  width: 26rpx;
+  height: 28rpx;
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 30rpx;
+}
+.icon_img>image{
+  width: 100%;
+  height: 100%;
+}
+.icon_img1{
+  width: 28rpx;
+  height: 26rpx;
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 30rpx;
+  margin-bottom: 5rpx;
+}
+.icon_img1>image{
+  width: 100%;
+  height: 100%;
+}
+.icon_img2{
+  width: 32rpx;
+  height: 27rpx;
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 27rpx;
+}
+.icon_img2>image{
+  width: 100%;
+  height: 100%;
+}
+.detail{
+  display: inline-block;
+  vertical-align: middle;
+}

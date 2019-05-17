@@ -1,0 +1,12 @@
+<!--pages/AD/AD.wxml-->
+<view class='content'>
+  <view class='adImg'>
+    <image mode='widthFix' src='http://image.haocha.top/i1/poster/base/drainage_explain_1.png'></image>
+    <image mode='widthFix' src='http://image.haocha.top/i1/poster/base/drainage_explain_2.png'></image>
+    <image mode='widthFix' src='http://image.haocha.top/i1/poster/base/drainage_explain_3.png'></image>
+    <view class='dredge_btn'>
+      <image src='../../common/image/index_img/dredge_btn.png'></image>
+    </view>
+    <text class='font36 adImg_text'>机密情报: 限时免费哦~！抓住机会哦~！</text>
+  </view>
+</view>

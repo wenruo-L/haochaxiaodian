@@ -1,0 +1,270 @@
+<!--index.wxml-->
+<view class="content">
+  <!-- <view class="userinfo">
+    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
+    <block wx:else>
+      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
+      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+    </block>
+  </view>
+  <view class="usermotto">
+    <text class="user-motto">{{motto}}</text>
+  </view> -->
+  <view class='index_top_mind'>
+       <view class='index_top_bg'>
+          <image src='../../common/image/index_img/index_bg.png'></image>
+      </view> 
+      <view class='shop_ctent'>
+        <view class='shop_img'>
+            <image src='../../common/image/index_img/shop_img.png'></image>
+        </view>
+        <text>广州斗记</text>
+      </view> 
+  </view>
+  <!--商店详情开始  -->
+  <view class='shop_details'>
+      <view class='shop_details_1'>
+          <view class='erweima_wrap'>
+              <view>
+                  <image src='../../common/image/index_img/erweima.jpg'></image>
+              </view>
+              <text>(点击保存)</text>
+          </view> 
+          <view class='shop_name'> 
+              <view class='shop_name_1'>
+                <view class='shop_name_1_img'>
+                  <image src='../../common/image/index_img/wxicon.png'></image>
+                </view> 
+                <view class='shop_name_1_text'>微信：<text>sgjtdf5545</text></view>
+                <view class='copy_wy '>复制微信号</view>
+              </view>
+              <view class='shop_name_1'>
+                <view class='shop_name_2_img'>
+                  <image src='../../common/image/index_img/address_icon.png'></image>
+                </view> 
+                <view class='shop_name_2_text'>地址：<text>广州市荔湾区明阳茶叶市场168号
+    </text></view>
+              </view>
+              <view class='shop_name_1'>
+                <view class='shop_name_1_img'>
+                  <image src='../../common/image/index_img/phone.png'></image>
+                </view> 
+                <view class='shop_name_1_text'>电话：<text>13450389196</text></view>
+              </view>
+          </view>  
+      </view>     
+  </view>
+    
+   <!--商店详情结束  -->
+   <!--店铺推荐动态开始  -->
+   <view class='empty_div'></view>
+      <view class='shop_blog'>
+        <view class='shop_recommened'>
+            <view class='shop_recommened_name'>
+                <view class='shop_name_picture'>
+                    <image src='../../common/image/index_img/shop_img.png'></image>
+                </view>
+                <view class='shop_recommened_shopname'>
+                    广州斗记
+                </view> 
+                <view class='pintuan'>拼团</view>
+                <view class='shop_tuijian'>刚刚推荐</view>
+            </view>
+        </view>
+        <view class='shop_talk'>
+            <view class='shop_talk_bg'>
+                <image src='../../common/image/index_img/bg_recommeed.png'></image>
+            </view> 
+            <view class='shop_talk_text'>
+                外形：青柑外形完整，油室分布均匀，干茶条索紧结尚壮实，棕褐色； 
+内质：汤色红浓明亮；柑皮香气与茶融合度较高，香气清爽；汤甜； 
+叶底：色泽棕褐油润。
+            </view>
+        </view>
+        <view class='good_show'>
+          <image src='../../common/image/index_img/goods1.jpg'></image>
+          <image src='../../common/image/index_img/goods2.jpg'></image>
+          <image src='../../common/image/index_img/goods3.jpg'></image>
+        </view>
+        <view class='likes clearfix'>
+          <view class='fr'>
+              <view class='click_like'>
+                <view class='like_icon'>
+                  <image src='../../common/image/index_img/likes.png'></image>
+                </view>
+                <view class='like_text'>25455</view>
+              </view>
+              <view class='yongjin'>
+                <view class='yongjin_icon'>
+                    <image src='../../common/image/index_img/yongjin_icon.png'></image>
+                </view>
+                <view class='yongjin_text'>
+                  佣金10元
+                </view> 
+              </view>
+          </view>
+        </view>
+      </view>
+      <!--无拼团 -->
+      <view class='empty_div'></view>
+      <view class='shop_blog'>
+        <view class='shop_recommened'>
+            <view class='shop_recommened_name'>
+                <view class='shop_name_picture'>
+                    <image src='../../common/image/index_img/shop_img.png'></image>
+                </view>
+                <view class='shop_recommened_shopname'>
+                    广州斗记
+                </view> 
+                <!-- <view class='pintuan'>拼团</view> -->
+                <view class='shop_tuijian'>1天前</view>
+            </view>
+        </view>
+        <view class='shop_talk'>
+            <view class='shop_talk_bg'>
+                <image src='../../common/image/index_img/bg_recommeed.png'></image>
+            </view> 
+            <view class='shop_talk_text'>
+               干茶：棕褐，较紧实，原料较嫩； 
+内质：香气浓郁； 汤色橙红透亮； 滋味甜醇，柑、茶融合度较高； 
+叶底：棕褐，亮，较柔软
+            </view>
+        </view>
+        <view class='good_show'>
+          <image src='../../common/image/index_img/goods4.jpg'></image>
+          <image src='../../common/image/index_img/goods5.jpg'></image>
+          <image src='../../common/image/index_img/goods6.jpg'></image>
+        </view>
+        <view class='likes clearfix'>
+          <view class='fr'>
+              <view class='click_like'>
+                <view class='like_icon'>
+                  <image src='../../common/image/index_img/likes.png'></image>
+                </view>
+                <view class='like_text'>25455</view>
+              </view>
+              <view class='yongjin'>
+                <view class='yongjin_icon'>
+                    <image src='../../common/image/index_img/yongjin_icon.png'></image>
+                </view>
+                <view class='yongjin_text'>
+                  佣金10元
+                </view> 
+              </view>
+          </view>
+        </view>
+      </view>
+      <!--展示3  -->
+        <view class='empty_div'></view>
+      <view class='shop_blog'>
+        <view class='shop_recommened'>
+            <view class='shop_recommened_name'>
+                <view class='shop_name_picture'>
+                    <image src='../../common/image/index_img/shop_img.png'></image>
+                </view>
+                <view class='shop_recommened_shopname'>
+                    广州斗记
+                </view> 
+                <view class='pintuan'>拼团</view>
+                <view class='shop_tuijian'>1天前</view>
+            </view>
+        </view>
+        <view class='shop_talk'>
+            <view class='shop_talk_bg'>
+                <image src='../../common/image/index_img/bg_recommeed.png'></image>
+            </view> 
+            <view class='shop_talk_text'>
+                外形：青柑外形完整，油室分布均匀，干茶条索紧结尚壮实，棕褐色； 
+内质：汤色红浓明亮；柑皮香气与茶融合度较高，香气清爽；汤甜； 
+叶底：色泽棕褐油润。
+            </view>
+        </view>
+        <view class='good_show'>
+          <image src='../../common/image/index_img/goods1.jpg'></image>
+          <image src='../../common/image/index_img/goods2.jpg'></image>
+          <image src='../../common/image/index_img/goods3.jpg'></image>
+        </view>
+        <view class='likes clearfix'>
+          <view class='fr'>
+              <view class='click_like'>
+                <view class='like_icon'>
+                  <image src='../../common/image/index_img/likes.png'></image>
+                </view>
+                <view class='like_text'>25455</view>
+              </view>
+              <view class='yongjin'>
+                <view class='yongjin_icon'>
+                    <image src='../../common/image/index_img/yongjin_icon.png'></image>
+                </view>
+                <view class='yongjin_text'>
+                  佣金10元
+                </view> 
+              </view>
+          </view>
+        </view>
+      </view>
+      <!--无拼团 -->
+      <view class='empty_div'></view>
+      <view class='shop_blog'>
+        <view class='shop_recommened'>
+            <view class='shop_recommened_name'>
+                <view class='shop_name_picture'>
+                    <image src='../../common/image/index_img/shop_img.png'></image>
+                </view>
+                <view class='shop_recommened_shopname'>
+                    广州斗记
+                </view> 
+                <!-- <view class='pintuan'>拼团</view> -->
+                <view class='shop_tuijian'>2天前</view>
+            </view>
+        </view>
+        <view class='shop_talk'>
+            <view class='shop_talk_bg'>
+                <image src='../../common/image/index_img/bg_recommeed.png'></image>
+            </view> 
+            <view class='shop_talk_text'>
+               干茶：棕褐，较紧实，原料较嫩； 
+内质：香气浓郁； 汤色橙红透亮； 滋味甜醇，柑、茶融合度较高； 
+叶底：棕褐，亮，较柔软
+            </view>
+        </view>
+        <view class='good_show'>
+          <image src='../../common/image/index_img/goods4.jpg'></image>
+          <image src='../../common/image/index_img/goods5.jpg'></image>
+          <image src='../../common/image/index_img/goods6.jpg'></image>
+        </view>
+        <view class='likes clearfix'>
+          <view class='fr'>
+              <view class='click_like'>
+                <view class='like_icon'>
+                  <image src='../../common/image/index_img/likes.png'></image>
+                </view>
+                <view class='like_text'>25455</view>
+              </view>
+              <view class='yongjin'>
+                <view class='yongjin_icon'>
+                    <image src='../../common/image/index_img/yongjin_icon.png'></image>
+                </view>
+                <view class='yongjin_text'>
+                  佣金10元
+                </view> 
+              </view>
+          </view>
+        </view>
+      </view>
+   <!--店铺推荐动态结束  -->
+      <!--实体店入驻  -->
+      <view class='empty_div'></view>
+          <view class='ruzhu'>
+            <view class='ruzhu_erweima'>
+                <image src='../../common/image/index_img/erweima1.jpg'></image>
+            </view>
+            <view class='ruzhu_text'>
+              点击保存图片，分享好友
+            </view>
+            <view class='shitidian_text'>
+              我有实体店，我要入驻
+            </view>
+          </view>
+       <!--实体店入驻  -->
+</view>

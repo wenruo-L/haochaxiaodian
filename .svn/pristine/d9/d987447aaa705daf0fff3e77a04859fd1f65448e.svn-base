@@ -1,0 +1,155 @@
+/* pages/search_index/search_index.wxss */
+.content::-webkit-scrollbar {
+    display: none;
+}
+.fl{ float: left}
+.fr{ float: right}
+.clear{clear:both;} 
+.clearfix:after{
+	content: "";
+	display: block;
+	clear: both;
+}
+.empty_div{
+  width: 100%;
+  height: 20rpx;
+  background: #f5f5f5;
+}
+.index_top_mind{
+  width: 100%;
+  height:100%;
+  /* background: skyblue; */
+  position: relative;
+}
+.index_top_bg{
+  width: 100%;
+  height: 159px;
+}
+.index_top_bg>image{
+    width: 100%;
+    height: 100%;
+}
+.nearby_shop_out{
+  width: 100%;
+  height: auto;
+  margin-top: 20rpx;
+  border-top:1px solid#e6e6e6 ;
+  border-bottom:1px solid#e6e6e6 ;
+  background: #fff;
+}
+.nearby_shop{
+  width: 100%;
+  height: 100%;
+
+}
+.search_index_title{
+  width: 39%;
+  margin: 0 auto;
+  padding: 27rpx 0;
+}
+.title_icon{
+  width: 36rpx;
+  height: 31rpx;
+  display: inline-block;
+}
+.title_icon>image{
+  width: 100%;
+  height: 100%;
+}
+.search_index_title_text{
+  display: inline-block;
+  font-size: 36rpx;
+  color:#333333;
+  margin-left: 20rpx;
+  margin-right: 20rpx;
+}
+.client_own_shop{
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+  padding: 20rpx 0;
+  background: #fff;
+  border-bottom: 1px solid#e6e6e6;
+}
+.client_own_shop_img{
+  width: 122rpx;
+  height: 122rpx;
+  border-radius:50%;
+  border: 1px solid#e7e7e7; 
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: 20rpx;
+}
+.client_own_shop_img>image{
+  width: 100%;
+  height: 100%;
+   border-radius:50%;
+}
+.client_own_shop_name{
+   display: inline-block;
+    vertical-align: middle;
+    margin-left: 20rpx;
+    width: 60%;
+}
+.client_own_shop_name_t{
+  font-size: 30rpx;
+  text-align: left;
+  line-height: 42rpx;
+}
+.client_own_shop_name_yewu{
+  font-size: 24rpx;
+  color: #666666;
+  text-align: left;
+}
+.client_own_shop_distance{
+  color: #666666;
+  display: inline-block;
+   vertical-align: middle;
+   margin-right: 20rpx;
+   line-height: 140rpx;
+   font-size: 24rpx;
+}
+.client_own_shop_distance>image{
+  width: 10px;
+  height: 10px;
+}
+.ruzhu_out{
+  width: 100%;
+  height: auto;
+   border-top:1px solid #e6e6e6;
+  background: #fff;
+  margin-top: 20rpx;
+}
+.ruzhu{
+  width: 100%;
+  height: 513rpx;
+  text-align: center;
+ 
+}
+.ruzhu_erweima{
+  width: 260rpx;
+  height: 260rpx;
+  background: blue;
+  margin: 0 auto;
+  margin-top: 70rpx;
+}
+.ruzhu_erweima>image{
+  width: 100%;
+  height: 100%;
+}
+.ruzhu_text{
+    font-size: 30rpx;
+    margin-top: 20rpx;
+}
+.shitidian_text{
+  height: 60rpx;
+  width: 337rpx;
+  font-size: 30rpx;
+  line-height: 60rpx;
+  margin: 0 auto;
+  color: #0e6d44;
+  border:2px solid #0e6d44;
+  border-radius:50px;  
+  margin-top: 45rpx;
+   margin-bottom: 45rpx;
+}

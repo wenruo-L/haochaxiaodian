@@ -1,0 +1,151 @@
+// pages/contact_shop/contact_shop.js
+import config from "../../utils/config.js"
+let app = getApp();
+Page({
+
+  /**
+   * 页面的初始数据
+   */
+  data: {
+  shopid:"",
+  token:"",
+  shop_detail:"",
+  phoneNum:""
+  },
+  // 拨打电话
+  callphone: function () {
+    var that = this
+    wx.showModal({
+      title: '提示',
+      content: '是否要拨打此电话',
+      success: function (res) {
+        if (res.confirm) {
+          wx.makePhoneCall({
+            phoneNumber: that.data.phoneNum,
+            success: function () {
+              console.log("拨打电话成功！")
+            },
+            fail: function () {
+              console.log("拨打电话失败！")
+            }
+          })
+        }
+      },
+      fail: function (res) { },
+      complete: function (res) { },
+    })
+  },
+  // 获取联系店铺的数据
+  get_shop_detail:function(){
+    var that = this;
+    var _token = wx.getStorageSync('jwtToken')
+    that.setData({
+      token: _token
+    })
+    wx.showLoading({
+      title: '加载中',
+    })
+    wx.request({
+      url: config.shop_address,
+      method: 'GET',
+      data: {
+        id: that.data.shopid
+      },
+      header: {
+        'content-type': 'application/json',// GEt的请求方式为默认 
+        Authorization: that.data.token
+      },
+      success:function(e){
+        if (res.data.code == 403) {
+          wx.setStorageSync('isLoginsChange', '')
+          wx.setStorageSync('jwtToken', '')
+          wx.navigateTo({
+            url: '../welcome/welcome',
+          })
+          wx.hideLoading()
+        } else {
+          wx.hideLoading()
+          var errmsg = res.data.msg
+          wx.showToast({
+            title: errmsg,
+            icon: 'none',
+          })
+        }
+        wx.hideLoading()
+        console.log("联系店铺的数据",e)
+        var phone = e.data.data.shopContact.contactPhone
+        that.setData({
+          shop_detail:e.data.data.shopContact,
+          phoneNum:phone
+        })
+      }
+    })
+  },
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function (options) {
+  var that =this; 
+  var shop_ids = wx.getStorageSync('shop_id')
+  that.setData({
+    shopid: shop_ids,
+  })
+  if (options.shopid){
+    that.setData({
+      shopid:options.shopid,
+    })
+  }
+  console.log("接受联系门店的参数",options)
+
+  },
+
+  /**
+   * 生命周期函数--监听页面初次渲染完成
+   */
+  onReady: function () {
+  var that = this;
+  that.get_shop_detail()
+  },
+
+  /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow: function () {
+  
+  },
+
+  /**
+   * 生命周期函数--监听页面隐藏
+   */
+  onHide: function () {
+  
+  },
+
+  /**
+   * 生命周期函数--监听页面卸载
+   */
+  onUnload: function () {
+  
+  },
+
+  /**
+   * 页面相关事件处理函数--监听用户下拉动作
+   */
+  onPullDownRefresh: function () {
+  
+  },
+
+  /**
+   * 页面上拉触底事件的处理函数
+   */
+  onReachBottom: function () {
+  
+  },
+
+  /**
+   * 用户点击右上角分享
+   */
+  onShareAppMessage: function () {
+  
+  }
+})

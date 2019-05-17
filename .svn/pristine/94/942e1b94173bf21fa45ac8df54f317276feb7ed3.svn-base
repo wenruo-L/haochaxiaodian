@@ -1,0 +1,83 @@
+/* pageA/pages/luckMoneyDel/luckMoneyDel.wxss */
+.luckmoney{
+  width: 100%;
+  height: auto;
+  background: #fff;
+  text-align: center;
+}
+.luckmoneyin{
+  width: 60%;
+  height: auto;
+  margin: 0 auto;
+  padding: 50rpx 0; 
+}
+.luckmoneyin>text{
+  vertical-align: middle;
+  color: #EC0000;
+  font-size: 40rpx;
+  margin-left: 20rpx;
+}
+.luckmoneyimg{
+  width: 98rpx;
+  height: 82rpx;
+  display: inline-block;
+  vertical-align: middle;
+}
+.luckmoneyimg>image{
+  width: 100%;
+  height: 100%;
+}
+.luckmoney_detail_out{
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  border-bottom: 1px solid#e6e6e6;
+}
+.luckmoney_detail{
+  width: 92%;
+  height: auto;
+  margin: 0 auto;
+  padding: 15rpx 0;
+}
+.name_detail{
+  width: 100%;
+  height: 17rpx;
+  padding: 20rpx 0;
+}
+.name{
+  text-align: left;
+  color: #666666;
+  line-height: 30rpx;
+}
+.detail{
+  text-align: right;
+  line-height: 30rpx;
+}
+.header{
+  text-align: left;
+  margin-top: 20rpx;
+}
+.header>text{
+  vertical-align: middle;
+  margin-left: 20rpx;
+}
+.headerimg{
+  height: 50rpx;
+  width: 50rpx;
+  border-radius:50%;
+  display: inline-block;
+  vertical-align: middle;
+}
+.headerimg>image{
+  width: 100%;
+  height: 100%;
+  border-radius:50%; 
+}
+.headerDel{
+  height: 50rpx;
+  text-align: right;
+  margin-top: 20rpx;
+}
+.pb{
+  padding-bottom: 80rpx;
+}

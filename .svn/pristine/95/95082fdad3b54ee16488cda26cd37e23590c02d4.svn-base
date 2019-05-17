@@ -1,0 +1,178 @@
+<!--pages/get_luckMoney/get_luckMoney.wxml-->
+<view class='content'>
+  <view class='header'>
+
+
+    <view class='userHeader'>
+      <view class='userHeader_bg'>
+        <image src='../../../common/image/index_img/luckyMoneyBG.png'></image>
+        <view class='strategy' catchtap='strategy'>
+          红包攻略 <text>></text>
+          <!-- <image src='../../../common/image/index_img/inter_icon.png'></image> -->
+          
+        </view>
+      </view>
+      <view class='userHeaderImg'>
+        <image src='{{userLogo}}'></image>
+      </view>
+    </view>
+
+    <view class='choose'>
+      <view class='swiper-tab-list_out'>
+        <view class="swiper-tab-list " wx:for="{{navbar}}" data-idx="{{index}}" wx:key="index" bindtap="navbarTap">
+
+          <view class="font30 swiper-tab-list-in {{currentTab==index ? 'on' : ''}}">{{item}}</view>
+        </view>
+      </view>
+    </view>
+
+  </view>
+  <!--  -->
+  <view class='NoLuckyMoneyTips' style="height:{{winheight}}rpx;padding-top:500rpx" wx:if="{{change}}">
+    <view class='NoLuckyMoneyImg'>
+      <image src='../../../common/image/index_img/NoLuckyMoney.png'></image>
+    </view>
+    <text class='font30'>暂无红包</text>
+    <button class='toIndex' catchtap='openShare'>分享红包，同好友拼手气</button>
+  </view>
+
+  <view class='list'>
+    <block wx:for="{{list}}" wx:key="this">
+      <view class='item' data-orderId="{{item.orderId}}" data-productId="{{item.orderSnapshotSub.productId}}" data-collageid="{{item.orderSnapshotSub.collageId}}" data-profit='{{item.profit}}' data-index="{{index}}" data-bestLuck="{{item.bestLuck}}" data-isGot="{{item.isGot}}" catchtap='openRedEnvelopes' data-state='{{item.state}}'>
+        <view class='goodsName'>
+          <text>【商品】</text>{{item.orderSnapshotSub.title}}
+        </view>
+        <view class='mes'>
+          <image src='{{item.userSub.logo}}' class='userIcon'></image>
+          <view class='userMes'>
+            <view class='usermid'>
+
+              <text class='userName'>{{item.userSub.nickName}}</text>
+              <text class='time'>{{item.orderTime}}</text>
+            </view>
+
+          </view>
+          <view class='state'>
+            <text wx:if="{{item.state==0}}">待付款</text>
+            <text wx:if="{{item.state==10}}">已失效</text>
+            
+            <block wx:if="{{item.state==1}}">
+              <!-- 0是未领取红包 -->
+              <view class='redEnvelopesMes' wx:if="{{item.isGot==0 }}">
+                <image src='../../../common/image/index_img/redEnvelopesMes.png' class='redEnvelopesMesIcon'></image>
+                <view class='num'>{{item.profitTotal}}元拼手气</view>
+              </view>
+
+              <view class='sumWrap' wx:if="{{item.isGot==1}}">
+                <view class='sum'>{{item.profit/100}}</view>
+                <view class='sumTis'>待结算</view>
+              </view>
+            </block>
+
+
+            <block wx:if="{{item.state==2}}">
+              <!-- 0是未领取红包 -->
+              <view class='redEnvelopesMes' wx:if="{{item.isGot==0 }}">
+                <image src='../../../common/image/index_img/redEnvelopesMes.png' class='redEnvelopesMesIcon'></image>
+                <view class='num'>{{item.profitTotal}}元拼手气</view>
+              </view>
+
+              <view class='sumWrap' wx:if="{{item.isGot==1}}">
+                <view class='sum'>{{item.profit/100}}</view>
+                <view class='sumTis'>已结算</view>
+              </view>
+            </block>
+
+          
+
+            <!-- 状态3 可提现 -->
+            <view class='sumWrap' wx:if="{{item.state==3}}">
+              <view class='sum'>{{item.profit/100}}</view>
+              <view class='sumTis'>可提现</view>
+            </view>
+
+
+          </view>
+
+        </view>
+      </view>
+    </block>
+  </view>
+
+</view>
+
+
+
+
+<view class='share_shop_out' style='height:100%' catchtouchmove="true" wx:if="{{openShareChange}}">
+  <view class='share_shop' catchtap='close_share' style='height:100%' catchtouchmove="true">
+  </view>
+  <!-- 分享海报  -->
+  <view class='share_shop_poster' wx:if="{{shaerChange}}">
+    <view class='share_good_poster_title font24'>
+      分享到微信群或者朋友圈，让更多人知道您的推荐
+    </view>
+    <view class='shop_poster'>
+      <image src='{{saveImg}}'></image>
+    </view>
+
+    <button class='keep_poster_btn' catchtap='saveShopimage'>保存图片，发朋友圈</button>
+  </view>
+  <!-- ============================= -->
+  <view class='share_shop_in'>
+
+    <view class='share_shop_t font24'>分享小店给您的好友吧~</view>
+    <view class='share_shop_way'>
+      <view class='friends'>
+
+        <button class='friends_btn font24' open-type='share' id="1">
+
+          <view class='share_with_friend_img'>
+            <image src='../../../common/image/index_img/share_with_friend.png'></image>
+          </view>
+          微信好友
+        </button>
+      </view>
+      <view class='pengyouquan' catchtap='sharePoster'>
+        <view class='pengyouquan_btn'>
+
+          <view class='share_with_friend_img'>
+            <image src='../../../common/image/index_img/pengyouquan.png'></image>
+          </view>
+          <view class='share_with_friend_text font24'>微信朋友圈</view>
+
+        </view>
+
+
+      </view>
+    </view>
+  </view>
+</view>
+
+
+
+<view class='mask' style='height: 100%' wx:if="{{openRedEnvelopesPopup}}" catchtouchmove="true">
+  <view class='lucky_monry'>
+    <view class='moneyClose' catchtap='moneyClose'>
+
+      <image class='fr' src='../../../common/image/index_img/moneyClose.png'></image>
+    </view>
+    <image class='moneyFelling' src='../../../common/image/index_img/moneyFelling.png'></image>
+
+    <view class='luckymoney'>
+      <view class='luckymoney_in'>
+        <!-- animation:play 1s linear infinite;
+   /* forwards */    -->
+        <!-- {{isopenRotate? 'moneyOpenAnimation':''}} -->
+        <!-- style=" animation:play 1s linear {{isopenRotate? 'forwards':' infinite'}}" -->
+        <image class="moneyOpen {{isopenRotate? 'moneyOpenAnimation':''}}" catchtap='moneyOpen' src='../../../common/image/index_img/moneyOpen.png'></image>
+        <image class='luckymoney_inside' src='http://image.haocha.top/i1/poster/base/luckymoney_1.png'></image>
+        <view class='luckymoney_text_wrap'>
+          <view class='luckymoney_text font30'>点击领取</view>
+          <view class='luckymoney_text mt font24'>恭喜获得一个手气红包！</view>
+        </view>
+      </view>
+    </view>
+
+  </view>
+</view>

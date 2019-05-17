@@ -1,0 +1,4 @@
+{
+    // 开启下来刷新
+    "enablePullDownRefresh": true
+}

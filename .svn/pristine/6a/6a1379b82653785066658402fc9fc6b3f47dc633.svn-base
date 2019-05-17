@@ -1,0 +1,458 @@
+// pages/confirm_order /confirm_order .js
+import config from "../../utils/config.js"
+const app = getApp()
+Page({
+
+  /**
+   * 页面的初始数据
+   */
+  data: {
+    receiptAddress:"",//用户地址，没有会为null
+    address_id:"",
+    productId:"",
+    productSkuId:"",
+    payPrice:"",  
+    buyNum:"",
+    realPay:"",
+    collage:"1",
+    collageId:"",
+    token:"",
+    zhendezonge:'',//这是单独请求地址数据的
+    freight:null,
+    freightPayType:4,
+    payType:2,
+    local_address:"",
+    ziti:true,
+    NoChangeFreight: "",
+    zongjijine:"",
+    shifu:"",
+    shareUserId:"",
+    userShareShopId:"",
+    userShareProductId:"",
+    dingdanId :""
+  },
+  // 限制input的值为0
+  get_num_limit: function (res) {
+    var that = this;
+    // console.log("限制input值为0的函数", res)
+    if (res.detail.value == 0 && res.detail.value <= 1) {
+      wx.showToast({
+        title: '最少选择一件商品哦~',
+        icon: 'none'
+      })
+      that.setData({
+        buyNum: 1
+      })
+      that.gettotal()
+    }
+  },
+  //获取input的值
+  get_num: function (res) {
+    var that = this;
+    // console.log("input的点击事件", res)
+    that.setData({
+      buyNum: res.detail.value
+    })
+    that.gettotal()
+  },
+  jia: function () {
+    // 点击加一的按钮
+    var that = this;
+    var num = that.data.buyNum;
+    if (num == 1 || num > 1) {
+      num++;
+    }
+    that.setData({
+      buyNum: num
+    })
+    that.gettotal();
+  },
+  jian: function () {
+    // 点击减一的按钮
+    var that = this;
+    var num = that.data.buyNum;
+    if (num > 1) {
+      num--;
+    }
+    that.setData({
+      buyNum: num
+    })
+    that.gettotal();
+  },
+  // 计算总价
+  gettotal: function () {
+    var that = this;
+    wx.showLoading({
+      title: '正在计算总额~',
+    })
+    var goodnum = that.data.buyNum; //件数
+    var goodprice = that.data.payPrice;//单价
+    var yunfeia = that.data.freight//运费
+    var zongji = that.data.shifu;
+    // console.log(that.data.freight)
+    // console.log(goodnum)
+    // console.log(goodprice)
+    // console.log(yunfeia)
+    zongji = Number(goodprice * goodnum) + Number(yunfeia)
+    that.setData({
+      realPay: zongji
+    })
+    wx.hideLoading()
+    // console.log(that.data.realPay)
+  },
+  to_choose_address: function (e) {
+    wx.navigateTo({
+      url: '../choose_address/choose_address?id=1'
+    })
+  },
+  choose_ziti: function () {
+    var that = this;
+    var nochangefreight = that.data.NoChangeFreight;
+    var buyNum = that.data.buyNum;
+    var payPrice = that.data.payPrice;
+    var freight = that.data.freight;
+    var realPays = that.data.realPay;
+    realPays = Number(buyNum * payPrice) + Number(nochangefreight)
+    var realPayNofreight = that.data.realPay;
+    realPayNofreight = Number(buyNum * payPrice)
+    // console.log(realPayNofreight)
+
+    if (that.data.ziti == true) {
+      that.setData({
+        ziti: false,
+        realPay: realPayNofreight,
+        freightPayType: 1,
+        freight: 0
+      })
+    } else {
+
+      that.setData({
+        ziti: true,
+        realPay: realPays,
+        freightPayType: 4,
+        freight: nochangefreight
+      })
+
+    }
+  },
+  // 提交订单
+  payment:function(e){
+    // 创建订单的数据
+    var that = this;
+    // console.log("这是提交订单的支付总额！！！！！", that.data.realPay)
+    wx.showLoading({
+      title: '加载中',
+      mask: true
+    })
+    that.noDefaultAddressToChooseAddress()
+    wx.request({
+      url: config.create_order,
+      method: 'POST',
+      data:{
+        productId: that.data.productId,
+        productSkuId: that.data.productSkuId,
+        payPrice: that.data.payPrice,
+        payType: that.data.payType,
+        buyNum: that.data.buyNum,
+        realPay: that.data.realPay,
+        freight: that.data.freight,
+        collage: that.data.collage,
+        collageId: that.data.collageId,
+        receiptAddressId: that.data.address_id,
+        freightPayType: that.data.freightPayType,
+        shareUserId: that.data.shareUserId,
+        userShareShopId: that.data.userShareShopId,
+        userShareProductId: that.data.userShareProductId
+      },
+      header: {
+        'Content-Type': 'application/x-www-form-urlencoded', // POST的请求方式不一样 
+        Authorization: that.data.token
+      },
+      success: function (res) {
+        wx.hideLoading()
+        // console.log("成功拿回创建订单的数据", res)
+          var orderId = res.data.orderId;
+          var timeStamp = res.data.data.timeStamp;
+          var nonceStr = res.data.data.nonceStr;
+          var packages = res.data.data.package;
+          var signType = res.data.data.signType;
+          var paySign = res.data.data.sign;
+          that.setData({
+            dingdanId: orderId
+          })
+          wx.requestPayment({
+            timeStamp: timeStamp,
+            nonceStr: nonceStr,
+            package: packages,
+            signType: signType,
+            paySign: paySign,
+            success: function (e) {
+              wx.hideLoading()
+              // console.log("这是支付成功的", e)
+              if (e.errMsg == "requestPayment:ok") {
+                wx.redirectTo({
+                  url: '../pay_success/pay_success??dingdanId=' + that.data.dingdanId + "&productId=" + that.data.productId + "&collage=" + that.data.collage,
+                })
+              }
+            },
+            fail: function (e) {
+              wx.hideLoading()
+              // console.log("这是支付失败的", e)
+              if (e.errMsg == "requestPayment:fail cancel") {
+                wx.redirectTo({
+                  url: '../all_order/all_order',
+                })
+              } else {
+                var err_msg = e.err_desc;
+                // console.log(err_msg)
+                wx.setStorageSync('failmsg', err_msg)
+                wx.navigateTo({
+                  url: '../pay_fail/pay_fail',
+                })
+              }
+            }
+          })
+        
+      }
+    })
+  },
+  //单独获取地址的数据
+  alone_get_address: function () {
+    var that = this;
+    // console.log("这是单独获取地址的支付总额", that.data.zhendezonge)
+    var _token = wx.getStorageSync('jwtToken') 
+    that.setData({
+      token: _token
+    })
+    wx.showLoading({
+      title: '加载中',
+      mask: true
+    })
+    app.promise({
+      url: config.confirm_an_order,
+      datas: {
+        productId: that.data.productId,
+        productSkuId: that.data.productSkuId,
+        payPrice: that.data.payPrice,
+        buyNum: that.data.buyNum,
+        realPay: that.data.zhendezonge,
+        collage: that.data.collage,
+        collageId: that.data.collageId
+      },
+      method: 'POST',
+      contentType: "application/x-www-form-urlencoded ",
+      token: that.data.token
+    }).
+    then((res)=>{
+      wx.hideLoading()
+      console.log(res)
+      if (res.data.code == 0) {
+        if (!res.data.data.receiptAddress) {
+          console.log("-------------------------------");
+          that.setData({
+            address_id: ""
+          })
+          return         
+        }else{
+          var address_detail = res.data.data.receiptAddress
+          that.setData({
+            receiptAddress: address_detail,
+            address_id: res.data.data.receiptAddress.id
+          })
+        }
+      } else {
+        wx.hideLoading()
+        wx.showToast({
+          title: res.data.msg,
+          icon: "none",
+          duration: 2000
+        })
+      }
+    })
+  },
+
+  // 获取《确认订单》页面的数据
+  get_confirm_order_data: function () {
+    var that = this;
+    console.log(that.data.realPay)
+    var _token = wx.getStorageSync('jwtToken') 
+    that.setData({
+      token: _token
+    })
+    wx.showLoading({
+      title: '加载中',
+      mask: true
+    })
+    wx.request({
+      url: config.confirm_an_order,
+      method: 'POST',
+      data: {
+        productId: that.data.productId,
+        productSkuId: that.data.productSkuId,
+        payPrice: that.data.payPrice,
+        buyNum: that.data.buyNum,
+        realPay: that.data.realPay,
+        collage: that.data.collage,
+        collageId: that.data.collageId
+      },
+      header: {
+        'Content-Type': 'application/x-www-form-urlencoded', // POST的请求方式不一样 
+        Authorization: that.data.token
+      },
+      success: function (res) {
+        wx.hideLoading()
+        
+        // console.log("接受确认订单页面请求回来的数据", res)
+        // console.log("确认订单的全部数据信息", res.data.data.product)
+        // console.log("这是确认订单的支付总额", that.data.realPay)
+        // console.log("后台返回的地址信息", res.data.data.receiptAddress)
+        if (res.data.code != 0){
+          console.log("111")
+          var errmsg = res.data.msg
+          wx:wx.showModal({
+            title: '提示',
+            content: errmsg,
+            showCancel: false,
+            cancelText: '',
+            cancelColor: '',
+            confirmText: '',
+            confirmColor: '',
+            success: function(res) {
+
+            },
+            fail: function(res) {},
+            complete: function(res) {},
+          })
+          setTimeout(function(){
+            wx.navigateBack({
+              delta: 1,
+            })
+          },1000)
+          return
+        }
+        var danmai_num1 = res.data.data.product.productSkuSub.price
+        var yunfei = res.data.data.product.productSkuSub.collageInProvinceFreight
+        var heji_num = res.data.data.realPay
+        var address_json = res.data.data.receiptAddress//用户地址
+        var price = res.data.data.product.productSkuSub.collagePrice
+        console.log(yunfei)
+        var bubiandeyunfei = res.data.data.product.productSkuSub.collageInProvinceFreight
+        that.setData({
+          con_order: res.data.data.product,//确认订单的全部数据信息
+          payPrice: price,
+          freight: yunfei,//运费分
+          NoChangeFreight: bubiandeyunfei
+        })
+
+      }
+    })
+  },
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function (options) {
+    var that = this;
+    console.log("接受下单页面的六个参数",options)
+    
+    that.setData({
+      productId: options.productid,
+      productSkuId: options.skuid,
+      payPrice: options.price,
+      buyNum: options.buynum,
+      realPay: options.realpay,
+      zhendezonge:options.realpay,
+      collage: options.collage
+    })
+    var pintuanid = wx.getStorageSync("collageid")
+    that.setData({
+      collageId: pintuanid
+    })
+  },
+
+  /**
+   * 生命周期函数--监听页面初次渲染完成
+   */
+  onReady: function () {
+    var that = this
+    var shareUserId = wx.getStorageSync("shareUserId")
+    var userShareShopId = wx.getStorageSync("userShareShopId")
+    var userShareProductId = wx.getStorageSync("userShareProductId")
+    that.setData({
+      shareUserId: shareUserId,
+      userShareShopId: userShareShopId,
+      userShareProductId: userShareProductId
+    })
+    that.get_confirm_order_data()
+    setTimeout(function () {
+      that.gettotal()
+    }, 800)
+  },
+
+  /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow: function () {
+    var that = this
+    setTimeout(function(){
+      that.alone_get_address()
+    },800)
+   
+  },
+
+  /**
+   * 生命周期函数--监听页面隐藏
+   */
+  onHide: function () {
+  
+  },
+
+  /**
+   * 生命周期函数--监听页面卸载
+   */
+  onUnload: function () {
+  
+  },
+
+  /**
+   * 页面相关事件处理函数--监听用户下拉动作
+   */
+  onPullDownRefresh: function () {
+  
+  },
+
+  /**
+   * 页面上拉触底事件的处理函数
+   */
+  onReachBottom: function () {
+  
+  },
+
+  /**
+   * 用户点击右上角分享
+   */
+  onShareAppMessage: function () {
+  
+  },
+  // 判断用户是否默认地址，没有会跳去选择地址页面
+  noDefaultAddressToChooseAddress: function () {
+    var that = this;
+    if (that.data.address_id != '') {
+      return
+    } else {
+      wx.showToast({
+        title: '您还没有收货地址，去选择或创建您的收货地址吧',
+        icon: 'none',
+        duration: 1500,
+        mask: true,
+        success() {
+          console.log("111")
+          setTimeout(() => {
+            wx.navigateTo({
+              url: '../choose_address/choose_address',
+            })
+          }, 1000)
+        }
+      })
+    }
+  }
+})

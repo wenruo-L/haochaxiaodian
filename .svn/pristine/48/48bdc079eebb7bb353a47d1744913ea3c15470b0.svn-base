@@ -1,0 +1,20 @@
+<!--pages/pay_fail/pay_fail.wxml-->
+<view class='content'>
+  <view class='pay_success_out'>
+    <view class='pay_success'>
+      <view class='icon_wrap'>
+        <image src='../../common/image/index_img/pay_fail.png'></image>
+      </view>
+      <view class='pay_success_text'>订单支付失败!</view>
+      <view class='pay_success_text_on'>原因：{{mistake_text}}</view>
+      <view class='turn_back_to_index' bindtap='to_confirm_order'>重新支付</view>
+
+
+  
+          <view class='check_order'  bindtap='to_all_order'>查看订单</view>
+  
+
+
+    </view>
+  </view>
+</view>

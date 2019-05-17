@@ -1,0 +1,45 @@
+<!--pageA/pages/share_pages/share_pages.wxml-->
+<view class='content'>
+<view class='box'>
+    <view class='hearder_img'>
+      <image src='https://wx.qlogo.cn/mmopen/vi_32/Eq4JZsLlZA5mFMzMaC99ZtiaXYnFbgicxjcGPxLIv39YRPoIfKuTNqAWE1MVGJNqLmASdNOQ8d4nTZREzOiacPn6g/132'></image>
+    </view>
+    <view class='good_detail_out'>
+      <view class='good_detail'>
+        <view class='good_detail_in'>
+          <view class='good_title'>
+            <text class='font24'>我在好茶小店找了很赞的产品，快帮我来付款吧~!</text>
+            <view class='pen_icon'>
+              
+            </view>
+          </view>
+          <view class='good_sum clearfix'>
+            <view class='goodimg fl'>
+              <image src='https://wx.qlogo.cn/mmopen/vi_32/Eq4JZsLlZA5mFMzMaC99ZtiaXYnFbgicxjcGPxLIv39YRPoIfKuTNqAWE1MVGJNqLmASdNOQ8d4nTZREzOiacPn6g/132'></image>
+            </view>
+            <view class='good_name_wrap'>
+              <view class='good_name font26'>
+                福建白茶皇家百合-2013年高山牡丹白茶茶饼
+              </view>
+              <view class='price font26'>
+                拼团价: <text class='maincolor'>￥108/罐</text>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class='waitForPayTimer'>
+      <text>23</text>：<text>59</text>：<text>59</text>
+      <view class='timerTips'>
+        剩余支付时间
+      </view>
+    </view>
+    <view class='payNow'>
+      立即付款
+    </view>
+    <view class='payNowTips'>
+       如果订单发送退款，已支付金额将原路退还好友
+    </view>
+  </view>
+</view>

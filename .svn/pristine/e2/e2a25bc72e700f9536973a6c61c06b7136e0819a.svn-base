@@ -1,0 +1,8 @@
+<!--pages/strategy/strategy.wxml-->
+<view>
+  <view class='bg'>
+      <image class='bgimg' mode='widthFix' src='http://image.haocha.top/i1/poster/base/redbagstrategy.png'></image> 
+  </view>
+</view>
+
+<view class='btn mainbgcolor'>立即分享店铺,拼手气红包</view>

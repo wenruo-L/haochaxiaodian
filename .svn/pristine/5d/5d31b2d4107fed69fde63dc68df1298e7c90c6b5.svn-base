@@ -1,0 +1,36 @@
+/* pages/AD/AD.wxss */
+.content{
+  width: 100%;
+  height: 100;
+  font-size: 0;
+}
+.adImg{
+   width: 100%;
+   height: 100%;
+   font-size: 0;
+  
+}
+.adImg>image{
+   width: 100%;
+}
+.download_app{
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  padding:20rpx 0 92rpx 0; 
+}
+.download_btn{
+  width: 308rpx;
+  height: 82rpx;
+  margin: 0 auto;
+}
+.download_btn>image{
+  width: 100%;
+  height: 100%;
+}
+.MT{
+  margin-top: 40rpx;
+}
+.MB{
+  margin-bottom: 30rpx;
+}

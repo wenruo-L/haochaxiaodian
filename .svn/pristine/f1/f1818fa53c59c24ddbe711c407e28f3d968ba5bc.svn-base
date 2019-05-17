@@ -1,0 +1,70 @@
+<!--pages/mine/mine.wxml-->
+<view>
+  <view class="me_title">
+    <image style="width: 55px; height: 55px; background-color: #eeeeee; border-radius: 50%;margin-left:15px" mode="{{item.mode}}" src="{{userInfo.avatarUrl}}"></image>
+    <view style="flex-direction:row;">
+      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+      <text class="userinfo-nickname">ID:13823843</text>
+    </view>
+  </view>
+
+  <view class="menu" style="flex-direction:row;">
+    <view class="menu-item">
+      个人主页
+    </view>
+    <view class="menu-item">
+      我的收益
+    </view>
+  </view>
+
+    <view class="section" style="flex-direction:row;">
+    <view class="flex-item">
+      <image style="width: 25px; height: 25px;" src='/common/image/mine_img/pay.png' ></image>
+    待付款
+    </view>
+
+   <view class="flex-item"> 
+   <image style="width: 25px; height: 25px;" src='/common/image/mine_img/share.png' ></image>
+    待分享</view>
+    <view class="flex-item">
+     <image style="width: 25px; height: 25px;" src='/common/image/mine_img/receive.png' ></image>
+     待收货
+     </view>
+  </view>
+
+
+
+    <view class="section" style="flex-direction:row;margin-bottom: 0rpx;border-bottom:0px;">
+    <view class="flex-item">
+      <image style="width: 25px; height: 25px;" src='/common/image/mine_img/good.png' ></image>
+     我点赞的
+    </view>
+     <view class="flex-line-horizontal"/>
+    <view class="flex-item"> 
+       <image style="width: 25px; height: 25px;" src='/common/image/mine_img/footprint.png' ></image>
+       我的足迹
+    </view>
+    
+    <view class="flex-line-horizontal"/>
+    <navigator class="flex-item" url="/pages/address/address?type=1">
+      <image style="width: 25px; height: 25px;" src='/common/image/mine_img/address.png' ></image>
+      收货地址
+     </navigator>
+  </view>
+
+  <view   class="flex-line-vertical" />  
+
+   <view class="section" style="flex-direction:row;;border-top:0px;">
+    <view class="flex-item">
+      <image style="width: 25px; height: 25px;" src='/common/image/mine_img/contact.png' ></image>
+    联系门店
+    </view>
+    <view class="flex-line-horizontal"/>
+    <view class="flex-item"> 
+    <image style="width: 25px; height: 25px;" src='/common/image/mine_img/about.png' ></image>
+    关于小店</view>
+    <view class="flex-line-horizontal"/>
+    <view class="flex-item"/>
+  </view>
+
+</view>

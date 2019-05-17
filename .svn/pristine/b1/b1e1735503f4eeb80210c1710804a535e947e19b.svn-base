@@ -1,0 +1,150 @@
+// pageA/pages/record/record.js
+import config from "../../../utils/config.js"
+const app=getApp()
+Page({
+
+  /**
+   * 页面的初始数据
+   */
+  data: {
+    nowPage:0,
+    totalPages:0,
+    list:[]
+  },
+
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function (options) {
+
+    this.onloadData()
+    
+  },
+  onloadData:function(){
+    var that = this
+    wx.showLoading({
+      title: '加载中...',
+      mask: true
+    })
+    app.promise({
+      url: config.record,
+      datas: {
+
+        page: that.data.nowPage
+
+      },
+      method: 'GET',
+      contentType: "application/json",
+      token: wx.getStorageSync('jwtToken')
+    }).
+      then((data) => {
+        console.log('“”“',data)
+
+        if (data.data.code == 0) {
+          wx.hideLoading()
+          var datas = data.data.data.pages.content
+
+          for (var i = 0; i < datas.length; i++) {
+
+            var orderTime = app.timeFormat(parseInt(datas[i].orderTime))
+            datas[i].orderTime = orderTime
+            var updateTime = app.timeFormat(parseInt(datas[i].updateTime))
+
+            datas[i].updateTime = updateTime
+            var successTime = app.timeFormat(parseInt(datas[i].successTime))
+            datas[i].successTime = successTime
+          }
+          // userType=10 下单  单号用id  时间用创建时间 收益为amount
+          //profit 收益
+          // userType=0 分享者 1购买者 
+          that.setData({
+            list: that.data.list.concat(datas),
+            totalPages: data.data.data.pages.totalPages
+          })
+        } else if (data.data.code == 403) {
+          wx.setStorageSync('isLoginsChange', '')
+          wx.setStorageSync('jwtToken', '')
+          wx.navigateTo({
+            url: '../../../pages/welcome/welcome',
+          })
+          wx.hideLoading()
+        } else {
+          wx.hideLoading()
+          var errmsg = data.data.msg
+          wx.showToast({
+            title: errmsg,
+            icon: 'none',
+          })
+        }
+        console.log(datas)
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+  },
+  /**
+   * 生命周期函数--监听页面初次渲染完成
+   */
+  onReady: function () {
+  
+  },
+
+  /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow: function () {
+  
+  },
+
+  /**
+   * 生命周期函数--监听页面隐藏
+   */
+  onHide: function () {
+  
+  },
+
+  /**
+   * 生命周期函数--监听页面卸载
+   */
+  onUnload: function () {
+  
+  },
+
+  /**
+   * 页面相关事件处理函数--监听用户下拉动作
+   */
+  onPullDownRefresh: function () {
+    this.setData({
+      nowPage:0,
+      list:[]
+    })
+    wx.showNavigationBarLoading() //在标题栏中显示加载
+    this.onloadData()
+   var time=setTimeout(function(){
+     wx.hideNavigationBarLoading()
+     wx.stopPullDownRefresh();
+   },500)
+  },
+
+  /**
+   * 页面上拉触底事件的处理函数
+   */
+  onReachBottom: function () {
+    if (this.data.nowPage < this.data.totalPages-1){
+      this.data.nowPage++
+      this.onloadData()
+    }else{
+      wx.showToast({
+        title: '没有更多数据！',
+      })
+    }
+    console.log(this.data.nowPage)
+  },
+
+  /**
+   * 用户点击右上角分享
+   */
+  onShareAppMessage: function () {
+  
+  }
+})

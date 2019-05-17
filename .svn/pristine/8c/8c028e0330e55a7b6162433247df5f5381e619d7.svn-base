@@ -1,0 +1,4 @@
+
+var domain_with_host = 'http://lp.apit.haocha.top/'
+var config = { mingzi: "真香" }
+module.exports = config

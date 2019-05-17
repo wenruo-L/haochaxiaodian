@@ -1,0 +1,411 @@
+/* pages/strategy/strategy.wxss */
+
+.bg {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.bgimg {
+  width: 100%;
+}
+
+.btn {
+  position: absolute;
+  left: 0;
+  bottom: 3%;
+  width: 100%;
+  line-height: 100rpx;
+  height: 100rpx;
+}
+
+.text {
+  background: #158e57;
+  width: 80%;
+  border-radius: 50rpx;
+  display: flex;
+  justify-content: center;
+  color: #fff;
+  font-size: 34rpx;
+  margin: 0 auto;
+  text-align: center;
+  font-weight: 500;
+}
+
+.share_good_poster {
+  width: 100%;
+  height: 900rpx;
+  background: #fff;
+  padding-bottom: 20rpx;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  z-index: 25;
+}
+
+.share_shop_poster {
+  width: 100%;
+  height: 1040rpx;
+  background: #fff;
+  padding-bottom: 20rpx;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  z-index: 4;
+}
+
+.shop_poster {
+  width: 80%;
+  height: 800rpx;
+  margin: 0 auto;
+  background: #fff;
+  padding-bottom: 20rpx;
+}
+
+.shop_poster>image {
+  width: 100%;
+  height: 100%;
+}
+
+.share_good_poster_title {
+  width: 100%;
+  text-align: center;
+  padding: 40rpx 0;
+}
+
+.keep_poster_btn {
+  width: 78%;
+  height: 78rpx;
+  margin: 0 auto;
+  background: #0e6d45;
+  padding-left: 0;
+  padding-right: 0;
+  color: #fff;
+  border-radius: 50rpx;
+  line-height: 78rpx;
+  margin-top: 20rpx;
+  border: 0;
+}
+
+.keep_poster_btn::after {
+  border: 0;
+}
+
+.click_like {
+  display: inline-block;
+  width: 146rpx;
+  position: absolute;
+  right: 175rpx;
+  top: 16rpx;
+}
+
+.click_notlike {
+  display: inline-block;
+  width: 146rpx;
+  position: absolute;
+  right: 175rpx;
+  top: 16rpx;
+}
+
+.yongjin {
+  display: inline-block;
+  position: absolute;
+  right: 5rpx;
+  top: 16rpx;
+}
+
+.yongjin_icon {
+  width: 34rpx;
+  height: 34rpx;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.yongjin_icon>image {
+  width: 100%;
+  height: 100%;
+}
+
+.like_text {
+  font-size: 26rpx;
+  display: inline-block;
+  margin-left: 16rpx;
+  vertical-align: middle;
+  line-height: 30rpx;
+}
+
+.yongjin_text {
+  font-size: 26rpx;
+  display: inline-block;
+  margin-left: 15rpx;
+  vertical-align: middle;
+}
+
+.share_commission_out {
+  width: 100%;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 150;
+}
+
+.share_shop_out {
+  width: 100%;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 5;
+}
+
+.share_commission {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.share_shop {
+  width: 100%;
+  height: 100%;
+  z-index: 40;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.share_commission_in {
+  padding-top: 30rpx;
+  width: 100%;
+  height: 380rpx;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  background: #fff;
+  z-index: 20;
+}
+
+.share_shop_in {
+  padding-top: 30rpx;
+  width: 100%;
+  height: 280rpx;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  background: #fff;
+  z-index: 3;
+}
+
+.share_commission_title {
+  width: 60%;
+  height: auto;
+  margin: 0 auto;
+  text-align: center;
+  /* margin-top: 30rpx; */
+}
+
+.share_commission_text {
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: 15rpx;
+}
+
+.share_commission_text>text {
+  margin-left: 20rpx;
+}
+
+.redcolor {
+  color: #f00;
+}
+
+.share_t {
+  width: 100%;
+  height: auto;
+  text-align: center;
+  margin-top: 30rpx;
+}
+
+.share_t_1 {
+  width: 100%;
+  height: auto;
+  text-align: center;
+  color: #c00;
+}
+
+.share_shop_t {
+  width: 100%;
+  height: auto;
+  text-align: center;
+}
+
+.share_way {
+  width: 92%;
+  height: auto;
+  margin: 0 auto;
+  margin-top: 47rpx;
+  border-top: 1px solid #e6e6e6;
+}
+
+.share_shop_way {
+  width: 92%;
+  height: auto;
+  margin: 0 auto;
+  margin-top: 30rpx;
+  border-top: 1px solid #e6e6e6;
+}
+
+.friends {
+  width: 50%;
+  height: 100%;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.pengyouquan {
+  width: 49%;
+  height: 100%;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.share_with_friend_img {
+  width: 73rpx;
+  height: 73rpx;
+  margin: 0 auto;
+}
+
+.share_with_friend_img>image {
+  width: 100%;
+  height: 100%;
+}
+
+.friends_btn {
+  margin: 0 auto;
+  padding-top: 28rpx;
+  background: #fff;
+  border: none;
+  margin-top: 30rpx;
+}
+
+.friends_btn::after {
+  border: none;
+}
+
+.pengyouquan_btn {
+  padding-top: 28rpx;
+  background: #fff;
+  border: none;
+  margin-top: 15rpx;
+}
+
+.pengyouquan_btn::after {
+  border: none;
+}
+
+.share_with_friend_text {
+  text-align: center;
+  margin-top: 10rpx;
+}
+
+.fans_out {
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  margin-top: 20rpx;
+  border-top: 1px solid#e6e6e6;
+  border-bottom: 1px solid#e6e6e6;
+}
+
+.fans {
+  width: 96%;
+  height: auto;
+  margin: 0 auto;
+  padding: 30rpx 0;
+}
+
+.fans_title {
+  width: 100%;
+  text-align: center;
+}
+
+.fans_detail {
+  width: 88%;
+  height: 80rpx;
+  display: inline-block;
+  vertical-align: middle;
+  margin-top: 36rpx;
+}
+
+.fans_detail_img {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50rpx;
+  border: 1px solid #e6e6e6;
+  display: inline-block;
+}
+
+.fans_detail_img>image {
+  width: 100%;
+  height: 100%;
+  border-radius: 50rpx;
+}
+
+.more_fans {
+  width: 12%;
+  height: 80rpx;
+  display: inline-block;
+  vertical-align: middle;
+  color: #666;
+  line-height: 80rpx;
+  margin-top: 36rpx;
+}
+
+.enter_icon {
+  display: inline-block;
+  width: 11rpx;
+  height: 22rpx;
+}
+
+.enter_icon>image {
+  width: 100%;
+  height: 100%;
+}
+
+.shop_name_yuanhu {
+  width: 100%;
+  height: 100rpx;
+  position: relative;
+}
+
+.yuanhu {
+  width: 100%;
+  height: 147rpx;
+  position: absolute;
+  top: -30rpx;
+  left: 0rpx;
+}
+
+.yuanhu>image {
+  width: 100%;
+  height: 100%;
+}
+
+.like_texts {
+  font-size: 26rpx;
+  display: inline-block;
+  vertical-align: middle;
+  line-height: 30rpx;
+  margin-top: 5rpx;
+  width: 60%;
+  text-align: center;
+}
+
+.like_wrap {
+  width: 150rpx;
+  height: auto;
+  position: relative;
+}
+
+.like_wrap>text {
+  margin-left: 50rpx;
+}

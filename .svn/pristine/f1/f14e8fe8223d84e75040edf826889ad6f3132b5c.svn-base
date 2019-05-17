@@ -1,0 +1,5 @@
+<!--pages/text/text.wxml-->
+<view class='content'>
+<view>{{options}}</view>
+  <button open-type='share'>点击分享</button>
+</view>

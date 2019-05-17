@@ -1,0 +1,218 @@
+var app = getApp();
+import config from "config.js"
+console.log(app)
+
+  const formatTime = date => {
+  const year = date.getFullYear()
+  const month = date.getMonth() + 1
+  const day = date.getDate()
+  const hour = date.getHours()
+  const minute = date.getMinutes()
+  const second = date.getSeconds()
+
+  return [year, month, day].map(formatNumber).join('/') + ' ' + [hour, minute, second].map(formatNumber).join(':')
+}
+
+const formatNumber = n => {
+  n = n.toString()
+  return n[1] ? n : '0' + n
+}
+// post请求格式转化
+function json2Form(json) {
+  var str = [];
+  for (var p in json) {
+    str.push(encodeURIComponent(p) + "=" + encodeURIComponent(json[p]));
+  }
+  return str.join("&");
+}
+function getuser_location() {
+  let _this = this
+  let app = getApp()
+  wx.getLocation({
+    type: 'wgs84',
+    success: function (res) {
+      console.log(res.latitude)
+
+      var latitude1 = res.latitude
+      var longitude2 = res.longitude
+      console.log('能否拿到经纬度' + latitude1)
+      console.log('能否拿到经纬度' + longitude2)
+      _this.setData({
+        _latitude: res.latitude,
+        _longitude: res.longitude
+      })
+      var _token = wx.getStorageSync('token')
+      _this.setData({
+        token: _token
+      })
+
+
+
+      wx.request({
+        url: config.get_near_shop,
+        method: 'GET',
+        data: {
+          // 经纬度参数
+          longitude: _this.data._longitude,
+          latitude: _this.data._latitude
+        },
+        header: {
+          'content-type': 'application/json',// GEt的请求方式为默认 
+          Authorization: _this.data.token
+        },
+        success: function (e) {
+          console.log("附近小店的数据", e)
+          _this.setData({
+            near_shop_list: e.data.data.pages.content
+          })
+          e.data.data.pages.content.forEach(() => {
+
+          })
+          console.log(_this.data.near_shop_list)
+        },
+        fail: function (e) {
+          console.log("获取失败")
+        }
+      })
+
+
+
+    }
+  })
+}
+//登陆
+function myLogin(successFn) {
+  let appp = getApp();
+  wx.login({
+
+    success(res) {
+      var code = res.code;
+      wx.request({
+        url: config.get3rdsession,
+        method: 'GET',
+        data: {
+          code: code
+        },
+        header:{
+          'content-type': 'application/json' // GEt的请求方式为默认 
+        },
+        success:function(res){
+          console.log(res)
+         
+        if (appp.globalData.back_stage_session && appp.globalData.back_stage_session.length != 0) {return }else{
+            console.log("1111")
+            var thirdSession = res.data.data.thirdSession
+            console.log(res.data.data.thirdSession)
+            appp.globalData.back_stage_session =res.data.data.thirdSession ;
+          }
+        }
+      })
+      wx.getUserInfo({
+        withCredentials: true,
+        success(res) {
+          successFn(code, res);
+
+        }
+      })
+    },
+    fail() {
+      wx.showToast({
+        title: '登陆失败',
+        icon: "none",
+        duration: 2000
+      })
+    }
+  })
+}
+
+// 获取用户权限
+function getAuthor(myScope, callBack = function () { console.log("哈哈哈！") }) {
+  wx.getSetting({
+    success(res) {
+      console.log("进入获取用户权限列表", res.authSetting);
+      if (!res.authSetting[myScope]) { //没有获取权限
+        console.log("没有获取权限记录，即将调用wx.authorize", myScope);
+        wx.authorize({
+          scope: myScope,
+          success(res) {
+            console.log("通过author获取用户权限成功！", res);
+            callBack();
+          },
+          fail(res) {
+            console.log("没有通过author权限，调出警告！", res)
+            wx.showModal({
+              title: "获取授权",
+              content: "请授权，否则相关功能将不可用！",
+              showCancel: false,
+              success(res) {
+                if (!res.confirm) {
+                  return
+                };
+                console.log("在警告框确认后弹出openSetting");
+                wx.openSetting({
+                  success(res) {
+                    console.log("用户在opensSetting的授权结果", res);
+                    if (res.scope == true) {
+                      console.log("用户在opensSetting授权");
+                      callBack();
+                    } else {
+                      console.log("用户在opensSetting未授权")
+                    }
+                  }
+                })
+              },
+              fail() {
+                console.log("未授权，关闭showModal");
+              }
+            }) //
+          }
+        })
+      } else { //在getSetting中发现已经授权
+        console.log("之前已经授权了");
+        callBack();
+      }
+    }
+  })
+}
+//reques请求成功回调函数
+// function mySucFn(res, callBack = function (res) { }) {
+//   if (res.data.done) {
+//     console.log(res)
+//     callBack(res);
+    
+//   } else {
+//     try {
+//       wx.showToast({
+//         title: res.data.error.message,
+//         icon: 'none', // loading
+//         duration: 2500,
+//         mask: true
+//       })
+//     } catch (e) {
+//       wx.showToast({
+//         title: e.toString(),
+//         icon: 'none', // loading
+//         duration: 2500,
+//         mask: true
+//       })
+//     }
+//   }
+// }
+//request的fail回调
+function myFailFn() {
+  wx.showToast({
+    title: '网络错误',
+    icon: 'none', // loading
+    duration: 1500,
+    mask: true
+  })
+}
+module.exports = {
+  formatTime: formatTime,
+  myLogin: myLogin,
+  getAuthor: getAuthor,
+  // mySucFn: mySucFn,
+  myFailFn: myFailFn
+}
+
+

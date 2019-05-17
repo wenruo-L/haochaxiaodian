@@ -1,0 +1,155 @@
+<!-- -中秋------------------------------------------------------------ -->
+<block wx:if="{{shop_id==1138850301499932672}}">
+
+  <view class='top'>
+    <image src='https://image.haocha.top/i1/activity/midautumn/background-1.jpg' mode="widthFix"></image>
+
+  </view>
+
+  <view class='item'>
+    <image src='https://image.haocha.top/i1/activity/midautumn/background-2.jpg' mode="widthFix"></image>
+    <image src='https://image.haocha.top/i1/activity/midautumn/background-3.jpg' mode="widthFix"></image>
+
+    <view class='goods'>
+
+      <image src='https://image.haocha.top/i1/activity/midautumn/products/h5/product-1.png' mode="widthFix" data-id='1140677413022203904' catchtap='goDel'></image>
+
+      <image src='https://image.haocha.top/i1/activity/midautumn/products/h5/product-2.png' mode="widthFix" data-id='1140677280951959552' catchtap='goDel'></image>
+
+      <image src='https://image.haocha.top/i1/activity/midautumn/products/h5/product-3.png' mode="widthFix" data-id='1140677165465993216' catchtap='goDel'></image>
+
+      <view class='wrap'>
+        <image src='https://image.haocha.top/i1/activity/midautumn/products/h5/product-4.png' mode="widthFix" data-id='1140677080053186560' catchtap='goDel'></image>
+
+        <image src='https://image.haocha.top/i1/activity/midautumn/lantern.png' mode="widthFix" class='icon'></image>
+      </view>
+      <image src='https://image.haocha.top/i1/activity/midautumn/products/h5/product-5.png' mode="widthFix" data-id='1140676971622039552' catchtap='goDel'></image>
+
+
+      <view class='wrap'>
+        <image src='https://image.haocha.top/i1/activity/midautumn/products/h5/product-6.png' mode="widthFix" data-id='1140676854366076928' catchtap='goDel'></image>
+        <image src='https://image.haocha.top/i1/activity/midautumn/rabbit.png' mode="widthFix" class='icon2'></image>
+      </view>
+      <view class='mid'>
+        <image data-id='1140676776674983936' catchtap='goDel' src='https://image.haocha.top/i1/activity/midautumn/products/h5/product-m1.png'></image>
+        <image data-id='1140676604293283840' catchtap='goDel' src='https://image.haocha.top/i1/activity/midautumn/products/h5/product-m2.png'></image>
+      </view>
+
+    </view>
+
+
+
+  </view>
+
+  <view class='item' style='position:relative;'>
+    <image src='http://image.haocha.top/i1/activity/midautumn/background-4.jpg' mode="widthFix"></image>
+    <image src='http://image.haocha.top/i1/activity/midautumn/background-5.jpg' mode="widthFix"></image>
+    <view class='goods' style='top:200rpx'>
+
+      <image data-id="1140657860020011008" catchtap='goDel' src='https://image.haocha.top/i1/activity/midautumn/products/h5/product-7.png' mode="widthFix"></image>
+
+
+      <view class='wrap'>
+        <image data-id="1140656948035715072" catchtap='goDel' src='https://image.haocha.top/i1/activity/midautumn/products/h5/product-8.png' mode="widthFix"></image>
+        <image src='https://image.haocha.top/i1/activity/midautumn/lantern.png' mode="widthFix" class='icon'></image>
+      </view>
+
+
+      <image data-id="1140676204878102528" catchtap='goDel' src='https://image.haocha.top/i1/activity/midautumn/products/h5/product-9.png' mode="widthFix"></image>
+
+      <view class='wrap'>
+        <image data-id="1140676131419062272" catchtap='goDel' src='https://image.haocha.top/i1/activity/midautumn/products/h5/product-10.png' mode="widthFix"></image>
+        <image src='https://image.haocha.top/i1/activity/midautumn/rabbit.png' mode="widthFix" class='icon2'></image>
+      </view>
+
+
+      <view class='btnWrap'>
+        <image src='http://image.haocha.top/i1/activity/midautumn/background-5.jpg'></image>
+        <button class='btn' open-type='share'>立即分享给好友</button>
+      </view>
+    </view>
+
+
+
+  </view>
+
+</block>
+<!-- ------------------------------------------------------------- -->
+
+<block wx:else>
+
+
+
+
+  <view class='content'>
+    <view class='index_top_mind'>
+      <view class='index_top_bg'>
+        <image src='http://image.haocha.top/i1/poster/base/collage_advertisement.png'></image>
+      </view>
+    </view>
+    <!--拼团频道 -->
+
+    <view class='tips font30' wx:if="{{haocha_dynamic_list == ''}}">暂无商品信息~</view>
+    <view class='shop_channel'>
+      <view class='group_booking_detail' wx:for="{{haocha_dynamic_list}}" wx:for-index="index" wx:key="index">
+        <view class='group_booking_detail_in'>
+          <view class='group_booking' bindtap='to_group_booking' data-redbag="{{haocha_dynamic_list[index].productSkuSub.luckRedBag}}" data-id='{{haocha_dynamic_list[index].productSkuSub.productId}}'>
+            <view class='group_booking_good_img'>
+              <image src='{{haocha_dynamic_list[index].productImageSub.path}}'></image>
+            </view>
+            <view class='group_booking_good_detail'>
+              <view class='group_booking_good_title'>
+                {{haocha_dynamic_list[index].title}}
+              </view>
+              <view class='group_booking_good_price'>
+                <view class='group_booking_price'>
+                  拼团价：
+                  <text>￥{{pintuan_nums[index]}}/{{haocha_dynamic_list[index].unit}}</text>
+                </view>
+                <view class='own_price'>
+                  ¥{{danmai_nums[index]}}/{{haocha_dynamic_list[index].unit}}
+                </view>
+              </view>
+              <view class='group_booking_3'>
+                <view class='group_booking_number'>
+                  已拼{{haocha_dynamic_list[index].productSkuSub.collageSaleNum}}件
+                </view>
+                <view class='to_group_booking'>
+                  <view class='user_header'>
+
+                    <view class='header_img' wx:for="{{haocha_dynamic_list[index].collagingUserSubList}}" wx:for-index="num" wx:key="index">
+                      <image src='{{haocha_dynamic_list[index].collagingUserSubList[num].logo}}'></image>
+
+                    </view>
+                  </view>
+                  <view class='btn_to_gb'>
+                    去拼团
+                  </view>
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view>
+      </view>
+    </view>
+  </view>
+
+
+</block>
+
+
+
+
+
+
+
+
+
+
+
+
+<modal class="text_window" style="display:{{isLogin==true?'none':'block'}}" title='首次访问“好茶小店”请先授权' cancel-text=' ' confirm-text=''>
+  <button class="text_window_btn" open-type="getUserInfo" bindgetuserinfo="getUserInfo">同意授权</button>
+</modal>

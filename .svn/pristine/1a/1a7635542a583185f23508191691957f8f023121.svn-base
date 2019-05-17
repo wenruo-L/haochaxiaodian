@@ -1,0 +1,142 @@
+/* pages/add_new_address/add_new_address.wxss */
+.tishiyu{
+  color: #999;
+}
+.picker{
+  display: inline-block;
+  vertical-align: middle;
+  width: 95%;
+}
+.infor_top{
+  width: 100%;
+  height: 100%;
+}
+.content{
+  border-top:1px solid #e6e6e6; 
+}
+.personal_infor_out{
+  width: 100%;
+  border-top:1px solid #e6e6e6; 
+  border-bottom:1px solid #e6e6e6; 
+  background: #fff;
+  margin-top: 20rpx;
+}
+.personal_infor{
+  width: 96%;
+  margin: 0 auto;
+  padding: 32rpx 0;
+
+}
+.infor{
+  width: 25%;
+  font-size: 30rpx;
+  text-align: left;
+  display: inline-block;
+  vertical-align: middle;
+}
+.infor1{
+  width: 25%;
+  font-size: 30rpx;
+  text-align: left;
+  display: inline-block;
+  vertical-align: top;
+}
+.mation{
+  width: 75%;
+  font-size: 30rpx;
+  display: inline-block;
+  vertical-align: top;
+  /* position: relative; */
+}
+.mation>input{
+  width: 96%;
+  height: 100%;
+  font-size: 30rpx;
+  text-align: left;
+  display: inline-block;
+  vertical-align: middle;
+}
+.mation>text{
+   vertical-align: middle;
+}
+.enter_img{
+  /* position: absolute;
+  right: 20rpx;
+  top: 30rpx; */
+  vertical-align: middle;
+  width: 16rpx;
+  height: 28rpx;
+  display: inline-block;
+   /* margin-left: 20rpx; */
+}
+.enter_img>image{
+  width: 100%;
+  height: 100%;
+}
+.address_detail{
+  width:96%; 
+  height: 200rpx;
+}
+.personal_infor_ad{
+   width: 96%;
+  margin: 0 auto;
+  padding: 32rpx 0;
+   height: 200rpx;
+}
+.add_addrees_out{
+  width: 100%;
+  height: 100%;
+}
+.add_addrees{
+  position: fixed;
+  left: 15rpx;
+  bottom: 39rpx;
+  width: 96%;
+  height: 88rpx;
+  margin: 0 auto;
+  font-size: 34rpx;
+  color: #fff;
+  line-height: 88rpx;
+  text-align: center;
+  border-radius:8rpx; 
+}
+.choose_city_out{
+  width: 100%;
+  background: rgba(0, 0, 0, .5);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 140;
+}
+.choose_middle{
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+.choose_city{
+  position: absolute;
+  left: 0;
+  bottom: 0;
+}
+.YesOrNo{
+  width: 100%;
+  font-size: 36rpx;
+  position: absolute;
+  left: 0;
+  bottom: 500rpx;
+  background: #fff;
+  padding-top: 20rpx;
+}
+.NO{
+  width: 200rpx;
+  height: 50rpx;
+  color: #999;
+  margin-left: 20rpx;
+}
+.YES{
+  width: 200rpx;
+  height: 50rpx;
+  color: #0E6D45;
+  margin-right: 20rpx;
+  text-align: right;
+}

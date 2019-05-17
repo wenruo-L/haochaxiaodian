@@ -1,0 +1,81 @@
+<!--pageA/pages/luckMoneyDel/luckMoneyDel.wxml-->
+<view class='content'>
+  <view class='luckmoney'>
+    <view class='luckmoneyin'>
+      <view class='luckmoneyimg'>
+        <image src='../../../common/image/index_img/luckmoneyDetail.png'></image>
+      </view>
+      <text>7.28元</text>
+    </view>
+  </view>
+
+  <view class='luckmoney_detail_out'>
+    <view class='luckmoney_detail clearfix'>
+      <view class='name_detail'>
+        <view class='name fl font30'>订单编号</view>
+        <view class='detail fr font30'>37664779377448</view>
+      </view>
+      <view class='name_detail'>
+        <view class='name fl font30'>订单状态</view>
+        <view class='detail fr font30'>已完成</view>
+      </view>
+    </view>
+  </view>
+
+  <view class='luckmoney_detail_out'>
+    <view class='luckmoney_detail clearfix'>
+      <view class='name_detail'>
+        <view class='name fl font30'>商品名称</view>
+        <view class='detail fr font30'>董德-白茶-经典寿眉</view>
+      </view>
+      <view class='name_detail'>
+        
+        <view class='detail fr font30'>300g</view>
+      </view>
+    </view>
+  </view>
+
+  <view class='luckmoney_detail_out'>
+    <view class='luckmoney_detail clearfix'>
+      <view class='name_detail'>
+        <view class='name fl font30'>下单时间</view>
+        <view class='detail fr font30'>2018-05-13 09:24</view>
+      </view>
+      <view class='name_detail'>
+        <view class='name fl font30'>结算时间</view>
+        <view class='detail fr font30'>2018-05-13 09:24</view>
+      </view>
+    </view>
+  </view>
+
+  <view class='luckmoney_detail_out'>
+    <view class='luckmoney_detail clearfix pb'>
+      <view class='name_detail'>
+        <view class='name fl font30'>红包总金额</view>
+        <view class='detail fr font30'>10元</view>
+      </view>
+      <view class='header_detail clearfix'>
+        <view class='header fl font26'>
+          <view class='headerimg'>
+            <image src='https://wx.qlogo.cn/mmopen/vi_32/Eq4JZsLlZA5mFMzMaC99ZtiaXYnFbgicxjcGPxLIv39YRPoIfKuTNqAWE1MVGJNqLmASdNOQ8d4nTZREzOiacPn6g/132'></image>
+          </view>
+          <text>爱就像风一样</text>
+        </view>
+        <view class='headerDel fr font30'>
+          7.28元
+        </view>
+      </view>
+      <view class='header_detail clearfix'>
+        <view class='header fl font26'>
+          <view class='headerimg'>
+            <image src='https://wx.qlogo.cn/mmopen/vi_32/Eq4JZsLlZA5mFMzMaC99ZtiaXYnFbgicxjcGPxLIv39YRPoIfKuTNqAWE1MVGJNqLmASdNOQ8d4nTZREzOiacPn6g/132'></image>
+          </view>
+          <text>爱就像风一样</text>
+        </view>
+        <view class='headerDel fr font30'>
+          2.72元
+        </view>
+      </view>
+    </view>
+  </view> 
+</view>

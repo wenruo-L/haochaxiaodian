@@ -1,0 +1,117 @@
+<!--pages/order_detail_chakanwuliu/order_detail_chakanwuliu.wxml-->
+<view class='content'>
+  
+<view class='wait_pay_out mainbgcolor'>
+  <view class='wait_pay'>
+    <view class='wait_pay_text'>
+      <view class='wait one_shopname_font font30'>订单：{{all_data.deliveryTrack.orderNo}}</view>
+      <!-- <view class='deadline font24'>
+      剩余<text>23:59:59</text>自动取消</view> -->
+    </view>
+    <view class='wait_pay_icon'>
+      <image src='../../common/image/index_img/yifahuo.png'></image>
+    </view>
+  </view>
+</view>
+
+<view class='logistics_out'>
+  <view class='logistics'>
+    <view class='logistics_name font30'>
+      物流公司： <text>{{all_data.deliveryTrack.trackingCompany}}</text>
+    </view>
+     <view class='logistics_name font30'>
+      运单号码： <text>{{all_data.deliveryTrack.trackingNO}}</text>
+    </view>
+     <view class='logistics_name font30'>
+      发货时间： <text>{{all_data.deliveryTrack.sendTime}}</text>
+    </view>
+  </view>
+</view>
+
+
+  <view class='logistics_trace_out'>
+    <view class='logistics_trace'>
+      <view class='logistics_trace_title font30'>物流跟踪</view>
+    </view>
+
+    <view class='date_detail' wx:for="{{wiliu_data}}" wx:for-index="index" wx:key="index">
+      <view class='date mezzo_color'>{{wiliu_data[index].time}}</view>
+      <view class='time'>
+        <view class='s_dot'>
+          <image src='../../common/image/index_img/selected_dot.png'></image>
+        </view>
+       
+        <view class='logistics_detail1 maincolor font24'>
+         {{wiliu_data[index].context}}
+        </view>
+      </view>
+    </view>
+
+    <!-- <view class='date_detail'>
+      <view class='date mezzo_color'>2018-05-26</view>
+      <view class='time'>
+        <view class='s_dot1'>
+          <image src='../../common/image/index_img/dot.png'></image>
+        </view>
+        <view class='s_dot2'>
+          <image src='../../common/image/index_img/dot.png'></image>
+        </view>
+        <view class='s_dot3'>
+          <image src='../../common/image/index_img/dot.png'></image>
+        </view>
+        <view class='exact_time_out'>
+          <view class='exact_time font24 '>19:10:35</view>
+          <view class='logistics_detail  font24'>
+            佛山市转运中心公司, <text class=' font24'>已发出</text>
+          </view>
+        </view>
+        <view class='exact_time_out'>
+          <view class='exact_time font24'>19:10:35</view>
+          <view class='logistics_detail  font24'>
+            佛山市转运中心公司, <text class=' font24'>已装车</text>
+          </view>
+        </view>
+        <view class='exact_time_out'>
+          <view class='exact_time font24 '>19:10:35</view>
+          <view class='logistics_detail font24'>
+            佛山市转运中心公司, <text class='font24'>已收入</text>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <view class='date_detail'>
+      <view class='date mezzo_color'>2018-05-26</view>
+      <view class='time2'>
+        <view class='s_dot1'>
+          <image src='../../common/image/index_img/dot.png'></image>
+        </view>
+        <view class='s_dot2'>
+          <image src='../../common/image/index_img/dot.png'></image>
+        </view>
+        <!-- <view class='s_dot3'>
+          <image src='../../common/image/index_img/dot.png'></image>
+        </view> -->
+        <!-- <view class='exact_time_out'>
+          <view class='exact_time font24 '>19:10:35</view>
+          <view class='logistics_detail  font24'>
+            江门新会分公司， <text class=' font24'>已揽收</text>
+          </view>
+        </view>
+        <view class='exact_time_out'>
+          <view class='exact_time font24'>19:10:35</view>
+          <view class='logistics_detail  font24'>
+            已打包， <text class=' font24'>等待揽收</text>
+          </view>
+        </view>
+
+      </view>
+    </view>   --> 
+
+
+  </view>
+
+
+
+
+</view>

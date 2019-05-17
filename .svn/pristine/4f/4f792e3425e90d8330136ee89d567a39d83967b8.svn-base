@@ -1,0 +1,6 @@
+<!--pages/strategy/strategy.wxml-->
+<view>
+  <view class='bg'>
+      <image class='bgimg' mode='widthFix' src='../../common/image/index_img/jiaocheng.png'></image> 
+  </view>
+</view>

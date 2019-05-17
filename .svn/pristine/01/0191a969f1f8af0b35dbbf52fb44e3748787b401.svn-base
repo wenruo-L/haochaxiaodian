@@ -1,0 +1,84 @@
+<!--pages/fast_order/fast_order.wxml-->
+<view class='content'>
+  <view class="swiper-tab">
+    <view class="swiper-tab-list " wx:for="{{navbar}}" data-idx="{{index}}" data-categoryId='{{navbar[index].categoryId}}' wx:key="index" bindtap="clickTab">
+      <view class="swiper-tab-list-in font30 {{currentTab==index ? 'on' : ''}}">{{navbar[index].name}}</view>
+    </view>
+  </view>
+  <view class='swiper_content' current="{{currentTab}}" duration="300" style="height:{{winHeight}}px" bindchange="swiperTab">
+  <!-- 全部  -->
+    <view wx:for="{{teaContent}}" wx:key="{{index}}" class='swiper_item'>
+      <view class='good_detail_out' bindtap='to_confirm_order' data-productid='{{teaContent[index].productSkuSub.productId}}' data-skuid='{{teaContent[index].productSkuSub.id}}' data-price='{{teaContent[index].productSkuSub.price}}' data-buynum='1' data-realpay='{{teaContent[index].productSkuSub.price}}' data-collage='0'>
+        <view class='good_detail'>
+          <view class='good_img'>
+            <image src='{{teaContent[index].productImageSub.path}}'></image>
+          </view>
+          <view class='good_msg'>
+            <view class='good_name font30'>
+              {{teaContent[index].title}}
+            </view>
+            <view class='good_sum'>
+              <view class='sum maincolor'>
+             {{teaContent[index].productSkuSub.price/100}}元/{{teaContent[index].unit}}
+              </view>
+              <view class='order mainbgcolor fr'>下单</view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view> 
+  </view>
+
+  <!-- 多规格选择的遮罩层 -->
+  <view class='more_mask_out' style="height:{{winHeight}}px;" hidden='{{choose_good}}'>
+    <view class='more_mask' style="height:{{winHeight-280}}px" catchtap='choseTheMask'></view>
+    <view class='choose_detail_out'>
+      <view class='choose_detail'>
+        <view class='choose_goodsdetail'>
+          <view class='choose_goodsImg'>
+            <image src=''></image>
+          </view>
+          <view class='choose_goodsText'>
+            <view class='choose_goodsTitle font30'>福建白茶皇家百合-2013年</view>
+            <view class='choose_goodsSum'>¥108~780/套</view>
+          </view>
+        </view>
+        <view class='choose_goodsNum'>
+          <view class='choose_goods_out clearfix'>
+            <view class='choose_goods_L'>
+              <view class='choose_goods font30'>青瓷 粤窑</view>
+              <view class='choose_goods font24 color999'>单买价：￥508</view>
+            </view>
+            <view class='choose_good_add_min fr'>
+              <view class='min dis_middle' bindtap='jian' data-index='{{index}}'>-</view>
+              <input class='choose_good_inp dis_middle' bindinput='get_num' bindblur='get_num_limit' data-index='{{index}}' value='{{buyNum}}'></input>
+              <view class='add dis_middle' bindtap='jia' data-index='{{index}}'>+</view>
+            </view>
+          </view>
+        </view>
+        <view class='choose_goodsNum'>
+          <view class='choose_goods_out clearfix'>
+            <view class='choose_goods_L'>
+              <view class='choose_goods font30'>青瓷 粤窑</view>
+              <view class='choose_goods font24 color999'>单买价：￥508</view>
+            </view>
+            <view class='choose_good_add_min fr'>
+              <view class='min dis_middle' bindtap='jian' data-index='{{index}}'>-</view>
+              <input class='choose_good_inp dis_middle' bindinput='get_num' bindblur='get_num_limit' data-index='{{index}}' value='{{buyNum}}'></input>
+              <view class='add dis_middle' bindtap='jia' data-index='{{index}}'>+</view>
+            </view>
+          </view>
+        </view>        
+      </view>
+      <view class='sum_total'>
+        <view class='total font30'>
+          共 <text class='maincolor'>7</text> 件
+          <text class='maincolor zongjia'>￥647.00</text>
+        </view>
+        <view class='submit_num font30'>
+          下单
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

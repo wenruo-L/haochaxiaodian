@@ -1,0 +1,18 @@
+function shelfTimeState(state) {
+
+  if (state < 1) {
+    return "刚刚推荐"
+  }
+  if (2 < state < 7) {
+    return state + "天前"
+  }
+
+  if (state > 7) {
+    return state + "天前"
+  }
+  return "1周前"
+  // return state
+}
+module.exports = {
+  shelfTimeState: shelfTimeState
+}

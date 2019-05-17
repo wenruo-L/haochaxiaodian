@@ -1,0 +1,188 @@
+<!--pages/confirm_order /confirm_order .wxml-->
+<view class='content'>
+  <view class='order_detail_out'>
+  <view class='cut'>
+    <view class='order_detail' bindtap='to_choose_address'>
+      <view class='shouhuo' wx:if="{{address_id!=''}}">
+        <view class='shouhuoren font30'>
+          收货人： <text>{{receiptAddress.name}}</text>{{receiptAddress.phone}}
+        </view>
+        <view class='address font30'>
+          收货地址：  <text>{{receiptAddress.province}}{{receiptAddress.city}}{{receiptAddress.area}}{{receiptAddress.street}}</text>
+        </view>
+      </view>   
+      <view class='shouhuo1' wx:else >
+        <view class='shouhuoren1 font30'>
+            您还没有收货地址哦~
+        </view>
+      </view> 
+
+      <!-- <view class='shouhuo' wx:else="{{local_address}}">
+        <view class='shouhuoren font30'>
+          收货人： <text>{{local_address[0]}}</text>{{local_address[1]}}
+        </view>
+        <view class='address font30'>
+          收货地址：  <text>{{local_address[2]}}{{local_address[3]}}{{local_address[4]}}{{local_address[5]}}</text>
+        </view>
+      </view>  -->
+
+
+
+
+
+
+      <view class='enter_icon'>
+        <image src='../../common/image/index_img/inter_icon.png'></image>
+      </view>
+     </view>
+    <view class='cut_line'>
+      <image src='../../common/image/index_img/line.png'></image>
+    </view>
+    </view>
+  </view>
+
+  <view class='shopname_out'>
+    <view class='shop_name font30'>
+      <view class='shop_icon'>
+        <image src='../../common/image/index_img/shop_icon.png'></image>
+      </view>
+      {{con_order.shopSub.name}}
+    </view>
+  </view>
+
+  <view class='orders_out'>
+    <view class='orders'>
+      <view class='orders_detail'>
+        <view class='order_info'>
+            <view class='good_img'>
+                <image src='{{con_order.productImageSub.path}}'></image>
+            </view>
+            <view class='good_detail'>
+              <view class='font26 good_detail_text1'>{{con_order.title}}</view>
+              <view class='font24 mezzo_color good_detail_text2'>{{con_order.productSkuSub.skuName}}</view>
+              <view class='font30 good_detail_text3'>价格：<text class='maincolor'>{{payPrice/100}}元/{{con_order.unit}}</text></view>
+            </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class='amount_out clearfix'>
+    <view class='amount'>
+      <view class='font30 fl goodname'>
+        {{con_order.productSkuSub.skuName}}
+      </view>
+              <view class='stepper fr'>
+                <view class='{{minusStatus}} minus' type='number'  bindtap='jian'>-</view>
+                <view class='stepper_num'><input bindinput='get_num' bindblur='get_num_limit' type="number" value='{{buyNum}}' maxlength='4'></input></view>
+                
+                <view class='plus' bindtap='jia'>+</view>
+              </view>
+      <!--https://blog.csdn.net/u010545480/article/details/79021457  -->
+    </view>
+  </view>
+<!--运费  -->
+  <view class='amount_out clearfix'>
+    <view class='amount'>
+      <view class='font30 fl goodname'>
+        运费
+      </view>
+      <view class='stepper_s fr font30' wx:if="{{freight != 0}}">
+         {{freight/100}}<text>元</text>
+      </view>
+      <view class='stepper_s fr font30' wx:if="{{freight == 0 && ziti == true}}">
+         <text>包邮</text>
+      </view>
+      <view class='stepper_s fr font30' wx:if="{{ziti == false}}">
+         <text>门店自提</text>
+      </view>
+    </view>
+  </view>
+  
+<!--门店自提  -->
+  <view class='amount_out clearfix'>
+    <view class='amount clearfix' bindtap='choose_ziti'>
+      <view class='font30 fl goodname'>
+        门店自提
+      </view>
+      <view class='stepper_img_wrap fr'>
+        <view class='stepper_img font30'>
+          <image src='../../common/image/index_img/select.png'></image>
+        </view>
+        <view class='stepper_img_selected font30' hidden="{{ziti}}">
+          <image src='../../common/image/index_img/selected.png'></image>
+        </view>
+      </view>
+    </view>
+  </view>
+<!-- 红包 -->
+  <view class='amount_out clearfix'>
+    <view class='amount clearfix' bindtap='choose_luckyMoney'>
+      <view class='amount_icon fl'>
+        <image src='../../common/image/index_img/collarRed.png'></image>
+      </view>
+      <view class='font30 fl goodname' style='color:#EC0000'>
+        {{luckyMoney/100}}元
+        <text>可用红包余额</text>
+      </view>
+      <view class='stepper_img_wrap fr'>
+        <view class='stepper_img font30'>
+          <image src='../../common/image/index_img/select.png'></image>
+        </view>
+        <view class='stepper_img_selected font30' hidden="{{luckyMoneyIcon}}">
+          <image src='../../common/image/index_img/selected.png'></image>
+        </view>
+      </view>
+    </view>
+  </view>
+<!--选中支付方式  -->
+  <view class='amount_out_s clearfix'>
+    <view class='amount'>
+      <view class='font30 fl goodname mezzo_color'>
+        请选择支付方式
+      </view>
+    </view>
+  </view>
+
+<!--微信  -->
+  <view class='amount_out clearfix'>
+    <view class='amount'>
+    <view class='pay_icon fl '>
+      <image src='../../common/image/index_img/wxpay.png'></image>
+    </view>
+      <view class='font30 fl goodname'>
+        微信支付
+      </view>
+      <view class='stepper_img fr font30'>
+         <image src='../../common/image/index_img/selected.png'></image>
+      </view>
+    </view>
+  </view>
+
+  <!-- <view class='amount_out clearfix'>
+    <view class='amount clearfix'>
+    <view class='pay_icon fl '>
+      <image src='../../common/image/index_img/friend_pay.png'></image>
+    </view>
+      <view class='font30 fl goodname'>
+        好友支付
+      </view>
+      <view class='stepper_img fr font30'>
+         <image src='../../common/image/index_img/select.png'></image>
+      </view>
+    </view>
+  </view> -->
+  <view class='empty'></view>
+
+  <view class='pay'>
+    <view class='sum mezzo_color font26'>
+      实付：  <text class='font30 maincolor'>{{realPay/100}}元</text>
+          
+    </view>
+    <view class='sub font30 mainbgcolor' bindtap='payment'>
+      提交订单
+    </view>
+  </view>
+  
+</view>
+

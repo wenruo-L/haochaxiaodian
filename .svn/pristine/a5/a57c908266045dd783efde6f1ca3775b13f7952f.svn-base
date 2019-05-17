@@ -1,0 +1,91 @@
+/**app.wxss**/
+
+/**全局page基本样式5*/
+
+page {
+  background: #f5f5f5;
+  height: 100%;
+  width: 100%;
+  -webkit-text-size-adjust: none;
+  padding: 0;
+  margin: 0;
+  font-size: 13px;
+}
+
+.selected_color{
+  color: #FF0000;
+}
+.yichu{
+  width: 100%;
+  height: 40rpx;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 1;
+}
+.fl{ float: left}
+.fr{ float: right}
+.clear{clear:both;} 
+.clearfix:after{
+	content: "";
+	display: block;
+	clear: both;
+}
+.clear{clear:both;} 
+
+ 
+.clearfix:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+ 
+.maincolor{
+  color: #0E6D45;
+}
+.mainbgcolor{
+  background: #0E6D45;
+}
+.mezzo_color{
+  color: #666;
+}
+.shallow_color{
+  color: #999;
+}
+
+.top_title_font{
+   font-size: 40rpx;
+}
+.one_shopname_font{
+  font-size: 36rpx;
+}
+.font36{
+  font-size: 36rpx;
+}
+.font30{
+  font-size: 30rpx;
+}
+.font29{
+  font-size: 29rpx;
+}
+.font28{ 
+  font-size: 28rpx;
+}
+.font26{
+  font-size: 26rpx;
+}
+.font24{
+  font-size: 24rpx;
+}
+.font22{
+  font-size: 22rpx;
+}
+.text_window_btn{
+  width: 47%;
+  height: 85rpx;
+  margin: 0 auto;
+  margin-top: 20rpx;
+  background-color: #0E6D45;
+  color: #fff;
+  /* border-top: 50rpx; */
+}

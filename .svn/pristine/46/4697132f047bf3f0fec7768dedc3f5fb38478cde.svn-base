@@ -1,0 +1,699 @@
+/* pages/group_booking/group_booking.wxss */
+ .share_t_1{
+  width: 100%;
+  height: auto;
+  text-align: center;
+  color: #cc0000;
+}
+.picture_recommend_out{
+  font-size: 0;
+}
+.text_window_btn{
+width:44%;
+height:85rpx;
+
+  margin: 0 auto;
+  margin-top: 20rpx;
+  background-color: #0E6D45;
+  color: #fff;
+}
+.back_to_index{
+  width: 200rpx;
+  height: 50rpx;
+  padding-right: 20rpx;
+  background: rgba(0, 0, 0, .5);
+  text-align: right;
+  line-height: 50rpx;
+  border-radius:50rpx; 
+  z-index: 10;
+  position: absolute;
+  color: #fff;
+  left: -80rpx;
+  top: 40rpx;
+}
+.index_top_mind{
+    width: 100%;
+    height:100%;
+    position: relative;
+  }
+  .good_price_out{
+  /* position: absolute;
+  left: 0;
+  bottom: 0; */
+  width: 100%;
+  padding: 15rpx 0;
+  background: #CC0000;
+  }
+  .good_prices{
+    width: 96%;
+    margin: 0 auto;
+    height: 100%;
+  }
+  .jiage{
+    font-size: 30rpx;
+    line-height: 48rpx;
+    color: #fff;
+    font-weight: 500;
+    display: inline-block;
+  }
+  .tuangoushu{
+    display: inline-block;
+    width: 186rpx;
+    height: 49rpx;
+    text-align: center;
+    line-height: 49rpx;
+    font-size: 30rpx;
+    background: #900;
+    border-radius:8rpx;
+    color: #fff; 
+  }
+  .jiage>text{
+     font-size: 36rpx;
+  }
+  .index_top_bg{
+    width: 100%;
+    height: 750rpx;
+  }
+  .index_top_bg>image{
+      width: 100%;
+      height: 100%;
+  }
+  .good_detail_out{
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    margin-bottom: 20rpx;
+    border-bottom:1px solid #e6e6e6; 
+  }
+  .join_in_out{
+    position: relative;
+    height: auto;
+    width: auto;
+  }
+  .join_in{
+    width: 100%;
+    height: 320rpx;
+    background: #fff;
+    margin-bottom:20rpx; 
+    border-top:1px solid #e6e6e6; 
+    border-bottom:1px solid #e6e6e6;
+    overflow-x:scroll;
+  }
+   .join_in::-webkit-scrollbar {
+      display: none;
+  }
+  .join_inside{
+    width: 96%;
+    margin: 0 auto;
+    height: 100%;
+    overflow: scroll;
+    position: relative;
+    padding-top: 88rpx;
+    z-index: 10;
+  }
+  .join_inside::-webkit-scrollbar {
+      display: none;
+  }
+  .click_join{
+     width: 100%;
+    height: 30rpx;
+    padding: 34rpx 0 20rpx 0;
+    position: absolute;
+    top:0;
+    left: 0; 
+    background: #fff;
+    z-index: 15;
+  }
+  .empty{
+    width: 100%;
+    height: 120rpx;
+  }
+  .num_people{
+    font-size: 24rpx;
+    margin-left: 20rpx;
+  }
+  /* .user_portrait_out{
+    display: inline-block;
+    vertical-align: middle;
+
+  } */
+  /* .user_portrait_out1{
+    display: inline-block;
+    vertical-align: middle;
+    width: auto;
+    height: auto;
+  } */
+  .user_portrait{
+    width: 100%;
+    height: 120rpx;
+    display: inline-block; 
+     vertical-align: middle;  
+  }
+  .user_portrait1{
+    width: 50%;
+    height: 120rpx;
+  }
+  .user_n_h{
+     width: 50%; 
+    display: inline-block;
+    vertical-align: middle;
+    padding: 10rpx 0;
+  }
+  .header_img{
+    width:80rpx;
+    height:80rpx;
+    border-radius:50%; 
+    display: inline-block;
+    vertical-align: middle;
+  }
+  .header_img>image{
+    width: 100%;
+    height: 100%;
+     border-radius:50%; 
+  }
+  .user_name{
+    font-size: 24rpx;
+    color: #010101;
+     display: inline-block;
+     line-height: 48rpx;
+     vertical-align: middle;
+     margin-left: 30rpx;
+  }
+  .count_down{  
+    display: inline-block;
+    vertical-align: middle;
+    padding: 10rpx 0;
+  }
+  .times{
+    font-size: 24rpx;
+    display: inline-block;
+  }
+  .join_to{
+    color: #fff;
+    width:144rpx;
+    height:60rpx;
+    font-size:24rpx;
+    line-height: 60rpx;
+    text-align: center;
+    background: #0E6D45;
+    display: inline-block;
+    border-radius:50rpx;
+    margin-left: 15rpx; 
+    margin-top: 20rpx;
+  }
+  .good_detail{
+    width: 96%;
+    margin: 0 auto;
+    padding-top: 20rpx;
+    position: relative;
+  }
+  .like_img{
+    width:38rpx;
+    height: 38rpx;
+    margin: 0 auto;
+     margin-bottom: 10rpx;
+  }
+  .like_img>image{
+    width: 100%;
+    height: 100%;
+  }
+  .like_text{
+    font-size: 24rpx;
+     text-align: center;
+     margin-top: 10rpx;
+     word-spacing:5px;
+  }
+  .title{
+    display: inline-block;
+    width: 90%;
+  }
+  .titles{
+    width: 90%;
+    display: inline-block;
+    vertical-align: top;
+    font-size: 36rpx;
+    line-height: 48rpx;
+    font-weight: 600;
+  }
+  .nolike{
+    width: 80rpx;
+    height: 80rpx;
+    position: absolute;
+    right: 0;
+    top: 28rpx;
+    display: inline-block;
+    vertical-align: top;
+  }
+  .like{
+        width: 80rpx;
+    height: 80rpx;
+    position: absolute;
+    right: 0;
+    top: 28rpx;
+    display: inline-block;
+    vertical-align: top;
+  }
+  .good_price{
+    width: 100%;
+    height: 100%;
+    padding: 10rpx 0 20rpx 0;
+  }
+  .cost{
+    font-size: 30rpx;
+    line-height: 48rpx;
+  }
+  .cost>text{
+    font-size: 36rpx;
+    font-weight: 500;
+    line-height: 48rpx;
+  }
+  .freight{
+    font-size: 24rpx;
+    line-height: 48rpx;
+  }
+  .good_introduce{
+    width: 100%;
+    height: auto;
+    background: #f5f5f5;
+    position: relative;
+    border-radius: 7px;
+    padding-bottom: 20rpx;
+  }
+  .zuoyinhao_wrap{
+    width: 42rpx;
+    height: 36rpx;
+    position: relative;
+    left:20rpx;
+    top:33rpx;
+    display: inline-block;
+  }
+  .zuoyinhao_wrap>image{
+    width: 100%;
+    height: 100%;
+  }
+  .good_introduce_text{
+    margin-left: 20rpx;
+    display: inline-block;
+    text-indent:3em;
+    font-size: 24rpx;
+    line-height: 48rpx;
+    font-weight: 300;
+    text-align: justify;
+    width: 96%;
+    display: -webkit-box;    
+    -webkit-box-orient: vertical;    
+  
+    overflow: hidden;
+  }
+  .share{
+    width:100%;
+    height: 30rpx;
+    padding: 26rpx 0;
+    display: flex;
+    justify-content: space-between;
+  }
+  .share_s{
+    position: relative;
+    display: inline-block;   
+  }
+  .ml{
+    margin-left: 20rpx;
+  }
+  .share_img{
+    width: 20rpx;
+    height: 22rpx;
+    display: inline-block;
+    position: absolute;
+    top: 2rpx;
+    left: -17rpx;
+    
+  }
+  .share_img>image{
+    width: 100%;
+    height: 100%;
+  }
+  .share_s_text{
+    display: inline-block;
+    font-size: 22rpx;
+
+    margin-left: 10rpx;
+  }
+.good_parameter_out{
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  border-bottom: 1px solid#e6e6e6;
+  border-top: 1px solid#e6e6e6;
+}
+.good_parameter{
+  width: 94%;
+  height: 100%;
+  margin: 0 auto;
+}
+.good_parameter_title{
+  width: 100%;
+  padding: 55rpx 0 32rpx 0;
+}
+.line{
+  width: 60%;
+  height: 1px;
+  background: #f5f5f5;
+  margin: 0 auto;
+}
+.good_parameter_title_text{
+  text-align: center;
+  font-size: 30rpx;
+  width: 135rpx;
+  margin: 0 auto;
+  margin-top: -25rpx;
+  height: auto;
+  background: #FFF;
+}
+.good_form{
+  width: 100%;
+  height: 100%;
+   border:2px solid#e6e6e6;  
+  margin-bottom: 20rpx;
+}
+.w_wrap{
+  width: 100%;
+ 
+}
+.g_wrap{
+  background: #f5f5f5;
+ 
+}
+.b_b{
+   border-bottom:1px solid#e6e6e6; 
+}
+.left_wrap{
+  display: inline-block;
+  width: 28%;
+  padding: 29rpx 0;
+  border-right: 1px solid#e6e6e6; 
+  margin-left: 30rpx;
+  text-align: left;
+}
+.right_wrap{
+  display: inline-block;
+  margin-left: 30rpx;
+  padding: 29rpx 0;
+  width: 63%; 
+   text-align: left;
+}
+.good_particulars_out{
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  margin-top: 20rpx;
+  border-top: 1px solid#e6e6e6;
+  font-size: 0;
+}
+.good_particulars{
+  width: 96%;
+  margin: 0 auto;
+}
+.picture_recommend{
+    width: 100%;
+ 
+
+}
+
+.pay{
+  width: 100%;
+  height: 114rpx;
+  position: fixed;
+  border-top:1px solid #e6e6e6; 
+  left: 0;
+  bottom: 0;
+  z-index: 15;
+}
+.take_commission_out{
+  width: 33.3%;
+  height: 100%;
+  display: inline-block;
+  background: #fff;
+ 
+}
+ .take_commission{
+  padding-top:20rpx; 
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  margin: 0 auto;
+  font-size:24rpx;
+  line-height: 48rpx;
+  background: #fff;
+  border: none;
+} 
+.take_commission::after{
+  border: none;
+}
+.icon_wrap{
+  width: 36rpx;
+  height: 38rpx;
+  margin: 0 auto;
+}
+.icon_wrap>image{
+   width: 100%;
+  height: 100%;
+} 
+/* .payment{
+  width: 50%;
+  height: 100%;
+   display: inline-block;
+   vertical-align: middle;
+   text-align: center;
+   line-height: 114rpx;
+   color: #fff;
+}  */
+/* .empty{
+  width: 100%;
+  height: 114rpx;
+  text-align: center;
+} */
+
+.buy_alones{
+  width: 33.3%;
+  height: 100%;
+  color: #fff;
+  font-weight: 500;
+  background: #16B170;
+  display: inline-block;
+  text-align: center;
+  vertical-align: top;
+}
+.buy_alone{
+  padding-top:20rpx; 
+}
+.group_buys{
+  width: 33.3%;
+  height: 100%;
+  color: #fff;
+  font-weight: 500;
+  background: #0E6D45;
+  display: inline-block;
+  text-align: center;
+  vertical-align: top;
+}
+.group_buys{
+  padding-top:20rpx; 
+}
+.take_commission_out{
+  width: 33.3%;
+  height: 100%;
+  display: inline-block;
+  vertical-align: middle;
+  background: #fff;
+ 
+}
+.take_commission{
+  padding-top:20rpx; 
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  margin: 0 auto;
+  font-size:24rpx;
+  line-height: 48rpx;
+  border: none;
+}
+.take_commission::after{
+  border: none;
+}
+.icon_wrap{
+  width: 36rpx;
+  height: 38rpx;
+  margin: 0 auto;
+}
+.icon_wrap>image{
+   width: 100%;
+  height: 100%;
+}
+.payment{
+  width: 50%;
+  height: 100%;
+   display: inline-block;
+   vertical-align: middle;
+   text-align: center;
+   line-height: 114rpx;
+   color: #fff;
+}
+.empty{
+  width: 100%;
+  height: 114rpx;
+}
+.share_commission_out{
+  width: 100%;
+  /* background: rgba(0, 0, 0,0.5); */
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 20;
+}
+.share_commission{
+  width: 100%;
+  height: 100%;
+  /* position: relative; */
+  z-index: 10;
+    /* background: reba(10,10,10,0.5);   */
+     background: rgba(0, 0, 0, .5);   
+}
+.share_commission_in{
+ 
+  padding-top: 30rpx;
+  width: 100%;
+  height: 380rpx;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  background: #fff;
+  z-index: 3;
+}
+.share_commission_title{
+  width: 60%;
+  /* height: auto; */
+  margin: 0 auto;
+  text-align: center;
+  /* margin-top: 30rpx; */
+}
+.share_commission_text{
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: 15rpx;
+}
+.share_commission_text>text{
+  margin-left: 20rpx;
+}
+.redcolor{
+  color: #FF0000;
+}
+.share_t{
+  width: 100%;
+  height: auto;
+  text-align: center;
+  margin-top: 30rpx;
+}
+.share_way{
+  width: 92%;
+  height: auto;
+  margin: 0 auto;
+  margin-top: 47rpx;
+  border-top:1px solid #e6e6e6; 
+}
+.friends{
+  width: 50%;
+  height: 100%;
+  display: inline-block;
+  vertical-align: middle;
+}
+.pengyouquan{
+  width: 50%;
+  height: 100%;
+  display: inline-block;
+  vertical-align: middle;
+}
+.share_with_friend_img{
+  width: 73rpx;
+  height: 73rpx;
+  margin: 0 auto;
+}
+.share_with_friend_img>image{
+  width: 100%;
+  height: 100%;
+}
+.friends_btn{
+  margin: 0 auto;
+  padding-top: 28rpx;
+  background: #fff;
+  border: none;
+  margin-top: 30rpx;
+}
+.friends_btn::after{
+  border: none;
+}
+.pengyouquan_btn{
+  padding-top: 28rpx;
+  background: #fff;
+  border: none;
+  margin-top: 15rpx;
+}
+.pengyouquan_btn::after{
+  border: none;
+}
+.share_with_friend_text{
+  text-align: center;
+  margin-top: 10rpx;
+}
+.share_good_poster{
+  width: 100%;
+  height: 900rpx;
+  background: #fff;
+  padding-bottom: 20rpx;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  z-index: 4;
+}
+.share_good_poster_title{
+  width: 100%;
+  text-align: center;
+  padding: 40rpx 0;
+}
+.keep_poster_btn{
+  width: 78%;
+  height: 78rpx;
+  margin: 0 auto;
+  background: #0E6D45;
+  padding-left: 0;
+  padding-right: 0;
+  color: #fff;
+  border-radius:50rpx;
+  line-height: 78rpx; 
+  margin-top: 20rpx;
+}
+.good_poster{
+  width: 76%;
+  height: 76%;
+  /* background: red; */
+  margin: 0 auto;
+  /* box-shadow: 10rpx 10rpx 10rpx #888; */
+  
+}
+.good_poster>image{
+  width: 100%;
+  height: 100%;
+}
+.good_price_in{
+  text-decoration: line-through;
+  color: #666;
+}
+.yongjin_icon{
+   width: 34rpx;
+    height: 34rpx;
+   display: inline-block;
+   vertical-align: middle;
+}
+.yongjin_icon>image{
+  width: 100%;
+  height: 100%;
+}

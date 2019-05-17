@@ -1,0 +1,126 @@
+ /* page{
+ 
+ }
+ .user_portrait{
+
+    height: 100rpx;
+    display: inline-block; 
+     vertical-align: middle; 
+  margin: 10rpx 20rpx;
+  }
+  .user_portrait1{
+    width: 50%;
+    height: 120rpx;
+  }
+  .user_n_h{
+     width: 50%; 
+     height: 100rpx;
+    display: inline-block;
+    vertical-align: middle;
+    padding: 10rpx 0;
+  }
+  .header_img{
+    width:80rpx;
+    height:80rpx;
+    border-radius:50%; 
+    display: inline-block;
+    vertical-align: middle;
+  }
+  .header_img>image{
+    width: 100%;
+    height: 100%;
+     border-radius:50%; 
+  }
+  .user_name{
+    font-size: 24rpx;
+    color: #010101;
+     display: inline-block;
+     line-height: 48rpx;
+     vertical-align: middle;
+     margin-left: 30rpx;
+  }
+  .count_down{  
+    height: 100rpx;
+    display: inline-block;
+    vertical-align: middle;
+    padding-top:25rpx;
+  }
+  .times{
+    font-size: 24rpx;
+    display: inline-block;
+    vertical-align: middle;
+  }
+  .join_to{
+    color: #fff;
+    width:144rpx;
+    height:60rpx;
+    font-size:24rpx;
+    line-height: 60rpx;
+    text-align: center;
+    background: #0E6D45;
+    display: inline-block;
+    border-radius:50rpx;
+    margin-left: 15rpx; 
+    vertical-align: middle;
+  }
+  .good_detail{
+    width: 96%;
+    margin: 0 auto;
+    padding-top: 20rpx;
+    position: relative;
+  } */
+  .wrap{
+  text-align: center;
+  margin-top: 250rpx;
+  color: #999
+}
+.noMore{
+  width: 380rpx;
+  height: 380rpx;
+  margin: 0 auto
+}
+  page{
+    background: #fff
+  }
+  .flex{
+    display: flex;
+    justify-content: center;
+    border-bottom: 1px solid #ddd;
+    padding:20rpx 0;
+    /* margin-bottom:20rpx; */
+    background:#fff
+  }
+  image{
+    display: block;
+    width: 100rpx;
+    height: 100rpx;
+    border-radius: 50%
+  }
+  .name{
+    line-height: 100rpx;
+    height: 100rpx;
+    padding-left: 20rpx;
+    width: 150rpx;
+overflow : hidden;
+text-overflow: ellipsis;
+display: -webkit-box;
+-webkit-line-clamp: 1;
+-webkit-box-orient: vertical;
+  }
+  .time{
+    line-height: 100rpx;
+    width: 230rpx;
+    text-align: center
+  }
+  .btn{
+    color: #fff;
+    width:144rpx;
+    height:60rpx;
+    font-size:24rpx;      
+    line-height: 60rpx;
+    text-align: center;
+    background: #0E6D45;
+    margin-top: 20rpx;
+    border-radius:50rpx;
+    margin-left: 20rpx;
+  }

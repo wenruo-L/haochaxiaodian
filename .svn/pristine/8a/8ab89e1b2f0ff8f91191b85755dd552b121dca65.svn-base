@@ -1,0 +1,140 @@
+<!--pages/ruzhu/ruzhu.wxml-->
+<view class='content'>
+  <view class='index_top_mind'>
+       <view class='index_top_bg'>
+          <image src='http://file.haocha.top/image/applet/test/shop_enter_ad.png'></image>
+      </view> 
+  </view>
+
+  <view class='infor_top'>
+
+    <view class='personal_infor_out'>
+      <view class='personal_infor clearfix'>
+        <view class='infor fl'>
+            姓名
+        </view>
+        <view class='mation fr'>
+            <input class='fr' placeholder="请输入您的名字" value='{{userName}}'>
+               
+            </input>
+        </view>
+      </view>
+    </view>
+
+    <view class='personal_infor_out'>
+      <view class='personal_infor clearfix'>
+        <view class='infor fl'>
+            电话
+        </view>
+        <view class='mation fr'>
+            <input class='fr' placeholder="请输入您的电话" value='{{userPhone}}'>
+                
+            </input>
+        </view>
+      </view>
+    </view>
+
+    <view class='personal_infor_out boder_b_line'>
+          <picker mode="region" bindchange="bindRegionChange" value="{{region}}" custom-item="{{customItem}}">
+      <view class='personal_infor clearfix'>
+        <view class='infor fl'>
+            地址
+        </view>
+        <view class='mation fr'>
+            <view class='picker'>{{region[0]}}{{region[1]}}{{region[2]}}</view>
+             <view class='enter_img'>
+                <image src='../../common/image/ruzhu_img/enter.png'></image>
+            </view> 
+        </view>
+      </view>
+          </picker>
+    </view>
+    
+  </view>
+
+  <view class='infor_bottom'>
+
+      <view class='personal_infor_out'>
+           <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+        <view class='personal_infor clearfix'>
+          <view class='infor fl'>
+              主营品类
+          </view>
+          <view class='mation fr'> 
+              <text class='picker'>{{array[index]}}</text>
+              <view class='enter_img'>
+                  <image src='../../common/image/ruzhu_img/enter.png'></image>
+              </view>
+          </view>
+        </view>
+           </picker>
+      </view>
+
+
+      <view class='personal_infor_out'>
+            <picker bindchange="bindPickerChange2" value="{{index2}}" range="{{array2}}">
+        <view class='personal_infor clearfix'>
+          <view class='infor fl'>
+              客单价
+          </view>
+          <view class='mation fr'> 
+              <text class='picker'>{{array2[index2]}}</text>
+              <view class='enter_img'>
+                  <image src='../../common/image/ruzhu_img/enter.png'></image>
+              </view>
+          </view>
+        </view>
+            </picker>
+      </view>
+
+      <view class='personal_infor_out'>
+            <picker bindchange="bindPickerChange3" value="{{index3}}" range="{{array3}}">
+        <view class='personal_infor clearfix'>
+          <view class='infor fl'>
+              店铺面积
+          </view>
+          <view class='mation fr'>             
+              <text class='picker'>{{array3[index3]}}</text>
+              <view class='enter_img'>
+                  <image src='../../common/image/ruzhu_img/enter.png'></image>
+              </view>
+          </view>
+        </view>
+            </picker>
+      </view>
+
+      <view class='personal_infor_out boder_b_line'>
+            <picker mode="multiSelector" bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}" range="{{multiArray}}" range-key='name'>             
+        <view class='personal_infor clearfix'>
+          <view class='infor fl'>
+              现有进货渠道
+          </view>
+          <view class='mation fr'>
+              <text class="picker">{{nowPurchaseChannel}}</text>
+              <view class='enter_img'>
+                  <image src='../../common/image/ruzhu_img/enter.png'></image>
+              </view>
+          </view>
+        </view>
+            </picker>
+      </view>
+
+    </view> 
+
+      <view class='ruzhushenqing_out'>
+        <view class='ruzhushenqing'>
+          <view class='rezhu_btn'>提交入驻申请</view>
+            <view class='pdu'>
+              <view class='select_wrap'>
+                  <view class='select_img'>
+                    <image src='../../common/image/ruzhu_img/select.png'></image>
+                  </view>
+              </view>
+              <view class='tips'>
+                已阅读并同意
+                <text>《入驻好茶小店合同及相关授权》</text>
+              </view>
+            </view>
+        </view>
+      </view>
+</view>

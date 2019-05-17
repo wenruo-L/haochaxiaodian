@@ -1,0 +1,93 @@
+<!--pageA/pages/record/record.wxml-->
+<view class='noMore' wx:if="{{list.length==0}}">
+    <view class='noMoreTipsimg'>
+      <image src='../../../common/image/index_img/noMore.png'></image>
+    </view>
+    暂无商品信息
+  </view>
+<view class='list'>
+  <view class='item' wx:for="{{list}}" wx:key="this">
+    <!-- <view class='title'>2018-08</view> -->
+    <view class='mes'>
+      <view class='goodsName'>【<block wx:if="{{item.userType==0}}">分享红包】{{item.title}}</block><block wx:if="{{item.userType==1}}">下单红包】 {{item.title}}</block><block wx:if="{{item.userType==10}}">提现】提现单号:{{item.id}}</block>
+      </view>
+      <view class='bot'>
+        <view class='left'>
+        <block wx:if="{{item.userType==10}}">
+         <view class='time'>
+            <view class='text'>
+              <text>提现时间：</text> 
+              <block >{{item.updateTime}}</block>
+              
+            </view>
+          </view>
+        </block>
+        <block wx:else>
+          <view class='time'>
+            <view class='text'>
+              <text>下单时间：</text> {{item.orderTime}}
+             
+             
+            </view>
+          </view>
+          <view class='time'>
+            <view class='text'>
+              <text>结算时间：</text> {{item.successTime}}
+            </view>
+          </view>
+        </block>
+          
+        </view>
+        <view class="right {{item.userType==10? 'color top':''}}">
+          
+           <block wx:if="{{item.userType==10}}">-￥{{item.amount/100}}</block>
+              <block wx:else>+￥{{item.profit/100}}</block>
+        </view>
+      </view>
+    </view>
+    <!-- <view class='mes'>
+      <view class='goodsName'>【分享红包】新会小心肝小心肝小心肝小心肝</view>
+      <view class='bot'>
+        <view class='left'>
+          <view class='time'>
+            <view class='text'>
+              <text>下单时间：</text> 08-01 09:00
+            </view>
+          </view>
+          <view class='time'>
+            <view class='text'>
+              <text>结算时间：</text> 08-02 09:00
+            </view>
+          </view>
+        </view>
+        <view class='right'>
+          +￥7.5
+        </view>
+      </view>
+    </view> -->
+  </view>
+  <!-- <view class='item'>
+    <view class='title'>2018-08</view>
+    <view class='mes'>
+      <view class='goodsName'>【提现单号】21443412341314324232332</view>
+      <view class='bot'>
+        <view class='left'>
+          <view class='time'>
+            <view class='text'>
+              <text>下单时间：</text> 08-01 09:00
+            </view>
+          </view>
+          <view class='time'>
+            <view class='text'>
+              <text>结算时间：</text> 08-02 09:00
+            </view>
+          </view>
+        </view>
+        <view class='right color'>
+          +￥7.5
+        </view>
+      </view>
+    </view>
+  </view> -->
+
+</view>

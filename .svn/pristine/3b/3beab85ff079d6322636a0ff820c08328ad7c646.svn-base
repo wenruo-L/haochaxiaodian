@@ -1,0 +1,57 @@
+<!--pages/strategy/strategy.wxml-->
+<view>
+  <view class='bg'>
+      <image class='bgimg' mode='widthFix' src='http://image.haocha.top/i1/poster/base/redbagstrategy.png'></image> 
+      <view class='btn ' catchtap='share'>
+        <view class='text ' >立即分享店铺,拼手气红包</view>
+      </view>
+  </view>
+</view>
+
+
+<view class='share_shop_out' style='height:100%' catchtouchmove="true" wx:if="{{openShareChange}}">
+  <view class='share_shop' catchtap='close_share' style='height:100%' catchtouchmove="true">
+  </view>
+ <view class='share_shop_poster' wx:if="{{shaerChange}}">
+    <view class='share_good_poster_title font24'>
+      分享到微信群或者朋友圈，让更多人知道您的推荐
+    </view>
+    <view class='shop_poster'>
+      <image src='{{saveImg}}'></image>
+    </view>
+
+    <button class='keep_poster_btn' catchtap='saveShopimage'>保存图片，发朋友圈</button>
+  </view>
+  <!-- ============================= -->
+  <view class='share_shop_in'>
+
+    <view class='share_shop_t font24'>分享红包,同朋友拼手气~</view>
+    <view class='share_shop_way'>
+      <view class='friends'>
+
+        <button class='friends_btn font24' open-type='share' id="1">
+
+          <view class='share_with_friend_img'>
+            <image src='../../../common/image/index_img/share_with_friend.png'></image>
+          </view>
+          微信好友
+        </button>
+      </view>
+      <view class='pengyouquan' catchtap='sharePoster'>
+        <view class='pengyouquan_btn'>
+
+          <view class='share_with_friend_img'>
+            <image src='../../../common/image/index_img/pengyouquan.png'></image>
+          </view>
+          <view class='share_with_friend_text font24'>微信朋友圈</view>
+
+        </view>
+
+
+      </view>
+    </view>
+  </view>
+</view>
+
+
+

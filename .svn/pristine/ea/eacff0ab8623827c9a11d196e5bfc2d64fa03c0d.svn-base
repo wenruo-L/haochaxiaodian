@@ -1,0 +1,177 @@
+
+<scroll-view scroll-x="true" class="tab-h" scroll-left="{{scrollLeft}}">
+  <view class='flex'>
+    <view class="tab-item {{currentTab==index?'active':''}}" wx:for="{{h_text}}" data-current="{{index}}" catchtap="swichNav" wx:key="this">
+      <text>{{item.text}}</text>
+
+    </view>
+
+  </view>
+</scroll-view>
+
+<!-- <view class='content' >
+
+   
+  <block wx:for="{{goodsList}}" wx:key="this" wx:if="{{currentTab==0}}">
+   
+    <view class='time flex' >
+    <image src='../../common/image/index_img/shop-time.png'></image>
+    <view>{{item.updateTime}}</view>
+  </view>
+  <view class="goods flex " catchtap='go' data-collagePrice="{{item.productSub.productSkuSub.collagePrice}}" data-goodsId="{{item.productId}}" >
+    <view class='goodsImg'>
+      <image src='{{item.productSub.productImageSub.path}}'></image>
+    </view>
+    <view class='goodsdel'>
+      <view class='goodsText' style='font-size: 35rpx'>
+        {{item.productSub.title}}
+      </view>
+      <view class='goodsText'>
+        价格：
+        <text>{{item.productSub.productSkuSub.price}}元/{{item.productSub.unit}}</text>
+      </view>
+      <view class='goodsShop flex'>
+        <view class='shopLogo flex'>
+          <image src='../../common/image/index_img/shop_icon.png'></image>
+          <view class='shopName'>{{item.productSub.shopSub.name}}</view>
+        </view>
+        <view class='collageBtn' data-id="{{item.productId}}">去下单</view>
+      </view>
+    </view>
+
+     <view class='del'>删除</view> 
+
+
+  </view>  
+  </block>
+<block wx:if="{{currentTab==1}}" wx:for="{{shopList}}" wx:key="this">
+
+
+ <view class='shopList'>
+  <view class='time flex'>
+    <image src='../../common/image/index_img/shop-time.png'></image>
+    <view>{{item.updateTime}}</view>
+  </view>
+  <view class='shopMes flex' data-shopId="{{item.shopId}}" catchtap='goShop'>
+    <image src='{{item.shopSub.shopLogo}}' class='shopMesLogo' wx:if="{{item.shopSub.shopLogo}}"></image>
+    <image src='http://image.haocha.top/i1/default/shop/haocha_logo_small.png' class='shopMesLogo' wx:else></image>
+
+    <view class="shopText">
+       <view class=' flex mid'>
+          <image src='../../common/image/index_img/shop_icon.png'  class='shop_icon'></image>
+          <view class='shopMesName'>{{item.shopSub.name}}</view>
+        </view>
+        <view class='categoryName'>主营：
+          <block  wx:for="{{item.shopSub.shopCategorySubList}}" wx:key="*this" wx:for-item="categoryName">
+            <text>{{categoryName.categoryName}}  </text>
+            
+
+          </block>
+        </view>
+    </view>
+    <image src='../../common/image/index_img/inter_icon.png' class='inter_icon'></image>
+  </view>
+</view> 
+</block>
+
+</view>
+ -->
+ <!-- <view class='wrap' wx:if="{{goodsList.length<=0}}">
+   <image src='../../common/image/index_img/noMore.png' class='noMore'></image>
+ <text>暂无记录</text>
+ </view> -->
+
+
+<view class="container">
+    
+   <view class="touch-item {{item.isTouchMove ? 'touch-move-active' : ''}}" data-index="{{index}}" bindtouchstart="touchstart" bindtouchmove="touchmove" wx:for="{{goodsList}}" wx:key="this" wx:if="{{currentTab==0}}">
+
+    <view class="content">
+      <view class='time flex'>
+       <image src='../../common/image/index_img/shop-time.png'></image>
+        <view>{{item.updateTime}}</view>
+      </view>
+
+      <view class='goods flex'  catchtap='go' data-collagePrice="{{item.productSub.productSkuSub.collagePrice}}" data-goodsId="{{item.productId}}">
+        <view class='goodsImg'>
+          <image src='{{item.productSub.productImageSub.path}}'></image>
+        </view>
+        <view class='goodsdel'>
+          <view class='goodsText' style='font-size: 35rpx'>
+             {{item.productSub.title}}
+          </view>
+          <view class='goodsText'>
+            价格：
+            <text>{{item.productSub.productSkuSub.price}}元/{{item.productSub.unit}}</text>
+          </view>
+          <view class='goodsShop flex'>
+            <view class='shopLogo flex'>
+             
+              <view class='shopName'>{{item.productSub.shopSub.name}}</view>
+            </view>
+            <view class='collageBtn' data-id="{{item.productId}}">去下单</view>
+          </view>
+        </view>
+
+
+
+      </view>
+
+    </view>
+
+    <view class="del" catchtap="del" data-index="{{index}}" data-shopId='{{item.shopId}}' data-productId="{{item.productId}}">删除</view>
+
+  </view> 
+   <view class='wrap' wx:if="{{currentTab==0&&goodsList.length<=0}}">
+   <image src='../../common/image/index_img/noMore.png' class='noMore'></image>
+ <text>暂无记录</text>
+ </view>
+
+
+
+
+
+
+
+
+    <view class="touch-item {{item.isTouchMove ? 'touch-move-active' : ''}}" data-index="{{index}}" bindtouchstart="touchstart" bindtouchmove="touchmove" wx:if="{{currentTab==1}}" wx:for="{{shopList}}" wx:key="this">
+
+    <view class="content">
+     
+ <view class='shopList'>
+  <view class='time flex'>
+     <image src='../../common/image/index_img/shop-time.png'></image> 
+    <view>{{item.updateTime}}</view>
+  </view>
+  <view class='shopMes flex' data-shopId="{{item.shopId}}" catchtap='goShop'>
+    <image src='{{item.shopSub.shopLogo}}' class='shopMesLogo' wx:if="{{item.shopSub.shopLogo}}"class='shopMesLogo' ></image>
+     <image src='http://image.haocha.top/i1/default/shop/haocha_logo_small.png' class='shopMesLogo' wx:else></image>
+
+
+
+    <view class="shopText">
+       <view class=' flex mid'>
+           <image src='../../common/image/index_img/shop_icon.png'  class='shop_icon'></image> 
+          <view class='shopMesName'>{{item.shopSub.name}} </view>
+        </view>
+        <view class='categoryName'>主营：
+           <block  wx:for="{{item.shopSub.shopCategorySubList}}" wx:key="*this" wx:for-item="categoryName">
+            <text>{{categoryName.categoryName}}  </text>
+          </block>
+        </view>
+        
+    </view>
+     <image src='../../common/image/index_img/inter_icon.png' class='inter_icon'></image> 
+  </view>
+</view> 
+
+    </view>
+
+    <view class="del" catchtap="del" data-index="{{index}}" data-shopId='{{item.shopId}}' data-productId="{{item.productId}}">删除</view>
+
+  </view>
+  <view class='wrap' wx:if="{{currentTab==1&&shopList.length<=0}}">
+   <image src='../../common/image/index_img/noMore.png' class='noMore'></image>
+ <text>暂无记录</text>
+ </view>
+</view>

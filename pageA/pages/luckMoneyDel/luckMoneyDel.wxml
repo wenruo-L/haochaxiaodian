@@ -1,0 +1,80 @@
+<!--pageA/pages/luckMoneyDel/luckMoneyDel.wxml-->
+<view class='content'>
+  <view class='luckmoney'>
+    <view class='luckmoneyin'>
+      <view class='luckmoneyimg'>
+        <image src='../../../common/image/index_img/luckmoneyDetail.png'></image>
+      </view>
+      <text>{{all_detail.myUserOrderProfit.profit/100}}</text>元
+    </view>
+  </view>
+
+  <view class='luckmoney_detail_out'>
+    <view class='luckmoney_detail clearfix'>
+      <view class='name_detail'>
+        <view class='name fl font30'>订单编号</view>
+        <view class='detail fr font30'>{{all_detail.order.id}}</view>
+      </view>
+      <view class='name_detail'>
+        <view class='name fl font30'>订单状态</view>
+        <view class='detail fr font30' wx:if="{{all_detail.order.state == 0}}" >待付款</view>
+        <view class='detail fr font30' wx:if="{{all_detail.order.state == 1}}" >待分享</view>
+        <view class='detail fr font30' wx:if="{{all_detail.order.state == 2}}" >待自提</view>
+        <view class='detail fr font30' wx:if="{{all_detail.order.state == 3}}" >待发货</view>
+        <view class='detail fr font30' wx:if="{{all_detail.order.state == 4}}" >已发货</view>
+        <view class='detail fr font30' wx:if="{{all_detail.order.state == 5}}" >已完成</view>
+        <view class='detail fr font30' wx:if="{{all_detail.order.state == 6}}" >已取消</view>
+        <view class='detail fr font30' wx:if="{{all_detail.order.state == 7}}" >未成团</view>
+        <view class='detail fr font30' wx:if="{{all_detail.order.state == 8}}" >已退款</view>
+      </view>
+    </view>
+  </view>
+
+  <view class='luckmoney_detail_out'>
+    <view class='luckmoney_detail clearfix'>
+      <view class='name_detail'>
+        <view class='name fl font30'>商品名称</view>
+        <view class='detail fr font30'>{{all_detail.orderSnapshot.title}}</view>
+      </view>
+      <view class='name_detail'>
+        
+        <view class='detail fr font30'>{{all_detail.orderSnapshot.skuName}}</view>
+      </view>
+    </view>
+  </view>
+
+  <view class='luckmoney_detail_out'>
+    <view class='luckmoney_detail clearfix'>
+      <view class='name_detail'>
+        <view class='name fl font30'>下单时间</view>
+        <view class='detail fr font30'>{{xiadanshijian}}</view>
+      </view>
+      <view class='name_detail' wx:if="{{jiesuanshijian}}">
+        <view class='name fl font30'>结算时间</view>
+        <view class='detail fr font30'>{{jiesuanshijian}}</view>
+      </view>
+    </view>
+  </view>
+
+  <view class='luckmoney_detail_out'>
+    <view class='luckmoney_detail clearfix pb'>
+      <view class='name_detail'>
+        <view class='name fl font30'>红包总金额</view>
+        <view class='detail fr font30'>{{all_detail.myUserOrderProfit.profitTotal/100}}元</view>
+      </view>
+
+      <view class='header_detail clearfix' wx:for="{{all_detail.userOrderProfitSubList}}" wx:key="index">
+        <view class='header fl font26'>
+          <view class='headerimg'>
+            <image src='{{all_detail.userOrderProfitSubList[index].userSub.logo}}'></image>
+          </view>
+          <text>{{all_detail.userOrderProfitSubList[index].userSub.nickName}}</text>
+        </view>
+        <view class='headerDel fr font30'>
+          {{all_detail.userOrderProfitSubList[index].profit/100}}元
+        </view>
+      </view>
+      
+    </view>
+  </view> 
+</view>

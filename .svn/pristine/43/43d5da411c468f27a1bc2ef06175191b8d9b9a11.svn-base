@@ -1,0 +1,52 @@
+const utils = require("util.js")
+import config from "config.js"
+const app=getApp()
+function userInfo(e){
+  // console.log(e.detail.userInfo.avatarUrl)
+ 
+  if (e.detail.errMsg == "getUserInfo:ok") {
+    wx.setStorageSync('avatarUrl', e.detail.userInfo.avatarUrl)
+    wx.request({
+      url: config.get_token_id,
+      method: 'POST',
+      data: {
+        sessionId: wx.getStorageSync("thirdSession"),
+        encryptedData: e.detail.encryptedData,
+        iv: e.detail.iv
+      },
+      header: {
+        'content-type': 'application/x-www-form-urlencoded'
+
+      },
+      success: function (data) {
+        console.log(data)
+        if (data.data.code == 0) {
+          app.isLoginChange=true
+          // wx.setStorageSync('isLogin', true)
+          // console.log("登录后的:"+wx.getStorageSync('isLogin'))
+          wx.setStorageSync('jwtToken', data.data.data.jwtToken)
+          wx.setStorageSync('userId', data.data.data.userId)
+          // console.log(data.data.data.userId)
+          wx.setStorageSync('userNickName', data.data.data.userNickName)
+          wx.setStorageSync('isLoginsChange', true)
+         
+        } else {
+          console.log("登录失败....")
+          
+          // app.isLogin()
+        }
+
+      }
+    })
+  }else{
+    // wx.removeStorageSync('isLogin')
+    // console.log("取消登录:" + wx.getStorageSync('isLogin'))
+   
+  }
+  
+
+}
+module.exports = {
+  userInfo: userInfo
+  
+}

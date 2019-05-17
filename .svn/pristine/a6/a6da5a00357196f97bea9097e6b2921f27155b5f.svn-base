@@ -1,0 +1,273 @@
+// pages/ruzhu/ruzhu.js
+const utils = require("../../utils/util.js")
+Page({
+  /**
+   * 页面的初始数据
+   */
+  data: {
+    userName: undefined,//用户名
+    userPhone: undefined,//用户号码
+    region: ['', '', ''],//地址
+    _latitude:"",//用户经纬度
+    _longitude:"",
+    multiIndex: [0, 0, 0],
+    array: [],
+    array2: [{ name: '100元以下', value: '1' }, { name: '100~300元', value: '2' }, { name: '300~500元', value: '3' }],
+    array3: [{ name: '1~50平米', value: '1' }, { name: '50~100平米', value: '2' }, { name: '100~200平米', value: '3' }, { name: '200~400平米', value: '4' }, { name: '400~1000平米', value: '5' }],
+    multiArray: [[{ name: '', value: "5" }, { name: '工厂 ', value: "1" }, { name: '批发市场 ', value: "2" }], [{ name: '', value: "5" }, { name: '自产 ', value: "3" }, { name: '朋友 ', value: "4" }], [{ name: '', value: "5" }, { name: '其他 ', value: "5" }]],
+    main_class:"",//主营品类
+    kedanjia:"",//客单价
+    shoparea:"",//店铺面积
+    nowPurchaseChannel: "",//进货渠道
+    stock: "",//进货渠道id
+    province:"",
+    city:"",
+    area:"",
+    _address:""
+  },
+
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function (options) {
+    // utils.get_uid()
+    this.get_tealist()
+    this.get_code()
+  },
+  get_code(){
+    wx.getStorage({
+      key: 'login_code',
+      success: function(res) {
+          console.log(res.data)
+          wx.getStorage({
+            key: 'judge',
+            success: function(res) {
+              console.log(res)
+              var i = res.data
+            },
+          })
+          if(res.data!==0 ){
+              utils.get_uid()
+          }
+      },
+      fail:function(res){
+        console.log("没拿到")
+      }
+    })
+  },
+  get_tealist() {
+    wx.getStorage({
+      key: 'login_Uid',
+      success: (res) =>{
+        console.log(res.data.token)
+        var jtoken = res.data.token
+        console.log(jtoken)
+        wx.request({
+          url: 'https://lp.apit.haocha.top/category/list',
+          method: 'GET',
+          header: {
+            'content-type': 'application/json',
+            'Authorization': jtoken
+          },
+          success: (e) => {
+            console.log(e.data)
+            var pinlei_list = e.data.data.list;
+            console.log(pinlei_list)
+            var _array = []
+            pinlei_list.forEach((el) => {
+              _array.push(el)
+              // console.log(_array)
+              this.setData({
+                array: _array
+              })
+            });
+          }
+        })
+      }
+    })
+  },
+  
+  updata: function () {
+    wx.getStorage({
+      key: 'login_Uid',
+      success: (res) => {
+        console.log(res.data.token)
+        var jtoken = res.data.token
+        console.log(this.data._address)
+        wx.request({
+          url: 'https://lp.apit.haocha.top/shop/enter',
+          method: 'POST',
+          data:{
+            categoryIds: this.data.main_class,
+            contactName: this.data.userName,
+            contactPhone: this.data.userPhone,
+            longitude: this.data._longitude,
+            latitude: this.data._latitude,
+            province: this.data.province,
+            city: this.data.city,
+            area: this.data.area,
+            address: this.data._address,
+            unitPrice: this.data.kedanjia,
+            shopAcreage: this.data.shoparea,
+            nowPurchaseChannel: this.data.stock
+          },
+          
+          header: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+            'Authorization': jtoken
+          },
+          success: (e) => {
+            console.log(e)
+            console.log("传输成功")
+          }
+        })
+      }
+    })
+  },
+  // 地址
+ 
+  bindRegionChange: function (e) {
+    console.log(e.detail)
+    console.log(e.detail.value[0])
+    console.log(e.detail.value[1])
+    console.log(e.detail.value[2])
+    console.log('picker发送选择改变，携带值为', e.detail.value)
+
+    this.setData({
+      region: e.detail.value,
+      province: e.detail.value[0],
+      city: e.detail.value[1],
+      area: e.detail.value[2]
+    })
+    let _this = this
+    wx.getLocation({
+      type: 'wgs84',
+      success: function (res) {
+        var latitude1 = res.latitude
+        var longitude2 = res.longitude
+        console.log( '能否拿到经纬度'+latitude1)
+        console.log('能否拿到经纬度' + longitude2)
+        _this.setData({
+          _latitude:res.latitude,
+          _longitude:res.longitude
+        })
+       }
+    })
+  },
+  // 主营品类
+  bindPickerChange: function (e) {
+    console.log(e)
+    console.log('0picker发送选择改变，携带值为', e.detail.value)
+    let goodsValue = this.data.array[e.detail.value];
+    this.setData({
+      index: e.detail.value,
+      main_class: goodsValue['id']
+    })
+    console.log('能否拿到品类的value ' + this.data.main_class)
+  },
+  // 客单价
+  bindPickerChange2: function (e) {
+    console.log('2picker发送选择改变，携带值为', e.detail.value)
+    let tmp = this.data.array2[e.detail.value];
+    this.setData({
+      index2: e.detail.value,
+      kedanjia: tmp['value']
+    })
+    console.log(tmp)
+    console.log('能否拿到客单价value'+this.data.kedanjia)
+  },
+
+  // 店铺面积
+  bindPickerChange3: function (e) {
+    console.log('3picker发送选择改变，携带值为', e.detail.value)
+    let tmp1 = this.data.array3[e.detail.value]; 
+    this.setData({
+      index3: e.detail.value,
+      shoparea: tmp1['value']
+    })
+    console.log('能否拿到店铺面积value' +this.data.shoparea)
+  },
+  // 进货渠道
+  bindMultiPickerChange: function (e) {
+    console.log(e)
+    console.log('4picker发送选择改变，携带值为', e.detail.value)
+    let tmpArrValue = [],//提交给后台的value
+      tmpArrName = []
+    e.detail.value.forEach((ele, index) => {
+      tmpArrValue.push(this.data.multiArray[index][ele]["value"])
+      tmpArrName.push(this.data.multiArray[index][ele]["name"])
+      console.log(tmpArrValue)
+    })
+    this.setData({
+      multiIndex: e.detail.value,
+      nowPurchaseChannel: tmpArrName.join(" ").toString(),
+      stock: tmpArrValue
+    })
+    console.log('能否拿到入货渠道value' + this.data.stock)
+  },
+  //获取用户名
+  userNinput:function(e){
+    console.log(this)
+    console.log(e.detail.value)
+    this.setData({
+      userName: e.detail.value
+    })
+  },
+  //获取用户电话
+  userPinput: function(e){
+    console.log(e.detail.value)
+    console.log(this)
+    this.setData({
+      userPhone: e.detail.value
+    })
+  },
+  
+  /**
+   * 生命周期函数--监听页面初次渲染完成
+   */
+  onReady: function () {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow: function () {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面隐藏
+   */
+  onHide: function () {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面卸载
+   */
+  onUnload: function () {
+
+  },
+
+  /**
+   * 页面相关事件处理函数--监听用户下拉动作
+   */
+  onPullDownRefresh: function () {
+
+  },
+
+  /**
+   * 页面上拉触底事件的处理函数
+   */
+  onReachBottom: function () {
+
+  },
+
+  /**
+   * 用户点击右上角分享
+   */
+  onShareAppMessage: function () {
+
+  }
+})

@@ -1,0 +1,326 @@
+import config from "../../utils/config.js"
+import utils from "../../utils/util.js"
+let app = getApp();
+Page({
+  data: {
+    shop_id_obj: "",
+    token: "",
+    dongtai_time: [],//时间戳
+    index_middle_list_goodimg: "",
+    notlike: 0,
+    like: 1,
+    productId: null,
+    notlikeshop: null,
+    likeshop: null,
+    showCard:false
+  },
+  closeTheCard:function(e){
+    console.log("111")
+    
+    this.setData({
+      showCard:true
+    })
+  },
+  to_good_detail:function(e){
+    console.log("跳转的点击详情",e)
+    if (e.currentTarget.dataset.sign == 0){
+      wx.navigateTo({
+        url: '../own_buy/own_buy?id=' + e.currentTarget.dataset.goodid
+      })
+    }else{
+      wx.navigateTo({
+        url: '../group_booking/group_booking?id=' + e.currentTarget.dataset.goodid
+      })
+    }
+  },
+  // 收藏商品
+  collect: function (e) {
+    console.log("这是点赞的！！！", e)
+    var goodid = e.currentTarget.dataset.goodid;
+    var shopid = e.currentTarget.dataset.shopid;
+    var that = this;
+    that.setData({
+      notlike: true,
+      like: false,
+      // shopId: shopid,
+      // productId: goodid
+    })
+    // wx.request({
+    //   url: config.collect_good,
+    //   method: 'POST',
+    //   data: {
+    //     shopId: that.data.shopId,
+    //     productId: that.data.productId,
+    //     operate: 0
+    //   },
+    //   header: {
+    //     'Content-Type': 'application/x-www-form-urlencoded',// POST的请求方式不一样 
+    //     Authorization: that.data.token
+    //   },
+    //   success: function (res) {
+    //     console.log("收藏成功！！！", res)
+    //     wx.showToast({
+    //       title: '收藏成功！',
+    //       icon: 'success',
+    //       duration: 1500
+    //     })
+    //   }
+    // })
+  },
+  // 取消收藏
+  cancel_collect: function (e) {
+    console.log("这是取消点赞的！！！", e)
+    var goodid = e.currentTarget.dataset.goodid;
+    var shopid = e.currentTarget.dataset.shopid;
+    var that = this;
+    that.setData({
+      notlike: false,
+      like: true,
+      // shopId: shopid,
+      // productId: goodid
+    })
+    // wx.request({
+    //   url: config.collect_good,
+    //   method: 'POST',
+    //   data: {
+    //     shopId: that.data.shopId,
+    //     productId: that.data.productId,
+    //     operate: 1
+    //   },
+    //   header: {
+    //     'Content-Type': 'application/x-www-form-urlencoded',// POST的请求方式不一样 
+    //     Authorization: that.data.token
+    //   },
+    //   success: function (res) {
+    //     console.log("取消收藏", res)
+    //     wx.showToast({
+    //       title: '不要人家了嘛QAQ',
+    //       icon: 'none',
+    //       duration: 1500
+    //     })
+    //   }
+    // })
+  },
+  // 收藏店铺
+  collect_shop: function (e) {
+    console.log(e)
+    var that = this;
+    that.setData({
+      notlikeshop: true,
+      likeshop: false
+    })
+    wx.request({
+      url: config.collect_shop,
+      method: 'POST',
+      data: {
+        shopId: that.data.shop_id_obj,
+        operate: 0
+      },
+      header: {
+        'Content-Type': 'application/x-www-form-urlencoded',// POST的请求方式不一样 
+        Authorization: that.data.token
+      },
+      success: function (res) {
+        console.log("收藏店铺成功！！！", res)
+        wx.showToast({
+          title: '收藏店铺成功！',
+          icon: 'success',
+          duration: 1500
+        })
+      }
+    })
+  },
+  // 取消收藏店铺
+  cancel_collect_shop: function (e) {
+    var that = this;
+    that.setData({
+      notlikeshop: false,
+      likeshop: true
+    })
+    wx.request({
+      url: config.collect_shop,
+      method: 'POST',
+      data: {
+        shopId: that.data.shop_id_obj,
+        operate: 1
+      },
+      header: {
+        'Content-Type': 'application/x-www-form-urlencoded',// POST的请求方式不一样 
+        Authorization: that.data.token
+      },
+      success: function (res) {
+        console.log("取消收藏店铺", res)
+        wx.showToast({
+          title: '不要人家了嘛QAQ',
+          icon: 'none',
+          duration: 1500
+        })
+      }
+    })
+  },
+  to_ruzhu: function (e) {
+    wx.navigateTo({
+      url: '../ruzhu/ruzhu'
+    })
+  },
+
+
+  //返回搜索首页页面
+  to_search_index: function (e) {
+    wx.redirectTo({
+      url: '../search_index/search_index'
+    })
+  },
+  // 判断用户是否拥有店铺id，没有会跳去搜索首页页面
+  noShopidSkipToSearch_index: function () {
+    var that = this;
+    if (!that.data.shop_id_obj) {
+      wx.showToast({
+        title: '请选择您要进入的店铺',
+        icon: 'none',
+        duration: 1500,
+        mask: true,
+        success() {
+          console.log("111")
+          setTimeout(() => {
+            wx.redirectTo({
+              url: '../search_index/search_index',
+            })
+          }, 800)
+        }
+      })
+    } else {
+      return
+    }
+  },
+  //获取附近小店保存下的id
+  get_shop_id: function () {
+    var that = this
+    var shop_id = wx.getStorageSync('shop_id')
+    console.log(shop_id)
+    that.setData({
+      shop_id_obj: shop_id
+    })
+    var _token = wx.getStorageSync('token')
+    that.setData({
+      token: _token
+    })
+    wx.request({
+      url: config.shop,
+      method: 'GET',
+      data: {
+        id: that.data.shop_id_obj
+      },
+      header: {
+        'content-type': 'application/json',// GEt的请求方式为默认 
+        Authorization: that.data.token
+      },
+      success: function (res) {
+        console.log("后台返回的首页数据", res)
+        console.log("店铺首页顶部数据", res.data.data.shop)
+        console.log("店铺动态数据", res.data.data.productPages.content)
+        var emptyarr = [];
+        var dongtai = res.data.data.productPages.content;
+        console.log(dongtai)
+        dongtai.forEach((el, index) => {
+
+          emptyarr.push(new Date(el.shelfTime / 1000).getDate())
+        })
+        // var zhuanhuanarr = []
+        // emptyarr.forEach((el,index)=>{
+        //   zhuanhuanarr.push(new Date(el).getDate)
+        // })
+        var shop_dongtai_list = res.data.data.productPages.content
+        var goodimgArr = []
+        var goodimgArr1 = []
+        shop_dongtai_list.forEach((el, index) => {
+          goodimgArr.push(el.productImageSubList)
+        })
+        console.log("处理完的时间戳", emptyarr)
+        // var dianpuid = []
+        // var shangpinid = []
+        // shop_dongtai_list.forEach((el,index)=>{
+        //   dianpuid.puah()
+        // })
+        if (res.data.data.isLikedShop == 1) {
+          that.setData({
+            notlikeshop: true,
+            likeshop: false
+          })
+        }
+        if (res.data.data.isLikedShop == 0) {
+          that.setData({
+            notlikeshop: false,
+            likeshop: true
+          })
+        }
+        that.setData({
+          index_top_list: res.data.data.shop,//店铺首页顶部数据
+          index_middle_list: res.data.data.productPages.content,//店铺动态数据
+          dongtai_time: emptyarr,
+          index_middle_list_goodimg: goodimgArr,
+      
+        })
+
+        console.log(that.data.index_middle_list_goodimg)
+
+      }
+    })
+  },
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function (options) {
+  
+  },
+
+  /**
+   * 生命周期函数--监听页面初次渲染完成
+   */
+  onReady: function () {
+    this.get_shop_id()
+    this.noShopidSkipToSearch_index()
+  },
+
+  /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow: function () {
+  
+  },
+
+  /**
+   * 生命周期函数--监听页面隐藏
+   */
+  onHide: function () {
+  
+  },
+
+  /**
+   * 生命周期函数--监听页面卸载
+   */
+  onUnload: function () {
+  
+  },
+
+  /**
+   * 页面相关事件处理函数--监听用户下拉动作
+   */
+  onPullDownRefresh: function () {
+  
+  },
+
+  /**
+   * 页面上拉触底事件的处理函数
+   */
+  onReachBottom: function () {
+  
+  },
+
+  /**
+   * 用户点击右上角分享
+   */
+  onShareAppMessage: function () {
+  
+  }
+})

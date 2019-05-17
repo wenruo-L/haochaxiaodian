@@ -1,0 +1,104 @@
+<!--pages/pinhaocha/pinhaocha.wxml-->
+<view class='content'>
+  <view class='index_top_mind'>
+       <view class='index_top_bg'>
+          <image src='../../common/image/index_img/bg.png'></image>
+      </view> 
+  </view>
+  <!--拼团频道 -->
+  <view class='shop_channel'>
+    <view class='empty_div'></view>
+
+
+
+    <view class='group_booking_detail'>
+        <view class='group_booking_detail_in'>
+            <view class='group_booking'>
+                <view class='group_booking_good_img'>
+                  <image src='../../common/image/index_img/good1.png'></image>
+                </view>
+                <view class='group_booking_good_detail'>
+                  <view class='group_booking_good_title'>
+                    福建白茶皇家百合-2013年高山牡丹
+                  </view>
+                  <view class='group_booking_good_price'>
+                    <view class='group_booking_price'>
+                      拼团价：<text>￥108/罐</text>
+                    </view>
+                    <view class='own_price'>
+                      ¥154/罐
+                    </view>
+                  </view>
+                  <view class='group_booking_3'>
+                    <view class='group_booking_number'>
+                      已拼122024件
+                    </view>
+                    <view class='to_group_booking fr'>
+                      <view class='user_header'>
+                        <view class='header_img '>
+                          <image src='../../common/image/index_img/header1.png'></image>
+                        </view>
+                        <view class='header_img header_img_turn'>
+                          <image src='../../common/image/index_img/header2.png'></image>
+                        </view>
+                      </view>
+                      <view class='btn_to_gb'>
+                          去拼团
+                      </view>
+                    </view>
+                  </view>
+                </view>
+            </view>
+        </view>       
+    </view>
+
+  <!-- ======================== -->
+      <view class='group_booking_detail'>
+
+
+        <view class='group_booking_detail_in'>
+            <view class='group_booking'>
+                <view class='group_booking_good_img'>
+                  <image src='../../common/image/index_img/good1.png'></image>
+                </view>
+                <view class='group_booking_good_detail'>
+                  <view class='group_booking_good_title'>
+                    福建白茶皇家百合-2013年高山牡丹
+                  </view>
+                  <view class='group_booking_good_price'>
+                    <view class='group_booking_price'>
+                      拼团价：<text>￥108/罐</text>
+                    </view>
+                    <view class='own_price'>
+                      ¥154/罐
+                    </view>
+                  </view>
+                  <view class='group_booking_3'>
+                    <view class='group_booking_number'>
+                      已拼122024件
+                    </view>
+                    <view class='to_group_booking fr'>
+                      <view class='user_header'>
+                        <view class='header_img '>
+                          <image src='../../common/image/index_img/header1.png'></image>
+                        </view>
+                        <view class='header_img header_img_turn'>
+                          <image src='../../common/image/index_img/header2.png'></image>
+                        </view>
+                      </view>
+                      <view class='btn_to_gb'>
+                          去拼团
+                      </view>
+                    </view>
+                  </view>
+                </view>
+            </view>
+        </view>       
+    </view>
+
+  </view>
+
+
+
+  <!--拼团频道 -->
+</view>

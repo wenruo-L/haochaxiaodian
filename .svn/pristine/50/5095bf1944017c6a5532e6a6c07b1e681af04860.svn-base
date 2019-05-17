@@ -1,0 +1,291 @@
+<!--pages/fast_order/fast_order.wxml-->
+<view class='content'>
+  <view class="swiper-tab">  
+    <view class="swiper-tab-list " bindtap="clickTab">
+      <view class="swiper-tab-list-in font30 {{currentTab==0 ? 'on' : ''}}" data-current="0" >热销产品</view>    
+    </view> 
+    <view class="swiper-tab-list " bindtap="clickTab">
+      <view class="swiper-tab-list-in font30 {{currentTab==1 ? 'on' : ''}}" data-current="1" >普洱茶</view>    
+    </view>  
+    <view class="swiper-tab-list " bindtap="clickTab">
+      <view class="swiper-tab-list-in font30 {{currentTab==2 ? 'on' : ''}}" data-current="2" >绿茶</view>    
+    </view> 
+    <view class="swiper-tab-list " bindtap="clickTab">
+      <view class="swiper-tab-list-in font30 {{currentTab==3 ? 'on' : ''}}" data-current="3" >黑茶</view>    
+    </view> 
+    <view class="swiper-tab-list " bindtap="clickTab">
+      <view class="swiper-tab-list-in font30 {{currentTab==4 ? 'on' : ''}}" data-current="4" >白茶</view>    
+    </view> 
+    <view class="swiper-tab-list " bindtap="clickTab">
+      <view class="swiper-tab-list-in font30 {{currentTab==5 ? 'on' : ''}}" data-current="5" >花茶</view>    
+    </view> 
+    <view class="swiper-tab-list " bindtap="clickTab">
+      <view class="swiper-tab-list-in font30 {{currentTab==6 ? 'on' : ''}}" data-current="6" >茶具</view>    
+    </view> 
+  </view>
+
+  <swiper class='swiper_content' current="{{currentTab}}" duration="300" style="height:{{winHeight}}px" bindchange="swiperTab">
+  <!--热销产品  -->
+      <swiper-item style="overflow:scroll;" class='swiper_item'>
+          <view class='good_detail_out'>
+            <view class='good_detail'>
+              <view class='good_img'>
+                <image src='../../common/image/index_img/good1.png'></image>
+              </view>
+              <view class='good_msg'>
+                <view class='good_name font30'>
+                  福建白茶皇家百合-2013年高山牡丹
+                </view>
+                <view class='good_sum'>
+                  <view class='sum maincolor'>
+                    ¥108 / 罐
+                  </view>
+                  <view class='order mainbgcolor fr' bindtap='to_confirm_order'>下单</view>
+                </view>
+              </view>
+            </view>
+          </view>
+
+           <view class='good_detail_out'>
+            <view class='good_detail'>
+              <view class='good_img'>
+                <image src='../../common/image/index_img/good1.png'></image>
+              </view>
+              <view class='good_msg'>
+                <view class='good_name font30'>
+                  福建白茶皇家百合-2013年高山牡丹
+                </view>
+                <view class='good_sum'>
+                  <view class='sum maincolor'>
+                    ¥108 / 罐
+                  </view>
+                  <view class='order mainbgcolor fr' bindtap='to_confirm_order'>下单</view>
+                </view>
+              </view>
+            </view>
+          </view>
+
+           <view class='good_detail_out'>
+            <view class='good_detail'>
+              <view class='good_img'>
+                <image src='../../common/image/index_img/good1.png'></image>
+              </view>
+              <view class='good_msg'>
+                <view class='good_name font30'>
+                  福建白茶皇家百合-2013年高山牡丹
+                </view>
+                <view class='good_sum'>
+                  <view class='sum maincolor'>
+                    ¥108 / 罐
+                  </view>
+                  <view class='order mainbgcolor fr' bindtap='to_confirm_order'>下单</view>
+                </view>
+              </view>
+            </view>
+          </view>
+
+           <view class='good_detail_out'>
+            <view class='good_detail'>
+              <view class='good_img'>
+                <image src='../../common/image/index_img/good1.png'></image>
+              </view>
+              <view class='good_msg'>
+                <view class='good_name font30'>
+                  福建白茶皇家百合-2013年高山牡丹
+                </view>
+                <view class='good_sum'>
+                  <view class='sum maincolor'>
+                    ¥108 / 罐
+                  </view>
+                  <view class='order mainbgcolor fr' bindtap='to_confirm_order'>下单</view>
+                </view>
+              </view>
+            </view>
+          </view>
+
+           <view class='good_detail_out'>
+            <view class='good_detail'>
+              <view class='good_img'>
+                <image src='../../common/image/index_img/good1.png'></image>
+              </view>
+              <view class='good_msg'>
+                <view class='good_name font30'>
+                  福建白茶皇家百合-2013年高山牡丹
+                </view>
+                <view class='good_sum'>
+                  <view class='sum maincolor'>
+                    ¥108 / 罐
+                  </view>
+                  <view class='order mainbgcolor fr' bindtap='to_confirm_order'>下单</view>
+                </view>
+              </view>
+            </view>
+          </view>
+
+           <view class='good_detail_out'>
+            <view class='good_detail'>
+              <view class='good_img'>
+                <image src='../../common/image/index_img/good1.png'></image>
+              </view>
+              <view class='good_msg'>
+                <view class='good_name font30'>
+                  福建白茶皇家百合-2013年高山牡丹
+                </view>
+                <view class='good_sum'>
+                  <view class='sum maincolor'>
+                    ¥108 / 罐
+                  </view>
+                  <view class='order mainbgcolor fr' bindtap='to_confirm_order'>下单</view>
+                </view>
+              </view>
+            </view>
+          </view>
+
+           <view class='good_detail_out'>
+            <view class='good_detail'>
+              <view class='good_img'>
+                <image src='../../common/image/index_img/good1.png'></image>
+              </view>
+              <view class='good_msg'>
+                <view class='good_name font30'>
+                  福建白茶皇家百合-2013年高山牡丹
+                </view>
+                <view class='good_sum'>
+                  <view class='sum maincolor'>
+                    ¥108 / 罐
+                  </view>
+                  <view class='order mainbgcolor fr' bindtap='to_confirm_order'>下单</view>
+                </view>
+              </view>
+            </view>
+          </view>
+      </swiper-item>
+
+   <!-- 普洱茶  -->
+      <swiper-item style="overflow:scroll;" class='swiper_item'>
+            <view class='good_detail_out'>
+            <view class='good_detail'>
+              <view class='good_img'>
+                <image src='../../common/image/index_img/good1.png'></image>
+              </view>
+              <view class='good_msg'>
+                <view class='good_name font30'>
+                  福建白茶皇家百合-2013年高山牡丹
+                </view>
+                <view class='good_sum'>
+                  <view class='sum maincolor'>
+                    ¥108 / 罐
+                  </view>
+                  <view class='order mainbgcolor fr' bindtap='to_confirm_order'>下单</view>
+                </view>
+              </view>
+            </view>
+          </view>
+      </swiper-item>
+      <!-- 绿茶  -->
+            <swiper-item style="overflow:scroll;" class='swiper_item'>
+            <view class='good_detail_out'>
+            <view class='good_detail'>
+              <view class='good_img'>
+                <image src='../../common/image/index_img/good1.png'></image>
+              </view>
+              <view class='good_msg'>
+                <view class='good_name font30'>
+                  福建白茶皇家百合-2013年高山牡丹
+                </view>
+                <view class='good_sum'>
+                  <view class='sum maincolor'>
+                    ¥108 / 罐
+                  </view>
+                  <view class='order mainbgcolor fr' bindtap='to_confirm_order'>下单</view>
+                </view>
+              </view>
+            </view>
+          </view>
+      </swiper-item>
+      <!--黑茶  -->
+            <swiper-item style="overflow:scroll;" class='swiper_item'>
+            <view class='good_detail_out'>
+            <view class='good_detail'>
+              <view class='good_img'>
+                <image src='../../common/image/index_img/good1.png'></image>
+              </view>
+              <view class='good_msg'>
+                <view class='good_name font30'>
+                  福建白茶皇家百合-2013年高山牡丹
+                </view>
+                <view class='good_sum'>
+                  <view class='sum maincolor'>
+                    ¥108 / 罐
+                  </view>
+                  <view class='order mainbgcolor fr' bindtap='to_confirm_order'>下单</view>
+                </view>
+              </view>
+            </view>
+          </view>
+      </swiper-item>
+      <!--白茶  -->
+            <swiper-item style="overflow:scroll;" class='swiper_item'>
+            <view class='good_detail_out'>
+            <view class='good_detail'>
+              <view class='good_img'>
+                <image src='../../common/image/index_img/good1.png'></image>
+              </view>
+              <view class='good_msg'>
+                <view class='good_name font30'>
+                  福建白茶皇家百合-2013年高山牡丹
+                </view>
+                <view class='good_sum'>
+                  <view class='sum maincolor'>
+                    ¥108 / 罐
+                  </view>
+                  <view class='order mainbgcolor fr' bindtap='to_confirm_order'>下单</view>
+                </view>
+              </view>
+            </view>
+          </view>
+      </swiper-item>
+      <!--花茶  -->
+            <swiper-item style="overflow:scroll;" class='swiper_item'>
+            <view class='good_detail_out'>
+            <view class='good_detail'>
+              <view class='good_img'>
+                <image src='../../common/image/index_img/good1.png'></image>
+              </view>
+              <view class='good_msg'>
+                <view class='good_name font30'>
+                  福建白茶皇家百合-2013年高山牡丹
+                </view>
+                <view class='good_sum'>
+                  <view class='sum maincolor'>
+                    ¥108 / 罐
+                  </view>
+                  <view class='order mainbgcolor fr' bindtap='to_confirm_order'>下单</view>
+                </view>
+              </view>
+            </view>
+          </view>
+      </swiper-item>
+      <!--茶具  -->
+            <swiper-item style="overflow:scroll;" class='swiper_item'>
+            <view class='good_detail_out'>
+            <view class='good_detail'>
+              <view class='good_img'>
+                <image src='../../common/image/index_img/good1.png'></image>
+              </view>
+              <view class='good_msg'>
+                <view class='good_name font30'>
+                  福建白茶皇家百合-2013年高山牡丹
+                </view>
+                <view class='good_sum'>
+                  <view class='sum maincolor'>
+                    ¥108 / 罐
+                  </view>
+                  <view class='order mainbgcolor fr' bindtap='to_confirm_order'>下单</view>
+                </view>
+              </view>
+            </view>
+          </view>
+      </swiper-item>
+  </swiper>
+</view>

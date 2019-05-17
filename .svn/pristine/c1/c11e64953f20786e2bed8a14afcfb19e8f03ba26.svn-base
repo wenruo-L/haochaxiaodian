@@ -1,0 +1,53 @@
+<!--pageA/pages/rankings/rankings.wxml-->
+
+<view class='item'>
+  <view class='index'>
+    
+     <image src='image/top_1.png' wx:if="{{ranking==0}}"></image>
+      <image src='image/top_2.png' wx:if="{{ranking==1}}"></image>
+      <image src='image/top_3.png' wx:if="{{ranking==2}}"></image>
+      <block wx:if="{{ranking>2}}">{{ranking}}</block>
+
+  </view>
+
+  <image src='{{userProfit.userSub.logo}}' class='logo'></image>
+  <view class='name'>
+    {{userProfit.userSub.nickName}}
+  </view>
+  <view class='last'>
+  <view class='lastInner'>
+  <view class='num'>{{userProfit.profitTotal/100}}元</view>
+    <view class='text'>获得红包(元)</view>
+  </view>
+    
+  </view>
+
+
+</view>
+
+<block wx:for="{{list}}" wx:key="this">
+  <view class='item'>
+    <view class='index'>
+      <image src='image/top_1.png' wx:if="{{index==0}}"></image>
+      <image src='image/top_2.png' wx:if="{{index==1}}"></image>
+      <image src='image/top_3.png' wx:if="{{index==2}}"></image>
+      <block wx:if="{{index>2}}">{{index+1}}</block>
+    </view>
+
+    <image src='{{item.userSub.logo}}' class='logo'></image>
+    <view class='name'>
+      {{item.userSub.nickName}}
+    </view>
+    <view class='last'>
+     <view class='lastInner'>
+       <view class='num'>{{item.profitTotal/100}}元</view>
+      <view class='text'>获得红包(元)</view>
+     </view>
+    </view>
+  </view>
+</block>
+
+
+
+
+

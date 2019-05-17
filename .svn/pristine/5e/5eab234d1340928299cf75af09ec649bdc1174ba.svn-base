@@ -1,0 +1,178 @@
+//app.js
+import config from "utils/config.js"
+import utils from "utils/util.js"
+App({
+  // thirdSession:null,
+  // userId:null,
+  // jwtToken:null,
+  shop_id:"",
+  isLoginChange:"",
+  // userNickName:null,
+  // avatarUrl:null,
+  
+  onLaunch: function() {
+    var that = this
+
+    wx.login({
+      success: res => {
+        var _code = res.code
+        if (res.code) {
+          console.log("code:::"+_code)
+          //发起网络请求  
+          wx.request({
+            url: config.get3rdsession,
+            method: 'GET',
+            data: {
+              code: _code
+            },
+            header: {
+              'content-type': 'application/json' // GEt的请求方式为默认 
+
+            },
+            success: function (e) {
+              // console.log(e)
+
+              if (e.data.code == 0) {
+                wx.setStorage({
+                  key: "thirdSession",
+                  data: e.data.data.thirdSession
+                })
+                // that.thirdSession = e.data.data.thirdSession
+                wx.setStorageSync('thirdSession', e.data.data.thirdSession)
+                // wx.setStorage({
+                //   key: "thirdSession",
+                //   data: e.data.data.thirdSession
+                // })
+              }
+            }
+          })
+        }
+      }
+    })
+      
+    
+   
+
+  },
+
+  onShow: function() {
+    
+  },
+
+
+
+
+  isLogin:function(){
+    var that=this
+    
+    if (this.userId==null&&this.jwtToken==null){
+      //var value = wx.getStorageSync('key')
+    
+      wx.showModal({
+        title: '提示',
+        content: '你还未登录，登录后可获得完整体验 ',
+        confirmText: '一键登录',
+        success(res) {
+          // console.log(res)
+         
+          //点击一键登录，去授权页面
+          if (res.confirm) {
+          
+          }else{
+           
+            
+          }
+        }
+      })
+     
+    }
+   
+  },  
+  getUserInfo:function(e){
+      console.log(e)
+      // var thirdSession=
+      // app.avatarUrl = e.detail.userInfo.avatarUrl;
+      wx.setStorageSync('avatarUrl', e.detail.userInfo.avatarUrl)
+      wx.getStorage({
+        key: 'thirdSession',
+        success: function (res) {
+          console.log(res.data)
+          wx.request({
+            url: config.get_token_id,
+            method: 'POST',
+            data: {
+              sessionId: res.data,
+              encryptedData: e.detail.encryptedData,
+              iv: e.detail.iv
+            },
+            header: {
+              'content-type': 'application/x-www-form-urlencoded'
+
+            },
+            success: function (data) {
+              console.log(data)
+              if (data.data.code == 0) {
+
+               
+                try {
+                  wx.setStorage({
+                    key: "jwtToken",
+                    data: data.data.data.jwtToken
+                  })
+                  // wx.setStorageSync('jwtToken', data.data.data.jwtToken)
+                  // wx.setStorageSync('userId', data.data.data.userId)
+                  // console.log(data.data.data.userId)
+                  // wx.setStorageSync('userNickName', data.data.data.userNickName)
+                } catch (e) {
+                }
+              } else {
+                console.log("登录失败....")
+                // app.isLogin()
+              }
+
+            }
+          })
+
+        }
+      })
+
+      
+  },
+  promise: function (obj) {
+    return new Promise(function (resolve, reject) {
+      wx.request({
+        url: obj.url,
+        data: obj.datas,
+        method: obj.method,
+        header: {
+          'content-type': obj.contentType,
+          Authorization: obj.token
+        },
+        success: (res) => {
+
+          resolve(res);
+        },
+        fail: () => {
+          reject("请求错误......")
+        }
+      })
+    })
+
+  },
+  globalData: {
+    servsers: "http://sys.haocha.top",
+    servsers2: "https://v.juhe.cn",
+    //  https://v.juhe.cn/toutiao/index?type=guone&key=20f90a8cc49c35af597c877b3e55970d
+    indexTitle1: "好茶小店",
+    indexTitle2: "拼团",
+    indexTitle3: "我的",
+    title_Address: "地址管理",
+    title_Address2: "选择地址",
+    userInfo: null,
+    back_stage_token: null,
+    back_stage_userid: null,
+    back_stage_session: null,
+  },
+
+
+})

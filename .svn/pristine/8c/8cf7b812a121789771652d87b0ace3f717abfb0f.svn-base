@@ -1,0 +1,30 @@
+<!--pages/own_buy/own_buy.wxml-->
+<view class='content'>
+  <!--商品图-->
+  <view class='index_top_mind'>
+       <view class='index_top_bg'>
+          <image src='../../common/image/index_img/good1.png'></image>
+      </view> 
+  </view>
+  <!--商品图-->
+  <!--商品细节-->
+    <view class='good_detail_out'> 
+      <view class='good_detail'>
+        <view class='good_title'>
+          <view class='title title_font'>
+            正宗新会天马小青柑普洱茶陈皮茶叶
+          </view>
+          <view class='like fr'>
+            <view class='like_img'>
+              <image src='../../common/image/index_img/likes.png'></image>
+            </view>
+            <view class='like_text'>
+              已收藏
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+    
+  <!--商品细节-->
+</view>

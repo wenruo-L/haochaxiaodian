@@ -1,0 +1,70 @@
+<!--pageA/pages/record/record.wxml-->
+<view class='list'>
+  <view class='item'>
+    <view class='title'>2018-08</view>
+    <view class='mes'>
+      <view class='goodsName'>【分享红包】新会小心肝小心肝小心肝小心肝</view>
+      <view class='bot'>
+        <view class='left'>
+          <view class='time'>
+            <view class='text'>
+              <text>下单时间：</text> 08-01 09:00
+            </view>
+          </view>
+          <view class='time'>
+            <view class='text'>
+              <text>结算时间：</text> 08-02 09:00
+            </view>
+          </view>
+        </view>
+        <view class='right'>
+          +￥7.5
+        </view>
+      </view>
+    </view>
+     <view class='mes'>
+      <view class='goodsName'>【分享红包】新会小心肝小心肝小心肝小心肝</view>
+      <view class='bot'>
+        <view class='left'>
+          <view class='time'>
+            <view class='text'>
+              <text>下单时间：</text> 08-01 09:00
+            </view>
+          </view>
+          <view class='time'>
+            <view class='text'>
+              <text>结算时间：</text> 08-02 09:00
+            </view>
+          </view>
+        </view>
+        <view class='right'>
+          +￥7.5
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class='item'>
+    <view class='title'>2018-08</view>
+    <view class='mes'>
+      <view class='goodsName'>【提现单号】21443412341314324232332</view>
+      <view class='bot'>
+        <view class='left'>
+          <view class='time'>
+            <view class='text'>
+              <text>下单时间：</text> 08-01 09:00
+            </view>
+          </view>
+          <view class='time'>
+            <view class='text'>
+              <text>结算时间：</text> 08-02 09:00
+            </view>
+          </view>
+        </view>
+        <view class='right color'>
+          +￥7.5
+        </view>
+      </view>
+    </view>
+  </view>
+
+</view>

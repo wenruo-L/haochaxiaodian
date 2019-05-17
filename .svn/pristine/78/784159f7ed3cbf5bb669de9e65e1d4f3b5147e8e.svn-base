@@ -1,0 +1,43 @@
+<!--pages/tixian/tixian.wxml-->
+<view class='content'>
+  <view class='wallet_out'>
+    <view class='wallet'>
+      <view class='wallet_img'>
+        <image src='../../common/image/index_img/collarRed.png'></image>
+      </view>
+      <view class='wallet_text font30'>
+        钱包余额： <text class='font36 maincolor'>1637.23</text>元
+      </view>
+    </view>
+  </view>
+
+  <view class='way_out'>
+    <view class='way'>
+      <view class='choose_way font30'>选择提现方式</view>
+    </view>
+  </view>
+  <view class='way_to_out'>
+      <view class='way_to'>
+      <view class='tixian_icon'>
+        <image src='../../common/image/index_img/tixian_icon1.png'></image>
+      </view>
+      <view class='way_to_text font30'>提现到微信钱包</view>
+      <view class='selected_img'>
+         <image src='../../common/image/index_img/selected.png'></image>
+      </view>
+    </view>   
+  </view>
+
+  <view class='choose_sum_out'>
+    <view class='choose_sum'>
+      <view class='choose_sum_text font30'>提现金额</view>
+    </view>
+    <view class='import_sum'>
+      <text style=' vertical-align: bottom;margin-left:-13rpx;'>￥</text> <input placeholder="单笔最高可提现金额 1 万" placeholder-style='  color: #999; font-size:24rpx;' maxlength='5' value='{{import_sum}}'></input>
+    </view>
+    <view class='tips font24 mezzo_color'>备注：最低50元起可提现，直接提现到账微信钱包</view>
+  </view>
+
+  <!-- 提现按钮  -->
+  <view class='tixian_btn mainbgcolor' bindtap='to_tixian_accomplish'>提现</view>
+</view>

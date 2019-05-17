@@ -1,0 +1,128 @@
+<!--pages/fast_order/fast_order.wxml-->
+<view class='noMore' wx:if="{{navbar.length==1}}">
+  <view class='noMoreTipsimg'>
+    <image src='../../common/image/index_img/noMore.png'></image>
+  </view>
+  暂无商品信息
+</view>
+<view class='content' wx:else>
+  <view class="swiper-tab">
+    <view class="swiper-tab-list " wx:for="{{navbar}}" data-idx="{{index}}" data-categoryId='{{navbar[index].categoryId}}' wx:key="index" bindtap="clickTab">
+      <view class="swiper-tab-list-in font30 {{currentTab==index ? 'on' : ''}}">{{navbar[index].name}}</view>
+    </view>
+  </view>
+  <scroll-view class='swiper_content' bindscrolltolower="aaa" scroll-y="true" current="{{currentTab}}" duration="300" style="height:100%" bindchange="swiperTab">
+    <!-- 内容  -->
+    <view class='good_detail_out'>
+      <view class='good_detail' wx:for="{{teaContent}}" wx:key="{{index}}" bindtap='to_confirm_order' data-productid='{{teaContent[index].productSkuSub.productId}}' data-skuid='{{teaContent[index].productSkuSub.id}}' data-price='{{teaContent[index].productSkuSub.price}}' data-content='{{teaContent[index]}}' data-sign='{{teaContent[index].productSkuSub.collagePrice}}' data-collage='0'>
+        <view class='good_img'>
+          <image src='{{teaContent[index].productImageSub.path}}'></image>
+        </view>
+        <view class='good_msg'>
+          <view class='good_name font30'>
+            <text class='pintuanIcon' wx:if="{{teaContent[index].productSkuSub.collagePrice != 0 }}">拼团</text> {{teaContent[index].title}}
+          </view>
+          <view class='good_sum'>
+            <view class='sum maincolor' wx:if="{{teaContent[index].productSkuSub.collagePrice == 0}}">
+              {{teaContent[index].productSkuSub.price/100}}元/{{teaContent[index].unit}}
+            </view>
+            <view class='sum maincolor' wx:else>
+              {{teaContent[index].productSkuSub.collagePrice/100}}元/{{teaContent[index].unit}}
+            </view>
+            <view class='order mainbgcolor fr'>下单</view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+  </scroll-view>
+
+
+  <!-- 多规格选择的遮罩层 -->
+  <view class='more_mask_out' style="height:{{winHeight}}px;" hidden='{{choose_good}}' catchtouchmove='true'>
+    <view class='more_mask' style="height:{{winHeight-100}}px" catchtap='choseTheMask'></view>
+    <view class='choose_detail_out'>
+      <view class='choose_detail'>
+        <view class='choose_goodsdetail'>
+          <view class='choose_goodsImg'>
+            <image src='{{goodsDetail.productImageSub.path}}'></image>
+          </view>
+          <view class='choose_goodsText'>
+            <view class='choose_goodsTitle font30'>
+              <text class='pintuanIcon'>拼团</text> {{goodsDetail.title}}
+            </view>
+            <view class='choose_goodsSum'>¥{{goodsDetail.productSkuSub.collagePrice}}/{{goodsDetail.unit}}</view>
+          </view>
+        </view>
+        <view wx:if="{{goodsDetail.productSkuSub.collagePrice != 0}}">
+          <view class='join_in_out'>
+            <view class='join_in' wx:if="{{pintuan_details!=0}}">
+              <view class='click_join' style=' position: relative' catchtap='collageUserList'>
+
+                <view class='num_people'>
+                  <text>{{collagingOrderNum}}</text>人在拼团，点击直接成团
+                  <text class='mezzo_color'>（2人成团）</text>
+                </view>
+                <image src=' ../../common/image/index_img/enter_icon.png' class='right-arrow'></image>
+              </view>
+              <view class='join_inside'>
+                <swiper indicator-dots="{{indicator_dots}}" autoplay='true' interval="2000" vertical="true" circular="true" display-multiple-items="{{display_multiple_items}}" style="height:120px;">
+                  <swiper-item wx:for="{{pintuan_details}}" wx:for-index="index" wx:key="index">
+                    <view class='user_portrait'>
+                      <view class='user_n_h'>
+                        <view class='header_img'>
+                          <image src='{{pintuan_details[index].userSub.logo}}'></image>
+                        </view>
+                        <view class='user_name'>{{pintuan_details[index].userSub.nickName}}</view>
+                      </view>
+                      <view class='count_down fr'>
+                        <view class='times shallow_color'>
+                          <block wx:if="{{pintuan_details[index].lastTimeChages}}">剩余:</block>
+                          <text class='count_down_time'>{{pintuan_details[index].lastTime}}</text>
+                        </view>
+                        <view class='join_to' bindtap='to_buy_group_join' data-collageid='{{pintuan_details[index].collageId}}' data-goodid='{{own_buy_top_data.id}}' wx:if="{{pintuan_details[index].lastTimeChages}}">
+                          去拼团
+                        </view>
+                      </view>
+                    </view>
+                  </swiper-item>
+                </swiper>
+              </view>
+            </view>
+          </view>
+
+        </view>
+        <view class='choose_goodsNum' wx:else>
+          <!-- <view class='choose_goods_out clearfix'>
+            <view class='choose_goods_L'>
+              <view class='choose_goods font30'>青瓷 粤窑</view>
+              <view class='choose_goods font24 color999'>单买价：￥508</view>
+            </view>
+            <view class='choose_good_add_min fr'>
+              <view class='min dis_middle' bindtap='jian' data-index='{{index}}'>-</view>
+              <input class='choose_good_inp dis_middle' bindinput='get_num' bindblur='get_num_limit' data-index='{{index}}' value='{{buyNum}}'></input>
+              <view class='add dis_middle' bindtap='jia' data-index='{{index}}'>+</view>
+            </view>
+          </view> -->
+        </view>
+      </view>
+      <view class='faqiPintuan' wx:if="{{goodsDetail.productSkuSub.collagePrice != 0}}">
+        <view class='empty'> 略略略略略</view>
+        <view class='faqiPintuanIcon' bindtap='to_confirm_order_pintuan'>发起拼团</view>
+      </view>
+      <view wx:else class='sum_total'>
+        <!-- <view class='total font30'>
+          共
+          <text class='maincolor'>7</text> 件
+          <text class='maincolor zongjia'>￥647.00</text>
+        </view>
+        <view class='submit_num font30'>
+          下单
+        </view> -->
+      </view>
+    </view>
+  </view>
+</view>
+  <modal class="text_window" style="display:{{isLogin==true?'none':'block'}}" title='首次访问“好茶小店”请先授权' cancel-text=' ' confirm-text=''>
+    <button class="text_window_btn" open-type="getUserInfo" bindgetuserinfo="getUserInfo">同意授权</button>
+  </modal>

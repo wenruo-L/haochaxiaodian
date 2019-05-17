@@ -1,0 +1,118 @@
+<!--pages/search_index/search_index.wxml-->
+
+<view class='content'>
+  <view class='index_top_mind' bindtap='To_ad'>
+    <view class='index_top_bg'>
+      <image mode="widthFix" src='http://image.haocha.top/i1/poster/base/shop_near_advertisement.png'></image>
+    </view>
+  </view>
+  <!--附近的小店  -->
+
+  <view class='nearby_shop_out'>
+    <view class='nearby_shop'>
+      <view class='search_index_title'>
+        <view class='title_icon'>
+          <image src='../../common/image/index_img/right51.png'></image>
+        </view>
+        <view class='search_index_title_text'>附近的小店</view>
+        <view class='title_icon'>
+          <image src='../../common/image/index_img/left52.png'></image>
+        </view>
+      </view>
+    </view>
+  </view>
+  <!--附近的小店  -->
+
+<view wx:if="{{latitudeChange}}">
+  <view class='tis' wx-if="{{_latitude==''&&_longitude==''}}">
+    <view>无法获取地理位置！</view>
+    <view>好茶小程序需要获取您的位置信息</view>
+  </view>
+  <button type='primary' class='openLocation' wx-if="{{_latitude==''&&_longitude==''}}" catchtap='showPopup'>点击授权</button>
+</view>
+
+  <!--用户店铺搜索-->
+  <!-- <block > -->
+  <view>
+
+    <view class='client_own_shop' wx:for="{{near_shop_list}}" wx:key="index" bindtap='to_own_shop' data-id='{{near_shop_list[index].id}}'>
+      <view wx:if="{{near_shop_list[index].shopLogo}}" class='client_own_shop_img'>
+        <image src='{{near_shop_list[index].shopLogo}}'></image>
+      </view>
+      <view wx:else class='client_own_shop_img'>
+        <image src='http://image.haocha.top/i1/default/shop/haocha_logo_small.png'></image>
+      </view>
+      <view class='client_own_shop_name'>
+        <view class='client_own_shop_name_t'>{{near_shop_list[index].name}}</view>
+        <view class='client_own_shop_name_yewu'>主营：
+          <block wx:for="{{near_shop_list[index].shopCategorySubList}}" wx:key="index">
+            {{item.categoryName}}
+          </block>
+        </view>
+      </view>
+      <view class='client_own_shop_distance fr clearfix'>
+        <text decode='{{true}}'>&lt;</text>
+        <text>{{shop_julis[index]}}</text>km
+      </view>
+    </view>
+
+  </view>
+  <!-- </block> -->
+  <!--用户店铺搜索-->
+  <!--实体店入驻  -->
+
+  <!-- <view class='ruzhu_out'>
+            <view class='ruzhu'>
+            <view class='ruzhu_erweima'>
+                <image src='http://file.haocha.top/image/applet/i1/qrcode/20180606/9434908864e94e1393c8fbc21248acf0.jpg'></image>
+            </view>
+            <view class='ruzhu_text'>
+              点击保存图片，分享好友
+            </view>
+            <view class='shitidian_text' bindtap='to_ruzhu'>
+              我有实体店，我要入驻
+            </view>
+          </view>
+          </view> -->
+
+
+  <!--实体店入驻  -->
+
+
+  <!-- 授權對話框 -->
+  <!-- <view>
+    <modal class="text_window" hidden="{{showModal}}" title='首次访问“好茶小店”请授权' cancel-text=' ' confirm-text=''>
+      
+      <button class="text_window_btn" open-type="getUserInfo" bindgetuserinfo="getUserInfo">确定</button>
+    </modal>
+  </view> -->
+</view>
+
+
+
+
+<view class='wx_dialog_container' wx:if="{{latitudeChange!=true}}">
+  <view class='wx-mask'></view>
+  <view class='wx-dialog'>
+    <view class='wx-dialog-title'>提示</view>
+    <view class='wx-dialog-content'>您还没打开定位权限,是否去设置打开?</view>
+    <view class='wx-dialog-footer'>
+      <view class='wx-dialog-btn' catchtap='cancelEvent'>取消</view>
+      <view class='wx-dialog-btn' catchtap='confirmEvent'>
+        <button open-type="openSetting" bindopensetting="bindopensetting"></button>
+        确定
+      </view>
+    </view>
+  </view>
+</view>
+
+ <!-- <popup id='popup' 
+    title='我是标题' 
+    content='恭喜你，学会了小程序组件' 
+    cancelText='知道了' 
+  
+  bind:bindopensetting="_bindopensetting"
+    bind:cancelEvent="_cancelEvent"  
+    bind:confirmEvent="_confirmEvent">
+  </popup>
+    <button open-type="openSetting" bindopensetting="bindopensetting">121</button> -->

@@ -1,0 +1,380 @@
+/* pages/order_detail_pintuan/order_detail_pintuan.wxss */
+.copy_btn{
+  width: 75rpx;
+  height: 30rpx;
+  font-size: 24rpx;
+  line-height: 28rpx;
+  text-align: center;
+  border: 1px solid #e6e6e6;
+  display: inline-block;
+  vertical-align: middle; 
+  padding-left: 0;
+  padding-right: 0;
+  color: #A0A0A0;
+  position: absolute;
+  right: 0;
+  top:7rpx;
+  border-radius:0; 
+  background: #fff;
+}
+.copy_btn::after{
+  border-radius:0; 
+}
+.wait_pay_out{
+  width: 100%;
+  height: auto;
+}
+.wait_pay{
+  width: 88%;
+  margin: 0 auto;
+  padding: 48rpx 0;
+  position: relative;
+}
+.wait_pay_text{
+  color: #fff;
+  display: inline-block;
+  vertical-align: middle;
+}
+.wait{
+  line-height: 55rpx;
+}
+.deadline{
+  line-height: 28rpx;
+}
+.deadline>text{
+  margin: 0 10rpx;
+}
+.wait_pay_icon{
+  width: 140rpx;
+  height: 130rpx;
+  display: inline-block;
+  vertical-align: middle;
+  position: absolute;
+  right: 0;
+  top: 20rpx;
+}
+.wait_pay_icon>image{
+  width: 100%;
+  height: 100%;
+}
+.order_detail_out{
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  border-top:1px solid #e6e6e6; 
+  position: relative;
+   margin-top: 20rpx; 
+}
+.order_detail{
+  width: 96%;
+  margin: 0 auto;
+  padding: 30rpx 0;  
+}
+.shouhuo{
+  width: 96%;
+  height: auto;
+  display: inline-block;
+  vertical-align: middle;
+}
+.shouhuo1{
+  width: 96%;
+  height: 100%;
+  display: inline-block;
+  vertical-align: middle;
+}
+.shouhuoren{
+  line-height: 48rpx;
+}
+.shouhuoren1{
+   line-height: 100rpx; 
+}
+.shouhuoren>text{
+  margin-right: 54rpx;
+}
+.address{
+  margin-top: 10rpx;
+  line-height: 48rpx;
+  overflow: hidden;
+  /*1.超出内容要隐藏，创建边界*/
+  text-overflow: ellipsis;
+  /*2.文字遇到边界时，显示省略号*/
+  display: -webkit-box;
+  /*3.设置该容器为弹性盒子*/
+  -webkit-line-clamp: 2;
+  /*4.表示你的文字可以支持的最大行数*/
+  -webkit-box-orient: vertical;
+}
+.enter_icon{
+  width: 25rpx;
+  height: 32rpx;
+  display: inline-block;
+  vertical-align: middle;
+}
+.enter_icon>image{
+  width: 100%;
+  height: 100%;
+}
+.cut_line{
+  width: 100%;
+  height: 10rpx;
+   position: absolute;
+  left: 0;
+  bottom: 19rpx;
+}
+.cut_line>image{
+  width: 100%;
+  height: 100%;
+}
+.shopname_out{
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  border-top:1px solid #e6e6e6; 
+  border-bottom:1px solid #e6e6e6; 
+  margin-top: 20rpx;
+}
+.shop_name{
+  width: 96%;
+  margin: 0 auto;
+  padding: 20rpx 0;
+}
+.shop_icon{
+  display: inline-block;
+  width:50rpx ;
+  height: 50rpx;
+  vertical-align: middle;
+}
+.shop_icon>image{
+  width: 100%;
+  height: 100%;  
+}
+.orders_out{
+  width: 100%;
+  height: 100%;
+  /* background: #fff; */
+  margin-top: 20rpx;
+  border-top:1px solid #e6e6e6; 
+  border-bottom:1px solid #e6e6e6; 
+}
+.orders{
+  width: 96%;
+  margin: 0 auto;
+}
+.orders_detail{
+  width: 100%;
+  height: 100%;
+}
+.order_info{
+   width: 100%;
+  height: 170rpx;
+  padding: 17rpx 0;
+}
+.good_img{
+  width: 170rpx;
+  height: 170rpx;
+  display: inline-block;
+  vertical-align: middle;
+}
+.good_img>image{
+  width: 100%;
+  height: 100%;
+}
+.good_detail{
+  width: 70%;
+  height: 100%;
+  display: inline-block;
+  margin-left: 20rpx;
+  position: relative;
+  vertical-align: middle;
+}
+.good_detail_text1{
+  position: absolute;
+  top: 14rpx;
+  left: 0;
+}
+.good_detail_text2{
+  position: absolute;
+  top: 60rpx;
+  left: 0;
+}
+.good_detail_text3{
+  width: 100%;
+  position: absolute;
+  bottom: 13rpx;
+  left: 0;
+  font-weight: 600;
+}
+.amount_out{
+  width: 100%;
+  height: 100%;
+  border-bottom:1px solid #e6e6e6; 
+  background: #fff;
+}
+.amount_out_s{
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  border-top:1px solid #e6e6e6; 
+  margin-top: 20rpx;
+}
+.amount{
+  width: 96%;
+  margin:0 auto;
+}
+.goodname{
+  padding: 26rpx 0;
+}
+.minus{
+  width: 45rpx;
+  height: 45rpx;
+  display: inline-block;
+  border: 1px solid#e6e6e6;
+  text-align: center;
+  line-height: 45rpx;
+   vertical-align: middle; 
+
+}
+.stepper{
+  padding: 21rpx 0;
+}
+
+.stepper_num{
+  width: 134rpx;
+  height: 45rpx;
+  border-bottom: 1px solid#e6e6e6;
+  border-top: 1px solid#e6e6e6;
+  display: inline-block;
+   vertical-align: middle; 
+   text-align: center;
+   line-height: 45rpx;
+}
+.plus{
+  width: 45rpx;
+  height: 45rpx;
+  display: inline-block;
+  border: 1px solid#e6e6e6;
+  text-align: center;
+  line-height: 45rpx;
+  vertical-align: middle; 
+}
+.stepper_s{
+  color: #EA0000;
+  padding:26rpx 0;
+}
+.stepper_img{
+  width: 30rpx;
+  height: 30rpx;
+  padding:26rpx 0;
+}
+.stepper_img>image{
+  width: 100%;
+  height: 100%;
+}
+.pay_icon{
+  width: 40rpx;
+  height: 40rpx;
+  display: inline-block;
+ padding:26rpx 0;
+ margin-right: 20rpx;
+}
+.pay_icon>image{
+  width: 100%;
+  height: 100%;
+}
+.pay{
+  width: 100%;
+  height: 113rpx;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  border-top:1px solid #e6e6e6 ;
+}
+.sum{
+  width: 33.2%;
+  display: inline-block;
+  line-height: 113rpx;
+  text-align:center; 
+  background: #fff;
+  border-right:1px solid #e6e6e6 ;
+   vertical-align: middle;
+}
+.sub{
+   width: 32.9%;
+  display: inline-block;
+  line-height: 113rpx;
+  text-align:center; 
+  color: #fff;
+  vertical-align: middle;
+ 
+}
+.empty{
+   width: 100%;
+  height: 113rpx;
+}
+.order_timer_out{
+  width: 100%;
+  height: auto;
+  background: #fff;
+  margin-top:20rpx; 
+  border-top:1px solid #e6e6e6; 
+  border-bottom:1px solid #e6e6e6; 
+}
+.order_timer{
+  width: 96%;
+  margin: 0 auto;
+  padding: 35rpx 0;
+}
+.order_out{
+  width: 100%;
+  height: auto;
+  position: relative;
+}
+.order{
+  vertical-align: middle; 
+  display: inline-block;
+}
+
+.copy{
+  width: 75rpx;
+  height: 30rpx;
+  font-size: 24rpx;
+  line-height: 31rpx;
+  text-align: center;
+  border: 1px solid #e6e6e6;
+  display: inline-block;
+  vertical-align: middle; 
+  color: #A0A0A0;
+  position: absolute;
+  right: 0;
+  top:7rpx; 
+}
+.timer{
+  margin-top: 20rpx;
+}
+.pintuan_icon{
+  display: inline-block;
+  vertical-align: middle;
+  width: 72rpx;
+  height: 36rpx;
+  text-align: center;
+  line-height: 36rpx;
+  color: #FFF;
+  background: #ffa800;
+  border-radius:7rpx;
+  margin-left: 30rpx; 
+}
+.pick{
+  display: inline-block;
+  width: 33.2%;
+  height: auto;
+     vertical-align: middle;
+}
+.sum1{
+  width: 100%;
+  display: inline-block;
+  line-height: 113rpx;
+  text-align:center; 
+  background: #fff;
+  border-right:1px solid #e6e6e6 ;
+   vertical-align: middle;
+}

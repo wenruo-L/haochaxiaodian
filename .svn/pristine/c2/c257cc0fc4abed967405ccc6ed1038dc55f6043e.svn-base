@@ -1,0 +1,91 @@
+/* pageA/pages/record/record.wxss */
+page{
+  width: 100%;
+  height: 100%;
+  background: #fff
+}
+.item{
+  padding: 0 20rpx;
+ 
+}
+.title {
+  text-align: center;
+  color: #0e6d45;
+  font-size: 30rpx;
+  line-height: 80rpx;
+  height: 80rpx;
+ 
+}
+
+.goodsName {
+  
+ 
+  width: 100%;
+ 
+  margin-left: -8rpx
+}
+.goodsName>text{
+  display: block;
+  
+  font-size: 30rpx;
+    width: 80%;
+   line-height: 60rpx;
+  height: 60rpx;
+   display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
+  font-weight: 700;
+}
+.mes{
+  margin-bottom: 20rpx;
+}
+.bot{
+  display: flex
+}
+.text {
+  line-height: 50rpx;
+  
+  color: #999;
+  font-size: 24rpx;
+}
+
+.text text {
+  line-height: 50rpx;
+  height: 50rpx;
+  display: inline-block;
+  color: #999;
+  font-size: 24rpx;
+}
+.right{
+  flex: 1;
+  text-align: right;
+  line-height: 100rpx;
+  font-size: 40rpx;
+  color: #EC0000
+}
+.color{
+  color:#0E6D45
+}
+.top{
+  margin-top: -30rpx;
+  line-height: 60rpx;
+}
+
+.noMore{
+  width: 100%;
+  height: auto;
+  text-align: center;
+  color: #666;
+  margin-top: 50rpx;
+  padding-bottom: 70rpx;
+}
+.noMoreTipsimg{
+  width: 360rpx;
+  height: 340rpx;
+  margin: 0 auto;
+}
+.noMoreTipsimg>image{
+  width: 100%;
+  height: 100%;
+}

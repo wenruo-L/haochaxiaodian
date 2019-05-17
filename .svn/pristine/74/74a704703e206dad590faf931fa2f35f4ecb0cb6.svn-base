@@ -1,0 +1,54 @@
+/* pages/tixian_accomplish/tixian_accomplish.wxss */
+.tixian_accomplish_out{
+  width: 100%;
+  height: auto;
+  background: #fff;
+  margin-top: 20rpx;
+}
+.tixian_accomplish{
+  width: 94%;
+  margin: 0 auto;
+  height: auto;
+  padding: 35rpx 0;
+}
+.accomplish_img{
+  width: 200rpx;
+  height: 200rpx;
+  margin: 0 auto;
+}
+.accomplish_img>image{
+  width: 100%;
+  height: 100%;
+}
+.accomplish_tip{
+  width: 100%;
+  text-align: center;
+  font-size: 40rpx;
+  margin-top: 58rpx;
+}
+.accomplish_tip_bottom{
+  width: 100%;
+  text-align: center;
+  margin-top: 25rpx;
+}
+.turnblackto_index{
+  width: 100%;
+  height: 88rpx;
+  text-align: center;
+  line-height: 88rpx;
+  color: #fff;
+  border-radius:8rpx;
+  background: #09bb07;
+  border: 1px solid #029400; 
+  margin-top: 90rpx;
+}
+.turnblackto_tixian{
+  width: 100%;
+  height: 88rpx;
+  text-align: center;
+  line-height: 88rpx;
+  border-radius:8rpx;
+  background: #fbfafc;
+  border: 1px solid #d6d5d6; 
+  margin-top: 30rpx;
+}

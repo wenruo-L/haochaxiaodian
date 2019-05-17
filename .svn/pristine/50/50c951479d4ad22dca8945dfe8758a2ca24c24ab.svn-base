@@ -1,0 +1,155 @@
+// pages/ruzhu/ruzhu.js
+const utils = require("../../utils/util.js")
+Page({
+  // 地址
+  bindRegionChange: function (e) {
+    console.log('picker发送选择改变，携带值为', e.detail.value)
+    this.setData({
+      region: e.detail.value
+    })
+  },
+  // 主营品类
+  bindPickerChange: function (e) {
+    console.log(e)
+
+
+    console.log('0picker发送选择改变，携带值为', e.detail.value)
+    this.setData({
+      index: e.detail.value
+    })
+
+  },
+  // 客单价
+  bindPickerChange2: function (e) {
+    console.log('2picker发送选择改变，携带值为', e.detail.value)
+    this.setData({
+      index2: e.detail.value
+    })
+  },
+  // 店铺面积
+  bindPickerChange3: function (e) {
+    console.log('3picker发送选择改变，携带值为', e.detail.value)
+    this.setData({
+      index3: e.detail.value
+    })
+  },
+  // 进货渠道
+  bindMultiPickerChange: function (e) {
+    console.log(e)
+    console.log('4picker发送选择改变，携带值为', e.detail.value)
+    let tmpArrValue = [],//提交给后台的value
+      tmpArrName = []
+
+    e.detail.value.forEach((ele, index) => {
+      tmpArrValue.push(this.data.multiArray[index][ele]["value"])
+      tmpArrName.push(this.data.multiArray[index][ele]["name"])
+    })
+    this.setData({
+      multiIndex: e.detail.value,
+      nowPurchaseChannel: tmpArrName.join(" ").toString()
+    })
+  },
+  /**
+   * 页面的初始数据
+   */
+  data: {
+    userName: undefined,
+    userPhone: undefined,
+    region: ['', '', ''],
+    multiIndex: [0, 0, 0],
+    array: ['美国', '中国', '巴西', '日本'],
+    array2: ['100元以下', '100~300元', '300~500元'],
+    array3: ['1~50平米', '50~100平米', '100~200平米', '200~400平米', '400~1000平米'],
+    multiArray: [[{ name: '', value: "5" }, { name: '工厂 ', value: "1" }, { name: '批发市场 ', value: "2" }], [{ name: '', value: "5" }, { name: '自产 ', value: "3" }, { name: '朋友 ', value: "4" }], [{ name: '', value: "5" }, { name: '其他 ', value: "5" }]],
+    nowPurchaseChannel: ""
+  },
+
+
+
+
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function (options) {
+    utils.get_uid()
+    this.get_tealist()
+  },
+  get_tealist() {
+    wx.getStorage({
+      key: 'login_Uid',
+      success: (res) => {
+        console.log(res.data.token)
+        var jtoken = res.data.token
+        console.log(jtoken)
+        wx.request({
+          url: 'http://lp.apit.haocha.top/category/list',
+          method: 'GET',
+          header: {
+            'Authorization': jtoken
+          },
+          success: (e) => {
+            console.log(e.data.data.list)
+            var pinlei_list = e.data.data.list;
+            console.log(pinlei_list)
+            var _array = []
+            pinlei_list.forEach((el) => {
+              _array.push(el.name)
+              this.setData({
+                array: _array
+              })
+            });
+          }
+        })
+      }
+    })
+  },
+
+  /**
+   * 生命周期函数--监听页面初次渲染完成
+   */
+  onReady: function () {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow: function () {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面隐藏
+   */
+  onHide: function () {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面卸载
+   */
+  onUnload: function () {
+
+  },
+
+  /**
+   * 页面相关事件处理函数--监听用户下拉动作
+   */
+  onPullDownRefresh: function () {
+
+  },
+
+  /**
+   * 页面上拉触底事件的处理函数
+   */
+  onReachBottom: function () {
+
+  },
+
+  /**
+   * 用户点击右上角分享
+   */
+  onShareAppMessage: function () {
+
+  }
+})

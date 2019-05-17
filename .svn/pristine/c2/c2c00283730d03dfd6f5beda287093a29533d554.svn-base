@@ -1,0 +1,115 @@
+<!--pages/pinhaocha/pinhaocha.wxml-->
+<view class='content'>
+  <view class='index_top_mind'>
+       <view class='index_top_bg'>
+          <image src='http://image.haocha.top/i1/poster/base/collage_advertisement.png'></image>
+      </view> 
+  </view>
+  <!--拼团频道 -->
+
+  <view class='tips font30' wx:if="{{haocha_dynamic_list == ''}}">暂无商品信息~</view>
+  <view class='shop_channel'>
+   
+
+
+
+    <view class='group_booking_detail'  wx:for="{{haocha_dynamic_list}}" wx:for-index="index" wx:key="index" >
+        <view class='group_booking_detail_in' >
+            <view class='group_booking' bindtap='to_group_booking' data-id='{{haocha_dynamic_list[index].productSkuSub.productId}}'>
+                <view class='group_booking_good_img'>
+                  <image src='{{haocha_dynamic_list[index].productImageSub.path}}'></image>
+                </view>
+                <view class='group_booking_good_detail'>
+                  <view class='group_booking_good_title'>
+                {{haocha_dynamic_list[index].title}}
+                  </view>
+                  <view class='group_booking_good_price'>
+                    <view class='group_booking_price'>
+                      拼团价：<text>￥{{pintuan_nums[index]}}/{{haocha_dynamic_list[index].unit}}</text>
+                    </view>
+                    <view class='own_price'>
+                      ¥{{danmai_nums[index]}}/{{haocha_dynamic_list[index].unit}}
+                    </view>
+                  </view>
+                  <view class='group_booking_3'>
+                    <view class='group_booking_number'>
+                      已拼{{haocha_dynamic_list[index].productSkuSub.collageSaleNum}}件
+                    </view>
+                    <view class='to_group_booking'>
+                      <view class='user_header' >
+               
+                        <view class='header_img' wx:for="{{haocha_dynamic_list[index].collagingUserSubList}}" wx:for-index="num" wx:key="index" >
+                          <image src='{{haocha_dynamic_list[index].collagingUserSubList[num].logo}}'></image>
+                          
+                        </view>
+                         <!-- <view class='header_img header_img_turn'>
+                          <image src='{{haocha_dynamic_list[index].collagingUserSubList[1].logo}}'></image>
+                        </view>  -->
+                      </view>
+                      <view class='btn_to_gb' >
+                          去拼团
+                      </view>
+                    </view>
+                  </view>
+                </view>
+            </view>
+        </view>       
+    </view>
+<view>
+   <!-- hidden="{{showModal}}" -->
+    <modal class="text_window" style="display:{{isLogin==true?'none':'block'}}" title='首次访问“好茶小店”请先授权' cancel-text=' ' confirm-text=''>
+      
+      <button class="text_window_btn" open-type="getUserInfo" bindgetuserinfo="getUserInfo">同意授权</button>
+    </modal>
+  </view> 
+
+  <!-- ======================== -->
+      <!-- <view class='group_booking_detail'>
+
+
+        <view class='group_booking_detail_in'>
+            <view class='group_booking'>
+                <view class='group_booking_good_img'>
+                  <image src='../../common/image/index_img/good1.png'></image>
+                </view>
+                <view class='group_booking_good_detail'>
+                  <view class='group_booking_good_title'>
+                    福建白茶皇家百合-2013年高山牡丹
+                  </view>
+                  <view class='group_booking_good_price'>
+                    <view class='group_booking_price'>
+                      拼团价：<text>￥108/罐</text>
+                    </view>
+                    <view class='own_price'>
+                      ¥154/罐
+                    </view>
+                  </view>
+                  <view class='group_booking_3'>
+                    <view class='group_booking_number'>
+                      已拼122024件
+                    </view>
+                    <view class='to_group_booking fr'>
+                      <view class='user_header'>
+                        <view class='header_img '>
+                          <image src='../../common/image/index_img/header1.png'></image>
+                        </view>
+                        <view class='header_img header_img_turn'>
+                          <image src='../../common/image/index_img/header2.png'></image>
+                        </view>
+                      </view>
+                      <view bindtap='to_group_booking' class='btn_to_gb'>
+                          去拼团
+                      </view>
+                    </view>
+                  </view>
+                </view>
+            </view>
+        </view>       
+    </view> -->
+
+  </view>
+
+
+
+  <!--拼团频道 -->
+</view>

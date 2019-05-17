@@ -1,0 +1,138 @@
+/* pages/pay_success/pay_success.wxss */
+.content{border-top:1px solid #e6e6e6;}
+.pay_success_out{
+  width: 100%;
+  height: auto;
+  background: #fff;
+  margin-top: 20rpx;
+  border-top:1px solid #e6e6e6;
+  border-bottom:1px solid #e6e6e6;
+}
+.pay_success{
+  width: 92%;
+  height: auto;
+  margin: 0 auto;
+  padding: 40rpx 0 ;
+}
+.icon_wrap{
+  width: 200rpx;
+  height: 200rpx;
+  margin: 0 auto;
+  
+}
+.icon_wrap>image{
+  width: 100%;
+  height: 100%;
+}
+.pay_success_text{
+  width: 100%;
+  text-align: center;
+  font-size: 40rpx;
+  margin-top: 55rpx;
+}
+.turn_back_to_index{
+  width: 100%;
+  height: 88rpx;
+  border:1px solid #029400;
+  background: #09BB07;
+  text-align: center;
+  line-height: 88rpx;
+  color: #fff;
+  border-radius:8rpx; 
+  font-size: 36rpx;
+  margin-top: 140rpx;
+}
+.check_order{
+  width: 100%;
+  height: 88rpx;
+  border:1px  solid #D6D5D6;
+  background: #FBFAFC;
+  text-align: center;
+  line-height: 88rpx;
+  border-radius:8rpx;
+  font-size: 36rpx;
+  margin-top: 30rpx;
+}
+.ensureOrder{
+  width: 100%;
+  height: 88rpx;
+  border:1px  solid #D6D5D6;
+  background: #FBFAFC;
+  text-align: center;
+  line-height: 88rpx;
+  border-radius:8rpx;
+  font-size: 36rpx;
+  margin-top: 30rpx;
+}
+.mask{
+  width: 100%;
+  background: rgba(0, 0, 0, .5);
+  position: fixed;
+  left: 0;
+  top: 0;
+}
+.lucky_monry{
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+.moneyClose{
+  width: 100rpx;
+  height: 100rpx;
+  position: absolute;
+  right: 10%;
+  top: 18%;
+  z-index: 5;
+}
+.moneyClose>image{
+  width: 60rpx;
+  height: 60rpx;
+}
+.moneyFelling{
+  width: 92%;
+  height: 261rpx;
+  position: absolute;
+  left: 4%;
+  top: 20%;
+  z-index: 3;
+}
+.moneyOpen{
+  width: 165rpx;
+  height: 166rpx;
+  position: absolute;
+  left: 34%;
+  top: 47%;
+  z-index: 2;
+}
+.luckymoney{
+  width: 474rpx;
+  height: 613rpx;
+  position: absolute;
+  left: 20%;
+  top: 24%;
+}
+.luckymoney_in{
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+.luckymoney_inside{
+  width: 100%;
+  height: 100%;
+}
+.luckymoney_text{
+  width: 100%;
+  text-align: center;
+  color: #fff;
+  font-weight: 700;
+}
+.luckymoney_text_wrap{
+  width: 100%;
+  text-align: center;
+  position: absolute;
+  bottom: 8%;
+  left: 0;
+}
+.mt{
+  margin-top: 20rpx;
+}

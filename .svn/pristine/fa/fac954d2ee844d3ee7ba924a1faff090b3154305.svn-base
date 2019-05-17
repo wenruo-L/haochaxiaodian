@@ -1,0 +1,87 @@
+/* pages/mine/mine.wxss */
+
+/* 头部 */
+
+.me_title {
+  align-items: center;
+  background: #0e6d44;
+  width: 100%;
+  height: 230rpx;
+  vertical-align: initial;
+  display: flex;
+}
+
+/* 名称 */
+
+.userinfo-nickname {
+  color: #fff;
+  margin-left: 40rpx;
+  display: flex;
+  flex-direction: column;
+}
+
+.menu {
+  align-items: center;
+  background: #fff;
+  height: 80rpx;
+  display: flex;
+  border-top: 0.5px solid #dedede;
+  border-bottom: 0.5px solid #dedede;
+   margin-bottom: 15rpx;
+}
+
+.menu-item {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  font-size: 12px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 0px;
+  /* border-bottom: 0.5px  solid #0e6d44; */
+}
+
+.section {
+  align-items: center;
+  background: #fff;
+  height: 120rpx;
+  display: flex;
+  border-top: 0.5px solid #dedede;
+  border-bottom: 0.5px solid #dedede;
+  margin-bottom: 15rpx;
+}
+
+.flex-item {
+  width: 34%;
+  height: 45px;
+  display: flex;
+  font-size: 12px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 3px;
+}
+
+.flex-line-vertical {
+  width: 100%;
+  height: 1px;
+  background: #dedede;
+  -webkit-transform: scaleY(0.3);
+  -webkit-transform-origin: 0 0;
+}
+
+/**水平布局用的分割线*/
+
+.flex-line-horizontal {
+  width: 2px;
+  height: 100%;
+  background: #dedede;
+  -webkit-transform: scaleX(0.3);
+  -webkit-transform-origin: 0 0;
+}
+
+.img {
+  height: 15px;
+  width: 15px;
+}

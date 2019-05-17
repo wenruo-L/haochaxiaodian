@@ -1,0 +1,478 @@
+<!--index.wxml-->
+
+<view class="content">
+
+
+
+  <view class='index_top_mind'>
+    <view wx:if="{{index_top_list.inviteImage}}" class='index_top_bg'>
+      <image src='{{index_top_list.inviteImage}}'></image>
+    </view>
+    <view wx:else class='index_top_bg'>
+      <image src='http://image.haocha.top/i1/default/shop/haocha_invite.png'></image>
+    </view>
+    <view class='mask'></view>
+    <view class='turn_back' hidden="{{share_shop}}" bindtap='to_search_index'>
+      <view class='turn_back_in'>
+        <view class='left_enter'>
+          <image src='../../common/image/index_img/left_enter.png'></image>
+        </view>
+
+      </view>
+    </view>
+    <!-- <view  class='turn_back1'></view> -->
+
+    <!-- 收藏店铺 -->
+    <!--wx:if="{{isCollect_shop}}" -->
+    <view class='like_shop_wrap'>
+      <view class='click_like_shop' bindtap='collect_shop' data-shopid='{{index_top_list.id}}' data-isLikedShop="{{isLikeShop}}">
+        <view class='shop_like_icon'>
+
+          <!-- <image src="../../common/image/index_img/{{index_middle_list[0].isLike==0?'not_like_index.png':'likes.png'}}" class="ripple  {{index_middle_list[0].isLike==0?'':'rubberBand'}}"></image> -->
+          <image src="../../common/image/index_img/{{isLikeShop==0?'not_like_index.png':'likes.png'}}" class="ripple  {{isLikeShop==0?'':'rubberBand'}}"></image>
+        </view>
+        <view class='like_texts' style='color:#fff' wx:if="{{isLikeShop==0}}">收藏</view>
+        <view class='like_texts' style='color:#fff' wx:else>已收藏</view>
+      </view>
+      <!--  -->
+      <!-- <view class='click_notlike_shop' hidden='{{likeshop}}' bindtap='cancel_collect_shop' data-shopid='{{index_middle_list[index].shopId}}' data-goodid='{{index_middle_list[index].id}}'>
+        <view class='like_icon'>
+          <image src='../../common/image/index_img/likes.png'></image>
+        </view>
+        <view class='like_text' style='color:#fff'>取消收藏</view>
+      </view>   -->
+    </view>
+    <!-- 收藏店铺 -->
+    <view class='shop_ctent'>
+      <view class='shop_img' wx:if="{{ !index_top_list.shopLogo || index_top_list.shopLogo == ''}}">
+        <image src='../../common/image/index_img/defaultShopLogo.png'></image>
+      </view>
+      <view class='shop_img' wx:else>
+        <image src='{{index_top_list.shopLogo}}'></image>
+      </view>
+      <text>{{index_top_list.name}}</text>
+    </view>
+    <view class='shop_name_yuanhu'>
+      <view class='yuanhu'>
+        <image src='../../common/image/index_img/yuanhu.png'></image>
+      </view>
+    </view>
+  </view>
+  <!--商店详情开始  -->
+  <view class='shop_details'>
+    <view class='shop_details_1 '>
+      <!-- <view class='erweima_wrap'>
+              <view>
+                  <image src='../../common/image/index_img/erweima.jpg'></image>
+              </view>
+              <text>(点击保存)</text>
+          </view>  -->
+      <view class='shop_name'>
+        <view class='shop_name_1'>
+          <view class='shop_name_2_img'>
+            <image src='../../common/image/index_img/address_icon.png'></image>
+          </view>
+          <view class='shop_name_2_text font30'>地址：
+            <text class='font30'>{{province}}{{city}}{{area}}{{index_top_list.address}}</text>
+          </view>
+        </view>
+        <view class='shop_name_2'>
+          <view class='shop_name_3_img'>
+            <image src='../../common/image/index_img/phone.png'></image>
+          </view>
+          <view class='shop_name_3_text font30'>电话：
+            <button class='phonebtn maincolor font29' bindtap='callphone'>{{index_top_list.contactPhone}}</button>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="fans_out" wx:if="{{fans_list != ''}}">
+    <view class='fans' bindtap='to_fans_record' data-shopid='{{index_top_list.id}}'>
+      <view class='fans_title font30'>
+        <text class='font30 maincolor'>{{all_detail.browseUserNum}}</text> 位粉丝浏览过小店</view>
+      <view class='fans_detail'>
+        <view class='fans_detail_img' wx:for="{{fansHeader}}" wx:key="index" wx:for-index="num">
+
+          <image src='{{fansHeader[num]}}'></image>
+        </view>
+      </view>
+
+      <view class='more_fans fr'>更多
+        <text decode='{{true}}'>&gt;</text>
+      </view>
+
+
+    </view>
+  </view>
+
+
+
+
+  <view class='share_card_out' hidden="{{showCard}}">
+    <view class='share_card'>
+      <view class='close_theCard' bindtap='closeTheCard'>
+        <view class='selected_icon'>
+          <image src='../../common/image/index_img/close.png'></image>
+        </view>
+      </view>
+      <view class='share_shop_bg'>
+        <image src='../../common/image/index_img/share_shop_bg.png'></image>
+      </view>
+
+
+      <button bindtap='fenxiangdianpu' class='share_btn'>立即分享</button>
+
+    </view>
+  </view>
+
+
+<view style='background:#fff'>
+
+  <!-- 新版小程序布局开始 -->
+  <view class='listTab'>
+    <view class='listTabItem {{tabIndex==index?"listTabItemAc":""}}' wx:for="{{newListTab}}" wx:key="this" data-index="{{index}}" catchtap='tabList'>
+      <text>{{item}}</text>
+    </view>
+
+  </view>
+  <!-- 热门开始 -->
+  <view class='newsShopList' wx:if="{{tabIndex==0}}">
+    <view class='newsShopListItem' wx:for="{{index_middle_list}}" wx:for-index="index" wx:key="index" bindtap='to_good_detail' data-goodid='{{index_middle_list[index].id}}' data-sign='{{index_middle_list[index].productSkuSub.collagePrice}}' data-redbag="{{index_middle_list[index].productSkuSub.luckRedBag}}">
+      <view class='newsShopListTop'>
+        <image src='{{index_middle_list[index].productImageSubList[0].path}}'></image>
+        <image src='../../common/image/index_img/collageIcon.png' class='collageIcon' wx:if="{{ index_middle_list[index].productSkuSub.collagePrice != 0 }}"></image>
+      </view>
+      <view class='newsShopListMid'>
+        <text class='index_middle_list_icon' wx:if="{{ index_middle_list[index].productSkuSub.collagePrice != 0 }}">拼团</text> 
+        <text class='index_middle_list_title'>{{index_middle_list[index].title}}</text>       
+      </view>
+      <view class='newsShopListBot'>
+
+        <block  wx:if="{{index_middle_list[index].productSkuSub.collagePrice != 0}}">
+          <text class='newPrice'>￥{{index_middle_list[index].productSkuSub.collagePrice/100}}</text>
+          <text class='oldPrice'>￥{{index_middle_list[index].productSkuSub.price/100}}</text>
+        
+        </block>
+        <block  wx:else>
+          <text class='newPrice'>￥{{index_middle_list[index].productSkuSub.price/100}}</text>
+          
+        </block>
+        
+        
+
+
+
+
+        <view class='neWredPackeTextWrap' wx:if="{{index_middle_list[index].productSkuSub.collagePrice == 0}}"  catchtap='fenxiangyongjin' data-commission='{{index_middle_list[index].productSkuSub.luckRedBag}}' data-goodname='{{index_middle_list[index].title}}' data-shangpinid='{{index_middle_list[index].id}}' data-dianpiid='{{index_middle_list[index].shopId}}' data-shangpintu='{{index_middle_list[index].productImageSubList[0].path}}' data-sign='{{index_middle_list[index].productSkuSub.collagePrice}}' data-redbag="{{index_middle_list[index].productSkuSub.luckRedBag}}">
+          <view class='redPackeTextWrap'  wx:if="{{index_middle_list[index].productSkuSub.luckRedBag != 0}}">
+            <image src='../../common/image/index_img/redPacketIcon.png' class='redPacketIcon'></image>
+            <text class='redPackeText'>红包</text>
+          </view>
+          <view class='redPackeTextWrap'  wx:else>
+            <image src='../../common/image/index_img/newShare.png' class='redPacketIcon'></image>
+            <text class='redPackeText'>分享</text>
+          </view>
+        </view>
+
+        <view class='neWredPackeTextWrap' wx:if="{{index_middle_list[index].productSkuSub.collagePrice != 0}}" catchtap='fenxiangyongjin' data-commission='{{index_middle_list[index].productSkuSub.collageLuckRedBag}}' data-goodname='{{index_middle_list[index].title}}' data-shangpinid='{{index_middle_list[index].id}}' data-dianpiid='{{index_middle_list[index].shopId}}' data-shangpintu='{{index_middle_list[index].productImageSubList[0].path}}' data-sign='{{index_middle_list[index].productSkuSub.collagePrice}}' data-redbag="{{index_middle_list[index].productSkuSub.luckRedBag}}">
+          <view class='redPackeTextWrap'  wx:if="{{index_middle_list[index].productSkuSub.collageLuckRedBag != 0}}">
+            <image src='../../common/image/index_img/redPacketIcon.png' class='redPacketIcon'></image>
+            <text class='redPackeText'>红包</text>
+          </view>
+          <view class='redPackeTextWrap'  wx:else>
+            <image src='../../common/image/index_img/newShare.png' class='redPacketIcon'></image>
+            <text class='redPackeText'>分享</text>
+          </view>
+        </view>        
+
+      </view>
+    </view>
+
+
+  </view>
+<!-- 热门结束 -->
+
+  <!-- 拼团开始 -->
+    <view class='newsShopList' wx:if="{{tabIndex==1}}">
+    <view class='newsShopListItem' wx:for="{{index_middle_list}}" wx:for-index="index" wx:key="index" bindtap='to_good_detail' data-goodid='{{index_middle_list[index].id}}' data-sign='{{index_middle_list[index].productSkuSub.collagePrice}}' data-redbag="{{index_middle_list[index].productSkuSub.luckRedBag}}">
+      <view class='newsShopListTop'>
+        <image src='{{index_middle_list[index].productImageSub.path}}'></image>
+        <image src='../../common/image/index_img/collageIcon.png' class='collageIcon' wx:if="{{ index_middle_list[index].productSkuSub.collagePrice != 0 }}"></image>
+      </view>
+      <view class='newsShopListMid'>
+        <text class='index_middle_list_icon' wx:if="{{ index_middle_list[index].productSkuSub.collagePrice != 0 }}">拼团</text>
+        <text class='index_middle_list_title'>{{index_middle_list[index].title}}</text> 
+      </view>
+      <view class='newsShopListBot'>
+        <text class='newPrice'>￥{{index_middle_list[index].productSkuSub.collagePrice/100}}</text>
+        <text class='oldPrice'>￥{{index_middle_list[index].productSkuSub.price/100}}</text>
+
+        <view class='neWredPackeTextWrap' wx:if="{{index_middle_list[index].productSkuSub.collagePrice == 0}}"  catchtap='fenxiangyongjin' data-commission='{{index_middle_list[index].productSkuSub.luckRedBag}}' data-goodname='{{index_middle_list[index].title}}' data-shangpinid='{{index_middle_list[index].id}}' data-dianpiid='{{index_middle_list[index].shopId}}' data-shangpintu='{{index_middle_list[index].productImageSub.path}}' data-sign='{{index_middle_list[index].productSkuSub.collagePrice}}' data-redbag="{{index_middle_list[index].productSkuSub.luckRedBag}}">
+          <view class='redPackeTextWrap'  wx:if="{{index_middle_list[index].productSkuSub.luckRedBag != 0}}">
+            <image src='../../common/image/index_img/redPacketIcon.png' class='redPacketIcon'></image>
+            <text class='redPackeText'>红包</text>
+          </view>
+          <view class='redPackeTextWrap'  wx:else>
+            <image src='../../common/image/index_img/newShare.png' class='redPacketIcon'></image>
+            <text class='redPackeText'>分享</text>
+          </view>
+        </view>
+
+        <view class='neWredPackeTextWrap' wx:if="{{index_middle_list[index].productSkuSub.collagePrice != 0}}" catchtap='fenxiangyongjin' data-commission='{{index_middle_list[index].productSkuSub.collageLuckRedBag}}' data-goodname='{{index_middle_list[index].title}}' data-shangpinid='{{index_middle_list[index].id}}' data-dianpiid='{{index_middle_list[index].shopId}}' data-shangpintu='{{index_middle_list[index].productImageSub.path}}' data-sign='{{index_middle_list[index].productSkuSub.collagePrice}}' data-redbag="{{index_middle_list[index].productSkuSub.luckRedBag}}">
+          <view class='redPackeTextWrap'  wx:if="{{index_middle_list[index].productSkuSub.collageLuckRedBag != 0}}">
+            <image src='../../common/image/index_img/redPacketIcon.png' class='redPacketIcon'></image>
+            <text class='redPackeText'>红包</text>
+          </view>
+          <view class='redPackeTextWrap'  wx:else>
+            <image src='../../common/image/index_img/newShare.png' class='redPacketIcon'></image>
+            <text class='redPackeText'>分享</text>
+          </view>
+        </view>        
+
+      </view>
+    </view>
+<!-- 拼团结束 -->
+
+  </view>
+</view>
+
+  <!-- 新版小程序布局结束 -->
+  <!-- 提示暂无商品信息 -->
+  <view class='noMore' wx:if="{{index_middle_list==''}}">
+    <view class='noMoreTipsimg'>
+      <image src='../../common/image/index_img/noMore.png'></image>
+    </view>
+    暂无商品信息
+  </view>
+  <!-- <view class='good_detail_out' wx:for="{{index_middle_list}}" wx:for-index="index" wx:key="index">
+    <view class='good_detail'>
+      <view class='just_wrap' bindtap='to_good_detail' data-goodid='{{index_middle_list[index].id}}' data-sign='{{index_middle_list[index].productSkuSub.collagePrice}}'>
+
+        <view class='good_introduce'>
+          <view class='yinhao_img'>
+            <image src='../../common/image/index_img/zuoyinhao1.png'></image>
+          </view>
+            <view class='good_introduce_text font36' >
+              {{index_middle_list[index].shareContent}}
+            </view>
+        </view>
+
+        <view class='good_sum'>
+          <view class='good_img'>
+            <image src='{{index_middle_list[index].productImageSubList[0].path}}'></image>
+          </view>
+          <view class='good_text'>
+            <view class='goodName  font30'>
+              <view class='pintuanIcon font30 '  wx:if="{{ index_middle_list[index].productSkuSub.collagePrice != 0 }}">拼团</view> 
+               <text>{{index_middle_list[index].title}}</text>
+              <view class='good_price  font36' wx:if="{{ index_middle_list[index].productSkuSub.collagePrice == 0 }}">￥{{index_middle_list[index].productSkuSub.price/100}}</view>
+              <view class='good_price  font36' wx:if="{{ index_middle_list[index].productSkuSub.collagePrice != 0 }}">
+              ￥{{index_middle_list[index].productSkuSub.collagePrice/100}}
+              <text class='good_price_in font30'>￥{{index_middle_list[index].productSkuSub.price/100}}</text>
+              </view>
+            </view>
+          </view>
+        </view>
+
+      </view>
+
+
+
+
+      <view class='like_commission'  wx:if="{{ index_middle_list[index].productSkuSub.collagePrice == 0 }}"> 
+
+              <!--喜欢店铺  -->
+  <!--<view class='likeGoods' catchtap='likeGoods' data-shopId='{{index_middle_list[index].shopId}}' data-goodsId='{{index_middle_list[index].id}}' data-isLike='{{index_middle_list[index].isLike}}' data-index="{{index}}">
+                <view class='like_wrap'>
+                  <view class='like_icon'>                
+                    <image src="../../common/image/index_img/{{index_middle_list[index].isLike==0?'not_like.png':'likes.png'}}"  class="ripple  {{index_middle_list[index].isLike==0?'':'rubberBand'}}"></image>
+                  </view>
+
+                  <text wx:if="{{index_middle_list[index].isLike == 0}}">收 藏</text>
+                  <text wx:else>收藏</text>
+                </view>
+              </view>  -->
+  <!--喜欢店铺  -->
+
+  <!-- <view class='yongjin' bindtap='fenxiangyongjin' data-commission='{{index_middle_list[index].productSkuSub.commission}}' data-goodname='{{index_middle_list[index].title}}' data-shangpinid='{{index_middle_list[index].id}}' data-dianpiid='{{index_middle_list[index].shopId}}' data-shangpintu='{{index_middle_list[index].productImageSubList[0].path}}' data-sign='{{index_middle_list[index].productSkuSub.collagePrice}}'>
+                <view class='yongjin_icon'>
+                    <image src='../../common/image/index_img/yongjin_icon.png'></image>
+                </view>
+                <view class='yongjin_text'  wx:if="{{index_middle_list[index].productSkuSub.commission == 0}}">
+                  分享
+                </view>
+                <view class='yongjin_text' wx:else >
+                  红包
+                </view>
+
+              </view>
+      </view>
+
+
+      <view class='like_commission'  wx:if="{{ index_middle_list[index].productSkuSub.collagePrice != 0 }}"> -->
+
+  <!--喜欢店铺  -->
+  <!-- <view class='likeGoods' catchtap='likeGoods' data-shopId='{{index_middle_list[index].shopId}}' data-goodsId='{{index_middle_list[index].id}}' data-isLike='{{index_middle_list[index].isLike}}' data-index="{{index}}">
+                <view class='like_wrap'>
+                  <view class='like_icon'>                
+                    <image src="../../common/image/index_img/{{index_middle_list[index].isLike==0?'not_like.png':'likes.png'}}"  class="ripple  {{index_middle_list[index].isLike==0?'':'rubberBand'}}"></image>
+                  </view>
+
+                  <text wx:if="{{index_middle_list[index].isLike == 0}}">收 藏</text>
+                  <text wx:else>收藏</text>
+                </view>
+
+              </view>  -->
+  <!--喜欢店铺  -->
+
+
+  <!-- 
+              <view class='yongjin' bindtap='fenxiangyongjin' data-commission='{{index_middle_list[index].productSkuSub.collageCommission}}' data-goodname='{{index_middle_list[index].title}}' data-shangpinid='{{index_middle_list[index].id}}' data-dianpiid='{{index_middle_list[index].shopId}}' data-shangpintu='{{index_middle_list[index].productImageSubList[0].path}}' data-sign='{{index_middle_list[index].productSkuSub.collagePrice}}'>
+
+                <view class='yongjin_icon'>
+                    <image src='../../common/image/index_img/yongjin_icon.png'></image>
+                </view>
+                <view class='yongjin_text'  wx:if="{{index_middle_list[index].productSkuSub.collageCommission == 0}}">
+                  分享
+                </view>
+                <view class='yongjin_text' wx:else >
+                  红包
+                </view>
+              </view>
+      </view>
+
+    </view>
+  </view> -->
+
+  <!-- ----------------------------------------- -->
+  <view>
+    <modal class="text_window" style="display:{{isLogin==true?'none':'block'}}" title='首次访问“好茶小店”请先授权' cancel-text=' ' confirm-text=''>
+      <!-- wx:if="{{isLogin!=true}}" -->
+      <button class="text_window_btn" open-type="getUserInfo" bindgetuserinfo="getUserInfo">同意授权</button>
+    </modal>
+  </view>
+  <!-- 分享商品  -->
+  <view class='share_commission_out' catchtouchmove='true'  style='height:{{winHeight}}px' hidden='{{share_commission}}'>
+    <view class='share_commission' catchtap='close_share_commission' style='height:{{winHeight-80}}px'>
+    </view>
+    <!-- 分享海报  -->
+    <view class='share_good_poster' hidden='{{good_poster_hidden}}'>
+      <view class='share_good_poster_title font24'>
+        分享到微信群或者朋友圈，让更多人知道您的推荐
+      </view>
+      <view class='good_poster'>
+        <image src='{{good_poster}}'></image>
+      </view>
+
+      <button class='keep_poster_btn' bindtap='clickKeepimage'>保存图片，发朋友圈</button>
+    </view>
+    <!-- ============================= -->
+    <view class='share_commission_in'>
+      <view class='share_commission_title'>
+        <!-- <view class='yongjin_icon' wx:if="{{commission != 0}}"> -->
+          <!-- <image src='../../common/image/index_img/yongjin_icon.png'></image> -->
+        <!-- </view> -->
+        <view wx:if="{{commission != 0}}" class='share_commission_text font36'>
+          
+          <text class='font36 redcolor'>店主发{{commission/100}}元红包拼手气</text>
+        </view>
+
+      </view>
+      <view wx:if="{{commission != 0}}" class='share_t font24'>分享好友成功下单一次，就可多领取一次红包</view>
+      <view wx:if="{{commission == 0}}" class='share_t_1 font36'>店主硬气，没给红包</view>
+      <view wx:if="{{commission == 0}}" class='share_t font24'>好东西要懂得分享，红不红包也无所谓</view>
+      <view class='share_way'>
+        <view class='friends'  style="{{redbag!=0? 'width:33%':'width:49%'}}">
+          <button class='friends_btn font24' open-type='share' id='2' data-sign='{{ index_middle_list[index].productSkuSub.collagePrice  }}'>
+
+            <view class='share_with_friend_img'>
+              <image src='../../common/image/index_img/share_with_friend.png'></image>
+            </view>
+            微信好友
+          </button>
+        </view>
+        <view class='pengyouquan' bindtap='showShareWithFriends' style="{{redbag!=0? 'width:33%':'width:49%'}}">
+        
+          <view class='pengyouquan_btn'>
+            <view class='share_with_friend_img'>
+              <image src='../../common/image/index_img/pengyouquan.png'></image>
+            </view>
+            <view class='share_with_friend_text font24' open-type='share'>微信朋友圈</view>
+
+          </view>
+        </view>
+
+        <view class='pengyouquan' style='width:33%' wx:if="{{redbag!=0}}" catchtap='goRedEnvelopes'>
+          <view class='pengyouquan_btn'>
+            <view class='share_with_friend_img'>
+              <image src='../../common/image/index_img/collarRed.png'></image>
+            </view>
+            <view class='share_with_friend_text font24' >
+            
+              
+            
+            我的红包</view>
+
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <!-- 分享商品  -->
+
+
+
+  <!-- 分享店铺  -->
+  <view class='share_shop_out' catchtouchmove='true' style='height:{{winHeight}}px' hidden='{{fenxiangdianpu}}'>
+    <view class='share_shop' catchtap='close_share_shop' style='height:{{winHeight-80}}px'>
+    </view>
+    <!-- 分享海报  -->
+    <view class='share_shop_poster' hidden='{{close_shop_share}}'>
+      <view class='share_good_poster_title font24'>
+        分享到微信群或者朋友圈，让更多人知道您的推荐
+      </view>
+      <view class='shop_poster'>
+        <image src='{{shop_poster}}'></image>
+      </view>
+
+      <button class='keep_poster_btn' bindtap='clickKeepShopimage'>保存图片，发朋友圈</button>
+    </view>
+    <!-- ============================= -->
+    <view class='share_shop_in'>
+
+      <view class='share_shop_t font24'>分享小店给您的好友吧~</view>
+      <view class='share_shop_way'>
+        <view class='friends'>
+
+          <button class='friends_btn font24' open-type='share' id="1">
+
+            <view class='share_with_friend_img'>
+              <image src='../../common/image/index_img/share_with_friend.png'></image>
+            </view>
+            微信好友
+          </button>
+        </view>
+        <view class='pengyouquan' bindtap='showShareShopWithFriends'>
+          <view class='pengyouquan_btn'>
+
+            <view class='share_with_friend_img'>
+              <image src='../../common/image/index_img/pengyouquan.png'></image>
+            </view>
+            <view class='share_with_friend_text font24' open-type='share'>微信朋友圈</view>
+
+          </view>
+
+
+        </view>
+      </view>
+    </view>
+  </view>
+  <!-- 分享店铺  -->
+
+
+
+  
+
+</view>

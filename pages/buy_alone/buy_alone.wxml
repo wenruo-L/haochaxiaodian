@@ -1,0 +1,78 @@
+<!--pages/buy_alone/buy_alone.wxml-->
+<view>
+  <view class='content' wx:for="{{danmai_good_skuname}}" wx:key="index">
+
+ <!-- wx:for="{{danmai_good_skuname}}" wx:key="index" -->
+
+  
+       <view class='orders_out' >
+      <view class='order'>
+
+        <view class='order_detail'>
+
+          <view class='order_info'  >
+              <view class='good_img'>
+                  <image src='{{danmai_good_detail.path}}'></image>
+              </view>
+              <view class='good_detail'>
+                <view class='font26 good_detail_text1 yichu'>{{danmai_good_name.title}}</view>
+                <view class='font24 mezzo_color good_detail_text2 yichu'>{{danmai_good_skuname[index].skuName}}</view>
+                <view class='font30 good_detail_text3' wx:if="{{discountPrice!=0}}">
+                  价格：
+                  <text class='maincolor'>{{discountPrice[index]}}元/{{danmai_good_name.unit}}</text>
+                  <text class='line_th'>{{danmai_num[index]}}元/{{danmai_good_name.unit}}</text>
+                </view>
+                <view class='font30 good_detail_text3' wx:else>价格：<text class='maincolor'>{{danmai_num[index]}}元/{{danmai_good_name.unit}}</text></view>
+              </view>
+          </view>
+
+        </view>
+
+      </view>
+    </view> 
+
+
+           <view class='amount_out clearfix'>
+            <view class='amount'>
+              <view class='font30 fl goodname yichu'>
+              {{danmai_good_skuname[index].skuName}}
+              </view>
+              
+
+              <view class='stepper fr'>
+                <view class='{{minusStatus}} minus' type='number'  bindtap='jian'>-</view>
+                <view class='stepper_num'><input bindinput='get_num' bindblur='get_num_limit' type="number" value='{{input_value}}' maxlength='4'></input></view>
+                
+                <view class='plus' bindtap='jia'>+</view>
+              </view>
+            
+            </view>
+          </view> 
+
+
+           <view class='total_out clearfix'>
+            <view class='total'>
+              <view class='fr font30 sum' bindtap='bindKeyInput'>
+                共{{input_value}}件： <text class='maincolor'>¥ {{zongji}}元</text>
+              </view>
+            </view>
+          </view>
+        <view class='empty'></view>
+        <!--提交  -->
+
+
+
+         <view class='sub one_shopname_font' bindtap='to_confirm_order' data-skuid='{{danmai_good_skuname[index].id}}' data-price='{{danmai_good_skuname[index].price}}' data-productid='{{danmai_good_skuname[index].productId}}' data-buynum='{{input_value}}' data-realPay='{{zongji*100}}' data-discountPrice='{{danmai_good_skuname[index].discountPrice}}'>
+            提交
+        </view> 
+  
+  
+  
+  
+  </view>
+
+
+
+
+ 
+</view> 

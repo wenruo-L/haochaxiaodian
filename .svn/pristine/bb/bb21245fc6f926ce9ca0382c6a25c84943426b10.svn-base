@@ -1,0 +1,249 @@
+// pages/order_detail_ziti/order_detail_ziti.js
+import config from "../../utils/config.js"
+import utils from "../../utils/util.js"
+let app = getApp();
+Page({
+
+  /**
+   * 页面的初始数据
+   */
+  data: {
+    id: "",
+    token: "",
+    input_value: 1,
+    danmai_fen: null,//单品价格分单位
+    zongji: null,//总计价格分单位
+    yunfei: null,
+    kashishijian: "", //下单时间
+    daojishi: ""  //待付款的有效时间
+  },
+  copy_num: function (e) {
+    var that = this;
+    var copy_the_nums = that.data.id
+    wx.setClipboardData({
+      data: copy_the_nums,
+      success: function (e) {
+       
+        if (e.errMsg == "setClipboardData:ok") {
+          wx.getClipboardData({
+            success: function (e) {
+              
+              wx.showToast({
+                title: '复制成功！'
+              })
+            }
+          })
+
+        }
+      }
+    })
+  },
+  //待付款的倒计时
+  timeFormat(param) {//小于10的格式化函数
+    return param < 10 ? '0' + param : param;
+  },
+  counttime: function () {
+    var that = this;
+    var starttime = that.data.kashishijian;
+    var validtime = that.data.daojishi;
+    var timestamp = new Date().getTime();
+    var finaltime = []
+    finaltime = Number(starttime) + Number(validtime * 1000)
+
+    let obj = null;
+    if (finaltime - timestamp > 0) {
+      let time = parseInt((finaltime - timestamp) / 1000)
+      
+      let days = parseInt(time / 3600/24);
+      let hours = parseInt((time-(days*3600*24)) / 3600);
+      let mins = parseInt((time - (days * 3600 * 24)-(hours * 3600)) / 60);
+      let secs = parseInt(time - (days * 3600 * 24) -(hours * 3600) - (mins * 60));
+      that.setData({
+        days: this.timeFormat(days),
+        hours: this.timeFormat(hours),
+        mins: this.timeFormat(mins),
+        secs: this.timeFormat(secs)
+      })
+      
+    } else {
+      that.setData({
+        hours: "00",
+        mins: "00",
+        secs: "00"
+      })
+      
+    }
+
+
+  },
+  // 再次购买
+  buy_again: function (e) {
+    wx.redirectTo({
+      url: '../own_buy/own_buy?productid=' + e.currentTarget.dataset.productid,
+    })
+  },
+  // 联系门店
+  to_contact_shop: function (e) {
+    
+    wx.redirectTo({
+      url: '../contact_shop/contact_shop?shopid=' + e.currentTarget.dataset.shopid,
+      success: function (res) {
+       
+      },
+      fail: function (res) { },
+      complete: function (res) { },
+    })
+  },
+  // 获取自提-订单详情的数据
+  get_danmai_order_detail: function () {
+    var that = this;
+    var _token = wx.getStorageSync('jwtToken')
+    that.setData({
+      token: _token
+    })
+    wx.showLoading({
+      title: '加载中',
+    })
+    wx.request({
+      url: config.order_detail,
+      method: 'GET',
+      data: {
+        id: that.data.id
+      },
+      header: {
+        'content-type': 'application/json',// GEt的请求方式为默认 
+        Authorization: that.data.token
+      },
+      success: function (res) {
+        wx.hideLoading()
+       
+        var orderTimearr = []
+        var ordertime = res.data.data.order.orderTime
+        orderTimearr.push(utils.formatTime(ordertime / 1000, 'Y/M/D h:m:s'))
+        var payTimearr = []
+        var paytime = res.data.data.order.payTime
+        payTimearr.push(utils.formatTime(paytime / 1000, 'Y/M/D h:m:s'))
+        var waitGetMyselfEffectiveTime = res.data.data.order.waitGetMyselfEffectiveTime
+        var danmai_fendanwei = res.data.data.order.orderSnapshotList
+        var fen_arr = []
+        danmai_fendanwei.forEach((el, index) => {
+          fen_arr.push(el.payPrice)
+        })
+        that.setData({
+          all_data: res.data.data,
+          danmai_detail: res.data.data.order,
+          input_value: res.data.data.order.buyNum,
+          yunfei: res.data.data.order.freight,
+          danmai_fen: fen_arr,
+          xiadanshijian: orderTimearr,
+          fukuanshijian: payTimearr,
+          daojishi: waitGetMyselfEffectiveTime,
+          kashishijian: ordertime
+        })
+      }
+    })
+  },
+
+  // 计算总价
+  gettotal: function () {
+    var that = this
+    var danjia = that.data.danmai_fen;
+    var shuliang = that.data.input_value;
+    var yunfeia = that.data.yunfei;
+    var zongjijine = that.data.zongji;
+    zongjijine = Number(danjia * shuliang) + Number(yunfeia)
+    that.setData({
+      zongji: zongjijine
+    })
+   
+  },
+  jia: function () {
+    // 点击加一的按钮
+    var that = this;
+    var num = that.data.input_value;
+    if (num == 1 || num > 1) {
+      num = num + 1;
+    }
+    that.setData({
+      input_value: num
+    })
+    that.gettotal();
+  },
+  jian: function () {
+    // 点击减一的按钮
+    var that = this;
+    var num = that.data.input_value;
+    if (num > 1) {
+      num = num - 1;
+    }
+    that.setData({
+      input_value: num
+    })
+    that.gettotal();
+  }, 
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function (options) {
+    var that = this;
+    
+    that.setData({
+      id: options.id
+    })
+  },
+
+  /**
+   * 生命周期函数--监听页面初次渲染完成
+   */
+  onReady: function () {
+    var that = this;
+    that.get_danmai_order_detail()
+  },
+
+  /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow: function () {
+    var that = this;
+    setTimeout(function () {
+      that.gettotal();
+      // that.counttime()
+    }, 500)
+    setInterval(that.counttime, 1000)
+  },
+
+  /**
+   * 生命周期函数--监听页面隐藏
+   */
+  onHide: function () {
+  
+  },
+
+  /**
+   * 生命周期函数--监听页面卸载
+   */
+  onUnload: function () {
+  
+  },
+
+  /**
+   * 页面相关事件处理函数--监听用户下拉动作
+   */
+  onPullDownRefresh: function () {
+  
+  },
+
+  /**
+   * 页面上拉触底事件的处理函数
+   */
+  onReachBottom: function () {
+  
+  },
+
+  /**
+   * 用户点击右上角分享
+   */
+  onShareAppMessage: function () {
+  
+  }
+})

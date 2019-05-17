@@ -1,0 +1,82 @@
+<!--pages/myLike/myLike.wxml-->
+<scroll-view scroll-x="true" class="tab-h" scroll-left="{{scrollLeft}}">
+  <view class='flex'>
+    <view class="tab-item {{currentTab==index?'active':''}}" wx:for="{{h_text}}" data-current="{{index}}" catchtap="swichNav" wx:key="this">
+      <text>{{item.text}}</text>
+
+    </view>
+
+  </view>
+</scroll-view>
+
+<view class='content'>
+  <view class='time flex'>
+    <image src='../../common/image/index_img/shop-time.png'></image>
+    <view>2018-5-5</view>
+  </view>
+  <view class='goods flex'>
+    <view class='goodsImg'>
+      <image src='http://img.test.haocha.top/upload/images/2018_05_19_11/347e976df03b901625fd6381617452c1_tiny.jpg'></image>
+    </view>
+    <view class='goodsdel'>
+      <view class='goodsText'>
+        商品名称
+      </view>
+      <view class='goodsText'>
+        价格：
+        <text>108元/盒</text>
+      </view>
+      <view class='goodsShop flex'>
+        <view class='shopLogo flex'>
+          <image src='../../common/image/index_img/shop_icon.png'></image>
+          <view class='shopName'>好茶茶叶</view>
+        </view>
+        <view class='collageBtn'>去拼单</view>
+      </view>
+    </view>
+  </view>
+
+
+
+</view>
+
+<view class='shopList'>
+  <view class='time flex'>
+    <image src='../../common/image/index_img/shop-time.png'></image>
+    <view>2018-5-5</view>
+  </view>
+  <view class='shopMes flex'>
+    <image src='http://img.test.haocha.top/upload/images/2018_05_19_11/347e976df03b901625fd6381617452c1_tiny.jpg' class='shopMesLogo'></image>
+    <view class="shopText">
+       <view class=' flex mid'>
+          <image src='../../common/image/index_img/shop_icon.png'  class='shop_icon'></image>
+          <view class='shopMesName'>好茶茶叶</view>
+        </view>
+        <view class=''>主营：红茶、红茶、红茶</view>
+    </view>
+    <image src='../../common/image/index_img/inter_icon.png' class='inter_icon'></image>
+  </view>
+</view>
+
+
+
+ <!-- <swiper class="tab-content" current="{{currentTab}}" duration="300" bindchange="switchTab"
+     style="height:{{winHeight}}rpx">
+        <swiper-item wx:for="{{[0,1]}}">
+            <scroll-view scroll-y="true" class="scoll-h" >
+                <block wx:for="{{[1,2]}}" wx:key="*this">
+                    <view class="item-ans">
+                        <view class="avatar">
+                            <image class="img" src="http://ookzqad11.bkt.clouddn.com/avatar.png"></image>
+                        </view>
+                        <view class="expertInfo">
+                            <view class="name">欢颜</view>
+                            <view class="tag">知名情感博主</view>
+                            <view class="answerHistory">134个回答，2234人听过 </view>
+                        </view>
+                      
+                    </view>
+                </block>
+            </scroll-view>
+        </swiper-item>
+    </swiper>  -->

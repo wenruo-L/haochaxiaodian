@@ -1,0 +1,9 @@
+/**app.wxss**/
+.fl{ float: left}
+.fr{ float: right}
+.clear{clear:both;} 
+.clearfix:after{
+	content: "";
+	display: block;
+	clear: both;
+}

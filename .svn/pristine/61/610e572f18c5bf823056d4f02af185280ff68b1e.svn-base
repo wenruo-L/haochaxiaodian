@@ -1,0 +1,382 @@
+// pages/order_detail_share/order_detail_share.js
+import config from "../../utils/config.js"
+import utils from "../../utils/util.js"
+Page({
+
+  /**
+   * 页面的初始数据
+   */
+  data: {
+    id: "",
+    token: "",
+    input_value: 1,
+    danmai_fen: null,//单品价格分单位
+    zongji: null,//总计价格分单位
+    yunfei: null,
+    kashishijian: "", //下单时间
+    daojishi: "",  //待付款的有效时间
+    shangpinIds:"",
+    goodimg: "",
+    shopId:"",
+    userid:""
+  },
+  copy_num: function (e) {
+    var that = this;
+    var copy_the_nums = that.data.id
+    wx.setClipboardData({
+      data: copy_the_nums,
+      success: function (e) {
+        console.log("aaaaaaaaaaaaaaaaaaaaa", e)
+        if (e.errMsg == "setClipboardData:ok") {
+          wx.getClipboardData({
+            success: function (e) {
+              console.log("1111111111111111", e)
+              wx.showToast({
+                title: '复制成功！'
+              })
+            }
+          })
+
+        }
+      }
+    })
+  },
+  //待付款的倒计时
+  timeFormat(param) {//小于10的格式化函数
+    return param < 10 ? '0' + param : param;
+  },
+  counttime: function () {
+    var that = this;
+    var starttime = that.data.kashishijian;
+    var validtime = that.data.daojishi;
+    var timestamp = new Date().getTime();
+    var finaltime = []
+    finaltime = Number(starttime) + Number(validtime * 1000)
+    // console.log("开始下单的时间戳", starttime)
+    // console.log("开始下单的时间戳", starttime/1000)
+    // console.log(starttimeT)
+    // console.log("下单时间", utils.gettimeofhour(new Date(starttimeT)))
+    // console.log("下单时间加待付款的有效时间的时间格式", utils.formatTime(new Date(finaltime)))
+    // console.log("当前时间的时间戳", utils.formatTime(new Date(timestamp)))
+    console.log("下单时间加待付款的有效时间的时间戳", finaltime)
+    console.log("当前时间的时间戳", timestamp)
+    console.log(that.data.daojishi)
+    var daojishi = []
+    daojishi = Number(finaltime) - Number(timestamp)
+
+    console.log("可以倒计时的时间戳", daojishi)
+    // console.log("可以倒计时的时间戳", utils.gettimeofhour(new Date(daojishi)))
+
+
+    if (finaltime - timestamp > 0) {
+      let time = parseInt((finaltime - timestamp) / 1000)
+      console.log(time)
+      console.log("你为什么不出来")
+      let hours = parseInt(time / 3600);
+      let mins = parseInt((time - (hours * 3600)) / 60);
+      let secs = parseInt(time - (hours * 3600) - (mins * 60));
+      that.setData({
+        hours: this.timeFormat(hours),
+        mins: this.timeFormat(mins),
+        secs: this.timeFormat(secs)
+      })
+      console.log("时", hours)
+      console.log("分", mins)
+      console.log("秒", secs)
+    } else {
+      return
+      that.setData({
+        hours: "00",
+        mins: "00",
+        secs: "00"
+      })
+
+    }
+
+
+  },
+  // 联系门店
+  to_contact_shop: function (e) {
+    console.log("跳转店铺", e)
+    wx.redirectTo({
+      url: '../contact_shop/contact_shop?shopid=' + e.currentTarget.dataset.shopid,
+      success: function (res) {
+        console.log("成功跳转", res)
+      },
+      fail: function (res) { },
+      complete: function (res) { },
+    })
+  },
+  // 获取拼团-订单详情的数据
+  get_order_detail_share: function () {
+    var that = this;
+    var _token = wx.getStorageSync('token')
+    that.setData({
+      token: _token
+    })
+    wx.showLoading({
+      title: '加载中',
+    })
+    wx.request({
+      url: config.order_detail,
+      method: 'GET',
+      data: {
+        id: that.data.id
+      },
+      header: {
+        'content-type': 'application/json',// GEt的请求方式为默认 
+        Authorization: that.data.token
+      },
+      success: function (res) {
+        wx.hideLoading()
+        console.log("成功拿回拼团分享订单详情的数据！", res)
+        console.log(res.data.data.order)
+        var orderTimearr = []
+        var ordertime = res.data.data.order.orderTime
+        orderTimearr.push(utils.formatTime(ordertime / 1000, 'Y/M/D h:m:s'))
+        var payTimearr = []
+        var paytime = res.data.data.order.payTime
+        payTimearr.push(utils.formatTime(paytime / 1000, 'Y/M/D h:m:s'))
+        var waitCollageEffectiveTime = res.data.data.order.waitCollageEffectiveTime
+        var paytimes = res.data.data.order.payTime
+        console.log("waitCollageEffectiveTime", waitCollageEffectiveTime)
+        var goodname = res.data.data.order.productSub.title
+        // var shangpinId = res.data.data.order.id
+        var shangpinId = res.data.data.order.productSub.id
+        var shareGoodImg = res.data.data.order.productSub.productImageSub.path
+        var dianpuid = res.data.data.shopContact.id
+        that.setData({
+          all_data: res.data.data,
+          danmai_detail: res.data.data.order,
+          input_value: res.data.data.order.buyNum,
+          yunfei: res.data.data.order.freight,
+          danmai_fen: res.data.data.order.productSub.productSkuSub.price,
+          xiadanshijian: orderTimearr,
+          daojishi: waitCollageEffectiveTime,
+          fukuanshijian: payTimearr,
+          kashishijian: paytimes,
+          goodnames: goodname,
+          shangpinIds: shangpinId,
+          goodimg: shareGoodImg,
+          shopId: dianpuid,
+        })
+      }
+    })
+  },
+  sub_at_once: function () {
+    var that = this;
+    wx.showLoading({
+      title: '加载中',
+    })
+    wx.request({
+      url: config.pay_immediately,
+      method: 'POST',
+      data: {
+        id: that.data.id
+      },
+      header: {
+        'Content-Type': 'application/x-www-form-urlencoded', // POST的请求方式不一样 
+        Authorization: that.data.token
+      },
+      success: function (res) {
+        wx.hideLoading()
+        console.log("支付结果", res)
+        if (res.data.code == 0) {
+          wx.showToast({
+            title: '支付成功！',
+            icon: 'success',
+            duration: 1500,
+            mask: true,
+            success() {
+            }
+          })
+          wx.navigateTo({
+            url: '../pay_success/pay_success',
+          })
+        }
+        if (res.data.code != 0) {
+          wx.showToast({
+            title: '支付失败！',
+            icon: 'fail',
+            duration: 1500,
+            mask: true,
+            success() {
+            }
+          })
+          wx.navigateTo({
+            url: '../pay_fail/pay_fail',
+          })
+        }
+      }
+    })
+  },
+  // 计算总价
+  gettotal: function () {
+    var that = this
+    var danjia = that.data.danmai_fen;
+    var shuliang = that.data.input_value;
+    var yunfeia = that.data.yunfei;
+    var zongjijine = that.data.zongji;
+    zongjijine = Number(danjia * shuliang) + Number(yunfeia)
+    that.setData({
+      zongji: zongjijine
+    })
+    console.log(that.data.zongji)
+  },
+  jia: function () {
+    // 点击加一的按钮
+    var that = this;
+    var num = that.data.input_value;
+    if (num == 1 || num > 1) {
+      num = num + 1;
+    }
+    that.setData({
+      input_value: num
+    })
+    that.gettotal();
+  },
+  jian: function () {
+    // 点击减一的按钮
+    var that = this;
+    var num = that.data.input_value;
+    if (num > 1) {
+      num = num - 1;
+    }
+    that.setData({
+      input_value: num
+    })
+    that.gettotal();
+  }, 
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function (options) {
+    var that = this;
+    console.log("接收待付款传过来的id", options)
+    that.setData({
+      id: options.id
+    })
+  },
+
+  /**
+   * 生命周期函数--监听页面初次渲染完成
+   */
+  onReady: function () {
+    var that = this;
+    that.get_order_detail_share()
+  },
+
+  /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow: function () {
+    var that = this;
+    setTimeout(function () {
+      that.gettotal();
+      // that.counttime();
+
+    }, 500)
+    setInterval(that.counttime, 1000)
+
+  },
+
+  /**
+   * 生命周期函数--监听页面隐藏
+   */
+  onHide: function () {
+  
+  },
+
+  /**
+   * 生命周期函数--监听页面卸载
+   */
+  onUnload: function () {
+  
+  },
+
+  /**
+   * 页面相关事件处理函数--监听用户下拉动作
+   */
+  onPullDownRefresh: function () {
+  
+  },
+
+  /**
+   * 页面上拉触底事件的处理函数
+   */
+  onReachBottom: function () {
+  
+  },
+
+  /**
+   * 用户点击右上角分享
+   */
+  onShareAppMessage: function (res) {
+    var that = this
+    var userids = wx.getStorageSync('uid')
+    that.setData({
+      userid: userids,
+    })
+    console.log("点击分享按钮", res)
+    if (res.from === 'button') {
+      if (res.target.id == "1"){
+
+        return {
+          title: '我已发起拼团' + "#" + that.data.goodnames + "#",
+          path: '/pages/group_booking/group_booking?shangpin=' + that.data.shangpinIds + "&shangpu=" + that.data.shopId + "&fenxiangzhe=" + that.data.userid,
+          imageUrl: that.data.goodimg,
+
+          // // title: '我推荐' + that.data.goodnames + '给您！',
+          // title: '我推荐给您！',
+          // // path: '/pages/group_booking/group_booking?datas=' + shareParams,
+          // path: '/pages/own_buy/own_buy?shangpin=123abc&shangpu=011113&fenxiangzhe=ooooo',
+          // // imageUrl: that.data.goodimg,
+          // imageUrl: 'http://image.haocha.top/i1/poster/base/shop_share.png',
+
+          success: function (res) {
+            // 转发成功
+            wx.showToast({
+              title: '转发成功！',
+              icon: 'success'
+            })
+            console.log("转发成功:" + JSON.stringify(res));
+          },
+          fail: function (res) {
+            // 转发失败
+            console.log("转发失败:" + JSON.stringify(res));
+          }
+        }
+      }
+      if (res.target.id == "2") {
+
+        return {
+          title: '我已发起拼团' + "#" + that.data.goodnames + "#",
+          path: '/pages/group_booking/group_booking?shangpin=' + that.data.shangpinIds + "&shangpu=" + that.data.shopId + "&fenxiangzhe=" + that.data.userid,
+          imageUrl: that.data.goodimg,
+
+          // // title: '我推荐' + that.data.goodnames + '给您！',
+          // title: '我推荐给您！',
+          // // path: '/pages/group_booking/group_booking?datas=' + shareParams,
+          // path: '/pages/own_buy/own_buy?shangpin=123abc&shangpu=011113&fenxiangzhe=ooooo',
+          // // imageUrl: that.data.goodimg,
+          // imageUrl: 'http://image.haocha.top/i1/poster/base/shop_share.png',
+
+          success: function (res) {
+            // 转发成功
+            wx.showToast({
+              title: '转发成功！',
+              icon: 'success'
+            })
+            console.log("转发成功:" + JSON.stringify(res));
+          },
+          fail: function (res) {
+            // 转发失败
+            console.log("转发失败:" + JSON.stringify(res));
+          }
+        }
+      }
+
+    }
+
+  }
+})

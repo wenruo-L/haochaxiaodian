@@ -1,0 +1,29 @@
+<!--pages/sreach/sreach.wxml-->
+<view class='content' style="height:{{winHeight}}px">
+  <view class='sreach_input_out'>
+    <view class='sreach_input'>
+      <image src='../../common/image/img_search.png'></image>
+      <input class='sreach_value' maxlength='15' bindinput="sreach_value" bindblur="search_result" value='{{search_result}}' placeholder='输入关键词'></input>
+    </view>
+    <view class='searchBtn' bindtap='to_search_result'>搜索</view>
+  </view>
+
+  <view class='search_record_out'>
+    <view class='search_record' wx:if="{{search_list.length == 0}}">
+      <view class='no_record'>
+        暂无历史搜索记录
+      </view>
+    </view>
+    <view class='record' wx:else>
+      <view class='record_in'>
+        <view class='no_record'>历史搜索</view>
+        <view class='clear_record' bindtap='clear_record'>
+          <image src='../../common/image/img_delete_progress.png'></image>
+        </view>
+      </view>
+      <view class='record_item' wx:for="{{search_list}}" wx:key="index" data-keyword='{{item}}' bindtap='get_keyWord'>
+        {{item}}
+      </view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,77 @@
+const utils = require("util.js")
+import config from "config.js"
+const app=getApp()
+function userInfo(e){
+  
+  if (e.detail.errMsg == "getUserInfo:ok") {
+    console.log("getStorageSync::::", wx.getStorageSync("thirdSession"))
+    var thirdSession
+    if (wx.getStorageSync("thirdSession") == '') {
+      thirdSession = app.thirdSession
+    } else {
+      thirdSession = wx.getStorageSync("thirdSession")
+    }
+    // if (wx.getStorageSync("thirdSession") != app.thirdSession){
+    //   wx.showLoading({
+    //     title: '错了',
+    //   })
+    // }
+    console.log("app::::::", app.thirdSession)
+    wx.setStorageSync('avatarUrl', e.detail.userInfo.avatarUrl)
+    wx.request({
+      url: config.get_token_id,
+      method: 'POST',
+      data: {
+        sessionId: wx.getStorageSync("thirdSession"),
+        encryptedData: e.detail.encryptedData,
+        iv: e.detail.iv
+      },
+      header: {
+        'content-type': 'application/x-www-form-urlencoded'
+
+      },
+      success: function (data) {
+        console.log(data)
+       
+        if (data.data.code == 0) {
+          app.isLoginChange=true
+         
+         
+          wx.setStorageSync('jwtToken', data.data.data.jwtToken)
+          wx.setStorageSync('userId', data.data.data.userId)
+          // console.log("userId"+data.data.data.userId)
+          wx.setStorageSync('userNickName', data.data.data.userNickName)
+          wx.setStorageSync('isLoginsChange', true)
+         
+         
+        } else {
+         
+          wx.showModal({
+            title: '提示',
+            content: 'code:' + data.data.code+','+data.data.msg
+          })
+         
+        }
+
+      },
+      fail: (err) => {
+        wx.showModal({
+          title: '提示',
+          content: '接口请求出错.'
+        })
+      }
+    })
+  }else{
+    // wx.removeStorageSync('isLogin')
+    console.log("取消登录:" + wx.getStorageSync('isLogin'))
+   
+  }
+  
+
+};
+
+module.exports = {
+  userInfo: userInfo
+  
+
+}

@@ -1,0 +1,142 @@
+/* pages/tixian/tixian.wxss */
+.wallet_out{
+  width: 100%;
+  height: auto;
+  background: #fff;
+  margin-top: 20rpx;
+  border-bottom: 1px solid #e6e6e6;
+   border-top: 1px solid #e6e6e6;
+}
+.wallet{
+  width: 96%;
+  height: auto;
+  margin: 0 auto;
+  padding: 30rpx 0;
+}
+.wallet_img{
+  width: 40rpx;
+  height: 42rpx;
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 30rpx;
+}
+.wallet_img>image{
+  width: 100%;
+  height: 100%;
+}
+.wallet_text{
+  display: inline-block;
+  vertical-align: middle; 
+}
+.wallet_text>text{
+  font-weight: 500;
+  margin-right: 15rpx;
+}
+.way_out{
+  width: 100%;
+  height: auto;
+  background: #fff;
+  margin-top: 20rpx;
+  border-bottom: 1px solid #f7f7f7;
+  border-top: 1px solid #e6e6e6;
+}
+.way{
+  width: 96%;
+  height: auto;
+  margin: 0 auto;
+}
+.choose_way{
+  width: 100%;
+  line-height: 48rpx;
+  padding: 30rpx 0;
+}
+.way_to_out{
+  width: 100%;
+  height: auto;
+  border-bottom: 1px solid#e6e6e6;
+  background: #fff;
+}
+.way_to{
+  width: 96%;
+  height: auto;
+  margin: 0 auto;
+  position: relative;
+  padding: 24rpx 0 30rpx 0;
+}
+.tixian_icon{
+  width: 40rpx;
+  height:40rpx ;
+  margin-right: 28rpx;
+  vertical-align: middle;
+  display: inline-block;
+}
+.tixian_icon>image{
+  width: 100%;
+  height: 100%;
+}
+.way_to_text{
+  vertical-align: middle;
+  display: inline-block;  
+}
+.selected_img{
+  width: 30rpx;
+  height: 30rpx;
+  display: inline-block;
+  position: absolute;
+  right: 0 ;
+  top: 33rpx;
+}
+.selected_img>image{
+  width: 100%;
+  height: 100%;
+}
+.choose_sum_out{
+  width: 100%;
+  height: auto;
+  background: #fff;
+  margin-top: 20rpx;
+  border-bottom: 1px solid #e6e6e6;
+  border-top: 1px solid #e6e6e6;
+}
+.choose_sum{
+  width: 96%;
+  height: auto;
+  margin: 0 auto;
+}
+.choose_sum_text{
+  width: 100%;
+  line-height: 48rpx;
+  padding: 40rpx 0 10rpx 0;
+}
+.import_sum{
+  width: 96%;
+  margin: 0 auto;
+  font-size: 72rpx;
+  line-height: 80rpx;
+  padding-bottom: 35rpx;
+  border-bottom: 1px solid #e6e6e6;
+}
+.import_sum>input{
+  width: 90%;
+  font-size: 30rpx;
+  display: inline-block;
+  vertical-align: bottom;
+}
+.tips{
+  width: 96%;
+  margin: 0 auto;
+  height: auto;
+  padding: 28rpx;
+}
+.tixian_btn{
+  width: 96%;
+  height: 88rpx;
+  margin: 0 auto;
+  line-height: 88rpx;
+  color: #fff;
+  text-align: center;
+  border-radius:8rpx;
+  position: fixed;
+  bottom: 20rpx;
+  left: 16rpx; 
+}

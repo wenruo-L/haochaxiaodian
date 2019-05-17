@@ -1,0 +1,42 @@
+<!--pages/pay_success/pay_success.wxml-->
+<view class='content'>
+  <view class='pay_success_out'>
+    <view class='pay_success'>
+      <view class='icon_wrap'>
+        <image src='../../common/image/index_img/pay_success.png'></image>
+      </view>
+      <view class='pay_success_text'>订单支付成功!</view>
+
+
+      <view class='turn_back_to_index' bindtap='to_index'>返回首页</view>
+
+  
+          <view class='check_order'  bindtap='to_all_order'>查看订单</view>
+  
+       <view class='ensureOrder' hidden='{{ziti}}'  bindtap='ensureOrder'>确认收货</view>
+
+
+    </view>
+  </view>
+  <view class='mask' style='height: {{winHeight}}px;' hidden='{{mask}}'>
+    <view class='lucky_monry'> 
+    <view class='moneyClose' catchtap='close_mask'>
+
+      <image class='fr' src='../../common/image/index_img/moneyClose.png'></image>
+    </view>
+      <image class='moneyFelling' src='../../common/image/index_img/moneyFelling.png'></image>
+
+      <view class='luckymoney'> 
+        <view class='luckymoney_in'>        
+          <image class='moneyOpen' bindtap='open' animation="{{comeOutAnimation}}" src='../../common/image/index_img/moneyOpen.png'></image>
+          <image class='luckymoney_inside' src='http://image.haocha.top/i1/poster/base/luckymoney.png'></image>
+          <view class='luckymoney_text_wrap'>
+            <view class='luckymoney_text font30'>点击领取</view>
+            <view class='luckymoney_text mt font24'>恭喜获得一个手气红包！</view>
+          </view>
+        </view>     
+      </view>
+
+    </view>
+  </view>
+</view>

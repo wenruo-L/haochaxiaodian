@@ -1,0 +1,151 @@
+//app.js
+import config from "utils/config.js"
+import utils from "utils/util.js"
+App({
+  onLaunch: function () {
+    utils.get_token()
+    // 展示本地存储能力
+
+    var logs = wx.getStorageSync('logs') || []
+    logs.unshift(Date.now())
+    wx.setStorageSync('logs', logs)
+
+    // 获取用户信息
+    wx.getSetting({
+      success: res => {
+        if (res.authSetting['scope.userInfo']) {
+          // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
+          wx.getUserInfo({
+            success: res => {
+              // 可以将 res 发送给后台解码出 unionId
+              this.globalData.userInfo = res.userInfo
+              console.log(res)
+              wx.setStorageSync("header", res.userInfo.avatarUrl)
+              wx.setStorageSync("nickname", res.userInfo.nickName)
+              // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
+              // 所以此处加入 callback 以防止这种情况
+              // if (this.userInfoReadyCallback) {
+              //   this.userInfoReadyCallback(res)
+              // }
+            }
+          })
+        }
+      }
+    })
+    function copy_num(e) {
+      var that = this;
+      var copy_the_nums = that.data.diandanid
+      wx.setClipboardData({
+        data: copy_the_nums,
+        success: function (e) {
+          console.log("aaaaaaaaaaaaaaaaaaaaa", e)
+          if (e.errMsg == "setClipboardData:ok") {
+            wx.getClipboardData({
+              success: function (e) {
+                console.log("1111111111111111", e)
+                wx.showToast({
+                  title: '复制成功！'
+                })
+              }
+            })
+
+          }
+        }
+      })
+    }
+    wx.getLocation({
+      type: 'wgs84',
+      success: function (res) {
+        console.log("你他妈能不能行")
+      },
+    })
+  },
+
+  onShow: function () {
+    // utils.getAuthor("scope.getLocation", function () {
+    //   console.log("微信地理授权成功");
+    // })
+    // if (this.globalData.token && this.globalData.token.length != 0) { return };
+
+
+
+
+
+
+
+
+
+    // =========================================    
+    // utils.getAuthor("scope.userInfo", function () {
+    //   console.log(1111)
+    //   console.log("微信授权成功");
+    //   // wx.showLoading({
+    //   //   mask: true
+    //   // })
+    //   //获取授权后执行登陆操作
+    //   // var session=wx.getStorageSync('back_stage_session')
+    //   // that.globalData.back_stage_session=session
+    //   utils.myLogin((code, res) => {
+    //     console.log("微信服务器登录成功后的回调信息：", code, res);
+
+    //     console.log(that.globalData.back_stage_session)
+
+    //     var session =  wx.getStorageSync("3rdsession")
+    //     //从util.js保存至本地的session拿出来
+    //     that.globalData.back_stage_session=session
+    //     //本地的session再次全局赋值
+    //     wx.request({
+    //       url: config.get_token_id,
+    //       method: 'GET',
+    //       // header: {
+    //       //   'Content-Type': 'application/x-www-form-urlencoded' // POST的请求方式不一样 
+    //       //   // 'Authorization': 'jwttoken'
+    //       // },
+    //       data: {
+    //         sessionId: that.globalData.back_stage_session,
+    //         iv: res.iv,
+    //         encryptedData: res.encryptedData
+    //       },
+    //       success(res) {
+    //         console.log("自己服务器登录成功后的回调信息：", res);
+    //         that.globalData.back_stage_token = res.data.data.jwtToken;
+    //         that.globalData.back_stage_userid = res.data.data.userId;
+    //         wx.setStorageSync('token', res.data.data.jwtToken)
+    //         console.log(res.data.data.jwtToken)
+    //         wx.setStorageSync('uid', res.data.data.userId)
+    //         //防止在其他页面onload先执行，导致无法获取token
+    //         if (that.userInfoReadyCallback) {
+
+    //           that.userInfoReadyCallback(res)
+
+    //         }
+    //         wx.hideToast();
+
+    //       },
+    //       fail() {
+    //         utils.myFailFn();
+    //       }
+    //     })
+
+
+    //   })
+    // })
+
+  },
+  globalData: {
+    servsers: "http://sys.haocha.top",
+    servsers2: "https://v.juhe.cn",
+    //  https://v.juhe.cn/toutiao/index?type=guone&key=20f90a8cc49c35af597c877b3e55970d
+    indexTitle1: "好茶小店",
+    indexTitle2: "拼团",
+    indexTitle3: "我的",
+    title_Address: "地址管理",
+    title_Address2: "选择地址",
+    userInfo: null,
+    back_stage_token: null,
+    back_stage_userid: null,
+    back_stage_session: null,
+  },
+
+ 
+})

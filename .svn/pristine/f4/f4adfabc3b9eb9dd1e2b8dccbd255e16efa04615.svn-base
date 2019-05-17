@@ -1,0 +1,23 @@
+/* pages/login/login.wxss */
+page{
+  width: 100%;
+  height: 100%;
+  background: #fff
+}
+ view{
+   margin-bottom: 80rpx;
+   font-size: 30rpx;
+   text-align: center;
+   color: #333;
+  line-height: 80rpx
+ }
+ button{
+   width: 80%;
+   margin: 0 auto
+ }
+ image{
+   width: 250rpx;
+   height: 250rpx;
+   margin: 0 auto;
+   display: block
+ }

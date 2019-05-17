@@ -1,0 +1,52 @@
+{
+  "pages": [
+    "pages/all_order/all_order",
+    "pages/index/index",
+    "pages/mind/mind",
+    "pages/mine/mine",
+    "pages/group_booking/group_booking",
+    "pages/own_buy/own_buy",
+    "pages/confirm_order/confirm_order",
+    "pages/buy_group/buy_group",
+    "pages/buy_alone/buy_alone",
+    "pages/pinhaocha/pinhaocha",
+    "pages/add_new_address/add_new_address",
+    "pages/choose_address/choose_address",
+    "pages/address/address",
+    "pages/ruzhu/ruzhu",
+    "pages/search_index/search_index",
+    "pages/logs/logs"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "好茶",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "#999",
+    "selectedColor": "#0E6D45",
+    "borderStyle": "#fff",
+    "backgroundColor": "'#FFF'",
+    "list": [
+      {
+        "selectedIconPath": "common/image/index_img/index_selected.png",
+        "iconPath": "common/image/index_img/index_selecte.png",
+        "pagePath": "pages/index/index",
+        "text": "小店"
+      },
+      {
+        "selectedIconPath": "common/image/index_img/haocha_selectd.png",
+        "iconPath": "common/image/index_img/haocha_select.png",
+        "pagePath": "pages/pinhaocha/pinhaocha",
+        "text": "拼好茶"
+      },
+      {
+        "selectedIconPath": "common/image/index_img/mind_selectd.png",
+        "iconPath": "common/image/index_img/mind_select.png",
+        "pagePath": "pages/mind/mind",
+        "text": "我的"
+      }
+    ]
+  }
+}

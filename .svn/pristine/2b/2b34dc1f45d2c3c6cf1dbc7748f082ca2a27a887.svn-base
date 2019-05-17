@@ -1,0 +1,15 @@
+<!--pages/text_time/text_time.wxml-->
+<view>
+<view class='share_good_poster' hidden='{{good_poster_hidden}}'>
+          <view class='share_good_poster_title font24'>
+            分享到微信群或者朋友圈，让更多人知道您的推荐
+          </view>
+          <view class='good_poster'>
+            <image src='{{good_poster}}'></image>
+          </view>
+          <button class='keep_poster_btn' bindtap='clickKeepimage'>保存图片，发朋友圈</button>
+        </view>
+
+
+
+</view>

@@ -1,0 +1,17 @@
+<!--pages/AD/AD.wxml-->
+<view class='content'>
+  <view class='adImg'>
+    <image mode='widthFix' src='http://image.haocha.top/i1/poster/base/drainage_explain_1.png'></image>
+    <image mode='widthFix' src='http://image.haocha.top/i1/poster/base/drainage_explain_2.png'></image>
+    <image mode='widthFix' bindtap='previewImage' src='http://image.haocha.top/i1/poster/base/drainage_explain_3.png'></image>
+  </view>
+
+ <!-- <view class='download_app'>
+    <view src='http://sys.haocha.top/app/haocha-v2.01.apk' bindtap='downloadAndroidApp' class='download_btn'>
+      <image src='../../common/image/index_img/android.png'></image>
+    </view>
+     <view src="https://itunes.apple.com/app/id1322943916" bindtap='downloadIOSApp' class='download_btn MT'>
+      <image src='../../common/image/index_img/ios.png'></image>
+    </view> 
+ </view> -->
+</view>

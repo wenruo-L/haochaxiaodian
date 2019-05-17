@@ -1,0 +1,20 @@
+<!--pages/address/address.wxml-->
+<view >
+  <!--商品列表 begin  like-list clearfix  class="weui-grid"-->
+  <view wx:for="{{dateList}}" wx:key="id" wx:for-item="item"  >
+    <navigator class="like-lilf" url="">
+      <!-- <view class="likepro-img">
+        <image src="http://haocha-test.51haoliao.com{{item.cover_small}}" alt=""></image>
+      </view> -->
+      <!-- class="likepro-name plr26 text-elli" -->
+      <view >{{item.name}}</view>
+      <!--class="likepro-price clearfix plr26 "  -->
+      <view >
+       <!-- class="fl" -->
+       <!-- class="fr" -->
+        <text>{{item.phone}}</text>
+        <text >{{item.province}} {{item.city}} {{item.street}}</text>
+      </view>
+    </navigator>
+  </view>
+</view>

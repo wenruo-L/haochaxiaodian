@@ -1,0 +1,93 @@
+/* pages/fast_order/fast_order.wxss */
+.content{
+  border-top:1px solid #e6e6e6; 
+}
+.swiper-tab-list-in{
+  width: 168rpx;
+  height: 82rpx;
+  line-height: 82rpx;
+  text-align: center;
+  border-bottom:1px solid #e6e6e6; 
+}
+.on{
+  background: #fff;
+}
+.swiper_content{
+  background: #fff;
+}
+.swiper-tab{
+  position: relative;
+}
+.swiper_content{
+  border-top:1px solid #e6e6e6; 
+  width: 78%;
+  overflow: scroll;
+  position: absolute;
+  left: 168rpx;
+  top: 0;
+} 
+.swiper_content::-webkit-scrollbar {
+    display: none;
+}
+
+.swiper_item::-webkit-scrollbar {
+    display: none;
+}
+.good_detail_out{
+  width: 100%;
+  height: auto;
+  background: #fff;
+}
+.good_detail{
+  width: 100%;
+  height: auto;
+  padding: 20rpx 0;
+}
+.good_img{
+  width: 150rpx;
+  height: 150rpx;
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: 20rpx;
+}
+.good_img>image{
+  width: 100%;
+  height: 100%;
+}
+.good_msg{
+  display: inline-block;
+  width: 63%;
+  height: auto;
+  vertical-align: middle;
+   margin-left: 20rpx;
+}
+.good_name{
+  line-height: 48rpx;
+  overflow: hidden;
+  /*1.超出内容要隐藏，创建边界*/
+  text-overflow: ellipsis;
+  /*2.文字遇到边界时，显示省略号*/
+  display: -webkit-box;
+  /*3.设置该容器为弹性盒子*/
+  -webkit-line-clamp: 2;
+  /*4.表示你的文字可以支持的最大行数*/
+  -webkit-box-orient: vertical;
+}
+.good_sum{
+  width: 100%;
+  height: 100%;
+  margin-top:20rpx; 
+}
+.sum{
+  display: inline-block;
+  font-weight: 600;
+}
+.order{
+  display: inline-block;
+  width: 95rpx;
+  height: 40rpx;
+  text-align: center;
+  line-height: 40rpx;
+  color: #fff;
+  border-radius:30rpx; 
+}

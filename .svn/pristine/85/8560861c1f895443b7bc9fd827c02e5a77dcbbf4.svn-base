@@ -1,0 +1,185 @@
+//app.js
+import config from "utils/config.js"
+import utils from "utils/util.js"
+App({
+  onLaunch: function () {
+    // 展示本地存储能力
+    var logs = wx.getStorageSync('logs') || []
+    logs.unshift(Date.now())
+    wx.setStorageSync('logs', logs)
+
+    // 获取用户信息
+    wx.getSetting({
+      success: res => {
+        if (res.authSetting['scope.userInfo']) {
+          // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
+          wx.getUserInfo({
+            success: res => {
+              // 可以将 res 发送给后台解码出 unionId
+              this.globalData.userInfo = res.userInfo
+              console.log(res)
+              // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
+              // 所以此处加入 callback 以防止这种情况
+              // if (this.userInfoReadyCallback) {
+              //   this.userInfoReadyCallback(res)
+              // }
+            }
+          })
+        }
+      }
+    })
+  },
+
+  onShow: function () {
+    if (this.globalData.token && this.globalData.token.length != 0) { return };
+    var that = this
+    utils.getAuthor("scope.userInfo", function () {
+      console.log("微信授权成功");
+      // wx.showLoading({
+      //   mask: true
+      // })
+      //获取授权后执行登陆操作
+      // var session=wx.getStorageSync('back_stage_session')
+      // that.globalData.back_stage_session=session
+      utils.myLogin((code, res) => {
+        console.log("微信服务器登录成功后的回调信息：", code, res);
+
+        console.log(that.globalData.back_stage_session)
+
+
+        wx.request({
+          url: config.get_token_id,
+          method: 'GET',
+          // header: {
+          //   'Content-Type': 'application/x-www-form-urlencoded' // POST的请求方式不一样 
+          //   // 'Authorization': 'jwttoken'
+          // },
+          data: {
+            sessionId: that.globalData.back_stage_session,
+            iv: res.iv,
+            encryptedData: res.encryptedData
+          },
+          success(res) {
+
+            console.log("自己服务器登录成功后的回调信息：", res);
+
+
+            that.globalData.back_stage_token = res.data.data.jwtToken;
+            that.globalData.back_stage_userid = res.data.data.userId;
+            wx.setStorageSync('token', res.data.data.jwtToken)
+            console.log(res.data.data.jwtToken)
+            wx.setStorageSync('uid', res.data.data.userId)
+            //防止在其他页面onload先执行，导致无法获取token
+            if (that.userInfoReadyCallback) {
+
+              that.userInfoReadyCallback(res)
+
+            }
+            // wx.hideToast();
+
+          },
+          fail() {
+            utils.myFailFn();
+          }
+        })
+
+
+      })
+    })
+    // // 登录
+    // wx.login({
+    //   success: res => {
+    //     console.log(res)
+    //     console.log(res.code)
+    //     var _code = res.code
+    //     if (res.code) {
+    //       console.log(_code)
+    //       //发起网络请求  
+
+    //       wx.request({
+    //         url: config.get3rdsession,
+    //         method: 'GET',
+    //         data: {
+    //           code: _code
+    //         },
+    //         header: {
+    //           'content-type': 'application/json' // GEt的请求方式为默认 
+    //           // 'Authorization': 'jwttoken'
+    //         },
+    //         success: function (e) {
+    //           console.log(e)
+    //           var backstage = e.data.code
+    //           that.globalData.back_stage_code = backstage;
+    //           var _thirdSession = e.data.data.thirdSession
+    //           if (backstage == 0) {
+    //             wx.getUserInfo({
+    //               success: function (res) {
+    //                 console.log('能否拿到encryptedData' + res.encryptedData)
+    //                 console.log('能否拿到iv ' + res.iv)
+    //                 var _encryptedData = res.encryptedData
+    //                 var _iv = res.iv
+    //                 console.log('能否拿到_thirdSession' + _thirdSession)
+    //                 wx.request({
+    //                   url: config.get_token_id,
+    //                   method: 'POST',
+    //                   data: {
+    //                     sessionId: _thirdSession,
+    //                     encryptedData: _encryptedData,
+    //                     iv: _iv
+    //                   },
+    //                   header: {
+    //                     'Content-Type': 'application/x-www-form-urlencoded' // POST的请求方式不一样 
+    //                     // 'Authorization': 'jwttoken'
+    //                   },
+    //                   success: function (res) {
+    //                     console.log('能否拿到jwtToken  ' + res.data.data.jwtToken)
+    //                     console.log('能否拿到userId    ' + res.data.data.userId)
+    //                     var _jwtToken = res.data.data.jwtToken
+    //                     var _userId = res.data.data.userId
+    //                     that.globalData.back_stage_token = _jwtToken;
+    //                     that.globalData.back_stage_userid = _userId;
+    //                     console.log(that.globalData.back_stage_userid)
+    //                     var obj = {}
+    //                     obj = {
+    //                       "token": _jwtToken,
+    //                       "id": _userId
+    //                     }
+    //                     //防止在其他页面onload先执行，导致无法获取token
+    //                     if (that.userInfoReadyCallback) {
+                 
+    //                       that.userInfoReadyCallback(res)
+              
+    //                     }
+    //                     wx.setStorage({
+    //                       key: "login_Uid",
+    //                       data: obj
+    //                     })
+    //                   }
+    //                 })
+    //               }
+    //             })
+
+    //           }
+    //         }
+    //       })
+    //     } else {
+
+    //     }
+    //   }
+    // })
+  },
+  globalData: {
+    servsers: "http://sys.haocha.top",
+    servsers2: "https://v.juhe.cn",
+    //  https://v.juhe.cn/toutiao/index?type=guone&key=20f90a8cc49c35af597c877b3e55970d
+    indexTitle1: "好茶小店",
+    indexTitle2: "拼团",
+    indexTitle3: "我的",
+    title_Address: "地址管理",
+    title_Address2: "选择地址",
+    userInfo: null,
+    back_stage_token: null,
+    back_stage_userid: null,
+    back_stage_session:null
+  }
+})

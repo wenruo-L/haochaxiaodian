@@ -1,0 +1,341 @@
+
+ /* .userinfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.userinfo-avatar {
+  width: 128rpx;
+  height: 128rpx;
+  margin: 20rpx;
+  border-radius: 50%;
+}
+
+.userinfo-nickname {
+  color: #aaa;
+}
+
+.usermotto {
+  margin-top: 200px;
+}
+.content{
+  width: 100%;
+  height: 100%;
+  background: #f5f5f5;
+}  */
+
+.fl{ float: left}
+.fr{ float: right}
+.clear{clear:both;} 
+.clearfix:after{
+	content: "";
+	display: block;
+	clear: both;
+}
+.index_top_mind{
+  width: 100%;
+  height:100%;
+  /* background: skyblue; */
+  position: relative;
+}
+.index_top_bg{
+  width: 100%;
+  height: 159px;
+  
+}
+.empty_div{
+  width: 100%;
+  height: 20rpx;
+  background: #f5f5f5;
+}
+.index_top_bg>image{
+    width: 100%;
+    height: 100%;
+}
+.shop_img{
+  width: 60.5px;
+  height: 60.5px;
+  margin:0 auto; 
+}
+.shop_img>image{
+  width: 100%;
+  height: 100%;
+}
+.shop_ctent>text{
+  font-size: 30rpx;
+  color: #fff;
+  text-align: center;
+}
+.shop_ctent{
+  width: 60px;
+  position: absolute;
+  left: 43%;
+  top: 25%;
+}
+.shop_details{
+  width: 100%;
+   border-bottom: 1px solid #e6e6e6; 
+   background:#fff;
+
+}
+.shop_details_1{
+  width: 96%;
+  margin: 0 auto;
+  padding: 40rpx 0 40rpx 0; 
+  /* background: rebeccapurple */
+}
+.erweima_wrap{
+  display: inline-block;
+  text-align: center;
+  font-size: 0;
+}
+.erweima_wrap>view{
+   margin-bottom: 10rpx; 
+}
+.erweima_wrap>view>image{
+  width: 64px;
+  height: 64px;
+  background: skyblue;
+  display: inline-block;
+}
+.erweima_wrap>text{
+  font-size: 20rpx;
+  
+}
+.shop_name{
+  display: inline-block;
+   margin-left: 46rpx; 
+}
+.shop_name_1{
+  position: relative;
+}
+.copy_wy{
+  display: inline-block;
+  font-size:26rpx;
+  width: 140rpx;
+  height: 40rpx;
+  border: 1px solid #0e6d44;
+  border-radius:3px;
+  text-align: center; 
+  position: absolute;
+  right: 0;
+  top: 4px;
+  padding: 3rpx 5rpx;
+  color: #0e6d44;
+  font-weight:500;
+}
+
+.shop_name_1_img{
+  width: 40rpx;
+  height: 35rpx;
+  display: inline-block;
+   vertical-align: middle;
+}
+.shop_name_2_img{
+  width: 30rpx;
+  height: 35rpx;
+  display: inline-block;
+   vertical-align: top;
+}
+.shop_name_2_img>image{
+  width: 100%;
+  height: 94%;
+}
+.shop_name_1_img>image{
+  width: 100%;
+  height: 100%;
+}
+.shop_name_2_text{
+  display: inline-block;
+  font-size: 26rpx;
+  vertical-align: baseline;
+  margin-left: 31rpx;
+  line-height: 61rpx;
+}
+.shop_name_1_text{
+  display: inline-block;
+  font-size: 26rpx;
+  vertical-align: baseline;
+  margin-left: 23rpx;
+  line-height: 60rpx;
+}
+.shop_blog{
+  width: 100%;
+  padding: 20rpx 0;  
+  border-bottom:1px solid #e6e6e6;
+  border-top:1px solid #e6e6e6;
+  background:#fff;
+
+  /* background: skyblue; */
+}
+.shop_recommened{
+  width: 96%;
+  height: 76rpx;
+  position: relative;
+  margin: 0 auto;
+}
+.shop_name_picture{
+  width: 67rpx;
+  height: 67rpx;
+  border-radius:50%; 
+  display: inline-block;
+  vertical-align: middle;
+  border: 1px solid#ebebeb;
+}
+.shop_name_picture>image{
+  width: 100%;
+  height: 100%;
+}
+.shop_recommened_shopname{
+  display: inline-block;
+  vertical-align: middle;
+  font-size: 30rpx;
+  margin-left: 10rpx;
+  margin-right: 20rpx;
+}
+.pintuan{
+  display: inline-block;
+  text-align: center;
+  line-height: 36rpx;
+  vertical-align: middle;
+  font-size: 30rpx;
+  border:1px solid#ffa800;
+  background: #ffa800;
+  color: #fff;
+  border-radius:3px; 
+  width: 72rpx;
+  height: 36rpx;
+}
+.shop_tuijian{
+  display: inline-block;
+  font-size: 30rpx;
+  vertical-align: middle;
+  position: absolute;
+  right: 0;
+  top: 24rpx;
+}
+.shop_talk{
+  width: 100%;
+  position: relative;
+  margin-top: 20rpx;
+}
+.shop_talk_bg{
+  width: 96%;
+  height: 138rpx;
+  margin: 0 auto;
+}
+.shop_talk_bg>image{
+  width: 100%;
+  height: 100%;
+}
+.shop_talk_text{
+  width: 90%;
+  position: absolute;
+  left: 36rpx;
+  top: 25rpx;
+  font-size: 28rpx;
+  line-height: 45rpx;
+  overflow: hidden;
+  /*1.超出内容要隐藏，创建边界*/
+  text-overflow: ellipsis;
+  /*2.文字遇到边界时，显示省略号*/
+  display: -webkit-box;
+  /*3.设置该容器为弹性盒子*/
+  -webkit-line-clamp: 2;
+  /*4.表示你的文字可以支持的最大行数*/
+  -webkit-box-orient: vertical;
+}
+.good_show{
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+.good_show>image{
+  width: 215rpx;
+  height: 215rpx;
+  border-radius:5px;
+  margin-top: 20rpx; 
+}
+.likes{
+  width: 96%;
+  margin:0 auto;
+  margin-top: 20rpx;
+}
+.likes>view{
+ 
+}
+.like_icon{
+  display: inline-block;
+  width: 36rpx;
+  height: 36rpx;
+  vertical-align: middle;
+}
+.like_icon>image{
+  width: 100%;
+  height: 100%;
+}
+.click_like{
+    display: inline-block;
+    width: 146rpx;
+}
+.yongjin{
+  display: inline-block;
+}
+.yongjin_icon{
+   width: 36rpx;
+    height: 36rpx;
+   display: inline-block;
+   vertical-align: middle;
+}
+.yongjin_icon>image{
+  width: 100%;
+  height: 100%;
+}
+.like_text{
+  font-size: 26rpx;
+   display: inline-block;
+   margin-left: 16rpx;
+   vertical-align: middle;
+}
+.yongjin_text{
+  font-size: 26rpx;
+   display: inline-block;
+   margin-left: 16rpx;
+   vertical-align: middle;
+}
+.ruzhu{
+  width: 100%;
+  height: 513rpx;
+  text-align: center;
+  border-top:1px solid #e6e6e6;
+  background:#fff;
+
+}
+.ruzhu_erweima{
+  width: 260rpx;
+  height: 260rpx;
+  background: blue;
+  margin: 0 auto;
+  margin-top: 70rpx;
+}
+.ruzhu_erweima>image{
+  width: 100%;
+  height: 100%;
+}
+.ruzhu_text{
+    font-size: 30rpx;
+    margin-top: 20rpx;
+}
+.shitidian_text{
+  height: 60rpx;
+  width: 337rpx;
+  font-size: 30rpx;
+  line-height: 60rpx;
+  margin: 0 auto;
+  color: #0e6d44;
+  border:2px solid #0e6d44;
+  border-radius:50px;  
+  margin-top: 45rpx;
+  margin-bottom: 45rpx;
+}

@@ -1,0 +1,90 @@
+/* pageA/pages/bindingPhone/bindingPhone.wxss */
+.content{
+  width: 100%;
+  height: auto;
+  background: #fff;
+  margin-top: 20rpx;
+  border-top:1px solid#e6e6e6;  
+}
+.bindingPhone{
+  width: 96%;
+  margin: 0 auto;
+  text-align: center
+}
+.tips{
+  width: 100%;
+  height: auto;
+  padding: 50rpx 0;
+}
+.tips>text{
+  vertical-align: middle;
+  color: #FF0000;
+  margin-left: 10rpx;
+}
+.attention{
+  width: 30rpx;
+  height: 30rpx;
+  display: inline-block;
+  vertical-align: middle;
+}
+.attention>image{
+  width: 100%;
+  height: 100%;
+}
+.from{
+  width: 100%;
+  height: auto;
+  padding: 20rpx 0;
+}
+.bb{
+  border-bottom:1px solid#e6e6e6;  
+}
+.from>input{
+  width: 55%;
+  height: 50rpx;
+  display: inline-block;
+  vertical-align: middle;
+  text-align: left;
+  margin-left: 40rpx;
+}
+.icon_img{
+  width: 50rpx;
+  height: 50rpx;
+  display: inline-block;
+  vertical-align: middle;
+}
+.icon_img>image{
+  width: 100%;
+  height: 100%;
+}
+.code{
+  width: 190rpx;
+  height: 71rpx;
+  padding-left: 0;
+  padding-right: 0;
+  line-height: 71rpx;
+  background: #0E6D45;
+  color: #fff;
+  border-radius:10rpx;
+  font-size: 30rpx;
+  text-align: center;
+  display: inline-block;
+  vertical-align: middle; 
+}
+.empty{
+  width: 190rpx;
+  height: 71rpx;
+  line-height: 71rpx;
+  color: #fff;
+  border-radius:10rpx;
+  font-size: 30rpx;
+  text-align: center;
+  display: inline-block;
+  vertical-align: middle; 
+}
+.binding{
+  width: 96%;
+  color: #fff;
+  background: #0E6D45;
+  margin-top: 50rpx;
+}

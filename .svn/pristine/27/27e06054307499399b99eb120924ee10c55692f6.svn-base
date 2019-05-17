@@ -1,0 +1,84 @@
+<!--pageA/pages/getLuckyMoneySuccess/getLuckyMoneySuccess.wxml-->
+<view class='content'>
+
+    <view class='userHeader'>
+      <view class='userHeader_bg'>
+        <image src='../../../common/image/index_img/luckyMoneyBG.png'></image>
+      </view>
+      <view class='userHeaderImg'>
+        <image src='{{header}}'></image>
+      </view>
+      <view class='to_strategy' bindtap='to_strategy'>
+        <text>红包攻略</text><text class='ml' decode='{{true}}'>&gt;</text>
+      </view>
+    </view>
+    <view class='profit'>
+      {{profit/100}} <text>元</text>
+    </view>
+    <view class='bsetluck' wx:if="{{bestluck==1}}">
+      哇,最佳手气,可以去试试买彩票了！
+    </view>
+    <view class='bsetluck' wx:else>
+      分享商品，获得更多红包！
+    </view>
+    <view class='tips font26'>
+      红包已存入, 交易完成后可提现
+    </view>
+</view>
+<button class='share' bindtap='open_mask'>
+  分享赚红包
+</button>
+<view bindtap='turnBack' class='backToIndex'>
+  返回上一级
+ </view>
+ <view bindtap='to_get_luckMoney' class='backToIndex'>
+  我的红包
+ </view>
+ <view class='bottom_tips'>
+  备注：手气红包可以作为现金折扣，还可以提现！
+ </view>
+
+<view class='share_shop_out' catchtouchmove='true' style='height:100%' hidden='{{fenxiangdianpu}}'>
+    <view class='share_shop' catchtap='close_share_shop' style='height:100%'>
+    </view>
+    <!-- 分享海报  -->
+    <view class='share_shop_poster' hidden='{{close_shop_share}}'>
+      <view class='share_good_poster_title font24'>
+        分享到微信群或者朋友圈，让更多人知道您的推荐
+      </view>
+      <view class='shop_poster'>
+        <image src='{{good_poster}}'></image>
+      </view>
+
+      <button class='keep_poster_btn' bindtap='clickKeepimage'>保存图片，发朋友圈</button>
+    </view>
+    <!-- ============================= -->
+    <view class='share_shop_in'>
+
+      <view class='share_shop_t font24'>分享商品给您的好友拿红包吧~</view>
+      <view class='share_shop_way'>
+        <view class='friends'>
+
+          <button class='friends_btn font24' open-type='share' id="1">
+
+            <view class='share_with_friend_img'>
+              <image src='../../../common/image/index_img/share_with_friend.png'></image>
+            </view>
+            微信好友
+          </button>
+        </view>
+        <view class='pengyouquan' bindtap='showShareShopWithFriends'>
+          <view class='pengyouquan_btn'>
+
+            <view class='share_with_friend_img'>
+              <image src='../../../common/image/index_img/pengyouquan.png'></image>
+            </view>
+            <view class='share_with_friend_text font24' open-type='share'>微信朋友圈</view>
+
+          </view>
+
+
+        </view>
+      </view>
+    </view>
+  </view>

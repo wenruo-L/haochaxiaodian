@@ -1,0 +1,94 @@
+<!--pages/add_new_address/add_new_address.wxml-->
+<view class='content'>
+  <view class='infor_top'>
+
+    <view class='personal_infor_out'>
+      <view class='personal_infor clearfix'>
+        <view class='infor font30'>
+            收货人
+        </view>
+        <view class='mation'>
+            <input bindinput='userNinput'  placeholder="填写收货人" maxlength='8' value='{{userName}}'>
+               
+            </input>
+        </view>
+      </view>
+    </view>
+
+    <view class='personal_infor_out'>
+      <view class='personal_infor clearfix'>
+        <view class='infor font30'>
+            联系电话
+        </view>
+        <view class='mation'>
+            <input bindinput='userPinput' type='number'  placeholder="填写常用手机号" maxlength='11' value='{{userPhone}}'>
+               
+            </input>
+        </view>
+      </view>
+    </view>    
+
+
+    <view class='personal_infor_out boder_b_line' bindtap='open_choose'>
+      <!-- <picker mode="region" bindchange="bindRegionChange" value="{{region}}" custom-item="{{customItem}}"> -->
+        <view class='personal_infor clearfix'>
+          <view class='infor'>
+              地址
+          </view>
+          <view class='mation'>
+              <view class='picker'>
+                <text class='tishiyu' hidden='{{!showAddressDetail}}'>选择地址</text>
+                <!-- <text class='choose_add' hidden='{{showAddressDetail}}'>{{province}}{{city}}{{area}}</text> -->
+              </view>
+              <!-- <input  placeholder="选择地址" value='{{region[0]}}{{region[1]}}{{region[2]}}'></input> -->
+              <view class='enter_img'>
+                  <image src='../../common/image/ruzhu_img/enter.png'></image>
+              </view>
+          </view>
+        </view>
+      <!-- </picker> -->
+    </view>
+
+    <view class='personal_infor_out'>
+      <view class='personal_infor_ad clearfix'>
+        <view class='infor1 font30'>
+            详细地址
+        </view>
+        <view class='mation'>
+            <textarea bindinput='useradinput' class='address_detail' placeholder="填写详细地址" maxlength='100' value='{{address_detail}}'>             
+            </textarea>
+        </view>
+      </view>
+    </view>
+
+<view class='choose_city_out' style='height:{{winHeight}}px' catchtap='close_choose' hidden='{{choose_city}}'>
+  <view class='choose_middle'>
+    <view class='YesOrNo clearfix'>
+      <view class='fl NO'>取消</view>
+      <view class='fr YES' bindtap='YES'>确认</view>
+    </view>
+    <picker-view class='choose_city' bindchange="bindChange" indicator-style="height: 50px;" style="width: 100%; height: 500rpx; background: #ffffff;" value="{{value}}" >
+        <picker-view-column>
+          <view wx:for="{{allCity}}" wx:key="index" style="line-height: 50px; text-align:center;">{{allCity[index].name}}</view>
+        </picker-view-column>
+        <picker-view-column>
+          <view wx:for="{{provinceValue}}"  wx:for-index="num" wx:key="index" style="line-height: 50px; text-align:center;">{{provinceValue.list[num].name}}</view>
+        </picker-view-column>
+        <picker-view-column>
+          <view wx:for="{{allCity[index].list[index].list}}" wx:key="index" style="line-height: 50px; text-align:center;">{{allCity[provinceValue].list[cityValue].list[areaValue].name}}</view>
+        </picker-view-column>
+    </picker-view>
+  </view>
+
+
+</view>
+
+  </view>
+
+   <!--提交  -->
+    <view class='add_addrees_out'>
+      <view class='add_addrees mainbgcolor' bindtap='update_address'>
+        提交
+      </view>
+    </view>
+</view>

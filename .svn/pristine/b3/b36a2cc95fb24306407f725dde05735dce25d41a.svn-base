@@ -1,0 +1,234 @@
+/* pageA/pages/getLuckyMoneySuccess/getLuckyMoneySuccess.wxss */
+.content{
+  background: #fff;
+}
+.userHeader{
+  width: 100%;
+  height: 300rpx;
+  position: relative;
+}
+.userHeader_bg{
+  width: 100%;
+  height: 186rpx;
+}
+.userHeader_bg>image{
+  width: 100%;
+  height: 100%;
+}
+.userHeaderImg{
+  width: 150rpx;
+  height: 150rpx;
+  border: 8rpx solid #FFF;
+  border-radius:50%; 
+  position: absolute;
+  top: 34%;
+  left: 39%;
+}
+.userHeaderImg>image{
+  width: 100%;
+  height: 100%;
+  border-radius:50%; 
+}
+.profit{
+  width: 100%;
+  font-size: 90rpx;
+  text-align: center;
+  padding: 50rpx 0 ;
+}
+.profit>text{
+  font-size: 36rpx;
+}
+.bsetluck{
+  width: 100%;
+  text-align: center;
+  font-size: 30rpx;
+  margin-bottom: 20rpx;
+}
+.tips{
+    width: 100%;
+  text-align: center;
+  color: #999;
+  padding-bottom: 170rpx;
+}
+.bottom_tips{
+  width: 100%;
+  text-align: center;
+  color: #999;
+  position: fixed;
+  bottom: 2%;
+  left: 0;
+}
+.to_strategy{
+  width: 200rpx;
+  height: 50rpx;
+  font-size: 36rpx;
+  color: #FFFBCF;
+  position: absolute;
+  right: 0;
+  top: 30rpx;
+}
+.ml{
+  margin-left: 10rpx;
+}
+.share{
+  width: 690rpx;
+  height: 88rpx;
+  border-radius: 8rpx;
+  text-align: center;
+  line-height: 88rpx;
+  padding-left: 0;
+  padding-right: 0;
+  color: #fff;
+  margin: 0 auto;
+  background: #EC0000;
+  margin-top: 20rpx;
+}
+.backToIndex{
+  width: 690rpx;
+  height: 88rpx;
+  border: 1px solid#e6e6e6;
+  border-radius: 8rpx;
+  text-align: center;
+  line-height: 88rpx;
+  padding-left: 0;
+  padding-right: 0;
+  color: #000;
+  margin: 0 auto;
+  background: #fff;
+  margin-top: 20rpx;
+}
+.share_shop_out{
+  width: 100%;
+  position: fixed;
+  left: 0;
+  top: 0;
+}
+.share_commission{
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  background: rgba(0, 0, 0, .5);   
+}
+.share_shop{
+  width: 100%;
+  height: 100%;
+  z-index: 40;
+  background: rgba(0, 0, 0, .5);   
+}
+.share_commission_in{
+ 
+  padding-top: 30rpx;
+  width: 100%;
+  height: 380rpx;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  background: #fff;
+  z-index: 20;
+}
+.share_shop_in{ 
+  padding-top: 30rpx;
+  width: 100%;
+  height: 280rpx;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  background: #fff;
+  z-index: 3;
+}
+.share_commission_title{
+  width: 60%;
+  height: auto;
+  margin: 0 auto;
+  text-align: center;
+  /* margin-top: 30rpx; */
+}
+.share_commission_text{
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: 15rpx;
+}
+.share_commission_text>text{
+  margin-left: 20rpx;
+}
+.redcolor{
+  color: #FF0000;
+}
+.share_t{
+  width: 100%;
+  height: auto;
+  text-align: center;
+  margin-top: 30rpx;
+}
+.share_t_1{
+  width: 100%;
+  height: auto;
+  text-align: center;
+  color: #cc0000;
+}
+.share_shop_t{
+  width: 100%;
+  height: auto;
+  text-align: center;
+}
+.share_way{
+  width: 92%;
+  height: auto;
+  margin: 0 auto;
+  margin-top: 47rpx;
+  border-top:1px solid #e6e6e6; 
+}
+.share_shop_way{
+  width: 92%;
+  height: auto;
+  margin: 0 auto;
+  margin-top: 30rpx;
+  border-top:1px solid #e6e6e6; 
+}
+.friends{
+  width: 50%;
+  height: 100%;
+  display: inline-block;
+  vertical-align: middle;
+}
+.pengyouquan{
+  width: 49%;
+  height: 100%;
+  display: inline-block;
+  vertical-align: middle;
+}
+.share_with_friend_img{
+  width: 73rpx;
+  height: 73rpx;
+  margin: 0 auto;
+}
+.share_with_friend_img>image{
+  width: 100%;
+  height: 100%;
+}
+.friends_btn{
+  margin: 0 auto;
+  padding-top: 28rpx;
+  background: #fff;
+  border: none;
+  margin-top: 30rpx;
+}
+.friends_btn::after{
+  border: none;
+}
+.pengyouquan_btn{
+  padding-top: 28rpx;
+  background: #fff;
+  border: none;
+  margin-top: 15rpx;
+}
+.pengyouquan_btn::after{
+  border: none;
+}
+.share_with_friend_text{
+  text-align: center;
+  margin-top: 10rpx;
+}

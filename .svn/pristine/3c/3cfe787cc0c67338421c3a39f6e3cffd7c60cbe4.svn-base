@@ -1,0 +1,488 @@
+<view class='content'>
+<view class="swiper-tab">
+
+  <view class="swiper-tab-list " wx:for="{{navbar}}" data-idx="{{index}}"  wx:key="index" bindtap="navbarTap">
+  
+  
+  <view  class="swiper-tab-list-in {{currentTab==index ? 'on' : ''}}">{{item}}</view>
+  </view>
+</view>
+ 
+<!-- 全部开始 -->
+<!--全部-开始  -->
+     
+<!--代付款-开始  -->
+  <view class='order_detail_wrap'  hidden="{{currentTab!==0}}">
+<view  class='order_detail' wx:for="{{all_detail_datas}}" wx:for-index="index" wx:key="index">
+        <view bindtap='to_order_detail_danmai' data-id='{{all_detail_datas[index].id}}'>
+            <view class='shop_name_out'>
+              <view class='shop_name clearfix'>
+                <view class='shop_wrap'>
+                  <view class='shop_icon'>
+                    <image src='../../common/image/index_img/shop_icon.png'></image>
+                  </view>
+                <view class='shop_name_text font30'> {{all_detail_datas[index].productSub.shopSub.name}}</view>
+                <view wx:if="{{all_detail_datas[index].collageId != 0}}" class='pintuan_icon font26'>拼团</view>
+                </view>
+                <view wx:if="{{all_detail_datas[index].state == 0}}" class='shop_name_wrap font30 selected_color'>待付款</view>
+                <view wx:if="{{all_detail_datas[index].state == 1}}" class='shop_name_wrap font30 selected_color'>待分享</view>
+                <view wx:if="{{all_detail_datas[index].state == 3}}" class='shop_name_wrap font30 selected_color'>待发货</view>
+                <view wx:if="{{all_detail_datas[index].state == 2}}" class='shop_name_wrap font30 selected_color'>待自提</view>
+                <view wx:if="{{all_detail_datas[index].state == 4}}" class='shop_name_wrap font30 selected_color'>已发货</view>
+                <view wx:if="{{all_detail_datas[index].state == 5}}" class='shop_name_wrap font30 selected_color'>已完成</view>
+                <view wx:if="{{all_detail_datas[index].state == 6}}" class='shop_name_wrap font30 selected_color'>已取消</view>
+                <view wx:if="{{all_detail_datas[index].state == 7}}" class='shop_name_wrap font30 selected_color'>拼团失败</view>
+                <view wx:if="{{all_detail_datas[index].state == 8}}" class='shop_name_wrap font30 selected_color'>已退款</view>
+              </view>
+            </view>
+
+            <view class='orders_detail'>
+              <view class='order_info'>
+                  <view class='good_img'>
+                      <image src='{{all_detail_datas[index].productSub.productImageSub.path}}'></image>
+                  </view>
+                  <view class='good_detail'>
+                    <view class='font26 good_detail_text1'>{{all_detail_datas[index].productSub.title}}</view>
+                    <view class='font24 mezzo_color good_detail_text2'>{{all_detail_datas[index].productSub.productSkuSub.skuName}}</view>
+                    <view class='font30 good_detail_text3'>价格：<text class='maincolor'>{{all_detail_datas[index].productSub.productSkuSub.price/100}}元{{all_detail_datas[index].productSub.unit}}</text> <text class='fr'>X{{all_detail_datas[index].buyNum}}</text></view>
+                  </view>
+              </view>
+            </view>  
+
+            <view class='amount_out clearfix'>
+              <view class='amount'>
+
+                <view class='stepper_s fr font30'>
+                    实付：<text class='maincolor'>￥{{all_detail_datas[index].realPay/100}}</text>
+                </view>
+              </view>
+            </view>
+        </view>
+        <!-- 待付款功能按钮  -->
+            <view class='cancel_pay_out' wx:if="{{all_detail_datas[index].state == 0}}">
+              <view class='cancel_pay clearfix'>
+                <view class='pay fr font26' bindtap='sub_at_once'  data-id='{{all_detail_datas[index].id}}'>立即付款</view>
+                <picker bindchange="bindPickerChange" bindcancel="cancelTheCancel" data-id='{{all_detail_datas[index].id}}' value="{{index.name}}" range="{{array}}"  range-key='name'>            
+                <view class='cancel font26 fr' >取消订单</view>
+                </picker>
+              </view>
+            </view>
+      <!-- 待付款功能按钮  -->
+
+      <!-- 待分享功能按钮  -->
+            <view class='cancel_pay_out' wx:if="{{all_detail_datas[index].state == 1}}">
+              <view class='cancel_pay clearfix'>
+                 <view class='pay_invite fr font26' bindtap='to_order_detail_share' data-id='{{all_detail_datas[index].id}}'>邀请好友拼单</view> 
+               
+              </view>
+            </view>
+      <!-- 待分享功能按钮  -->
+
+      <!-- 待发货按钮  -->
+        <view class='cancel_pay_out' wx:if="{{all_detail_datas[index].state == 3}}">
+          <view class='cancel_pay clearfix'>
+              <view class='pay fr font26'  bindtap='buy_again' data-productid='{{all_detail_datas[index].productSub.productSkuSub.productId}}'>再次购买</view> 
+           
+          </view>
+        </view>
+      <!-- 待发货按钮  -->
+
+      <!-- 待自提按钮  -->
+        <view class='cancel_pay_out' wx:if="{{all_detail_datas[index].state == 2}}">
+          <view class='cancel_pay clearfix'>
+            <view class='pay fr font26'  bindtap='ensure_shouhuo' data-id='{{all_detail_datas[index].id}}'>确认收货</view> 
+            <!-- <view class='cancel font26 fr'>门店地址</view>  -->
+          </view>
+        </view>
+      <!-- 待自提按钮  -->
+
+      <!-- 已发货按钮  -->
+      <view class='cancel_pay_out'  wx:if="{{all_detail_datas[index].state == 4}}">
+        <view class='cancel_pay clearfix'>
+                            <view class='pay fr font26'  bindtap='ensure_shouhuo' data-id='{{all_detail_datas[index].id}}'>确认收货</view> 
+            <view class='cancel fr font26' bindtap='to_order_detail_chakanwuliu' data-id='{{all_detail_datas[index].id}}'>查看物流</view> 
+        </view>
+      </view>
+      <!-- 已发货按钮  -->
+
+      <!-- 已完成按钮 -->
+      <view class='cancel_pay_out' wx:if="{{all_detail_datas[index].state == 5 || all_detail_datas[index].state == 6}}">
+        <view class='cancel_pay clearfix'>
+            <view class='pay fr font26'  bindtap='buy_again' data-productid='{{all_detail_datas[index].productSub.productSkuSub.productId}}'>再次购买</view> 
+            <view class='cancel font26 fr' bindtap='delete_order' data-id='{{all_detail_datas[index].id}}'>删除订单</view> 
+        </view>
+      </view>
+      <!-- 已完成按钮 -->
+
+      <!-- 已取消按钮  -->
+
+      <!-- 已取消按钮  -->
+
+      <!-- 拼团失败按钮 -->
+      <view class='cancel_pay_out'  wx:if="{{all_detail_datas[index].state == 7}}">
+        <view class='cancel_pay clearfix'>
+            <view class='pay fr font26'  bindtap='buy_again_pintuan' data-productid='{{all_detail_datas[index].productSub.productSkuSub.productId}}'>再次购买</view> 
+            <view class='cancel font26 fr'  bindtap='delete_order' data-id='{{all_detail_datas[index].id}}'>删除订单</view> 
+        </view>
+      </view>
+      <!-- 拼团失败按钮 -->
+
+      <!-- 已退款  -->
+      <view class='cancel_pay_out'  wx:if="{{all_detail_datas[index].state == 8}}">
+        <view class='cancel_pay clearfix'>
+
+            <view class='pay fr font26'  bindtap='delete_order' data-id='{{all_detail_datas[index].id}}'>删除订单</view> 
+        </view>
+      </view>
+      <!-- 已退款  -->
+      <!-- ================================== -->
+          </view>
+       <!--代付款-结束  -->
+         
+      </view> 
+     
+<!-- 全部结束  -->
+</view>
+
+ 
+<!-- 待付款开始 -->
+<!-- 单买代付款开始  -->
+<view  class='order_detail_wrap'  hidden="{{currentTab!==1}}">
+
+
+  <view  class='order_detail' wx:for="{{all_detail_datas}}" wx:for-index="index" wx:key="index" wx:if="{{all_detail_datas[index].state == 0}}">
+        <view bindtap='to_order_detail_danmai' data-id='{{all_detail_datas[index].id}}'>
+            <view class='shop_name_out'>
+              <view class='shop_name clearfix'>
+                <view class='shop_wrap'>
+                  <view class='shop_icon'>
+                    <image src='../../common/image/index_img/shop_icon.png'></image>
+                  </view>
+                <view class='shop_name_text font30'> {{all_detail_datas[index].productSub.shopSub.name}}</view>
+                <view wx:if="{{all_detail_datas[index].collageId != 0}}" class='pintuan_icon font26'>拼团</view>
+                </view>
+                <view wx:if="{{all_detail_datas[index].state == 0}}" class='shop_name_wrap font30 selected_color'>待付款</view>
+              </view>
+            </view>
+
+            <view class='orders_detail'>
+              <view class='order_info'>
+                  <view class='good_img'>
+                      <image src='{{all_detail_datas[index].productSub.productImageSub.path}}'></image>
+                  </view>
+                  <view class='good_detail'>
+                    <view class='font26 good_detail_text1'>{{all_detail_datas[index].productSub.title}}</view>
+                    <view class='font24 mezzo_color good_detail_text2'>{{all_detail_datas[index].productSub.productSkuSub.skuName}}</view>
+                    <view class='font30 good_detail_text3'>价格：<text class='maincolor'>{{all_detail_datas[index].productSub.productSkuSub.price/100}}元{{all_detail_datas[index].productSub.unit}}</text> <text class='fr'>X{{all_detail_datas[index].buyNum}}</text></view>
+                  </view>
+              </view>
+            </view>  
+
+            <view class='amount_out clearfix'>
+              <view class='amount'>
+
+                <view class='stepper_s fr font30'>
+                    实付：<text class='maincolor'>￥{{all_detail_datas[index].realPay/100}}</text>
+                </view>
+              </view>
+            </view>
+        </view>
+        <!-- 待付款功能按钮  -->
+            <view class='cancel_pay_out' wx:if="{{all_detail_datas[index].state == 0}}">
+              <view class='cancel_pay clearfix'>
+                <view class='pay fr font26' bindtap='sub_at_once'  data-id='{{all_detail_datas[index].id}}'>立即付款</view>
+                <picker bindchange="bindPickerChange" bindcancel="cancelTheCancel" data-id='{{all_detail_datas[index].id}}' value="{{index.name}}" range="{{array}}"  range-key='name'>            
+                <view class='cancel font26 fr' >取消订单</view>
+                </picker>
+              </view>
+            </view>
+      <!-- 待付款功能按钮  -->
+    </view>
+    
+         
+      
+</view>
+<!-- 待付款结束 -->
+
+<!-- 待分享开始 -->
+<view hidden="{{currentTab!==2}}">
+   <!-- 拼团中，待分享-开始   -->
+    <view  class='order_detail' wx:for="{{all_detail_datas}}" wx:for-index="index" wx:key="index" wx:if="{{all_detail_datas[index].state == 1}}">
+        <view bindtap='to_order_detail_danmai' data-id='{{all_detail_datas[index].id}}'>
+            <view class='shop_name_out'>
+              <view class='shop_name clearfix'>
+                <view class='shop_wrap'>
+                  <view class='shop_icon'>
+                    <image src='../../common/image/index_img/shop_icon.png'></image>
+                  </view>
+                <view class='shop_name_text font30'> {{all_detail_datas[index].productSub.shopSub.name}}</view>
+                <view wx:if="{{all_detail_datas[index].collageId != 0}}" class='pintuan_icon font26'>拼团</view>
+                </view>
+         
+                <view wx:if="{{all_detail_datas[index].state == 1}}" class='shop_name_wrap font30 selected_color'>待分享</view>
+        
+              </view>
+            </view>
+
+            <view class='orders_detail'>
+              <view class='order_info'>
+                  <view class='good_img'>
+                      <image src='{{all_detail_datas[index].productSub.productImageSub.path}}'></image>
+                  </view>
+                  <view class='good_detail'>
+                    <view class='font26 good_detail_text1'>{{all_detail_datas[index].productSub.title}}</view>
+                    <view class='font24 mezzo_color good_detail_text2'>{{all_detail_datas[index].productSub.productSkuSub.skuName}}</view>
+                    <view class='font30 good_detail_text3'>价格：<text class='maincolor'>{{all_detail_datas[index].productSub.productSkuSub.price/100}}元{{all_detail_datas[index].productSub.unit}}</text> <text class='fr'>X{{all_detail_datas[index].buyNum}}</text></view>
+                  </view>
+              </view>
+            </view>  
+
+            <view class='amount_out clearfix'>
+              <view class='amount'>
+
+                <view class='stepper_s fr font30'>
+                    实付：<text class='maincolor'>￥{{all_detail_datas[index].realPay/100}}</text>
+                </view>
+              </view>
+            </view>
+        </view>
+      <!-- 待分享功能按钮  -->
+            <view class='cancel_pay_out' wx:if="{{all_detail_datas[index].state == 1}}">
+              <view class='cancel_pay clearfix'>
+                 <view class='pay_invite fr font26' bindtap='to_order_detail_share' data-id='{{all_detail_datas[index].id}}'>邀请好友拼单</view> 
+               
+              </view>
+            </view>
+      <!-- 待分享功能按钮  -->
+
+
+      <!-- ================================== -->
+      </view>
+</view>
+<!-- 待分享结束 -->
+
+
+<!-- 待发货开始 -->
+<view hidden="{{currentTab!==3}}">
+   <!-- 待发货-开始  -->
+    <view  class='order_detail' wx:for="{{all_detail_datas}}" wx:for-index="index" wx:key="index" wx:if="{{all_detail_datas[index].state == 3}}">
+        <view bindtap='to_order_detail_danmai' data-id='{{all_detail_datas[index].id}}'>
+            <view class='shop_name_out'>
+              <view class='shop_name clearfix'>
+                <view class='shop_wrap'>
+                  <view class='shop_icon'>
+                    <image src='../../common/image/index_img/shop_icon.png'></image>
+                  </view>
+                <view class='shop_name_text font30'> {{all_detail_datas[index].productSub.shopSub.name}}</view>
+                <view wx:if="{{all_detail_datas[index].collageId != 0}}" class='pintuan_icon font26'>拼团</view>
+                </view>
+                <view wx:if="{{all_detail_datas[index].state == 3}}" class='shop_name_wrap font30 selected_color'>待发货</view>
+              </view>
+            </view>
+
+            <view class='orders_detail'>
+              <view class='order_info'>
+                  <view class='good_img'>
+                      <image src='{{all_detail_datas[index].productSub.productImageSub.path}}'></image>
+                  </view>
+                  <view class='good_detail'>
+                    <view class='font26 good_detail_text1'>{{all_detail_datas[index].productSub.title}}</view>
+                    <view class='font24 mezzo_color good_detail_text2'>{{all_detail_datas[index].productSub.productSkuSub.skuName}}</view>
+                    <view class='font30 good_detail_text3'>价格：<text class='maincolor'>{{all_detail_datas[index].productSub.productSkuSub.price/100}}元{{all_detail_datas[index].productSub.unit}}</text> <text class='fr'>X{{all_detail_datas[index].buyNum}}</text></view>
+                  </view>
+              </view>
+            </view>  
+
+            <view class='amount_out clearfix'>
+              <view class='amount'>
+
+                <view class='stepper_s fr font30'>
+                    实付：<text class='maincolor'>￥{{all_detail_datas[index].realPay/100}}</text>
+                </view>
+              </view>
+            </view>
+        </view>
+      
+
+      <!-- 待发货按钮  -->
+        <view class='cancel_pay_out' wx:if="{{all_detail_datas[index].state == 3}}">
+          <view class='cancel_pay clearfix'>
+              <view class='pay fr font26'  bindtap='buy_again' data-productid='{{all_detail_datas[index].productSub.productSkuSub.productId}}'>再次购买</view> 
+           
+          </view>
+        </view>
+      <!-- 待发货按钮  -->
+
+     
+      <!-- ================================== -->
+          </view>
+</view>
+<!-- 待发货结束 -->
+
+
+<!-- 待自提开始 -->
+<view hidden="{{currentTab!==4}}">
+  <view  class='order_detail' wx:for="{{all_detail_datas}}" wx:for-index="index" wx:key="index" wx:if="{{all_detail_datas[index].state == 2}}">
+        <view bindtap='to_order_detail_danmai' data-id='{{all_detail_datas[index].id}}'>
+            <view class='shop_name_out'>
+              <view class='shop_name clearfix'>
+                <view class='shop_wrap'>
+                  <view class='shop_icon'>
+                    <image src='../../common/image/index_img/shop_icon.png'></image>
+                  </view>
+                <view class='shop_name_text font30'> {{all_detail_datas[index].productSub.shopSub.name}}</view>
+                <view wx:if="{{all_detail_datas[index].collageId != 0}}" class='pintuan_icon font26'>拼团</view>
+                </view>
+                <view wx:if="{{all_detail_datas[index].state == 2}}" class='shop_name_wrap font30 selected_color'>待自提</view>
+              </view>
+            </view>
+
+            <view class='orders_detail'>
+              <view class='order_info'>
+                  <view class='good_img'>
+                      <image src='{{all_detail_datas[index].productSub.productImageSub.path}}'></image>
+                  </view>
+                  <view class='good_detail'>
+                    <view class='font26 good_detail_text1'>{{all_detail_datas[index].productSub.title}}</view>
+                    <view class='font24 mezzo_color good_detail_text2'>{{all_detail_datas[index].productSub.productSkuSub.skuName}}</view>
+                    <view class='font30 good_detail_text3'>价格：<text class='maincolor'>{{all_detail_datas[index].productSub.productSkuSub.price/100}}元{{all_detail_datas[index].productSub.unit}}</text> <text class='fr'>X{{all_detail_datas[index].buyNum}}</text></view>
+                  </view>
+              </view>
+            </view>  
+
+            <view class='amount_out clearfix'>
+              <view class='amount'>
+
+                <view class='stepper_s fr font30'>
+                    实付：<text class='maincolor'>￥{{all_detail_datas[index].realPay/100}}</text>
+                </view>
+              </view>
+            </view>
+        </view>
+      
+
+      <!-- 待自提按钮  -->
+        <view class='cancel_pay_out' wx:if="{{all_detail_datas[index].state == 2}}">
+          <view class='cancel_pay clearfix'>
+            <view class='pay fr font26'  bindtap='ensure_shouhuo' data-id='{{all_detail_datas[index].id}}'>确认收货</view> 
+            <!-- <view class='cancel font26 fr'>门店地址</view>  -->
+          </view>
+        </view>
+      <!-- 待自提按钮  -->
+
+      <!-- ================================== -->
+          </view>
+</view>
+<!-- 待自提结束 -->
+
+
+<!-- 已发货开始 -->
+<view hidden="{{currentTab!==5}}">
+  <view  class='order_detail' wx:for="{{all_detail_datas}}" wx:for-index="index" wx:key="index"  wx:if="{{all_detail_datas[index].state == 4}}">
+        <view bindtap='to_order_detail_danmai' data-id='{{all_detail_datas[index].id}}'>
+            <view class='shop_name_out'>
+              <view class='shop_name clearfix'>
+                <view class='shop_wrap'>
+                  <view class='shop_icon'>
+                    <image src='../../common/image/index_img/shop_icon.png'></image>
+                  </view>
+                <view class='shop_name_text font30'> {{all_detail_datas[index].productSub.shopSub.name}}</view>
+                <view wx:if="{{all_detail_datas[index].collageId != 0}}" class='pintuan_icon font26'>拼团</view>
+                </view>
+                <view wx:if="{{all_detail_datas[index].state == 4}}" class='shop_name_wrap font30 selected_color'>已发货</view>
+              </view>
+            </view>
+
+            <view class='orders_detail'>
+              <view class='order_info'>
+                  <view class='good_img'>
+                      <image src='{{all_detail_datas[index].productSub.productImageSub.path}}'></image>
+                  </view>
+                  <view class='good_detail'>
+                    <view class='font26 good_detail_text1'>{{all_detail_datas[index].productSub.title}}</view>
+                    <view class='font24 mezzo_color good_detail_text2'>{{all_detail_datas[index].productSub.productSkuSub.skuName}}</view>
+                    <view class='font30 good_detail_text3'>价格：<text class='maincolor'>{{all_detail_datas[index].productSub.productSkuSub.price/100}}元{{all_detail_datas[index].productSub.unit}}</text> <text class='fr'>X{{all_detail_datas[index].buyNum}}</text></view>
+                  </view>
+              </view>
+            </view>  
+
+            <view class='amount_out clearfix'>
+              <view class='amount'>
+
+                <view class='stepper_s fr font30'>
+                    实付：<text class='maincolor'>￥{{all_detail_datas[index].realPay/100}}</text>
+                </view>
+              </view>
+            </view>
+        </view>
+       
+
+      <!-- 已发货按钮  -->
+      <view class='cancel_pay_out'  wx:if="{{all_detail_datas[index].state == 4}}">
+        <view class='cancel_pay clearfix'>
+                            <view class='pay fr font26'  bindtap='ensure_shouhuo' data-id='{{all_detail_datas[index].id}}'>确认收货</view> 
+            <view class='cancel fr font26' bindtap='to_order_detail_chakanwuliu' data-id='{{all_detail_datas[index].id}}'>查看物流</view> 
+        </view>
+      </view>
+      <!-- 已发货按钮  -->
+
+      <!-- ================================== -->
+          </view>
+</view>
+<!-- 已发货结束 -->
+
+<!-- 已完成开始 -->
+<view hidden="{{currentTab!==6}}">
+  <view  class='order_detail' wx:for="{{all_detail_datas}}" wx:for-index="index" wx:key="index" wx:if="{{all_detail_datas[index].state == 5}}">
+        <view bindtap='to_order_detail_danmai' data-id='{{all_detail_datas[index].id}}'>
+            <view class='shop_name_out'>
+              <view class='shop_name clearfix'>
+                <view class='shop_wrap'>
+                  <view class='shop_icon'>
+                    <image src='../../common/image/index_img/shop_icon.png'></image>
+                  </view>
+                <view class='shop_name_text font30'> {{all_detail_datas[index].productSub.shopSub.name}}</view>
+                <view wx:if="{{all_detail_datas[index].collageId != 0}}" class='pintuan_icon font26'>拼团</view>
+                </view>
+                <view wx:if="{{all_detail_datas[index].state == 5}}" class='shop_name_wrap font30 selected_color'>已完成</view>
+              </view>
+            </view>
+
+            <view class='orders_detail'>
+              <view class='order_info'>
+                  <view class='good_img'>
+                      <image src='{{all_detail_datas[index].productSub.productImageSub.path}}'></image>
+                  </view>
+                  <view class='good_detail'>
+                    <view class='font26 good_detail_text1'>{{all_detail_datas[index].productSub.title}}</view>
+                    <view class='font24 mezzo_color good_detail_text2'>{{all_detail_datas[index].productSub.productSkuSub.skuName}}</view>
+                    <view class='font30 good_detail_text3'>价格：<text class='maincolor'>{{all_detail_datas[index].productSub.productSkuSub.price/100}}元{{all_detail_datas[index].productSub.unit}}</text> <text class='fr'>X{{all_detail_datas[index].buyNum}}</text></view>
+                  </view>
+              </view>
+            </view>  
+
+            <view class='amount_out clearfix'>
+              <view class='amount'>
+
+                <view class='stepper_s fr font30'>
+                    实付：<text class='maincolor'>￥{{all_detail_datas[index].realPay/100}}</text>
+                </view>
+              </view>
+            </view>
+        </view>
+       
+
+      <!-- 已完成按钮 -->
+      <view class='cancel_pay_out' wx:if="{{all_detail_datas[index].state == 5 || all_detail_datas[index].state == 6}}">
+        <view class='cancel_pay clearfix'>
+            <view class='pay fr font26'  bindtap='buy_again' data-productid='{{all_detail_datas[index].productSub.productSkuSub.productId}}'>再次购买</view> 
+            <view class='cancel font26 fr' bindtap='delete_order' data-id='{{all_detail_datas[index].id}}'>删除订单</view> 
+        </view>
+      </view>
+      <!-- 已完成按钮 -->
+
+  
+      <!-- ================================== -->
+          </view>
+</view>
+<!-- 已完成结束 -->

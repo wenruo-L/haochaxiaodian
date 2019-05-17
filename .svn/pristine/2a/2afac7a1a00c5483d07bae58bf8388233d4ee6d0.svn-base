@@ -1,0 +1,18 @@
+<!--pages/tixian_accomplish/tixian_accomplish.wxml-->
+<view class='content'>
+  <view class='tixian_accomplish_out'>
+    <view class='tixian_accomplish'>
+      <view class='accomplish_img'>
+        <image src='../../common/image/index_img/accomplish.png'></image>
+      </view>
+        <view class='accomplish_tip'>提现成功</view>
+        <view class='accomplish_tip_bottom font24 shallow_color'>24小时内到账，请注意查收</view>
+      
+          <view class='turnblackto_index font36' bindtap='to_index' open-type='switchTab'>返回首页</view>
+
+   
+          <view class='turnblackto_tixian font36' bindtap='to_tixian'>返回钱包</view>
+  
+    </view>
+  </view>
+</view>

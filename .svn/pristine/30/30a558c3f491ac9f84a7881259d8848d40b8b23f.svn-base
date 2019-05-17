@@ -1,0 +1,4 @@
+<!--pages/login/login.wxml-->
+<image src='http://image.haocha.top/i1/default/shop/haocha_logo_small.png'></image>
+<view>好茶小店申请获得您的信息（昵称、头像等）</view>
+<button open-type='getUserInfo' bindgetuserinfo="bindgetuserinfo" type='primary'>一键授权</button>

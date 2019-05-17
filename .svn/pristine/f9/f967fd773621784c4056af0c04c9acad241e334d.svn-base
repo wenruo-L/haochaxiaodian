@@ -1,0 +1,26 @@
+/* pages/text_time/text_time.wxss */
+.share_good_poster{
+  width: 100%;
+  height: 880rpx;
+  background: #fff;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  z-index: 4;
+}
+.share_good_poster_title{
+  width: 100%;
+  text-align: center;
+  padding: 40rpx 0;
+}
+.keep_poster_btn{
+  width: 78%;
+  height: 78rpx;
+  margin: 0 auto;
+  background: #0E6D45;
+  padding-left: 0;
+  padding-right: 0;
+  color: #fff;
+  border-radius:50rpx;
+  line-height: 78rpx; 
+}

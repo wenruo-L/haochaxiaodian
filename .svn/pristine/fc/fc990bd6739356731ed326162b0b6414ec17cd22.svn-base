@@ -1,0 +1,85 @@
+/* pages/get_luckMoney/get_luckMoney.wxss */
+.userHeader{
+  width: 100%;
+  height: 300rpx;
+  position: relative;
+}
+.userHeader_bg{
+  width: 100%;
+  height: 186rpx;
+}
+.userHeader_bg>image{
+  width: 100%;
+  height: 100%;
+}
+.userHeaderImg{
+  width: 150rpx;
+  height: 150rpx;
+  border: 8rpx solid #FFF;
+  border-radius:50%; 
+  position: absolute;
+  top: 34%;
+  left: 39%;
+}
+.userHeaderImg>image{
+  width: 100%;
+  height: 100%;
+  border-radius:50%; 
+}
+.choose{
+  width: 100%;
+  height: 100%;
+}
+.swiper-tab-list_out{
+  width: 100%;
+  height: 83rpx;
+  background: #fff;
+  border-top:1px solid#e6e6e6;   
+  border-bottom:1px solid#e6e6e6;   
+}
+.swiper-tab-list{
+  width: 50%;
+  height: 100%;
+  display: inline-block;
+  text-align: center;
+}
+.swiper-tab-list-in{
+  width: 33%;
+  margin: 0 auto;
+  line-height: 83rpx;
+}
+.on{
+  border-bottom: 4rpx solid #EC0000;
+  color: #EC0000;
+}
+.NoLuckyMoneyTips{
+  width: 100%;
+  height: 100%;
+  color: #666;
+  text-align: center;
+  padding: 100rpx 0 100rpx 0;
+  background: #fff;
+}
+.NoLuckyMoneyImg{
+  width: 335rpx;
+  height: 265rpx;
+  margin: 0 auto;
+  margin-bottom: 20rpx;
+}
+.NoLuckyMoneyImg>image{
+  width: 100%;
+  height: 100%;
+}
+.toIndex{
+  width: 450rpx;
+  height: 63rpx;
+  border:1px solid #EC0000;
+  line-height: 63rpx;
+  color: #EC0000;
+  border-radius:50rpx;
+  margin: 0 auto; 
+  margin-top: 50rpx;
+  padding-left: 0;
+  padding-right: 0;
+  background: #fff;
+}

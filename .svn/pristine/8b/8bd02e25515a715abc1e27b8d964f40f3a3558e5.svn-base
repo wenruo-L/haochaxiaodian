@@ -1,0 +1,482 @@
+/*image {
+  display: block;
+}
+
+page {
+  background: #fff;
+  width: 100%;
+  height: 100%;
+}
+
+.flex {
+  display: flex;
+}
+
+.tab-h {
+  height: 80rpx;
+  width: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
+  background: #fff;
+  font-size: 16px;
+  white-space: nowrap;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 99;
+}
+
+.tab-item {
+  color: #333;
+  flex: 1;
+  text-align: center;
+  font-size: 30rpx;
+}
+
+.tab-item text {
+  line-height: 76rpx;
+  display: inline-block;
+}
+
+.active text {
+  color: #0e6d44;
+  border-bottom: 2px solid #0e6d44;
+}
+
+.content {
+  padding-top: 80rpx;
+}
+
+.time {
+  line-height: 60rpx;
+  color: #666;
+  font-size: 28rpx;
+  padding: 0 20rpx;
+  height: 60rpx;
+}
+
+.time image {
+  width: 55rpx;
+  height: 55rpx;
+}
+
+.goods {
+  padding: 0 20rpx 20rpx 20rpx;
+  border-bottom: 1px solid #ddd;
+}
+
+.goodsImg {
+  width: 215rpx;
+  height: 180rpx;
+}
+
+.goodsImg image {
+  width: 100%;
+  height: 100%;
+}
+
+.goodsdel {
+  flex: 1;
+  padding-left: 20rpx;
+  padding-top: 10rpx;
+}
+
+.goodsText {
+  line-height: 60rpx;
+  width: 350rpx;
+ 
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
+}
+
+.goodsText text {
+  color: #0e6d44;
+}
+
+.shopLogo {
+  flex: 1;
+}
+
+.shopLogo image {
+  width: 31rpx;
+  height: 31rpx;
+  margin-top: 15rpx;
+}
+
+.shopName {
+  margin-top: 10rpx;
+  line-height: 40rpx;
+  height: 40rpx;
+  width: 300rpx;
+  margin-left: 10rpx;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
+}
+
+.collageBtn {
+  width: 150rpx;
+  line-height: 60rpx;
+  height: 60rpx;
+  border-radius: 30rpx;
+  background: #0e6d44;
+  text-align: center;
+  color: #fff;
+  font-size: 26rpx;
+}
+
+
+
+.shopMes {
+  padding: 20rpx;
+  border-bottom: 1px solid #ddd;
+}
+
+.shopMes .shopMesLogo {
+  width: 120rpx;
+  height: 120rpx;
+}
+
+.shopText {
+  flex: 1;
+  padding-left: 20rpx;
+}
+
+.shop_icon {
+  width: 31rpx;
+  height: 31rpx;
+  margin-top: 20rpx;
+  margin-right: 10rpx;
+}
+
+.shopMesName {
+  line-height: 70rpx;
+  height: 70rpx;
+  font-size: 30rpx;
+  font-weight: bold;
+  width: 400rpx;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
+}
+
+.categoryName {
+  width: 460rpx;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
+  height: 40rpx;
+}
+
+.tis {
+  width: 100%;
+  margin-top: 150rpx;
+  text-align: center;
+  color: #999;
+} */
+
+
+
+image {
+  display: block;
+}
+
+page {
+  background: #fff;
+  width: 100%;
+  height: 100%;
+}
+
+.flex {
+  display: flex;
+}
+
+.tab-h {
+  height: 80rpx;
+  width: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
+  background: #fff;
+  font-size: 16px;
+  white-space: nowrap;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 99;
+}
+
+.tab-item {
+  color: #333;
+  flex: 1;
+  text-align: center;
+  font-size: 30rpx;
+}
+
+.tab-item text {
+  line-height: 76rpx;
+  display: inline-block;
+}
+
+.active text {
+  color: #0e6d44;
+  border-bottom: 2px solid #0e6d44;
+}
+
+.container {
+  min-height: 100%;
+  padding-top: 100rpx
+}
+
+.touch-item {
+  font-size: 14px;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #ccc;
+  width: 100%;
+  overflow: hidden;
+}
+
+.content {
+  width: 100%;
+  padding: 10px;
+  line-height: 22px;
+  margin-right: 0;
+  -webkit-transition: all 0.4s;
+  transition: all 0.4s;
+  -webkit-transform: translateX(90px);
+  transform: translateX(90px);
+  margin-left: -90px;
+}
+
+.del {
+  background-color: #c00;
+  width: 90px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  -webkit-transform: translateX(90px);
+  transform: translateX(90px);
+  -webkit-transition: all 0.4s;
+  transition: all 0.4s;
+}
+
+.touch-move-active .content, .touch-move-active .del {
+  -webkit-transform: translateX(0);
+  transform: translateX(0);
+}
+
+.time {
+  line-height: 60rpx;
+  color: #666;
+  font-size: 28rpx;
+  padding: 0 20rpx;
+  height: 60rpx;
+}
+
+.time image {
+  width: 55rpx;
+  height: 55rpx;
+}
+
+.goodsdel {
+  flex: 1;
+  padding-left: 20rpx;
+  padding-top: 10rpx;
+}
+
+.goodsText {
+  line-height: 60rpx;
+  width: 350rpx;
+  /* text-indent:20rpx; */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
+}
+
+.goodsText text {
+  color: #0e6d44;
+}
+
+.shopLogo {
+  flex: 1;
+}
+
+.shopLogo image {
+  width: 31rpx;
+  height: 31rpx;
+  margin-top: 15rpx;
+}
+
+.shopName {
+  margin-top: 10rpx;
+  line-height: 40rpx;
+  height: 40rpx;
+  width: 300rpx;
+  margin-left: 10rpx;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
+}
+
+.collageBtn {
+  width: 150rpx;
+  line-height: 60rpx;
+  height: 60rpx;
+  border-radius: 30rpx;
+  background: #0e6d44;
+  text-align: center;
+  color: #fff;
+  font-size: 26rpx;
+}
+
+/* inter_icon */
+
+.shopMes {
+  padding: 20rpx;
+  /* border-bottom: 1px solid #ddd; */
+}
+
+.shopMes .shopMesLogo {
+  width: 120rpx;
+  height: 120rpx;
+}
+
+.shopText {
+  flex: 1;
+  padding-left: 20rpx;
+}
+
+.shop_icon {
+  width: 31rpx;
+  height: 31rpx;
+  margin-top: 20rpx;
+  margin-right: 10rpx;
+}
+
+.shopMesName {
+  line-height: 70rpx;
+  height: 70rpx;
+  font-size: 30rpx;
+  /* font-weight: bold; */
+  width: 400rpx;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
+}
+
+.categoryName {
+  width: 460rpx;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
+  height: 40rpx;
+}
+
+.tis {
+  width: 100%;
+  margin-top: 150rpx;
+  text-align: center;
+  color: #999;
+}
+
+.goodsImg image {
+  width: 200rpx;
+  height: 180rpx;
+}
+
+.flex {
+  display: flex;
+}
+
+
+  .inter_icon{
+  width: 20rpx;
+  height: 40rpx;
+  margin-top: 40rpx
+} 
+.wrap{
+  text-align: center;
+  margin-top: 250rpx;
+  color: #999
+}
+.noMore{
+  width: 380rpx;
+  height: 380rpx;
+  margin: 0 auto
+}
+
+/*==========================================  */
+ /* .item-ans {
+  width: 100%;
+  display: flex;
+  flex-grow: row no-wrap;
+  justify-content: space-between;
+  padding: 30rpx;
+  box-sizing: border-box;
+  height: 180rpx;
+  align-items: center;
+  border-bottom: 1px solid #f2f2f2;
+}
+
+.avatar {
+  width: 100rpx;
+  height: 100rpx;
+  position: relative;
+  padding-right: 30rpx;
+}
+
+.avatar .img {
+  width: 100%;
+  height: 100%;
+}
+
+.avatar .doyen {
+  width: 40rpx;
+  height: 40rpx;
+  position: absolute;
+  bottom: -2px;
+  right: 20rpx;
+}
+
+.expertInfo {
+  font-size: 12px;
+  flex-grow: 2;
+  color: #b0b0b0;
+  line-height: 1.5em;
+}
+
+.expertInfo .name {
+  font-size: 16px;
+  color: #000;
+  margin-bottom: 6px;
+}
+
+.askBtn {
+  width: 120rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  text-align: center;
+  font-size: 14px;
+  border-radius: 60rpx;
+  border: 1px solid #4675f9;
+  color: #4675f9;
+}
+
+.tab-content {
+  margin-top: 80rpx;
+}
+
+.scoll-h {
+  height: 100%;
+}   */

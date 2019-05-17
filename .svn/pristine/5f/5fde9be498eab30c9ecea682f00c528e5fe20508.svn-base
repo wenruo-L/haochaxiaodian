@@ -1,0 +1,34 @@
+<!--pages/get_luckMoney/get_luckMoney.wxml-->
+<view class='content'>
+
+    <view class='userHeader'>
+      <view class='userHeader_bg'>
+        <image src='../../common/image/index_img/luckyMoneyBG.png'></image>
+      </view>
+      <view class='userHeaderImg'>
+        <image src='https://wx.qlogo.cn/mmopen/vi_32/Eq4JZsLlZA5mFMzMaC99ZtiaXYnFbgicxjcGPxLIv39YRPoIfKuTNqAWE1MVGJNqLmASdNOQ8d4nTZREzOiacPn6g/132'></image>
+      </view>
+    </view>
+
+  <view class='choose'>
+    <view class='swiper-tab-list_out'>
+      <view class="swiper-tab-list " wx:for="{{navbar}}" data-idx="{{index}}"  wx:key="index" bindtap="navbarTap">
+
+        <view  class="font30 swiper-tab-list-in {{currentTab==index ? 'on' : ''}}">{{item}}</view>
+      </view>
+    </view>
+    <view class='order_detail_wrap'  hidden="{{currentTab!==0}}">   
+      <view class='NoLuckyMoneyTips' style="height:{{winheight}}rpx">   
+        <view class='NoLuckyMoneyImg'>        
+          <image src='../../common/image/index_img/NoLuckyMoney.png' ></image>
+        </view>  
+        <text class='font30'>暂无红包</text>
+        <button class='toIndex'>分享红包，同好友拼手气</button>
+      </view>
+    </view>
+    <view class='order_detail_wrap'  hidden="{{currentTab!==1}}">    
+      <image src='../../common/image/index_img/NoLuckyMoney.png' ></image>
+      2
+    </view>
+  </view>
+</view>

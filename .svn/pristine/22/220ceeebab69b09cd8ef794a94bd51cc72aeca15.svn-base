@@ -1,0 +1,74 @@
+<!--pages/choose_address/choose_address.wxml-->
+<view class='content'>
+  <view class='address_detail_out'  wx:for="{{choose_address_list}}" wx:key="index"  wx:if="{{choose_address_list[index].defaultUse==1}}">
+
+    <view class='address_detail' >
+      <view class='shouhuo'  bindtap="turnAdd"  data-id='{{choose_address_list[index].id}}'>
+        <view class='shouhuoren font30'>
+          {{choose_address_list[index].name}} <text class='font30'>{{choose_address_list[index].phone}}</text>
+        </view>
+        <view class='address font30'>{{choose_address_list[index].province}}{{choose_address_list[index].city}}{{choose_address_list[index].area}}{{choose_address_list[index].street}}
+        </view>
+      </view>
+    </view>
+    <view class='choose_out'>
+      <view class='choose'>
+        <view class='default'>
+
+          <view class='default_in' bindtap='turnAdd1'  data-id='{{choose_address_list[index].id}}'>         
+            <view class='selected_img'>
+              <image src='../../common/image/index_img/selected.png'></image>
+            </view>
+            <text class='font26 mezzo_color'>设为默认</text>
+          </view>
+
+          <view class='btn fr'>
+            <view class='compile_btn font26 mezzo_color' bindtap='redact_address' data-id='{{choose_address_list[index].id}}' data-name='{{choose_address_list[index].name}}'  data-phone='{{choose_address_list[index].phone}}'>编辑</view>
+            <view class='delete_btn font26 mezzo_color' bindtap='delete_address' data-id='{{choose_address_list[index].id}}'>删除</view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+
+
+
+
+
+   <view class='address_detail_out' wx:for="{{choose_address_list}}" wx:key="index"  wx:if="{{choose_address_list[index].defaultUse!=1}}">
+
+    <view class='address_detail'>
+      <view class='shouhuo' bindtap="turnAdd" data-id='{{choose_address_list[index].id}}'>
+        <view class='shouhuoren font30'>
+          {{choose_address_list[index].name}} <text class='font30'>{{choose_address_list[index].phone}}</text>
+        </view>
+        <view class='address font30'>{{choose_address_list[index].province}}{{choose_address_list[index].city}}{{choose_address_list[index].area}}{{choose_address_list[index].street}}</view>
+      </view>
+    </view>
+
+    <view class='choose_out'>
+      <view class='choose'>
+        <view class='default'>
+
+          <view class='default_in'  bindtap='turnAdd1' data-id='{{choose_address_list[index].id}}'>         
+            <view class='selected_img'>
+              <image src='../../common/image/index_img/select.png'></image>
+            </view>
+            <text class='font26 mezzo_color'>设为默认</text>
+          </view>
+
+          <view class='btn fr'>
+            <view class='compile_btn font26 mezzo_color' bindtap='redact_address' data-id='{{choose_address_list[index].id}}' data-name='{{choose_address_list[index].name}}'  data-phone='{{choose_address_list[index].phone}}'>编辑</view>
+            <view class='delete_btn font26 mezzo_color' bindtap='delete_address' data-id='{{choose_address_list[index].id}}'>删除</view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view> 
+
+  <view class='add_address font30' bindtap='to_add_address'>
+      新增地址
+  </view>
+</view>
+

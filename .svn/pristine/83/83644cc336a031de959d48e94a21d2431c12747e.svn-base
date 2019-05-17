@@ -1,0 +1,165 @@
+<!--pages/order_detail_ziti/order_detail_ziti.wxml-->
+
+
+<view class='content'>
+
+<view class='wait_pay_out mainbgcolor'>
+  <view class='wait_pay'>
+    <view class='wait_pay_text'>
+      <view class='wait one_shopname_font'>待自提</view>
+      <view class='deadline font24' wx:if="{{timer != 0}}">
+      剩余<text>{{hours}}:{{mins}}:{{secs}}</text>自动确认收货</view>
+      <view class='deadline font24' wx:else>
+      已自动确认收货</view>
+    </view>
+    <view class='wait_pay_icon'>
+      <image src='../../common/image/index_img/fahuo.png'></image>
+    </view>
+  </view>
+</view>
+
+
+
+
+  <view class='order_detail_out'>
+    <view class='order_detail'>
+
+      <view class='shouhuo' wx:if="{{all_data.receiptAddress}}">
+        <view class='shouhuoren font30'>
+          收货人：  <text>{{all_data.receiptAddress.name}}</text>{{all_data.receiptAddress.phone}}
+        </view>
+        <view class='address font30'>
+          收货地址：  <text>{{all_data.receiptAddress.province}}{{all_data.receiptAddress.city}}{{all_data.receiptAddress.area}}{{all_data.receiptAddress.street}}</text>
+        </view>
+      </view>  
+
+      <view class='shouhuo1' wx:if="{{!all_data.receiptAddress}}" >
+        <view class='shouhuoren1 font30'>
+            门店地址：{{all_data.shopContact.province}}{{all_data.shopContact.city}}{{all_data.shopContact.area}}{{all_data.shopContact.address}}
+        </view>
+      </view>  
+      <!-- <view class='enter_icon'>
+        <image src='../../common/image/index_img/inter_icon.png'></image>
+      </view> -->
+
+    </view>
+    <view class='cut_line'>
+      <image src='../../common/image/index_img/line.png'></image>
+    </view>
+  </view>
+
+  <view class='shopname_out'>
+    <view class='shop_name font30'>
+      <view class='shop_icon'>
+        <image src='../../common/image/index_img/shop_icon.png'></image>
+      </view>
+      <text class='font30' style=' vertical-align: middle'>{{danmai_detail.shopSub.name}}</text>
+    </view>
+  </view>
+
+  <view class='orders_out' wx:for="{{danmai_detail.orderSnapshotList}}" wx:for-index="num" wx:key="index">
+    <view class='orders'>
+      <view class='orders_detail'>
+        <view class='order_info'>
+            <view class='good_img'>
+                <image src='{{danmai_detail.productImageSub.path}}'></image>
+            </view>
+            <view class='good_detail'>
+              <view class='font26 good_detail_text1 yichu'>{{danmai_detail.orderSnapshotList[num].title}}</view>
+              <view class='font24 mezzo_color good_detail_text2 yichu'>{{danmai_detail.orderSnapshotList[num].skuName}}</view>
+              <view class='font30 good_detail_text3'>价格：<text class='maincolor'>{{danmai_detail.orderSnapshotList[num].payPrice/100}}元/{{danmai_detail.orderSnapshotList[num].unit}}</text> <text class='fr'>X{{danmai_detail.orderSnapshotList[num].buyNum}}</text></view>
+            </view>
+        </view>
+      </view>
+    </view>
+  </view> 
+
+  <!-- <view class='amount_out clearfix'>
+    <view class='amount'>
+      <view class='font30 fl goodname'>
+         {{danmai_detail.productSub.productSkuSub.skuName}}
+      </view>
+      <view class='stepper fr'>
+        <text class='{{minusStatus}} minus' type='number'  bindtap='bindMinus'>-</text>
+        <text class='stepper_num'> {{input_value}}</text>
+        <text class='plus' bindtap='bindPlus'>+</text>
+      </view>
+    </view>
+  </view> -->
+      <!--https://blog.csdn.net/u010545480/article/details/79021457  -->
+<!--运费  -->
+  <view class='amount_out clearfix' wx:if="{{all_data.order.freightPayType == 1}}">
+    <view class='amount'>
+      <view class='font30 fl goodname'>
+        运费
+      </view>
+      <view class='stepper_s fr font30'>
+        自提
+      </view>
+    </view>
+  </view>
+  <view class='amount_out clearfix' wx:else>
+    <view class='amount'>
+      <view class='font30 fl goodname'>
+        运费
+      </view>
+      <view class='stepper_s fr font30' wx:if="{{all_data.order.freight==0}}">
+        包邮
+      </view>
+      <view class='stepper_s fr font30' wx:else>
+        {{yunfei/100}} <text>元</text>
+      </view>
+    </view>
+  </view>
+<!-- 红包 -->
+
+  <view class='amount_out clearfix' wx:if="{{danmai_detail.balancePay > 0}}">
+    <view class='amount'>
+      <view class='font30 fl goodname'>
+        红包抵扣
+      </view>
+      <view class='stepper_s fr font30'>
+        -{{danmai_detail.balancePay/100}}元
+      </view>
+    </view>
+  </view>
+<!-- 总计  -->
+  <view class='amount_out clearfix'>
+    <view class='amount'>
+      <view class='font30 fl goodname'>
+       
+      </view>
+      <view class='stepper fr font30'>
+           实付：<text class='maincolor'>{{danmai_detail.realPay/100}}元</text>
+      </view>
+    </view>
+  </view>
+<!-- 订单编号和下单时间  -->
+<view class='order_timer_out'>
+  <view class='order_timer'>
+     <view class='order_out'>
+     <view class='order font24 mezzo_color'>订单编号： <text>{{danmai_detail.id}}</text> </view>
+        <view class='copy' bindtap='copy_num'>复制</view> 
+    </view> 
+    <view class='timer font24 mezzo_color'>下单时间： <text>{{xiadanshijian}}</text> </view>
+    <view class='timer font24 mezzo_color'>付款时间： <text>{{fukuanshijian}}</text> </view>
+  </view>
+</view>
+
+
+
+  <view class='empty'></view>
+
+  <view class='pay'>
+    <view class='sum  font26'  bindtap='to_contact_shop'  data-shopid='{{danmai_detail.shopSub.id}}'>
+      联系门店
+    </view>
+
+    <view class='sub font30 mainbgcolor'  bindtap='buy_again' data-productid='{{danmai_detail.orderSnapshotList[0].productId}}'>
+      再次购买
+    </view>
+  </view>
+  
+</view>
+
+

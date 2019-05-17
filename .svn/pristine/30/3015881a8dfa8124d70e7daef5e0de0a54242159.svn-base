@@ -1,0 +1,54 @@
+/* pages/AD/AD.wxss */
+.content{
+  width: 100%;
+  height: 100;
+  font-size: 0;
+}
+.adImg{
+   width: 100%;
+   height: 100%;
+   font-size: 0;
+     text-align: center;
+} 
+.adImg>image{
+   width: 100%;
+}
+.download_app{
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  padding:20rpx 0 92rpx 0; 
+}
+.download_btn{
+  width: 308rpx;
+  height: 82rpx;
+  margin: 0 auto;
+}
+.download_btn>image{
+  width: 100%;
+  height: 100%;
+}
+.MT{
+  margin-top: 40rpx;
+}
+.MB{
+  margin-bottom: 30rpx;
+}
+.adImg_text{
+  width: 100%;
+  text-align: center;
+}
+.dredge_btn{
+  width: 533rpx;
+  height: 141rpx;
+  margin: 0 auto;
+  margin-top: 40rpx;
+}
+.dredge_btn>image{
+  width: 100%;
+  height: 100%;
+}
+.adImg_text{
+  padding: 0 0 40rpx 0;
+  margin-top: 30rpx;
+}

@@ -1,0 +1,32 @@
+//测试环境地址
+//host
+var domain_with_host = 'http://lp.apit.haocha.top/'
+//host_user
+var domain_with_host_user = 'http://lp.apit.haocha.top/user'
+//host_browse
+var domain_with_host_browse = 'http://lp.apit.haocha.top/browse'
+//host_like
+var domain_with_host_like = 'http://lp.apit.haocha.top/like'
+//host_shop
+var domain_with_host_shop = 'http://lp.apit.haocha.top/shop'
+//host_product
+var domain_with_host_product = 'http://lp.apit.haocha.product/shop'
+//host_order
+var domain_with_host_order = 'http://lp.apit.haocha.product/order'
+
+export default{
+  //授权获取session
+  get3rdsession: domain_with_host +"/weixin/applet/get3rdsession",
+  // 获取微信用户信息
+  get_token_id: domain_with_host +"/weixin/applet/userinfo",
+  // 附近的小店
+  get_near_shop: domain_with_host_shop +"/near",
+  // 店铺入驻
+  shop_join: domain_with_host_shop+"/enter",
+  // 店铺海报(分享店铺)
+  share_shop_poster: domain_with_host_user+"/share/shop/poster",
+  // 店铺首页
+  shop: domain_with_host_shop+"/home",
+  // 商品类目
+  goods_list:domain_with_host+"/list"
+}

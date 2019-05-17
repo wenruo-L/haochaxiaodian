@@ -1,0 +1,25 @@
+<!--pages/AD/AD.wxml-->
+<view class='content'>
+  <view class='adImg'>
+    <image mode='widthFix' src='http://image.haocha.top/i1/poster/base/drainage_explain_1.png'></image>
+    <image mode='widthFix' src='http://image.haocha.top/i1/poster/base/drainage_explain_2.png'></image>
+    <image bindtap='previewImage' mode='widthFix' src='http://image.haocha.top/i1/poster/base/drainage_explain_3.png'></image>
+  </view>
+</view>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

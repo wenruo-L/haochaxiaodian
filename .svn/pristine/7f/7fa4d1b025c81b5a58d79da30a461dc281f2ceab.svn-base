@@ -1,0 +1,181 @@
+<!--pages/own_buy/own_buy.wxml-->
+<view class='content'>
+  <!--商品图-->
+  <view class='index_top_mind'>
+       <view class='index_top_bg'>
+          <image src='../../common/image/index_img/good1.png'></image>
+      </view> 
+  </view>
+  <!--商品图-->
+  <!--商品细节-->
+    <view class='good_detail_out'> 
+      <view class='good_detail'>
+
+
+        <view class='good_title clearfix'>
+          <view class='title title_font'>
+            正宗新会天马小青柑普洱茶陈皮茶叶
+          </view>
+          <view class='like fr'>
+            <view class='like_img'>
+              <image src='../../common/image/index_img/likes.png'></image>
+            </view>
+            <view class='like_text'>
+              已收藏
+            </view>
+          </view>
+        </view>
+
+        <view class='good_price clearfix'>
+          <view class='cost fl'>
+            价格： <text class='maincolor'>￥60/饼</text>
+          </view>
+          <view class="freight fr mezzo_color" >
+            运费： <text>免邮</text>
+          </view>
+        </view>
+
+        <view class='good_introduce'>
+            <view class='zuoyinhao_wrap'>
+              <image src='../../common/image/index_img/zuoyinhao.png'></image>
+            </view>
+            <view class='good_introduce_text'>
+                          茶树叶片的大小、色泽、厚度和形态，因品种、季节、树龄
+            ，以及农业技术措施等有显著差异。叶片形状有椭圆形、卵形、
+            长椭圆形、倒卵形、圆形等，以椭圆形和卵形为最多。
+            </view>          
+        </view>
+
+        <view class='share'>
+          <view class='share_s'>
+            <view class='share_img'>
+              <image src='../../common/image/index_img/share.png'></image>
+            </view>
+            <view class='share_s_text maincolor'>分享拿佣金</view>
+          </view>
+          
+          <view class='share_s'>
+            <view class='share_img'>
+              <image src='../../common/image/index_img/ziti.png'></image>
+            </view>
+            <view class='share_s_text maincolor'>支持到店自提</view>
+          </view>
+
+          <view class='share_s'>
+            <view class='share_img'>
+              <image src='../../common/image/index_img/superior.png'></image>
+            </view>
+            <view class='share_s_text maincolor'>优质品质好茶</view>
+          </view>
+         
+          
+        </view>
+
+
+      </view>
+    </view>
+    
+  <!--商品细节-->
+  <!--商品参数-->
+  <view class='good_parameter_out'>
+    <view class='good_parameter'>
+
+
+      <view class='good_parameter_title'>
+        <view class='line'></view>
+        <view class='good_parameter_title_text'>商品参数</view>
+      </view>
+      
+      <view class='good_form'>
+
+        <view class='w_wrap b_b'>
+          <view class='left_wrap'>
+              生产许可证
+          </view>
+          <view class='right_wrap'>
+            SC1144070300362
+          </view>
+        </view>
+
+        <view class='g_wrap b_b'>
+          <view class='left_wrap'>
+              原产
+          </view>
+          <view class='right_wrap'>
+            广东—江门—新会区
+          </view>
+        </view>
+         
+        <view class='w_wrap b_b'>
+          <view class='left_wrap'>
+              品牌
+          </view>
+          <view class='right_wrap'>
+            皇家百合
+          </view>
+        </view>
+
+        <view class='g_wrap b_b'>
+          <view class='left_wrap'>
+              净含量
+          </view>
+          <view class='right_wrap'>
+            150克/ 罐
+          </view>
+        </view>
+
+        <view class='w_wrap b_b'>
+          <view class='left_wrap'>
+              规格
+          </view>
+          <view class='right_wrap'>
+            24罐/件
+          </view>
+        </view>
+
+        <view class='g_wrap'>
+          <view class='left_wrap'>
+              生产日期
+          </view>
+          <view class='right_wrap'>
+            2017年
+          </view>
+        </view>
+
+      </view>
+
+    </view>
+  </view>
+  <!--商品参数-->
+  <!--商品详情  -->
+    <view class='good_particulars_out'>
+      <view class='good_particulars'>
+
+        <view class='good_parameter_title'>
+          <view class='line'></view>
+          <view class='good_parameter_title_text'>商品详情</view>
+        </view>
+
+      </view>
+        <view class='picture_recommend'>
+          <image></image>
+        </view>
+    </view>
+
+  <!--商品详情  -->
+
+  <view class='pay'>
+      <view class='take_commission_out'>
+        <view class='take_commission'>
+          <view class='icon_wrap'>
+            <image src='../../common/image/index_img/yongjin_icon.png'></image>
+          </view>
+          拿佣金10元
+        </view>
+      </view>
+      <view class='payment mainbgcolor'>
+        我要下单
+      </view>
+  </view>
+  <view class='empty'>我是有底线的~</view>
+</view>

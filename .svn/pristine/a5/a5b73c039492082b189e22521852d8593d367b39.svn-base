@@ -1,0 +1,64 @@
+{
+	"description": "项目配置文件。",
+	"setting": {
+		"urlCheck": true,
+		"es6": true,
+		"postcss": true,
+		"minified": true,
+		"newFeature": true
+	},
+	"compileType": "miniprogram",
+	"libVersion": "2.2.1",
+	"appid": "wxa94a549ad18ef0ac",
+	"projectname": "haocha",
+	"isGameTourist": false,
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"currentL": -1,
+			"list": []
+		},
+		"miniprogram": {
+			"current": 3,
+			"list": [
+				{
+					"id": 0,
+					"name": "qrcode",
+					"pathName": "pages/index/index",
+					"query": "scene=0=123"
+				},
+				{
+					"id": 1,
+					"name": "demo",
+					"pathName": "pageA/pages/get_luckMoney/get_luckMoney",
+					"query": "",
+					"scene": "1001"
+				},
+				{
+					"id": -1,
+					"name": "demo",
+					"pathName": "pageA/pages/getLuckyMoneySuccess/getLuckyMoneySuccess",
+					"query": ""
+				},
+				{
+					"id": 3,
+					"name": "demo2",
+					"pathName": "pageA/pages/putForward/putForward",
+					"query": "",
+					"scene": "1001"
+				}
+			]
+		}
+	}
+}
